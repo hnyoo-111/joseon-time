@@ -3,7 +3,7 @@ import * as Cesium from 'cesium';
 import { HERITAGES, heritageById, type Heritage } from '@/entities/heritage';
 import { kingById } from '@/entities/king';
 import { markerCanvas } from '../lib/markerCanvas';
-import { setupCesiumViewer, placeCalibratedModel, MODELS, MODEL_BASE_LOCAL, MODEL_BASE_NAS, DEFAULT_MODEL_FILE } from '../lib/cesiumSetup';
+import { setupCesiumViewer, placeCalibratedModel, addHistoricalMapLayer, MODELS, MODEL_BASE_LOCAL, MODEL_BASE_NAS, DEFAULT_MODEL_FILE } from '../lib/cesiumSetup';
 
 export interface MapViewHandle {
   flyToAll: () => void;
@@ -13,6 +13,7 @@ export interface MapViewHandle {
   zoomOut: () => void;
   toggleLayers: () => void;
   toggle2D3D: () => boolean;
+  toggleHistoricalMap: () => boolean;
 }
 
 interface MapViewProps {
@@ -31,6 +32,7 @@ export const MapView = forwardRef<MapViewHandle, MapViewProps>(function MapView(
   const viewerRef = useRef<Cesium.Viewer | null>(null);
   const entitiesRef = useRef<Record<string, Cesium.Entity>>({});
   const extraLayersRef = useRef<unknown[]>([]);
+  const historicalLayerRef = useRef<Cesium.ImageryLayer | null>(null);
   const onMarkerClickRef = useRef(onMarkerClick);
   onMarkerClickRef.current = onMarkerClick;
   const popupRef = useRef<HTMLDivElement>(null);
@@ -62,6 +64,10 @@ export const MapView = forwardRef<MapViewHandle, MapViewProps>(function MapView(
       if (cancelled) { viewer.destroy(); return; }
       viewerRef.current = viewer;
       extraLayersRef.current = extraLayers;
+      addHistoricalMapLayer(viewer).then((layer) => {
+        if (cancelled) return;
+        historicalLayerRef.current = layer;
+      }).catch((err) => console.warn('대동여지도 레이어 로딩 실패: ', err));
 
       HERITAGES.forEach((h) => {
         const entity = viewer.entities.add({
@@ -184,6 +190,12 @@ export const MapView = forwardRef<MapViewHandle, MapViewProps>(function MapView(
       is2DRef.current = !is2DRef.current;
       if (is2DRef.current) v.scene.morphTo2D(1.0); else v.scene.morphTo3D(1.0);
       return is2DRef.current;
+    },
+    toggleHistoricalMap() {
+      const layer = historicalLayerRef.current;
+      if (!layer) return false;
+      layer.show = !layer.show;
+      return layer.show;
     },
   }), []);
 

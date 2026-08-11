@@ -11,6 +11,25 @@ export const MODEL_BASE_LOCAL = '/assets/'; // public/assets/gyeongbok/...
 export const MODEL_BASE_NAS = 'https://heritage-assets.gaia3d.dev/asset/';
 export const DEFAULT_MODEL_FILE = 'scene.gltf';
 
+// -- 대동여지도 오버레이 -------------------------------------------------------
+// 원본: 김정호, 1861년 / 규장각한국학연구원 소장 / Public Domain
+// (출처: https://commons.wikimedia.org/wiki/File:Daedongyeojido-full.jpg)
+// 대동여지도는 현대 위경도 좌표계로 정밀 제작된 지도가 아니므로, 아래 범위는
+// 한반도 전체를 대략 감싸는 근사 사각형입니다 — 실제 지형과 정확히 일치하지 않습니다.
+export const HISTORICAL_MAP_URL = '/daedongyeojido.jpg';
+export const HISTORICAL_MAP_RECTANGLE = Cesium.Rectangle.fromDegrees(124.0, 33.0, 131.3, 43.0);
+
+export async function addHistoricalMapLayer(viewer: Cesium.Viewer): Promise<Cesium.ImageryLayer> {
+  const provider = await Cesium.SingleTileImageryProvider.fromUrl(HISTORICAL_MAP_URL, {
+    rectangle: HISTORICAL_MAP_RECTANGLE,
+  });
+  const layer = new Cesium.ImageryLayer(provider);
+  layer.alpha = 0.88;
+  layer.show = false;
+  viewer.imageryLayers.add(layer);
+  return layer;
+}
+
 export interface ModelItem {
   folder: string;
   file?: string;

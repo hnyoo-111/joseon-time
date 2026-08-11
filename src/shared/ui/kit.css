@@ -119,6 +119,7 @@ body {
   display: flex; align-items: center; justify-content: center; position: relative; font-size: 16px; font-weight: 600;
 }
 .map-controls button:hover { color: var(--accent); }
+.map-controls button.active { color: var(--accent); background: var(--surface-2); }
 .map-controls button[data-tip]::before {
   content: attr(data-tip); position: absolute; right: 46px; top: 50%; transform: translateY(-50%);
   background: var(--navy); color: #fff; font-size: 11px; font-weight: 500; padding: 5px 9px; border-radius: 0;
@@ -147,23 +148,12 @@ body {
 .legend-dot { width: 14px; height: 14px; border-radius: 50%; background: var(--navy); display: flex; align-items: center; justify-content: center; }
 .legend-dot svg { width: 8px; height: 8px; }
 
-/* Time Compare slider */
-.time-compare {
+/* 대동여지도 오버레이 안내 배지 */
+.historical-map-badge {
   position: absolute; left: 50%; bottom: 16px; transform: translateX(-50%); z-index: 29;
-  width: 380px; background: var(--surface); border: 1px solid var(--border); border-radius: 0;
-  box-shadow: var(--shadow-md); padding: 12px 18px 13px;
-}
-.tc-row { display: flex; align-items: center; gap: 10px; }
-.tc-year-label { font-size: 11px; font-weight: 700; color: var(--ink-3); width: 34px; }
-.tc-year-label.now { text-align: right; }
-.tc-slider { flex: 1; accent-color: var(--accent); cursor: pointer; }
-.tc-caption { font-size: 11px; color: var(--ink-2); margin-top: 6px; text-align: center; line-height: 1.5; }
-.historical-overlay {
-  position: absolute; inset: 0; z-index: 15; pointer-events: none; transition: opacity .25s ease;
-  background:
-    repeating-linear-gradient(0deg, rgba(90, 74, 50, 0.05) 0px, rgba(90, 74, 50, 0.05) 1px, transparent 1px, transparent 3px),
-    radial-gradient(120% 100% at 50% 30%, rgba(184, 58, 50, 0.06), rgba(70, 58, 38, 0.42));
-  mix-blend-mode: multiply;
+  max-width: 420px; background: var(--surface); border: 1px dashed var(--border-strong); border-radius: 0;
+  box-shadow: var(--shadow-md); padding: 9px 14px; font-size: 11px; color: var(--ink-2); line-height: 1.5;
+  text-align: center;
 }
 
 /* -------- Right panel: RELATIONSHIP -------- */

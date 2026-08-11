@@ -1,14 +1,16 @@
 import { useState, type RefObject } from 'react';
 import type { MapViewHandle } from '@/widgets/map-view';
-import { CompassIcon, FitIcon } from '@/shared/ui/icons';
+import { CompassIcon, FitIcon, LayersIcon } from '@/shared/ui/icons';
 
 interface MapControlsProps {
   mapRef: RefObject<MapViewHandle | null>;
   onFocusRequested: () => void;
   onFitRequested: () => void;
+  historicalMapOn: boolean;
+  onToggleHistoricalMap: (on: boolean) => void;
 }
 
-export function MapControls({ mapRef, onFocusRequested, onFitRequested }: MapControlsProps) {
+export function MapControls({ mapRef, onFocusRequested, onFitRequested, historicalMapOn, onToggleHistoricalMap }: MapControlsProps) {
   const [mode2D, setMode2D] = useState(false);
 
   return (
@@ -21,6 +23,16 @@ export function MapControls({ mapRef, onFocusRequested, onFitRequested }: MapCon
       <div className="mc-group">
         <button data-tip="선택한 문화재로 이동" onClick={onFocusRequested}><CompassIcon /></button>
         <button data-tip="전체 보기" onClick={onFitRequested}><FitIcon /></button>
+      </div>
+      <div className="mc-divider" />
+      <div className="mc-group">
+        <button
+          className={historicalMapOn ? 'active' : ''}
+          data-tip="대동여지도 겹쳐보기 (근사 오버레이)"
+          onClick={() => { const on = mapRef.current?.toggleHistoricalMap(); onToggleHistoricalMap(!!on); }}
+        >
+          <LayersIcon />
+        </button>
       </div>
       <div className="mc-divider" />
       <div className="mc-group">

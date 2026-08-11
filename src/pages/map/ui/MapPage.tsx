@@ -5,7 +5,6 @@ import { MapView, type MapViewHandle } from '@/widgets/map-view';
 import { TimelineSidebar } from '@/widgets/timeline-sidebar';
 import { DetailPanel } from '@/widgets/detail-panel';
 import { MapControls } from '@/widgets/map-controls';
-import { TimeCompare } from '@/widgets/time-compare';
 import { JourneyLog } from '@/widgets/journey-log';
 import { TypeIcon } from '@/shared/ui/icons';
 
@@ -16,6 +15,7 @@ export function MapPage() {
   const { mapFocusHeritageId, currentKingFilter, openSite } = useAppStore();
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [panelCollapsed, setPanelCollapsed] = useState(false);
+  const [historicalMapOn, setHistoricalMapOn] = useState(false);
 
   // single source of truth: whenever the focused heritage changes, fly the camera there.
   useEffect(() => {
@@ -50,10 +50,16 @@ export function MapPage() {
           ))}
         </div>
 
-        <TimeCompare visible={!!mapFocusHeritageId} />
+        {historicalMapOn && (
+          <div className="historical-map-badge">
+            ⚠ 대동여지도(1861, 규장각한국학연구원 소장 · Public Domain) — 현대 좌표와 정밀하게 일치하지 않는 근사 오버레이입니다.
+          </div>
+        )}
 
         <MapControls
           mapRef={mapRef}
+          historicalMapOn={historicalMapOn}
+          onToggleHistoricalMap={setHistoricalMapOn}
           onFocusRequested={() => {
             if (mapFocusHeritageId) {
               const h = heritageById(mapFocusHeritageId);
