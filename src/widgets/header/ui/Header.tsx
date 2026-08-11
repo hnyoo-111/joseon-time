@@ -1,0 +1,28 @@
+import { Link, useMatch, useNavigate, useParams } from 'react-router-dom';
+import { GlobalSearch } from '@/features/global-search/ui/GlobalSearch';
+import { journeyById } from '@/entities/journey';
+
+export function Header() {
+  const journeyMatch = useMatch('/journey/:journeyId');
+  const params = useParams();
+  const navigate = useNavigate();
+  const journey = journeyMatch ? journeyById(params.journeyId || '') : undefined;
+
+  return (
+    <div className="topbar">
+      <div className="brand">
+        <span className="kicker">Digital Heritage Archive</span>
+        <Link to="/"><h1>조선의 시간</h1></Link>
+      </div>
+      {journey ? (
+        <div className="travel-badge">
+          <span className="tb-dot" />
+          <span>시간여행 모드 · {journey.year} · {journey.title}</span>
+          <button className="tb-exit" onClick={() => navigate('/map')}>탐색 모드로 돌아가기</button>
+        </div>
+      ) : (
+        <GlobalSearch />
+      )}
+    </div>
+  );
+}
