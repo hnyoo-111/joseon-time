@@ -9,6 +9,9 @@ const cesium = (cesiumPluginModule as unknown as { default: (options?: Record<st
 
 // https://vite.dev/config/
 export default defineConfig({
+  // GitHub Pages 프로젝트 사이트(https://<user>.github.io/joseon-time/) 배포 시
+  // CI에서 BASE_PATH=/joseon-time/ 로 주입한다. 로컬/루트 배포는 '/' 그대로.
+  base: process.env.BASE_PATH ?? '/',
   plugins: [react(), cesium()],
   resolve: {
     alias: {

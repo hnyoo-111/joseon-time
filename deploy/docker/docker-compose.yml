@@ -1,0 +1,55 @@
+# 호스트 경로는 .env 의 HOST_ROOT 로 정한다 (기본 /data/joseon-time).
+# 컨테이너 내부는 항상 /srv/joseon-time 이므로 스크립트·nginx 설정은 손댈 필요가 없다.
+#
+# 외부 연결: cloudflared 는 같은 대역의 별도 호스트에서 이미 운영 중이다.
+#   internet ── Cloudflare ── (기존 cloudflared 호스트) ── http://192.168.10.189:4001 ── nginx
+#   Cloudflare Zero Trust 의 해당 터널 Public Hostname 에
+#   joseon-time.gaia3d.dev → http://192.168.10.189:4001 을 등록한다.
+#
+# 호스트 포트 대역 규약: 4001~4010 을 차례로 사용한다.
+#   4001 → nginx(HTTP)   |   4002~4010 → 예약(향후 서비스)
+services:
+  joseon:
+    build:
+      context: ..                      # deploy/ 를 컨텍스트로 (scripts/ 를 이미지에 넣기 위해)
+      dockerfile: docker/Dockerfile
+    image: joseon-time:latest
+    container_name: joseon-time
+    restart: unless-stopped
+    ports:
+      - "4001:80"                      # 유일한 공개 포트. TLS 는 Cloudflare 가 종단한다
+    env_file:
+      - ${HOST_ROOT:-/data/joseon-time}/.env    # SKETCHFAB_TOKEN (호스트에 600으로 두고 주입)
+    environment:
+      APP_ROOT: /srv/joseon-time
+    volumes:
+      # 데이터는 전부 호스트에 둔다 — 컨테이너를 지워도 원본·릴리스는 남는다
+      - ${HOST_ROOT:-/data/joseon-time}/raw:/srv/joseon-time/raw
+      - ${HOST_ROOT:-/data/joseon-time}/build:/srv/joseon-time/build
+      - ${HOST_ROOT:-/data/joseon-time}/releases:/srv/joseon-time/releases
+      - ${HOST_ROOT:-/data/joseon-time}/data:/srv/joseon-time/data
+      - ${HOST_ROOT:-/data/joseon-time}/app:/srv/joseon-time/app
+      - ${HOST_ROOT:-/data/joseon-time}/logs:/srv/joseon-time/logs
+      - ${HOST_ROOT:-/data/joseon-time}/.env:/srv/joseon-time/.env:ro
+      # 터널용 HTTP 전용 설정 — TLS 는 Cloudflare 가 종단하므로 인증서 마운트가 없다
+      - ./../nginx/joseon-time.conf:/etc/nginx/conf.d/joseon-time.conf:ro
+
+  # 주 1회 수집→빌드. 게시(publish)는 사람이 확인 후 수동으로 한다.
+  sync:
+    image: joseon-time:latest
+    container_name: joseon-time-sync
+    restart: "no"
+    profiles: ["manual"]               # 평소엔 뜨지 않는다. run 으로만 실행
+    env_file:
+      - ${HOST_ROOT:-/data/joseon-time}/.env
+    environment:
+      APP_ROOT: /srv/joseon-time
+      SYNC_LIMIT: "120"
+    volumes:
+      - ${HOST_ROOT:-/data/joseon-time}/raw:/srv/joseon-time/raw
+      - ${HOST_ROOT:-/data/joseon-time}/build:/srv/joseon-time/build
+      - ${HOST_ROOT:-/data/joseon-time}/releases:/srv/joseon-time/releases
+      - ${HOST_ROOT:-/data/joseon-time}/data:/srv/joseon-time/data
+      - ${HOST_ROOT:-/data/joseon-time}/app:/srv/joseon-time/app
+      - ${HOST_ROOT:-/data/joseon-time}/.env:/srv/joseon-time/.env:ro
+    command: ["sync"]

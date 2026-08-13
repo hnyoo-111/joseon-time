@@ -6,10 +6,16 @@ export const TILESET_URL = ''; // 나스에 배포한 건물 3D Tiles tileset.js
 export const CESIUM_ION_TOKEN = import.meta.env.VITE_CESIUM_ION_TOKEN ?? '';
 export const CESIUM_ION_ASSET_ID = 5122685;
 
-// -- NAS/로컬 3D 소품 배치 ----------------------------------------------------
+// -- 서버/로컬 3D 소품 배치 ---------------------------------------------------
 export const MODEL_BASE_LOCAL = '/assets/'; // public/assets/gyeongbok/...
-export const MODEL_BASE_NAS = 'https://heritage-assets.gaia3d.dev/asset/';
-export const DEFAULT_MODEL_FILE = 'scene.gltf';
+// 운영 자산은 189 서버(joseon-time.gaia3d.dev)가 서빙한다.
+// NAS 직접 호출(heritage-assets.gaia3d.dev)은 운영 아키텍처 A15로 폐지된 경로다.
+//   raw   — 스케줄러가 원천에서 직접 받은 원본:   /raw-asset/{folder}/scene.gltf
+//   release— build_release.mjs 최적화 산출물:     /asset/{folder}/scene.glb
+export const MODEL_BASE_SERVER = import.meta.env.VITE_ASSET_BASE ?? 'https://joseon-time.gaia3d.dev/raw-asset/';
+// 릴리스(최적화) 경로는 scene.glb, 스케줄러가 받은 원본(raw) 경로는 scene.gltf.
+// 어느 쪽을 볼지는 VITE_ASSET_BASE·VITE_ASSET_FILE 두 값으로만 갈린다.
+export const DEFAULT_MODEL_FILE = import.meta.env.VITE_ASSET_FILE ?? 'scene.gltf';
 
 // -- 대동여지도 오버레이 -------------------------------------------------------
 // 원본: 김정호, 1861년 / 규장각한국학연구원 소장 / Public Domain
@@ -36,7 +42,7 @@ export interface ModelItem {
   realSize: number;
   offset?: [number, number];
   position?: { lon: number; lat: number; height?: number };
-  source: 'nas' | 'local';
+  source: 'server' | 'local';
 }
 export interface SiteModelConfig {
   basePosition?: { lon: number; lat: number; height?: number };
@@ -47,10 +53,15 @@ export const MODELS: Record<string, SiteModelConfig> = {
   gyeongbok: {
     basePosition: { lon: 126.9766629, lat: 37.5791072 },
     items: [
-      { folder: 'Gyeongbokgung_Cheonchujeon_Book', realSize: 0.3, offset: [0, 0], source: 'nas' },
-      { folder: 'Gyeongbokgung_Cheonchujeon_BookshelfA', realSize: 1.7, offset: [1.5, 0], source: 'nas' },
-      { folder: 'Gyeongbokgung_Cheonchujeon_CabinetB', realSize: 1.2, offset: [3, 0], source: 'nas' },
-      { folder: 'Gyeongbokgung_Cheonchujeon_FoldingScreenA', realSize: 2.0, offset: [4.5, 0], source: 'nas' },
+      // 서버 raw/ 에 실제로 내려받힌 폴더들. 배치는 P1~P5(placements.json)에서 확정되며,
+      // 지금은 수집분이 정상 표출되는지 확인하기 위한 임시 배열이다.
+      { folder: 'Chokdae', realSize: 0.5, offset: [0, 0], source: 'server' },
+      { folder: 'Haegeum', realSize: 0.7, offset: [1.5, 0], source: 'server' },
+      { folder: 'Cauldron', realSize: 0.8, offset: [3, 0], source: 'server' },
+      { folder: 'Broom', realSize: 1.0, offset: [4.5, 0], source: 'server' },
+      { folder: 'Wagon', realSize: 2.0, offset: [6, 0], source: 'server' },
+      // Gyeongbokgung_Cheonchujeon_* 4건은 아직 raw/ 에 수집되지 않아 404 이므로 뺐다.
+      // 수집 완료 후 되돌릴 것.
       // 근정전 원본(gyeongbok.glb, 2.45GB)은 브라우저에서 단일 GLB로 직접 로드하기엔 너무 커서 비활성화했습니다.
       // Cesium ion 3D Tiles 변환본(CESIUM_ION_ASSET_ID)으로 대체됩니다.
     ],
@@ -88,7 +99,8 @@ export function placeCalibratedModel(viewer: Cesium.Viewer, basePosition: { lon:
 export function loadIonTileset(viewer: Cesium.Viewer, extraLayers: unknown[], attempt = 1) {
   const RETRY_LIMIT = 20;
   const RETRY_DELAY_MS = 30000;
-  Cesium.Cesium3DTileset.fromIonAssetId(CESIUM_ION_ASSET_ID)
+  Cesium.IonResource.fromAssetId(CESIUM_ION_ASSET_ID, { accessToken: CESIUM_ION_TOKEN })
+    .then((resource) => Cesium.Cesium3DTileset.fromUrl(resource))
     .then((t) => {
       viewer.scene.primitives.add(t);
       extraLayers.push(t);
@@ -110,7 +122,8 @@ export function loadIonTileset(viewer: Cesium.Viewer, extraLayers: unknown[], at
 
 export async function setupCesiumViewer(container: HTMLDivElement): Promise<{ viewer: Cesium.Viewer; extraLayers: unknown[] }> {
   const imageryProvider = new Cesium.UrlTemplateImageryProvider({
-    url: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+    // 189 서버가 타일을 서빙하게 되면 VITE_TILE_URL 로 그 경로를 가리키면 된다.
+    url: import.meta.env.VITE_TILE_URL ?? 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
     credit: 'OpenStreetMap contributors',
     maximumLevel: 19,
   });
@@ -129,14 +142,20 @@ export async function setupCesiumViewer(container: HTMLDivElement): Promise<{ vi
 
   const extraLayers: unknown[] = [];
 
-  if (CESIUM_ION_TOKEN) Cesium.Ion.defaultAccessToken = CESIUM_ION_TOKEN;
-
+  // 계정 ion 토큰은 근정전 3D 타일셋(개인 자산) 로드에만 사용한다.
+  // defaultAccessToken을 여기서 덮어쓰면 World Terrain 요청까지 도메인 제한에 걸리므로 건드리지 않는다.
   if (TERRAIN_URL) {
     try { viewer.terrainProvider = await Cesium.CesiumTerrainProvider.fromUrl(TERRAIN_URL); }
     catch (err) { console.warn('지형 로딩 실패: ', err); }
-  } else if (CESIUM_ION_TOKEN) {
-    try { viewer.scene.setTerrain(new Cesium.Terrain(Cesium.CesiumTerrainProvider.fromIonAssetId(1))); }
-    catch (err) { console.warn('World Terrain 로딩 실패: ', err); }
+  } else {
+    // 계정 ion 토큰 없이 CesiumJS 기본(내장) 토큰으로 World Terrain을 로드한다.
+    // 실패 시 지형이 미확정 상태로 남아 배경 타일까지 멈추므로 타원체로 명시 폴백한다.
+    const worldTerrain = Cesium.Terrain.fromWorldTerrain();
+    worldTerrain.errorEvent.addEventListener((err) => {
+      console.warn('World Terrain 로딩 실패 — 기본 타원체로 대체: ', err);
+      viewer.scene.terrainProvider = new Cesium.EllipsoidTerrainProvider();
+    });
+    viewer.scene.setTerrain(worldTerrain);
   }
 
   if (TILESET_URL) {

@@ -27,3 +27,28 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# 시크릿·토큰 (운영 아키텍처 D-11) — 절대 커밋 금지
+config.js
+
+# 대용량 로컬 자산 (git 관리 제외)
+heritage/
+_archive/
+build/
+releases/
+
+# 로컬 산출물·운영 상태
+.omc/
+__pycache__/
+*.pyc
+# 서버 전송용 빌드 산출물 (10MB, 매 배포마다 재생성)
+deploy/app-dist.tar.gz
+
+# 실험·중간 산출물 — 재현 가능하므로 저장소에 남기지 않는다
+data/_*.json
+
+# 에이전트·에디터 로컬 설정
+.claude/
+
+# 설계 문서 (로컬 보관)
+docs/

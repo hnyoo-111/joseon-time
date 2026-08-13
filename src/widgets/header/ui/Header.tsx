@@ -1,4 +1,4 @@
-import { Link, useMatch, useNavigate, useParams } from 'react-router-dom';
+import { Link, NavLink, useMatch, useNavigate, useParams } from 'react-router-dom';
 import { GlobalSearch } from '@/features/global-search/ui/GlobalSearch';
 import { journeyById } from '@/entities/journey';
 
@@ -14,6 +14,12 @@ export function Header() {
         <span className="kicker">Digital Heritage Archive</span>
         <Link to="/"><h1>조선의 시간</h1></Link>
       </div>
+      {!journey && (
+        <nav className="topnav">
+          <NavLink to="/map" className={({ isActive }) => (isActive ? 'active' : '')}>지도</NavLink>
+          <NavLink to="/artifacts" className={({ isActive }) => (isActive ? 'active' : '')}>유물 아카이브</NavLink>
+        </nav>
+      )}
       {journey ? (
         <div className="travel-badge">
           <span className="tb-dot" />

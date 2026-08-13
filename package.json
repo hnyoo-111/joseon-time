@@ -10,10 +10,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@types/three": "^0.185.4",
     "cesium": "^1.144.0",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "react-router-dom": "^7.18.2",
+    "three": "^0.185.1",
     "vite-plugin-cesium": "^1.2.23",
     "zustand": "^5.0.14"
   },

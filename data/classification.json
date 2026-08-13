@@ -1,0 +1,4157 @@
+{
+ "generatedBy": "data/scripts/a3_catalog_classify.py",
+ "classDefinitions": {
+  "A": "immovable structure itself (gate, hall, bridge element, tomb mound, natural rock formation)",
+  "B": "attached/subordinate structure placed in a regular arrangement around a site",
+  "C": "object belonging to a named site (indoor furnishing, ritual instrument, site-attributed excavated artifact)",
+  "D": "standalone artifact with no site prefix and no placement context"
+ },
+ "summary": {
+  "folderCount": 506,
+  "byClass": {
+   "A": 60,
+   "B": 45,
+   "C": 158,
+   "D": 243
+  },
+  "byConfidence": {
+   "low": 243,
+   "high": 225,
+   "medium": 38
+  },
+  "attributable": 263,
+  "attributablePct": 52.0,
+  "contextless": 243,
+  "siteCount": 29,
+  "bySite": {
+   "Gyeongbokgung": 72,
+   "Unhyeongung": 43,
+   "Jongmyo": 31,
+   "Inwang-dong Temple Site": 25,
+   "Tomb of Kim Yu-sin": 16,
+   "Tomb of King Seongdeok": 16,
+   "Mado Shipwreck": 8,
+   "Chunyanggyo": 6,
+   "Private House": 6,
+   "Mudeungsan": 5,
+   "Woljeonggyo": 5,
+   "Cheonmachong Tomb": 3,
+   "Gameunsa": 3,
+   "Geumgwanchong Tomb": 3,
+   "Gyeseungsa": 3,
+   "Gwanghwamun": 2,
+   "Hwangnamdaechong Tomb": 2,
+   "Imunwon Hall": 2,
+   "Tomb of King Gyeongae": 2,
+   "Changgyeonggung": 1,
+   "Houchong Tomb": 1,
+   "Oreung": 1,
+   "Sikrichong Tomb": 1,
+   "Tomb of King Gyeongdeok": 1,
+   "Tomb of King Heondeok": 1,
+   "Tomb of King Heungdeok": 1,
+   "Tomb of King Huigang": 1,
+   "Tomb of King Jima": 1,
+   "Yongjangsagok Valley": 1
+  }
+ },
+ "referenceComparison": {
+  "note": "Reference figures were measured on the pre-dedup 571-folder set; actuals are the post-A2 506-folder canonical set. Differences are expected to equal the duplicates removed per site.",
+  "reference": {
+   "totalFolders": 571,
+   "attributable": 235,
+   "attributablePct": 41.2,
+   "contextless": 336,
+   "bySite": {
+    "Gyeongbokgung": 75,
+    "Unhyeongung": 45,
+    "Jongmyo": 28,
+    "Tomb of King Seongdeok": 25,
+    "Tomb of Kim Yu-sin": 23
+   }
+  },
+  "actualTotals": {
+   "totalFolders": 506,
+   "attributable": 263,
+   "attributablePct": 52.0,
+   "contextless": 243
+  },
+  "bySiteDelta": {
+   "Gyeongbokgung": {
+    "reference(pre-dedup)": 75,
+    "actual(post-dedup)": 72,
+    "diff": -3
+   },
+   "Unhyeongung": {
+    "reference(pre-dedup)": 45,
+    "actual(post-dedup)": 43,
+    "diff": -2
+   },
+   "Jongmyo": {
+    "reference(pre-dedup)": 28,
+    "actual(post-dedup)": 31,
+    "diff": 3
+   },
+   "Tomb of King Seongdeok": {
+    "reference(pre-dedup)": 25,
+    "actual(post-dedup)": 16,
+    "diff": -9
+   },
+   "Tomb of Kim Yu-sin": {
+    "reference(pre-dedup)": 23,
+    "actual(post-dedup)": 16,
+    "diff": -7
+   }
+  }
+ },
+ "assets": [
+  {
+   "folder": "A_frame_Carrier",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Abak",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "AcheongsaekJeokeui",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Animal-shaped Funerary Objects",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Anvil",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Baduk",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Bamboo_Basket",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Bibimbap",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Bird Feed Pouch",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Birdcage Eori",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "BoanTable",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Bokgeon",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Bomb_Shell",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Bonghwangbo",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "BongseuranJeonhaengUtChima",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Bottle with Stamped Designs",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Bowl",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Brassware Bowls L M MS S",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Brazier",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Brick Fragment with Pagoda Design",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Brick with Floral Medalllion Design",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Bronze Boshanu Incense Burner",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Bronze Bowl of the Houchong Tomb",
+   "site": "Houchong Tomb",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "grave good excavated from Houchong Tomb; movable artifact attributed to a named tomb"
+  },
+  {
+   "folder": "Bronze Hand Knife",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Bronze Handbell with Bodhisattva  Guardian",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Bronze Horse Bell",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Bronze Human Figure",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Bronze Standing Bodhisattva Inwang-dong Site",
+   "site": "Inwang-dong Temple Site",
+   "building": null,
+   "class": "C",
+   "confidence": "medium",
+   "reason": "movable artifact (statue or roof tile) attributed to the Inwang-dong temple site"
+  },
+  {
+   "folder": "Bronze Turtle-Shaped Pedestal",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Bronze Twelve Zodiac weight",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "twelve zodiac deity statue with no site prefix; semantically a B-class perimeter set but unattributable from the folder name alone - promote to B once its source tomb is identified"
+  },
+  {
+   "folder": "Broom",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "BugeumChorokWeonsam",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Building Site Inwang-dong Temple Gyeongju 7",
+   "site": "Inwang-dong Temple Site",
+   "building": null,
+   "class": "A",
+   "confidence": "high",
+   "reason": "excavated building/structure of the Inwang-dong temple site"
+  },
+  {
+   "folder": "Building Site Inwang-dong Temple Gyeongju 8",
+   "site": "Inwang-dong Temple Site",
+   "building": null,
+   "class": "A",
+   "confidence": "high",
+   "reason": "excavated building/structure of the Inwang-dong temple site"
+  },
+  {
+   "folder": "Building Site Inwang-dong Temple Gyeongju 9",
+   "site": "Inwang-dong Temple Site",
+   "building": null,
+   "class": "A",
+   "confidence": "high",
+   "reason": "excavated building/structure of the Inwang-dong temple site"
+  },
+  {
+   "folder": "Bullanggi_Japo_Cannon",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "BulletB",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Cart",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Celadon_PorcelainB",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Celestial Chart Stone",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Cheon-gwan-nyeos Attire  Jacket Jeogori",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Cheon-gwan-nyeos Attire  Shoes Hye",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Cheon-gwan-nyeos Attire  headdress Sseugae",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Cheonja_Chongtong_Gun",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Cheukugi",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Chisel",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Chokdae",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Chorog-onhye",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Chorok_ Hye",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Chorokjeogori",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Chunyanggyo East Gate Gyeongju",
+   "site": "Chunyanggyo",
+   "building": null,
+   "class": "A",
+   "confidence": "high",
+   "reason": "structural element of the bridge complex (gate, pavilion, pier or abutment); immovable structure in its own right"
+  },
+  {
+   "folder": "Chunyanggyo Pavilion Chunyanggyo  Woljeonggyo",
+   "site": "Chunyanggyo",
+   "building": null,
+   "class": "A",
+   "confidence": "high",
+   "reason": "structural element of the bridge complex (gate, pavilion, pier or abutment); immovable structure in its own right"
+  },
+  {
+   "folder": "Chunyanggyo West Gate Gyeongju",
+   "site": "Chunyanggyo",
+   "building": null,
+   "class": "A",
+   "confidence": "high",
+   "reason": "structural element of the bridge complex (gate, pavilion, pier or abutment); immovable structure in its own right"
+  },
+  {
+   "folder": "Chunyanggyo pier Chunyanggyo  Woljeonggyo",
+   "site": "Chunyanggyo",
+   "building": null,
+   "class": "A",
+   "confidence": "high",
+   "reason": "structural element of the bridge complex (gate, pavilion, pier or abutment); immovable structure in its own right"
+  },
+  {
+   "folder": "Clepsydra of Changgyeonggung Palace",
+   "site": "Changgyeonggung",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "clepsydra installed at Changgyeonggung; site-attributed instrument"
+  },
+  {
+   "folder": "Coffin Platforms Sculpture",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Coin",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Cooked_Rice_Bowl",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Cretaceous Sedimentary Structure_001",
+   "site": "Gyeseungsa",
+   "building": null,
+   "class": "A",
+   "confidence": "medium",
+   "reason": "Cretaceous sedimentary structure at Gyeseungsa; immovable natural site feature"
+  },
+  {
+   "folder": "Cretaceous Sedimentary Structure_002",
+   "site": "Gyeseungsa",
+   "building": null,
+   "class": "A",
+   "confidence": "medium",
+   "reason": "Cretaceous sedimentary structure at Gyeseungsa; immovable natural site feature"
+  },
+  {
+   "folder": "Cretaceous Sedimentary Structure_003",
+   "site": "Gyeseungsa",
+   "building": null,
+   "class": "A",
+   "confidence": "medium",
+   "reason": "Cretaceous sedimentary structure at Gyeseungsa; immovable natural site feature"
+  },
+  {
+   "folder": "Cross-Shaped Building Site Temple Site V01",
+   "site": "Inwang-dong Temple Site",
+   "building": null,
+   "class": "A",
+   "confidence": "medium",
+   "reason": "excavation-series structure name matching the Inwang-dong temple site V01/V02 series, though the folder name omits the site"
+  },
+  {
+   "folder": "Cross-Shaped Building Site Temple Site V02",
+   "site": "Inwang-dong Temple Site",
+   "building": null,
+   "class": "A",
+   "confidence": "medium",
+   "reason": "excavation-series structure name matching the Inwang-dong temple site V01/V02 series, though the folder name omits the site"
+  },
+  {
+   "folder": "CrossbowB",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Crystal Sarira Bottle West Pagoda Gameunsa",
+   "site": "Gameunsa",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "sarira reliquary implement from the west pagoda of Gameunsa"
+  },
+  {
+   "folder": "Dabjang",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Daegeum",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "DanghagwanGunbok",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "DanghagwanHeukdallyeong",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Danghye_female",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Dishwater_Bucket",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "East Corridor Inwang-dong Temple Site Gyeongju",
+   "site": "Inwang-dong Temple Site",
+   "building": null,
+   "class": "A",
+   "confidence": "high",
+   "reason": "excavated building/structure of the Inwang-dong temple site"
+  },
+  {
+   "folder": "East Transept Inwang-dong Temple Site Gyeongju",
+   "site": "Inwang-dong Temple Site",
+   "building": null,
+   "class": "A",
+   "confidence": "high",
+   "reason": "excavated building/structure of the Inwang-dong temple site"
+  },
+  {
+   "folder": "East side Abutment in Chunyanggyo Bridge",
+   "site": "Chunyanggyo",
+   "building": null,
+   "class": "A",
+   "confidence": "high",
+   "reason": "structural element of the bridge complex (gate, pavilion, pier or abutment); immovable structure in its own right"
+  },
+  {
+   "folder": "Eoyeom Jokduri",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "EoyeomoriWig",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Eunbongbyeong",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Eundagwan",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Eundogeum_ BaeA",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Eundogeum_ Dae",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Eunjeo",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Eunkyoui",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Eunyounglongsy",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Ewer in the Shape of a Horse and Rider",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Ewer in the Shape of a Mythical Animal",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Fire_Pot",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Fire_Shovel",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Fishing Rod",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Five Royal Tombs Gyeongju",
+   "site": "Oreung",
+   "building": null,
+   "class": "A",
+   "confidence": "high",
+   "reason": "Oreung, the five royal tomb mounds of early Silla"
+  },
+  {
+   "folder": "Flag",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Four Tiger Sword",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Fulling_Block",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "GajihwaEggplants Flower",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Geongodrum",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "GeumgunPodallyeong",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Geumgwanchong Tomb Pure Gold Crown Ornaments",
+   "site": "Geumgwanchong Tomb",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "grave good excavated from Geumgwanchong Tomb; movable artifact attributed to a named tomb"
+  },
+  {
+   "folder": "Gilt-Bronze Shoes of the Sikrichong Tomb",
+   "site": "Sikrichong Tomb",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "grave good excavated from Sikrichong Tomb; movable artifact attributed to a named tomb"
+  },
+  {
+   "folder": "Gilt-Bronze Standing Buddha Inwang-dong Site2",
+   "site": "Inwang-dong Temple Site",
+   "building": null,
+   "class": "C",
+   "confidence": "medium",
+   "reason": "movable artifact (statue or roof tile) attributed to the Inwang-dong temple site"
+  },
+  {
+   "folder": "Gilt-bronze Door Knocker",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Gilt-bronze Guardian of Music Statue",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Gilt-bronze Infant Buddha Woljeonggyo Bridge",
+   "site": "Woljeonggyo",
+   "building": null,
+   "class": "C",
+   "confidence": "medium",
+   "reason": "gilt-bronze statue excavated at the Woljeonggyo bridge site; movable artifact attributed to the site"
+  },
+  {
+   "folder": "Gilt-bronze Lamp",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Gilt-bronze Lock",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Gilt-bronze Phoenix-Decorated Padlock",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Gilt-bronze Wind Bell",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Glass Cup",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Gold Bell",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Gold Cap from the Geumgwanchong Tomb",
+   "site": "Geumgwanchong Tomb",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "grave good excavated from Geumgwanchong Tomb; movable artifact attributed to a named tomb"
+  },
+  {
+   "folder": "Gold Crown From Cheonmachong Tomb",
+   "site": "Cheonmachong Tomb",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "grave good excavated from Cheonmachong Tomb; movable artifact attributed to a named tomb"
+  },
+  {
+   "folder": "Gold Crown from the Geumgwanchong Tomb",
+   "site": "Geumgwanchong Tomb",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "grave good excavated from Geumgwanchong Tomb; movable artifact attributed to a named tomb"
+  },
+  {
+   "folder": "Gold Earrings",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Gold Inlaid Decoration",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Gold-decorated sword",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Gollyongpo",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Gollyongpo Be Prince",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Grain_Rake",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "GunyeongnoejaJujangsu",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Gwanghwamun Gate_HaetaeA",
+   "site": "Gwanghwamun",
+   "building": null,
+   "class": "B",
+   "confidence": "high",
+   "reason": "haetae guardian statue placed in a fixed symmetric pair before Gwanghwamun gate"
+  },
+  {
+   "folder": "Gwanghwamun Gate_HaetaeB",
+   "site": "Gwanghwamun",
+   "building": null,
+   "class": "B",
+   "confidence": "high",
+   "reason": "haetae guardian statue placed in a fixed symmetric pair before Gwanghwamun gate"
+  },
+  {
+   "folder": "Gyeongbokgung_Cheonchujeon_Book",
+   "site": "Gyeongbokgung",
+   "building": "Cheonchujeon",
+   "class": "C",
+   "confidence": "high",
+   "reason": "3-part site_building_object name; indoor furnishing of a named Gyeongbokgung hall"
+  },
+  {
+   "folder": "Gyeongbokgung_Cheonchujeon_BookshelfA",
+   "site": "Gyeongbokgung",
+   "building": "Cheonchujeon",
+   "class": "C",
+   "confidence": "high",
+   "reason": "3-part site_building_object name; indoor furnishing of a named Gyeongbokgung hall"
+  },
+  {
+   "folder": "Gyeongbokgung_Cheonchujeon_CabinetB",
+   "site": "Gyeongbokgung",
+   "building": "Cheonchujeon",
+   "class": "C",
+   "confidence": "high",
+   "reason": "3-part site_building_object name; indoor furnishing of a named Gyeongbokgung hall"
+  },
+  {
+   "folder": "Gyeongbokgung_Cheonchujeon_FoldingScreenA",
+   "site": "Gyeongbokgung",
+   "building": "Cheonchujeon",
+   "class": "C",
+   "confidence": "high",
+   "reason": "3-part site_building_object name; indoor furnishing of a named Gyeongbokgung hall"
+  },
+  {
+   "folder": "Gyeongbokgung_Cheonchujeon_FoldingScreenB",
+   "site": "Gyeongbokgung",
+   "building": "Cheonchujeon",
+   "class": "C",
+   "confidence": "high",
+   "reason": "3-part site_building_object name; indoor furnishing of a named Gyeongbokgung hall"
+  },
+  {
+   "folder": "Gyeongbokgung_Cheonchujeon_LightB",
+   "site": "Gyeongbokgung",
+   "building": "Cheonchujeon",
+   "class": "C",
+   "confidence": "high",
+   "reason": "3-part site_building_object name; indoor furnishing of a named Gyeongbokgung hall"
+  },
+  {
+   "folder": "Gyeongbokgung_Cheonchujeon_Paperweight",
+   "site": "Gyeongbokgung",
+   "building": "Cheonchujeon",
+   "class": "C",
+   "confidence": "high",
+   "reason": "3-part site_building_object name; indoor furnishing of a named Gyeongbokgung hall"
+  },
+  {
+   "folder": "Gyeongbokgung_Gangnyeongjeon_Blanket",
+   "site": "Gyeongbokgung",
+   "building": "Gangnyeongjeon",
+   "class": "C",
+   "confidence": "high",
+   "reason": "3-part site_building_object name; indoor furnishing of a named Gyeongbokgung hall"
+  },
+  {
+   "folder": "Gyeongbokgung_Gangnyeongjeon_Bookshelf",
+   "site": "Gyeongbokgung",
+   "building": "Gangnyeongjeon",
+   "class": "C",
+   "confidence": "high",
+   "reason": "3-part site_building_object name; indoor furnishing of a named Gyeongbokgung hall"
+  },
+  {
+   "folder": "Gyeongbokgung_Gangnyeongjeon_Brazier",
+   "site": "Gyeongbokgung",
+   "building": "Gangnyeongjeon",
+   "class": "C",
+   "confidence": "high",
+   "reason": "3-part site_building_object name; indoor furnishing of a named Gyeongbokgung hall"
+  },
+  {
+   "folder": "Gyeongbokgung_Gangnyeongjeon_Cabinet",
+   "site": "Gyeongbokgung",
+   "building": "Gangnyeongjeon",
+   "class": "C",
+   "confidence": "high",
+   "reason": "3-part site_building_object name; indoor furnishing of a named Gyeongbokgung hall"
+  },
+  {
+   "folder": "Gyeongbokgung_Gangnyeongjeon_Candlestick",
+   "site": "Gyeongbokgung",
+   "building": "Gangnyeongjeon",
+   "class": "C",
+   "confidence": "high",
+   "reason": "3-part site_building_object name; indoor furnishing of a named Gyeongbokgung hall"
+  },
+  {
+   "folder": "Gyeongbokgung_Gangnyeongjeon_Foldingscreen",
+   "site": "Gyeongbokgung",
+   "building": "Gangnyeongjeon",
+   "class": "C",
+   "confidence": "high",
+   "reason": "3-part site_building_object name; indoor furnishing of a named Gyeongbokgung hall"
+  },
+  {
+   "folder": "Gyeongbokgung_Gangnyeongjeon_Pyeongsang",
+   "site": "Gyeongbokgung",
+   "building": "Gangnyeongjeon",
+   "class": "C",
+   "confidence": "high",
+   "reason": "3-part site_building_object name; indoor furnishing of a named Gyeongbokgung hall"
+  },
+  {
+   "folder": "Gyeongbokgung_Gangnyeongjeon_Sittingmat",
+   "site": "Gyeongbokgung",
+   "building": "Gangnyeongjeon",
+   "class": "C",
+   "confidence": "high",
+   "reason": "3-part site_building_object name; indoor furnishing of a named Gyeongbokgung hall"
+  },
+  {
+   "folder": "Gyeongbokgung_Gangnyeongjeon_SobanA",
+   "site": "Gyeongbokgung",
+   "building": "Gangnyeongjeon",
+   "class": "C",
+   "confidence": "high",
+   "reason": "3-part site_building_object name; indoor furnishing of a named Gyeongbokgung hall"
+  },
+  {
+   "folder": "Gyeongbokgung_Gangnyeongjeon_SobanB",
+   "site": "Gyeongbokgung",
+   "building": "Gangnyeongjeon",
+   "class": "C",
+   "confidence": "high",
+   "reason": "3-part site_building_object name; indoor furnishing of a named Gyeongbokgung hall"
+  },
+  {
+   "folder": "Gyeongbokgung_Gangnyeongjeon_StorageboxA",
+   "site": "Gyeongbokgung",
+   "building": "Gangnyeongjeon",
+   "class": "C",
+   "confidence": "high",
+   "reason": "3-part site_building_object name; indoor furnishing of a named Gyeongbokgung hall"
+  },
+  {
+   "folder": "Gyeongbokgung_Gangnyeongjeon_TableA",
+   "site": "Gyeongbokgung",
+   "building": "Gangnyeongjeon",
+   "class": "C",
+   "confidence": "high",
+   "reason": "3-part site_building_object name; indoor furnishing of a named Gyeongbokgung hall"
+  },
+  {
+   "folder": "Gyeongbokgung_Geunjeongjeon_Dumu",
+   "site": "Gyeongbokgung",
+   "building": "Geunjeongjeon",
+   "class": "C",
+   "confidence": "high",
+   "reason": "3-part site_building_object name; indoor furnishing of a named Gyeongbokgung hall"
+  },
+  {
+   "folder": "Gyeongbokgung_Geunjeongjeon_FanC",
+   "site": "Gyeongbokgung",
+   "building": "Geunjeongjeon",
+   "class": "C",
+   "confidence": "high",
+   "reason": "3-part site_building_object name; indoor furnishing of a named Gyeongbokgung hall"
+  },
+  {
+   "folder": "Gyeongbokgung_Geunjeongjeon_IncenseBurnerB",
+   "site": "Gyeongbokgung",
+   "building": "Geunjeongjeon",
+   "class": "C",
+   "confidence": "high",
+   "reason": "3-part site_building_object name; indoor furnishing of a named Gyeongbokgung hall"
+  },
+  {
+   "folder": "Gyeongbokgung_Geunjeongjeon_LightC",
+   "site": "Gyeongbokgung",
+   "building": "Geunjeongjeon",
+   "class": "C",
+   "confidence": "high",
+   "reason": "3-part site_building_object name; indoor furnishing of a named Gyeongbokgung hall"
+  },
+  {
+   "folder": "Gyeongbokgung_Geunjeongjeon_LightD",
+   "site": "Gyeongbokgung",
+   "building": "Geunjeongjeon",
+   "class": "C",
+   "confidence": "high",
+   "reason": "3-part site_building_object name; indoor furnishing of a named Gyeongbokgung hall"
+  },
+  {
+   "folder": "Gyeongbokgung_Geunjeongjeon_RankstoneA",
+   "site": "Gyeongbokgung",
+   "building": "Geunjeongjeon",
+   "class": "B",
+   "confidence": "medium",
+   "reason": "Geunjeongjeon courtyard rank stone (pumgyeseok): follows the 3-part naming but is an outdoor stone marker set in a regular rank-ordered arrangement, so it batches as attached structure rather than indoor furnishing"
+  },
+  {
+   "folder": "Gyeongbokgung_Geunjeongjeon_RankstoneB",
+   "site": "Gyeongbokgung",
+   "building": "Geunjeongjeon",
+   "class": "B",
+   "confidence": "medium",
+   "reason": "Geunjeongjeon courtyard rank stone (pumgyeseok): follows the 3-part naming but is an outdoor stone marker set in a regular rank-ordered arrangement, so it batches as attached structure rather than indoor furnishing"
+  },
+  {
+   "folder": "Gyeongbokgung_Geunjeongjeon_RankstoneC",
+   "site": "Gyeongbokgung",
+   "building": "Geunjeongjeon",
+   "class": "B",
+   "confidence": "medium",
+   "reason": "Geunjeongjeon courtyard rank stone (pumgyeseok): follows the 3-part naming but is an outdoor stone marker set in a regular rank-ordered arrangement, so it batches as attached structure rather than indoor furnishing"
+  },
+  {
+   "folder": "Gyeongbokgung_Geunjeongjeon_RankstoneD",
+   "site": "Gyeongbokgung",
+   "building": "Geunjeongjeon",
+   "class": "B",
+   "confidence": "medium",
+   "reason": "Geunjeongjeon courtyard rank stone (pumgyeseok): follows the 3-part naming but is an outdoor stone marker set in a regular rank-ordered arrangement, so it batches as attached structure rather than indoor furnishing"
+  },
+  {
+   "folder": "Gyeongbokgung_Geunjeongjeon_RankstoneE",
+   "site": "Gyeongbokgung",
+   "building": "Geunjeongjeon",
+   "class": "B",
+   "confidence": "medium",
+   "reason": "Geunjeongjeon courtyard rank stone (pumgyeseok): follows the 3-part naming but is an outdoor stone marker set in a regular rank-ordered arrangement, so it batches as attached structure rather than indoor furnishing"
+  },
+  {
+   "folder": "Gyeongbokgung_Geunjeongjeon_RankstoneF",
+   "site": "Gyeongbokgung",
+   "building": "Geunjeongjeon",
+   "class": "B",
+   "confidence": "medium",
+   "reason": "Geunjeongjeon courtyard rank stone (pumgyeseok): follows the 3-part naming but is an outdoor stone marker set in a regular rank-ordered arrangement, so it batches as attached structure rather than indoor furnishing"
+  },
+  {
+   "folder": "Gyeongbokgung_Geunjeongjeon_RankstoneG",
+   "site": "Gyeongbokgung",
+   "building": "Geunjeongjeon",
+   "class": "B",
+   "confidence": "medium",
+   "reason": "Geunjeongjeon courtyard rank stone (pumgyeseok): follows the 3-part naming but is an outdoor stone marker set in a regular rank-ordered arrangement, so it batches as attached structure rather than indoor furnishing"
+  },
+  {
+   "folder": "Gyeongbokgung_Geunjeongjeon_RankstoneH",
+   "site": "Gyeongbokgung",
+   "building": "Geunjeongjeon",
+   "class": "B",
+   "confidence": "medium",
+   "reason": "Geunjeongjeon courtyard rank stone (pumgyeseok): follows the 3-part naming but is an outdoor stone marker set in a regular rank-ordered arrangement, so it batches as attached structure rather than indoor furnishing"
+  },
+  {
+   "folder": "Gyeongbokgung_Geunjeongjeon_RankstoneI",
+   "site": "Gyeongbokgung",
+   "building": "Geunjeongjeon",
+   "class": "B",
+   "confidence": "medium",
+   "reason": "Geunjeongjeon courtyard rank stone (pumgyeseok): follows the 3-part naming but is an outdoor stone marker set in a regular rank-ordered arrangement, so it batches as attached structure rather than indoor furnishing"
+  },
+  {
+   "folder": "Gyeongbokgung_Geunjeongjeon_RankstoneJ",
+   "site": "Gyeongbokgung",
+   "building": "Geunjeongjeon",
+   "class": "B",
+   "confidence": "medium",
+   "reason": "Geunjeongjeon courtyard rank stone (pumgyeseok): follows the 3-part naming but is an outdoor stone marker set in a regular rank-ordered arrangement, so it batches as attached structure rather than indoor furnishing"
+  },
+  {
+   "folder": "Gyeongbokgung_Geunjeongjeon_RankstoneK",
+   "site": "Gyeongbokgung",
+   "building": "Geunjeongjeon",
+   "class": "B",
+   "confidence": "medium",
+   "reason": "Geunjeongjeon courtyard rank stone (pumgyeseok): follows the 3-part naming but is an outdoor stone marker set in a regular rank-ordered arrangement, so it batches as attached structure rather than indoor furnishing"
+  },
+  {
+   "folder": "Gyeongbokgung_Geunjeongjeon_RankstoneL",
+   "site": "Gyeongbokgung",
+   "building": "Geunjeongjeon",
+   "class": "B",
+   "confidence": "medium",
+   "reason": "Geunjeongjeon courtyard rank stone (pumgyeseok): follows the 3-part naming but is an outdoor stone marker set in a regular rank-ordered arrangement, so it batches as attached structure rather than indoor furnishing"
+  },
+  {
+   "folder": "Gyeongbokgung_Geunjeongjeon_Royalseal",
+   "site": "Gyeongbokgung",
+   "building": "Geunjeongjeon",
+   "class": "C",
+   "confidence": "high",
+   "reason": "3-part site_building_object name; indoor furnishing of a named Gyeongbokgung hall"
+  },
+  {
+   "folder": "Gyeongbokgung_Geunjeongjeon_RoyalsealBox",
+   "site": "Gyeongbokgung",
+   "building": "Geunjeongjeon",
+   "class": "C",
+   "confidence": "high",
+   "reason": "3-part site_building_object name; indoor furnishing of a named Gyeongbokgung hall"
+  },
+  {
+   "folder": "Gyeongbokgung_Geunjeongjeon_Shelf",
+   "site": "Gyeongbokgung",
+   "building": "Geunjeongjeon",
+   "class": "C",
+   "confidence": "high",
+   "reason": "3-part site_building_object name; indoor furnishing of a named Gyeongbokgung hall"
+  },
+  {
+   "folder": "Gyeongbokgung_Geunjeongjeon_Sword",
+   "site": "Gyeongbokgung",
+   "building": "Geunjeongjeon",
+   "class": "C",
+   "confidence": "high",
+   "reason": "3-part site_building_object name; indoor furnishing of a named Gyeongbokgung hall"
+  },
+  {
+   "folder": "Gyeongbokgung_Geunjeongjeon_TableA",
+   "site": "Gyeongbokgung",
+   "building": "Geunjeongjeon",
+   "class": "C",
+   "confidence": "high",
+   "reason": "3-part site_building_object name; indoor furnishing of a named Gyeongbokgung hall"
+  },
+  {
+   "folder": "Gyeongbokgung_Geunjeongjeon_TableB",
+   "site": "Gyeongbokgung",
+   "building": "Geunjeongjeon",
+   "class": "C",
+   "confidence": "high",
+   "reason": "3-part site_building_object name; indoor furnishing of a named Gyeongbokgung hall"
+  },
+  {
+   "folder": "Gyeongbokgung_Geunjeongjeon_TableC",
+   "site": "Gyeongbokgung",
+   "building": "Geunjeongjeon",
+   "class": "C",
+   "confidence": "high",
+   "reason": "3-part site_building_object name; indoor furnishing of a named Gyeongbokgung hall"
+  },
+  {
+   "folder": "Gyeongbokgung_Geunjeongjeon_TableD",
+   "site": "Gyeongbokgung",
+   "building": "Geunjeongjeon",
+   "class": "C",
+   "confidence": "high",
+   "reason": "3-part site_building_object name; indoor furnishing of a named Gyeongbokgung hall"
+  },
+  {
+   "folder": "Gyeongbokgung_Geunjeongjeon_Throne",
+   "site": "Gyeongbokgung",
+   "building": "Geunjeongjeon",
+   "class": "C",
+   "confidence": "high",
+   "reason": "3-part site_building_object name; indoor furnishing of a named Gyeongbokgung hall"
+  },
+  {
+   "folder": "Gyeongbokgung_Geunjeongjeon_Throne Chair",
+   "site": "Gyeongbokgung",
+   "building": "Geunjeongjeon",
+   "class": "C",
+   "confidence": "high",
+   "reason": "3-part site_building_object name; indoor furnishing of a named Gyeongbokgung hall"
+  },
+  {
+   "folder": "Gyeongbokgung_Geunjeongjeon_WhitePorcelain",
+   "site": "Gyeongbokgung",
+   "building": "Geunjeongjeon",
+   "class": "C",
+   "confidence": "high",
+   "reason": "3-part site_building_object name; indoor furnishing of a named Gyeongbokgung hall"
+  },
+  {
+   "folder": "Gyeongbokgung_Geunjeongjeon_Wrapper",
+   "site": "Gyeongbokgung",
+   "building": "Geunjeongjeon",
+   "class": "C",
+   "confidence": "high",
+   "reason": "3-part site_building_object name; indoor furnishing of a named Gyeongbokgung hall"
+  },
+  {
+   "folder": "Gyeongbokgung_Gyotaegjeon_Foldingscreen",
+   "site": "Gyeongbokgung",
+   "building": "Gyotaejeon",
+   "class": "C",
+   "confidence": "high",
+   "reason": "3-part site_building_object name; indoor furnishing of a named Gyeongbokgung hall"
+  },
+  {
+   "folder": "Gyeongbokgung_Gyotaejeon_BookshelfB",
+   "site": "Gyeongbokgung",
+   "building": "Gyotaejeon",
+   "class": "C",
+   "confidence": "high",
+   "reason": "3-part site_building_object name; indoor furnishing of a named Gyeongbokgung hall"
+  },
+  {
+   "folder": "Gyeongbokgung_Gyotaejeon_CabinetB",
+   "site": "Gyeongbokgung",
+   "building": "Gyotaejeon",
+   "class": "C",
+   "confidence": "high",
+   "reason": "3-part site_building_object name; indoor furnishing of a named Gyeongbokgung hall"
+  },
+  {
+   "folder": "Gyeongbokgung_Gyotaejeon_CabinetD",
+   "site": "Gyeongbokgung",
+   "building": "Gyotaejeon",
+   "class": "C",
+   "confidence": "high",
+   "reason": "3-part site_building_object name; indoor furnishing of a named Gyeongbokgung hall"
+  },
+  {
+   "folder": "Gyeongbokgung_Gyotaejeon_CandlestickA",
+   "site": "Gyeongbokgung",
+   "building": "Gyotaejeon",
+   "class": "C",
+   "confidence": "high",
+   "reason": "3-part site_building_object name; indoor furnishing of a named Gyeongbokgung hall"
+  },
+  {
+   "folder": "Gyeongbokgung_Gyotaejeon_CandlestickB",
+   "site": "Gyeongbokgung",
+   "building": "Gyotaejeon",
+   "class": "C",
+   "confidence": "high",
+   "reason": "3-part site_building_object name; indoor furnishing of a named Gyeongbokgung hall"
+  },
+  {
+   "folder": "Gyeongbokgung_Gyotaejeon_Light",
+   "site": "Gyeongbokgung",
+   "building": "Gyotaejeon",
+   "class": "C",
+   "confidence": "high",
+   "reason": "3-part site_building_object name; indoor furnishing of a named Gyeongbokgung hall"
+  },
+  {
+   "folder": "Gyeongbokgung_Gyotaejeon_Mirror",
+   "site": "Gyeongbokgung",
+   "building": "Gyotaejeon",
+   "class": "C",
+   "confidence": "high",
+   "reason": "3-part site_building_object name; indoor furnishing of a named Gyeongbokgung hall"
+  },
+  {
+   "folder": "Gyeongbokgung_Gyotaejeon_Pyeongsang",
+   "site": "Gyeongbokgung",
+   "building": "Gyotaejeon",
+   "class": "C",
+   "confidence": "high",
+   "reason": "3-part site_building_object name; indoor furnishing of a named Gyeongbokgung hall"
+  },
+  {
+   "folder": "Gyeongbokgung_Gyotaejeon_Storagebox",
+   "site": "Gyeongbokgung",
+   "building": "Gyotaejeon",
+   "class": "C",
+   "confidence": "high",
+   "reason": "3-part site_building_object name; indoor furnishing of a named Gyeongbokgung hall"
+  },
+  {
+   "folder": "Gyeongbokgung_Gyotaejeon_TableA",
+   "site": "Gyeongbokgung",
+   "building": "Gyotaejeon",
+   "class": "C",
+   "confidence": "high",
+   "reason": "3-part site_building_object name; indoor furnishing of a named Gyeongbokgung hall"
+  },
+  {
+   "folder": "Gyeongbokgung_Gyotaejeonjeon_CabinetA",
+   "site": "Gyeongbokgung",
+   "building": "Gyotaejeon",
+   "class": "C",
+   "confidence": "high",
+   "reason": "3-part site_building_object name; indoor furnishing of a named Gyeongbokgung hall"
+  },
+  {
+   "folder": "Gyeongbokgung_Manchunjeon_Blanket",
+   "site": "Gyeongbokgung",
+   "building": "Manchunjeon",
+   "class": "C",
+   "confidence": "high",
+   "reason": "3-part site_building_object name; indoor furnishing of a named Gyeongbokgung hall"
+  },
+  {
+   "folder": "Gyeongbokgung_Manchunjeon_Foldingscreen",
+   "site": "Gyeongbokgung",
+   "building": "Manchunjeon",
+   "class": "C",
+   "confidence": "high",
+   "reason": "3-part site_building_object name; indoor furnishing of a named Gyeongbokgung hall"
+  },
+  {
+   "folder": "Gyeongbokgung_Sajeongjeon_CabinetA",
+   "site": "Gyeongbokgung",
+   "building": "Sajeongjeon",
+   "class": "C",
+   "confidence": "high",
+   "reason": "3-part site_building_object name; indoor furnishing of a named Gyeongbokgung hall"
+  },
+  {
+   "folder": "Gyeongbokgung_Sajeongjeon_CabinetC",
+   "site": "Gyeongbokgung",
+   "building": "Sajeongjeon",
+   "class": "C",
+   "confidence": "high",
+   "reason": "3-part site_building_object name; indoor furnishing of a named Gyeongbokgung hall"
+  },
+  {
+   "folder": "Gyeongbokgung_Sajeongjeon_Desk",
+   "site": "Gyeongbokgung",
+   "building": "Sajeongjeon",
+   "class": "C",
+   "confidence": "high",
+   "reason": "3-part site_building_object name; indoor furnishing of a named Gyeongbokgung hall"
+  },
+  {
+   "folder": "Gyeongbokgung_Sajeongjeon_Ilwolobongdo",
+   "site": "Gyeongbokgung",
+   "building": "Sajeongjeon",
+   "class": "C",
+   "confidence": "high",
+   "reason": "3-part site_building_object name; indoor furnishing of a named Gyeongbokgung hall"
+  },
+  {
+   "folder": "Gyeongbokgung_Sajeongjeon_Kings Chair",
+   "site": "Gyeongbokgung",
+   "building": "Sajeongjeon",
+   "class": "C",
+   "confidence": "high",
+   "reason": "3-part site_building_object name; indoor furnishing of a named Gyeongbokgung hall"
+  },
+  {
+   "folder": "Gyeongbokgung_Sajeongjeon_Painting",
+   "site": "Gyeongbokgung",
+   "building": "Sajeongjeon",
+   "class": "C",
+   "confidence": "high",
+   "reason": "3-part site_building_object name; indoor furnishing of a named Gyeongbokgung hall"
+  },
+  {
+   "folder": "Gyeongbokgung_Sajeongjeon_Red-lacquered Chair",
+   "site": "Gyeongbokgung",
+   "building": "Sajeongjeon",
+   "class": "C",
+   "confidence": "high",
+   "reason": "3-part site_building_object name; indoor furnishing of a named Gyeongbokgung hall"
+  },
+  {
+   "folder": "Gyeongbokgung_Sajeongjeon_TableB",
+   "site": "Gyeongbokgung",
+   "building": "Sajeongjeon",
+   "class": "C",
+   "confidence": "high",
+   "reason": "3-part site_building_object name; indoor furnishing of a named Gyeongbokgung hall"
+  },
+  {
+   "folder": "Gyeongbokgung_Sajeongjeon_Throne",
+   "site": "Gyeongbokgung",
+   "building": "Sajeongjeon",
+   "class": "C",
+   "confidence": "high",
+   "reason": "3-part site_building_object name; indoor furnishing of a named Gyeongbokgung hall"
+  },
+  {
+   "folder": "Gyeongbokgung_Sajeongjeon_WhitePorcelain",
+   "site": "Gyeongbokgung",
+   "building": "Sajeongjeon",
+   "class": "C",
+   "confidence": "high",
+   "reason": "3-part site_building_object name; indoor furnishing of a named Gyeongbokgung hall"
+  },
+  {
+   "folder": "Gyomeong",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Haplip",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Heuk_ Weonsam",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "HeukdallyeongHeongajipsaaksa",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Hong_ Hansam",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Hong_ Malgun",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Hongdo_ Ijihwa",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Hongdo_ Samjihwa",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Hongsaek_ Onhye",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Hongsaek_ Ut_chima",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Hongsaek_hot_chima",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Horizontal Sundial_1985-1",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Horizontal Sundial_1985-2",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Horn-shaped Cup with Mounted Warrior Figurine",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Horse Strap Pendant",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Horse of the Twelve Zodiac Animal Deities",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "twelve zodiac deity statue with no site prefix; semantically a B-class perimeter set but unattributable from the folder name alone - promote to B once its source tomb is identified"
+  },
+  {
+   "folder": "Hwacha",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "HwandoA",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "HwandoB",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "HwangchosamChunaengmu",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Hwangja_Chongtong_Gun",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Hyangbal",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Hyangdaecheong Office",
+   "site": "Jongmyo",
+   "building": "Hyangdaecheong",
+   "class": "A",
+   "confidence": "high",
+   "reason": "Hyangdaecheong is an auxiliary building of the Jongmyo precinct"
+  },
+  {
+   "folder": "Hyanggot_I",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Hyangjoa_ah",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Hyeonja_Chongtong_Gun",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "IcheungSuparyeon",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Ikseongwan",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Ininjang",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Iron Handknife",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Iron HelmetSteel Helmet",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Iron Sword",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Iron Weapon",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Jaegung Office",
+   "site": "Jongmyo",
+   "building": "Jaegung",
+   "class": "A",
+   "confidence": "high",
+   "reason": "Jaegung is an auxiliary building of the Jongmyo precinct"
+  },
+  {
+   "folder": "Jajeoksaek_ Byeoleui",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Jajeoksaek_ Jeokeui",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Janggo",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Jar",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Jebok_sangeui",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Jegwan_oryanggwan",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Jegwan_samryanggwan",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Jegwan_saryanggwan",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Jegwan_yiryanggwan",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Jeokeui_yebok_princess",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Jeongjeol",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Jeonsacheong Office",
+   "site": "Jongmyo",
+   "building": "Jeonsacheong",
+   "class": "A",
+   "confidence": "high",
+   "reason": "Jeonsacheong is an auxiliary building of the Jongmyo precinct"
+  },
+  {
+   "folder": "Jidang Pan",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Jinhongdan_ Hye",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Jjokmeori",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Jochok",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Jokduri",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "JongheongwanJebok",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Jongmyo Jerye_Instrument_01",
+   "site": "Jongmyo",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Jongmyo Jerye ritual instrument; movable ritual object of the Jongmyo rite, placed per the rite layout rather than fixed"
+  },
+  {
+   "folder": "Jongmyo Jerye_Instrument_02",
+   "site": "Jongmyo",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Jongmyo Jerye ritual instrument; movable ritual object of the Jongmyo rite, placed per the rite layout rather than fixed"
+  },
+  {
+   "folder": "Jongmyo Jerye_Instrument_03",
+   "site": "Jongmyo",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Jongmyo Jerye ritual instrument; movable ritual object of the Jongmyo rite, placed per the rite layout rather than fixed"
+  },
+  {
+   "folder": "Jongmyo Jerye_Instrument_04",
+   "site": "Jongmyo",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Jongmyo Jerye ritual instrument; movable ritual object of the Jongmyo rite, placed per the rite layout rather than fixed"
+  },
+  {
+   "folder": "Jongmyo Jerye_Instrument_05",
+   "site": "Jongmyo",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Jongmyo Jerye ritual instrument; movable ritual object of the Jongmyo rite, placed per the rite layout rather than fixed"
+  },
+  {
+   "folder": "Jongmyo Jerye_Instrument_07",
+   "site": "Jongmyo",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Jongmyo Jerye ritual instrument; movable ritual object of the Jongmyo rite, placed per the rite layout rather than fixed"
+  },
+  {
+   "folder": "Jongmyo Jerye_Instrument_08",
+   "site": "Jongmyo",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Jongmyo Jerye ritual instrument; movable ritual object of the Jongmyo rite, placed per the rite layout rather than fixed"
+  },
+  {
+   "folder": "Jongmyo Jerye_Instrument_09",
+   "site": "Jongmyo",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Jongmyo Jerye ritual instrument; movable ritual object of the Jongmyo rite, placed per the rite layout rather than fixed"
+  },
+  {
+   "folder": "Jongmyo Jerye_Instrument_10",
+   "site": "Jongmyo",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Jongmyo Jerye ritual instrument; movable ritual object of the Jongmyo rite, placed per the rite layout rather than fixed"
+  },
+  {
+   "folder": "Jongmyo Jerye_Instrument_11",
+   "site": "Jongmyo",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Jongmyo Jerye ritual instrument; movable ritual object of the Jongmyo rite, placed per the rite layout rather than fixed"
+  },
+  {
+   "folder": "Jongmyo Jerye_Instrument_12",
+   "site": "Jongmyo",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Jongmyo Jerye ritual instrument; movable ritual object of the Jongmyo rite, placed per the rite layout rather than fixed"
+  },
+  {
+   "folder": "Jongmyo Jerye_Instrument_13",
+   "site": "Jongmyo",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Jongmyo Jerye ritual instrument; movable ritual object of the Jongmyo rite, placed per the rite layout rather than fixed"
+  },
+  {
+   "folder": "Jongmyo Jerye_Instrument_14",
+   "site": "Jongmyo",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Jongmyo Jerye ritual instrument; movable ritual object of the Jongmyo rite, placed per the rite layout rather than fixed"
+  },
+  {
+   "folder": "Jongmyo Jerye_Instrument_15",
+   "site": "Jongmyo",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Jongmyo Jerye ritual instrument; movable ritual object of the Jongmyo rite, placed per the rite layout rather than fixed"
+  },
+  {
+   "folder": "Jongmyo Jerye_Instrument_16",
+   "site": "Jongmyo",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Jongmyo Jerye ritual instrument; movable ritual object of the Jongmyo rite, placed per the rite layout rather than fixed"
+  },
+  {
+   "folder": "Jongmyo Jerye_Instrument_17",
+   "site": "Jongmyo",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Jongmyo Jerye ritual instrument; movable ritual object of the Jongmyo rite, placed per the rite layout rather than fixed"
+  },
+  {
+   "folder": "Jongmyo Jerye_Instrument_19",
+   "site": "Jongmyo",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Jongmyo Jerye ritual instrument; movable ritual object of the Jongmyo rite, placed per the rite layout rather than fixed"
+  },
+  {
+   "folder": "Jongmyo Jerye_Instrument_20",
+   "site": "Jongmyo",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Jongmyo Jerye ritual instrument; movable ritual object of the Jongmyo rite, placed per the rite layout rather than fixed"
+  },
+  {
+   "folder": "Jongmyo Jerye_Instrument_21",
+   "site": "Jongmyo",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Jongmyo Jerye ritual instrument; movable ritual object of the Jongmyo rite, placed per the rite layout rather than fixed"
+  },
+  {
+   "folder": "Jongmyo Jerye_Instrument_23",
+   "site": "Jongmyo",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Jongmyo Jerye ritual instrument; movable ritual object of the Jongmyo rite, placed per the rite layout rather than fixed"
+  },
+  {
+   "folder": "Jongmyo Jerye_Instrument_24",
+   "site": "Jongmyo",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Jongmyo Jerye ritual instrument; movable ritual object of the Jongmyo rite, placed per the rite layout rather than fixed"
+  },
+  {
+   "folder": "Jongmyo Jerye_Instrument_25",
+   "site": "Jongmyo",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Jongmyo Jerye ritual instrument; movable ritual object of the Jongmyo rite, placed per the rite layout rather than fixed"
+  },
+  {
+   "folder": "Jongmyo Jerye_Instrument_26",
+   "site": "Jongmyo",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Jongmyo Jerye ritual instrument; movable ritual object of the Jongmyo rite, placed per the rite layout rather than fixed"
+  },
+  {
+   "folder": "Jongmyo Jerye_Instrument_27",
+   "site": "Jongmyo",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Jongmyo Jerye ritual instrument; movable ritual object of the Jongmyo rite, placed per the rite layout rather than fixed"
+  },
+  {
+   "folder": "Jongmyo Jerye_Instrument_28",
+   "site": "Jongmyo",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Jongmyo Jerye ritual instrument; movable ritual object of the Jongmyo rite, placed per the rite layout rather than fixed"
+  },
+  {
+   "folder": "Jongmyo Jerye_Instrument_29",
+   "site": "Jongmyo",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Jongmyo Jerye ritual instrument; movable ritual object of the Jongmyo rite, placed per the rite layout rather than fixed"
+  },
+  {
+   "folder": "Jongmyo Jerye_Instrument_30",
+   "site": "Jongmyo",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Jongmyo Jerye ritual instrument; movable ritual object of the Jongmyo rite, placed per the rite layout rather than fixed"
+  },
+  {
+   "folder": "JucheokRuler",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Jujongjawoori",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Jungchimak",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Junhwa",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Junhwaki",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Juryeom",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "KingMyeonbok",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Kitchen_Board",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Korean_Cabbage",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Kyobanggo",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Lamp",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Lampstand",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Large_Mortar",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Lecture Hall Inwang-dong Temple Gyeongju",
+   "site": "Inwang-dong Temple Site",
+   "building": null,
+   "class": "A",
+   "confidence": "high",
+   "reason": "excavated building/structure of the Inwang-dong temple site"
+  },
+  {
+   "folder": "Lidded Bowl with a Pagoda-Shaped Knob",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Lidded Straight-Mouth Pedestal Jar2",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Long necked Jar with Clay Figurines",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Long-bodied Bottle",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Long-necked Jar",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Long-necked Pedestal Jar with Human Design",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Mado_BacketA",
+   "site": "Mado Shipwreck",
+   "building": null,
+   "class": "C",
+   "confidence": "medium",
+   "reason": "Mado_ prefix; cargo artifact recovered from the Mado shipwreck, site-attributed object rather than indoor furnishing"
+  },
+  {
+   "folder": "Mado_BacketB",
+   "site": "Mado Shipwreck",
+   "building": null,
+   "class": "C",
+   "confidence": "medium",
+   "reason": "Mado_ prefix; cargo artifact recovered from the Mado shipwreck, site-attributed object rather than indoor furnishing"
+  },
+  {
+   "folder": "Mado_BacketC",
+   "site": "Mado Shipwreck",
+   "building": null,
+   "class": "C",
+   "confidence": "medium",
+   "reason": "Mado_ prefix; cargo artifact recovered from the Mado shipwreck, site-attributed object rather than indoor furnishing"
+  },
+  {
+   "folder": "Mado_Bowlbundle",
+   "site": "Mado Shipwreck",
+   "building": null,
+   "class": "C",
+   "confidence": "medium",
+   "reason": "Mado_ prefix; cargo artifact recovered from the Mado shipwreck, site-attributed object rather than indoor furnishing"
+  },
+  {
+   "folder": "Mado_Jar",
+   "site": "Mado Shipwreck",
+   "building": null,
+   "class": "C",
+   "confidence": "medium",
+   "reason": "Mado_ prefix; cargo artifact recovered from the Mado shipwreck, site-attributed object rather than indoor furnishing"
+  },
+  {
+   "folder": "Mado_PotteryB",
+   "site": "Mado Shipwreck",
+   "building": null,
+   "class": "C",
+   "confidence": "medium",
+   "reason": "Mado_ prefix; cargo artifact recovered from the Mado shipwreck, site-attributed object rather than indoor furnishing"
+  },
+  {
+   "folder": "Mado_Ricebag",
+   "site": "Mado Shipwreck",
+   "building": null,
+   "class": "C",
+   "confidence": "medium",
+   "reason": "Mado_ prefix; cargo artifact recovered from the Mado shipwreck, site-attributed object rather than indoor furnishing"
+  },
+  {
+   "folder": "Mado_Ricebags",
+   "site": "Mado Shipwreck",
+   "building": null,
+   "class": "C",
+   "confidence": "medium",
+   "reason": "Mado_ prefix; cargo artifact recovered from the Mado shipwreck, site-attributed object rather than indoor furnishing"
+  },
+  {
+   "folder": "Main Hall Site Inwang-dong Temple Gyeongju V01",
+   "site": "Inwang-dong Temple Site",
+   "building": null,
+   "class": "A",
+   "confidence": "high",
+   "reason": "excavated building/structure of the Inwang-dong temple site"
+  },
+  {
+   "folder": "Main Hall Site Inwang-dong Temple Gyeongju V02",
+   "site": "Inwang-dong Temple Site",
+   "building": null,
+   "class": "A",
+   "confidence": "high",
+   "reason": "excavated building/structure of the Inwang-dong temple site"
+  },
+  {
+   "folder": "Main Hall Site Inwang-dong Temple Gyeongju V03",
+   "site": "Inwang-dong Temple Site",
+   "building": null,
+   "class": "A",
+   "confidence": "high",
+   "reason": "excavated building/structure of the Inwang-dong temple site"
+  },
+  {
+   "folder": "Medium_Mortar",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Miyeonsa",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Monggeumcheok Jokja",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Monkey of the Twelve Zodiac Animal Deities",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "twelve zodiac deity statue with no site prefix; semantically a B-class perimeter set but unattributable from the folder name alone - promote to B once its source tomb is identified"
+  },
+  {
+   "folder": "Mudeungsan_UnitA",
+   "site": "Mudeungsan",
+   "building": null,
+   "class": "A",
+   "confidence": "medium",
+   "reason": "Mudeungsan columnar-joint rock unit; immovable natural site feature, structural body rather than an artifact"
+  },
+  {
+   "folder": "Mudeungsan_UnitB",
+   "site": "Mudeungsan",
+   "building": null,
+   "class": "A",
+   "confidence": "medium",
+   "reason": "Mudeungsan columnar-joint rock unit; immovable natural site feature, structural body rather than an artifact"
+  },
+  {
+   "folder": "Mudeungsan_UnitC",
+   "site": "Mudeungsan",
+   "building": null,
+   "class": "A",
+   "confidence": "medium",
+   "reason": "Mudeungsan columnar-joint rock unit; immovable natural site feature, structural body rather than an artifact"
+  },
+  {
+   "folder": "Mudeungsan_UnitE",
+   "site": "Mudeungsan",
+   "building": null,
+   "class": "A",
+   "confidence": "medium",
+   "reason": "Mudeungsan columnar-joint rock unit; immovable natural site feature, structural body rather than an artifact"
+  },
+  {
+   "folder": "Mudeungsan_UnitF",
+   "site": "Mudeungsan",
+   "building": null,
+   "class": "A",
+   "confidence": "medium",
+   "reason": "Mudeungsan columnar-joint rock unit; immovable natural site feature, structural body rather than an artifact"
+  },
+  {
+   "folder": "Mugo",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "MugwandanghagwanPoyungbok",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "MunmubaehyanggwanJobok",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Naechwi",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Namsaek SranskirtA navy blue skirt with a sran",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "NamsaekUtchimaA navy blue outer skirt",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "North side Abutment in Woljeonggyo Bridge",
+   "site": "Woljeonggyo",
+   "building": null,
+   "class": "A",
+   "confidence": "high",
+   "reason": "structural element of the bridge complex (gate, pavilion, pier or abutment); immovable structure in its own right"
+  },
+  {
+   "folder": "Novice Monk Robes  Shoes",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "OkbaeCA jade glass",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Oksaek Jeogori_Female",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "OksaekDopo",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Osaek Hansam",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Ox of the Twelve Zodiac Animal Deities",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "twelve zodiac deity statue with no site prefix; semantically a B-class perimeter set but unattributable from the folder name alone - promote to B once its source tomb is identified"
+  },
+  {
+   "folder": "Pantry_Chest",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Peony Folding Screen",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Phoenix-headed Glass Bottle",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Pig of the Twelve Zodiac Animal Deities",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "twelve zodiac deity statue with no site prefix; semantically a B-class perimeter set but unattributable from the folder name alone - promote to B once its source tomb is identified"
+  },
+  {
+   "folder": "Pincers",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Plate",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Private House - Anchae",
+   "site": "Private House",
+   "building": null,
+   "class": "A",
+   "confidence": "high",
+   "reason": "component building or wall of the traditional private house set"
+  },
+  {
+   "folder": "Private House - Gate",
+   "site": "Private House",
+   "building": null,
+   "class": "A",
+   "confidence": "high",
+   "reason": "component building or wall of the traditional private house set"
+  },
+  {
+   "folder": "Private House - Haengnangchae",
+   "site": "Private House",
+   "building": null,
+   "class": "A",
+   "confidence": "high",
+   "reason": "component building or wall of the traditional private house set"
+  },
+  {
+   "folder": "Private House - Sarangchae",
+   "site": "Private House",
+   "building": null,
+   "class": "A",
+   "confidence": "high",
+   "reason": "component building or wall of the traditional private house set"
+  },
+  {
+   "folder": "Private House - Stable",
+   "site": "Private House",
+   "building": null,
+   "class": "A",
+   "confidence": "high",
+   "reason": "component building or wall of the traditional private house set"
+  },
+  {
+   "folder": "Private House - Wall",
+   "site": "Private House",
+   "building": null,
+   "class": "A",
+   "confidence": "high",
+   "reason": "component building or wall of the traditional private house set"
+  },
+  {
+   "folder": "Rabbit of the Twelve Zodiac Animal Deities",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "twelve zodiac deity statue with no site prefix; semantically a B-class perimeter set but unattributable from the folder name alone - promote to B once its source tomb is identified"
+  },
+  {
+   "folder": "Rain Gauge Pedestal of Imunwon hall",
+   "site": "Imunwon Hall",
+   "building": null,
+   "class": "C",
+   "confidence": "medium",
+   "reason": "rain gauge and its pedestal installed at Imunwon hall"
+  },
+  {
+   "folder": "Rain Gauge of Imunwon hall",
+   "site": "Imunwon Hall",
+   "building": null,
+   "class": "C",
+   "confidence": "medium",
+   "reason": "rain gauge and its pedestal installed at Imunwon hall"
+  },
+  {
+   "folder": "Reproduction Of Celestial Chart Stone",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Rice_Chest",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Rice_Straw",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Rice_Washing_Bowl",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Ritual Well of Inwangdong Temple Site",
+   "site": "Inwang-dong Temple Site",
+   "building": null,
+   "class": "A",
+   "confidence": "high",
+   "reason": "excavated building/structure of the Inwang-dong temple site"
+  },
+  {
+   "folder": "Rock",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Roof-end Tile with Beast Face Design",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Roof-end Tile with Face Design Gyeongju",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Roof-end Tile with Karungbinga Design",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Roof-end Tile with Twin Bird Design",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Rooster of the Twelve Zodiac Animal Deities",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "twelve zodiac deity statue with no site prefix; semantically a B-class perimeter set but unattributable from the folder name alone - promote to B once its source tomb is identified"
+  },
+  {
+   "folder": "SamcheungSuparyeon",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Sarira Scoop West Pagoda Gameunsa",
+   "site": "Gameunsa",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "sarira reliquary implement from the west pagoda of Gameunsa"
+  },
+  {
+   "folder": "Scoop",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "SeondobanTak",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Sheep of the Twelve Zodiac Animal Deities",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "twelve zodiac deity statue with no site prefix; semantically a B-class perimeter set but unattributable from the folder name alone - promote to B once its source tomb is identified"
+  },
+  {
+   "folder": "Shipjangseang Byungpoong",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Sijahwapersimmon flower",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "SijeobBan",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Silver Bracelets",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Silver Ladle from North Mound Hwangnamdaechong",
+   "site": "Hwangnamdaechong Tomb",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "grave good excavated from Hwangnamdaechong Tomb; movable artifact attributed to a named tomb"
+  },
+  {
+   "folder": "Silver Ring flower shape",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Silver ladle South Mound of Hwangnamdaechong",
+   "site": "Hwangnamdaechong Tomb",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "grave good excavated from Hwangnamdaechong Tomb; movable artifact attributed to a named tomb"
+  },
+  {
+   "folder": "Small BellWind Bell",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Small Boat-Shaped Pottery",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Small Gun",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Snake of the Twelve Zodiac Animal Deities",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "twelve zodiac deity statue with no site prefix; semantically a B-class perimeter set but unattributable from the folder name alone - promote to B once its source tomb is identified"
+  },
+  {
+   "folder": "South Side of the West Corridor Temple Site V01",
+   "site": "Inwang-dong Temple Site",
+   "building": null,
+   "class": "A",
+   "confidence": "medium",
+   "reason": "excavation-series structure name matching the Inwang-dong temple site V01/V02 series, though the folder name omits the site"
+  },
+  {
+   "folder": "South Side of the West Corridor Temple Site V02",
+   "site": "Inwang-dong Temple Site",
+   "building": null,
+   "class": "A",
+   "confidence": "medium",
+   "reason": "excavation-series structure name matching the Inwang-dong temple site V01/V02 series, though the folder name omits the site"
+  },
+  {
+   "folder": "Spade",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Spoon_and_Chopsticks",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Ssangidanyeobjan",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Straw_Jar",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Straw_Mat",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Sundials",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Tablet",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Three-legged Cauldron From Cheonmachong Tomb",
+   "site": "Cheonmachong Tomb",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "grave good excavated from Cheonmachong Tomb; movable artifact attributed to a named tomb"
+  },
+  {
+   "folder": "Three-story Stone Pagoda East Inwang-dong Site",
+   "site": "Inwang-dong Temple Site",
+   "building": null,
+   "class": "A",
+   "confidence": "high",
+   "reason": "excavated building/structure of the Inwang-dong temple site"
+  },
+  {
+   "folder": "Three-story Stone Pagoda west Inwang-dong Site",
+   "site": "Inwang-dong Temple Site",
+   "building": null,
+   "class": "A",
+   "confidence": "high",
+   "reason": "excavated building/structure of the Inwang-dong temple site"
+  },
+  {
+   "folder": "Three_Barrel_Gun",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Tile with Buddha and Pagoda Design",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Tomb Of King Gyeongae_Stone Table",
+   "site": "Tomb of King Gyeongae",
+   "building": null,
+   "class": "B",
+   "confidence": "high",
+   "reason": "stone offering table of the tomb precinct"
+  },
+  {
+   "folder": "Tomb Of King Gyeongdeok Gyeongju",
+   "site": "Tomb of King Gyeongdeok",
+   "building": null,
+   "class": "A",
+   "confidence": "high",
+   "reason": "Silla royal tomb mound itself"
+  },
+  {
+   "folder": "Tomb Of King Heungdeok Gyeongju",
+   "site": "Tomb of King Heungdeok",
+   "building": null,
+   "class": "A",
+   "confidence": "high",
+   "reason": "Silla royal tomb mound itself"
+  },
+  {
+   "folder": "Tomb Of King Jima Gyeongju",
+   "site": "Tomb of King Jima",
+   "building": null,
+   "class": "A",
+   "confidence": "high",
+   "reason": "Silla royal tomb mound itself"
+  },
+  {
+   "folder": "Tomb Of King Seongdeok Gyeongju",
+   "site": "Tomb of King Seongdeok",
+   "building": null,
+   "class": "A",
+   "confidence": "high",
+   "reason": "the tomb mound itself"
+  },
+  {
+   "folder": "Tomb of Kim Yu-sin Gyeongju",
+   "site": "Tomb of Kim Yu-sin",
+   "building": null,
+   "class": "A",
+   "confidence": "high",
+   "reason": "the tomb mound itself"
+  },
+  {
+   "folder": "Tomb of Kim Yu-sin_12 Zodiac Animal Deities_001",
+   "site": "Tomb of Kim Yu-sin",
+   "building": null,
+   "class": "B",
+   "confidence": "high",
+   "reason": "twelve zodiac deity relief set around the tomb perimeter; regular circular arrangement"
+  },
+  {
+   "folder": "Tomb of Kim Yu-sin_12 Zodiac Animal Deities_002",
+   "site": "Tomb of Kim Yu-sin",
+   "building": null,
+   "class": "B",
+   "confidence": "high",
+   "reason": "twelve zodiac deity relief set around the tomb perimeter; regular circular arrangement"
+  },
+  {
+   "folder": "Tomb of Kim Yu-sin_12 Zodiac Animal Deities_003",
+   "site": "Tomb of Kim Yu-sin",
+   "building": null,
+   "class": "B",
+   "confidence": "high",
+   "reason": "twelve zodiac deity relief set around the tomb perimeter; regular circular arrangement"
+  },
+  {
+   "folder": "Tomb of Kim Yu-sin_12 Zodiac Animal Deities_004",
+   "site": "Tomb of Kim Yu-sin",
+   "building": null,
+   "class": "B",
+   "confidence": "high",
+   "reason": "twelve zodiac deity relief set around the tomb perimeter; regular circular arrangement"
+  },
+  {
+   "folder": "Tomb of Kim Yu-sin_12 Zodiac Animal Deities_005",
+   "site": "Tomb of Kim Yu-sin",
+   "building": null,
+   "class": "B",
+   "confidence": "high",
+   "reason": "twelve zodiac deity relief set around the tomb perimeter; regular circular arrangement"
+  },
+  {
+   "folder": "Tomb of Kim Yu-sin_12 Zodiac Animal Deities_006",
+   "site": "Tomb of Kim Yu-sin",
+   "building": null,
+   "class": "B",
+   "confidence": "high",
+   "reason": "twelve zodiac deity relief set around the tomb perimeter; regular circular arrangement"
+  },
+  {
+   "folder": "Tomb of Kim Yu-sin_12 Zodiac Animal Deities_007",
+   "site": "Tomb of Kim Yu-sin",
+   "building": null,
+   "class": "B",
+   "confidence": "high",
+   "reason": "twelve zodiac deity relief set around the tomb perimeter; regular circular arrangement"
+  },
+  {
+   "folder": "Tomb of Kim Yu-sin_12 Zodiac Animal Deities_008",
+   "site": "Tomb of Kim Yu-sin",
+   "building": null,
+   "class": "B",
+   "confidence": "high",
+   "reason": "twelve zodiac deity relief set around the tomb perimeter; regular circular arrangement"
+  },
+  {
+   "folder": "Tomb of Kim Yu-sin_12 Zodiac Animal Deities_010",
+   "site": "Tomb of Kim Yu-sin",
+   "building": null,
+   "class": "B",
+   "confidence": "high",
+   "reason": "twelve zodiac deity relief set around the tomb perimeter; regular circular arrangement"
+  },
+  {
+   "folder": "Tomb of Kim Yu-sin_12 Zodiac Animal Deities_011",
+   "site": "Tomb of Kim Yu-sin",
+   "building": null,
+   "class": "B",
+   "confidence": "high",
+   "reason": "twelve zodiac deity relief set around the tomb perimeter; regular circular arrangement"
+  },
+  {
+   "folder": "Tomb of Kim Yu-sin_12 Zodiac Animal Deities_012",
+   "site": "Tomb of Kim Yu-sin",
+   "building": null,
+   "class": "B",
+   "confidence": "high",
+   "reason": "twelve zodiac deity relief set around the tomb perimeter; regular circular arrangement"
+  },
+  {
+   "folder": "Tomb of Kim Yu-sin_Monument_001",
+   "site": "Tomb of Kim Yu-sin",
+   "building": null,
+   "class": "B",
+   "confidence": "high",
+   "reason": "stone furnishing of the tomb precinct (monument or offering table) in a fixed arrangement"
+  },
+  {
+   "folder": "Tomb of Kim Yu-sin_Monument_002",
+   "site": "Tomb of Kim Yu-sin",
+   "building": null,
+   "class": "B",
+   "confidence": "high",
+   "reason": "stone furnishing of the tomb precinct (monument or offering table) in a fixed arrangement"
+  },
+  {
+   "folder": "Tomb of Kim Yu-sin_Stone Table",
+   "site": "Tomb of Kim Yu-sin",
+   "building": null,
+   "class": "B",
+   "confidence": "high",
+   "reason": "stone furnishing of the tomb precinct (monument or offering table) in a fixed arrangement"
+  },
+  {
+   "folder": "Tomb of King Gyeongae Gyeongju",
+   "site": "Tomb of King Gyeongae",
+   "building": null,
+   "class": "A",
+   "confidence": "high",
+   "reason": "the tomb mound itself"
+  },
+  {
+   "folder": "Tomb of King Heondeok Gyeongju",
+   "site": "Tomb of King Heondeok",
+   "building": null,
+   "class": "A",
+   "confidence": "high",
+   "reason": "Silla royal tomb mound itself"
+  },
+  {
+   "folder": "Tomb of King Huigang Gyeongju",
+   "site": "Tomb of King Huigang",
+   "building": null,
+   "class": "A",
+   "confidence": "high",
+   "reason": "Silla royal tomb mound itself"
+  },
+  {
+   "folder": "Tomb of King Seongdeok_12Zodiac Animal Deities1",
+   "site": "Tomb of King Seongdeok",
+   "building": null,
+   "class": "B",
+   "confidence": "high",
+   "reason": "twelve zodiac deity relief set around the tomb perimeter; regular circular arrangement"
+  },
+  {
+   "folder": "Tomb of King Seongdeok_12Zodiac Animal Deities10",
+   "site": "Tomb of King Seongdeok",
+   "building": null,
+   "class": "B",
+   "confidence": "high",
+   "reason": "twelve zodiac deity relief set around the tomb perimeter; regular circular arrangement"
+  },
+  {
+   "folder": "Tomb of King Seongdeok_12Zodiac Animal Deities3",
+   "site": "Tomb of King Seongdeok",
+   "building": null,
+   "class": "B",
+   "confidence": "high",
+   "reason": "twelve zodiac deity relief set around the tomb perimeter; regular circular arrangement"
+  },
+  {
+   "folder": "Tomb of King Seongdeok_12Zodiac Animal Deities4",
+   "site": "Tomb of King Seongdeok",
+   "building": null,
+   "class": "B",
+   "confidence": "high",
+   "reason": "twelve zodiac deity relief set around the tomb perimeter; regular circular arrangement"
+  },
+  {
+   "folder": "Tomb of King Seongdeok_12Zodiac Animal Deities5",
+   "site": "Tomb of King Seongdeok",
+   "building": null,
+   "class": "B",
+   "confidence": "high",
+   "reason": "twelve zodiac deity relief set around the tomb perimeter; regular circular arrangement"
+  },
+  {
+   "folder": "Tomb of King Seongdeok_12Zodiac Animal Deities6",
+   "site": "Tomb of King Seongdeok",
+   "building": null,
+   "class": "B",
+   "confidence": "high",
+   "reason": "twelve zodiac deity relief set around the tomb perimeter; regular circular arrangement"
+  },
+  {
+   "folder": "Tomb of King Seongdeok_12Zodiac Animal Deities7",
+   "site": "Tomb of King Seongdeok",
+   "building": null,
+   "class": "B",
+   "confidence": "high",
+   "reason": "twelve zodiac deity relief set around the tomb perimeter; regular circular arrangement"
+  },
+  {
+   "folder": "Tomb of King Seongdeok_12Zodiac Animal Deities8",
+   "site": "Tomb of King Seongdeok",
+   "building": null,
+   "class": "B",
+   "confidence": "high",
+   "reason": "twelve zodiac deity relief set around the tomb perimeter; regular circular arrangement"
+  },
+  {
+   "folder": "Tomb of King Seongdeok_12Zodiac Animal Deities9",
+   "site": "Tomb of King Seongdeok",
+   "building": null,
+   "class": "B",
+   "confidence": "high",
+   "reason": "twelve zodiac deity relief set around the tomb perimeter; regular circular arrangement"
+  },
+  {
+   "folder": "Tomb of King Seongdeok_Monument",
+   "site": "Tomb of King Seongdeok",
+   "building": null,
+   "class": "B",
+   "confidence": "high",
+   "reason": "stone furnishing of the tomb precinct (monument, guardian, lion, literatus or offering table) in a fixed symmetric arrangement"
+  },
+  {
+   "folder": "Tomb of King Seongdeok_Stone Guardian",
+   "site": "Tomb of King Seongdeok",
+   "building": null,
+   "class": "B",
+   "confidence": "high",
+   "reason": "stone furnishing of the tomb precinct (monument, guardian, lion, literatus or offering table) in a fixed symmetric arrangement"
+  },
+  {
+   "folder": "Tomb of King Seongdeok_Stone Lion_001",
+   "site": "Tomb of King Seongdeok",
+   "building": null,
+   "class": "B",
+   "confidence": "high",
+   "reason": "stone furnishing of the tomb precinct (monument, guardian, lion, literatus or offering table) in a fixed symmetric arrangement"
+  },
+  {
+   "folder": "Tomb of King Seongdeok_Stone Lion_003",
+   "site": "Tomb of King Seongdeok",
+   "building": null,
+   "class": "B",
+   "confidence": "high",
+   "reason": "stone furnishing of the tomb precinct (monument, guardian, lion, literatus or offering table) in a fixed symmetric arrangement"
+  },
+  {
+   "folder": "Tomb of King Seongdeok_Stone Literatus",
+   "site": "Tomb of King Seongdeok",
+   "building": null,
+   "class": "B",
+   "confidence": "high",
+   "reason": "stone furnishing of the tomb precinct (monument, guardian, lion, literatus or offering table) in a fixed symmetric arrangement"
+  },
+  {
+   "folder": "Tomb of King Seongdeok_Stone Table",
+   "site": "Tomb of King Seongdeok",
+   "building": null,
+   "class": "B",
+   "confidence": "high",
+   "reason": "stone furnishing of the tomb precinct (monument, guardian, lion, literatus or offering table) in a fixed symmetric arrangement"
+  },
+  {
+   "folder": "Tongso",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Ubyeong",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "UijangbongjiHeukdallyeong",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "UijanggunCheongui Pirip",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Unhyun_ Book Case",
+   "site": "Unhyeongung",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Unhyun_ prefix; household furnishing of Unhyeongung, 2-part site_object name with no building level"
+  },
+  {
+   "folder": "Unhyun_ Boot Cupboard",
+   "site": "Unhyeongung",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Unhyun_ prefix; household furnishing of Unhyeongung, 2-part site_object name with no building level"
+  },
+  {
+   "folder": "Unhyun_ Bowls",
+   "site": "Unhyeongung",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Unhyun_ prefix; household furnishing of Unhyeongung, 2-part site_object name with no building level"
+  },
+  {
+   "folder": "Unhyun_ Box",
+   "site": "Unhyeongung",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Unhyun_ prefix; household furnishing of Unhyeongung, 2-part site_object name with no building level"
+  },
+  {
+   "folder": "Unhyun_ Brazier",
+   "site": "Unhyeongung",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Unhyun_ prefix; household furnishing of Unhyeongung, 2-part site_object name with no building level"
+  },
+  {
+   "folder": "Unhyun_ Cabinet_A",
+   "site": "Unhyeongung",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Unhyun_ prefix; household furnishing of Unhyeongung, 2-part site_object name with no building level"
+  },
+  {
+   "folder": "Unhyun_ Cabinet_B",
+   "site": "Unhyeongung",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Unhyun_ prefix; household furnishing of Unhyeongung, 2-part site_object name with no building level"
+  },
+  {
+   "folder": "Unhyun_ Cabinet_C",
+   "site": "Unhyeongung",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Unhyun_ prefix; household furnishing of Unhyeongung, 2-part site_object name with no building level"
+  },
+  {
+   "folder": "Unhyun_ Cabinet_D",
+   "site": "Unhyeongung",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Unhyun_ prefix; household furnishing of Unhyeongung, 2-part site_object name with no building level"
+  },
+  {
+   "folder": "Unhyun_ Candlestick_02",
+   "site": "Unhyeongung",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Unhyun_ prefix; household furnishing of Unhyeongung, 2-part site_object name with no building level"
+  },
+  {
+   "folder": "Unhyun_ Chest",
+   "site": "Unhyeongung",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Unhyun_ prefix; household furnishing of Unhyeongung, 2-part site_object name with no building level"
+  },
+  {
+   "folder": "Unhyun_ Chopping Board",
+   "site": "Unhyeongung",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Unhyun_ prefix; household furnishing of Unhyeongung, 2-part site_object name with no building level"
+  },
+  {
+   "folder": "Unhyun_ Cup Board_A",
+   "site": "Unhyeongung",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Unhyun_ prefix; household furnishing of Unhyeongung, 2-part site_object name with no building level"
+  },
+  {
+   "folder": "Unhyun_ Cupboard_B",
+   "site": "Unhyeongung",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Unhyun_ prefix; household furnishing of Unhyeongung, 2-part site_object name with no building level"
+  },
+  {
+   "folder": "Unhyun_ Dark Brown Bottle",
+   "site": "Unhyeongung",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Unhyun_ prefix; household furnishing of Unhyeongung, 2-part site_object name with no building level"
+  },
+  {
+   "folder": "Unhyun_ Floor Cushion",
+   "site": "Unhyeongung",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Unhyun_ prefix; household furnishing of Unhyeongung, 2-part site_object name with no building level"
+  },
+  {
+   "folder": "Unhyun_ Grain Chest",
+   "site": "Unhyeongung",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Unhyun_ prefix; household furnishing of Unhyeongung, 2-part site_object name with no building level"
+  },
+  {
+   "folder": "Unhyun_ Large Bowl",
+   "site": "Unhyeongung",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Unhyun_ prefix; household furnishing of Unhyeongung, 2-part site_object name with no building level"
+  },
+  {
+   "folder": "Unhyun_ Mal",
+   "site": "Unhyeongung",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Unhyun_ prefix; household furnishing of Unhyeongung, 2-part site_object name with no building level"
+  },
+  {
+   "folder": "Unhyun_ Mat",
+   "site": "Unhyeongung",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Unhyun_ prefix; household furnishing of Unhyeongung, 2-part site_object name with no building level"
+  },
+  {
+   "folder": "Unhyun_ Porcelain Chamber Pot",
+   "site": "Unhyeongung",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Unhyun_ prefix; household furnishing of Unhyeongung, 2-part site_object name with no building level"
+  },
+  {
+   "folder": "Unhyun_ Pot For Medicines",
+   "site": "Unhyeongung",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Unhyun_ prefix; household furnishing of Unhyeongung, 2-part site_object name with no building level"
+  },
+  {
+   "folder": "Unhyun_ Pot_B",
+   "site": "Unhyeongung",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Unhyun_ prefix; household furnishing of Unhyeongung, 2-part site_object name with no building level"
+  },
+  {
+   "folder": "Unhyun_ Quilted Mattress",
+   "site": "Unhyeongung",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Unhyun_ prefix; household furnishing of Unhyeongung, 2-part site_object name with no building level"
+  },
+  {
+   "folder": "Unhyun_ Rice Bowls",
+   "site": "Unhyeongung",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Unhyun_ prefix; household furnishing of Unhyeongung, 2-part site_object name with no building level"
+  },
+  {
+   "folder": "Unhyun_ Secretaries",
+   "site": "Unhyeongung",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Unhyun_ prefix; household furnishing of Unhyeongung, 2-part site_object name with no building level"
+  },
+  {
+   "folder": "Unhyun_ Shelves",
+   "site": "Unhyeongung",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Unhyun_ prefix; household furnishing of Unhyeongung, 2-part site_object name with no building level"
+  },
+  {
+   "folder": "Unhyun_ Sieve",
+   "site": "Unhyeongung",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Unhyun_ prefix; household furnishing of Unhyeongung, 2-part site_object name with no building level"
+  },
+  {
+   "folder": "Unhyun_ Soup Bowl",
+   "site": "Unhyeongung",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Unhyun_ prefix; household furnishing of Unhyeongung, 2-part site_object name with no building level"
+  },
+  {
+   "folder": "Unhyun_ Stool",
+   "site": "Unhyeongung",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Unhyun_ prefix; household furnishing of Unhyeongung, 2-part site_object name with no building level"
+  },
+  {
+   "folder": "Unhyun_ Straw Mat_A",
+   "site": "Unhyeongung",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Unhyun_ prefix; household furnishing of Unhyeongung, 2-part site_object name with no building level"
+  },
+  {
+   "folder": "Unhyun_ Straw Mat_B",
+   "site": "Unhyeongung",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Unhyun_ prefix; household furnishing of Unhyeongung, 2-part site_object name with no building level"
+  },
+  {
+   "folder": "Unhyun_ Table",
+   "site": "Unhyeongung",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Unhyun_ prefix; household furnishing of Unhyeongung, 2-part site_object name with no building level"
+  },
+  {
+   "folder": "Unhyun_ Teapot",
+   "site": "Unhyeongung",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Unhyun_ prefix; household furnishing of Unhyeongung, 2-part site_object name with no building level"
+  },
+  {
+   "folder": "Unhyun_ Threetiered Cupboard",
+   "site": "Unhyeongung",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Unhyun_ prefix; household furnishing of Unhyeongung, 2-part site_object name with no building level"
+  },
+  {
+   "folder": "Unhyun_ Wardrobe",
+   "site": "Unhyeongung",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Unhyun_ prefix; household furnishing of Unhyeongung, 2-part site_object name with no building level"
+  },
+  {
+   "folder": "Unhyun_ Washbasin",
+   "site": "Unhyeongung",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Unhyun_ prefix; household furnishing of Unhyeongung, 2-part site_object name with no building level"
+  },
+  {
+   "folder": "Unhyun_ White Porcelain Bottle",
+   "site": "Unhyeongung",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Unhyun_ prefix; household furnishing of Unhyeongung, 2-part site_object name with no building level"
+  },
+  {
+   "folder": "Unhyun_ White Porcelain Dish_A",
+   "site": "Unhyeongung",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Unhyun_ prefix; household furnishing of Unhyeongung, 2-part site_object name with no building level"
+  },
+  {
+   "folder": "Unhyun_ White Porcelain Dish_D",
+   "site": "Unhyeongung",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Unhyun_ prefix; household furnishing of Unhyeongung, 2-part site_object name with no building level"
+  },
+  {
+   "folder": "Unhyun_ Wooden Smoothing Roller",
+   "site": "Unhyeongung",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Unhyun_ prefix; household furnishing of Unhyeongung, 2-part site_object name with no building level"
+  },
+  {
+   "folder": "Unhyun_ Wooden Step",
+   "site": "Unhyeongung",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Unhyun_ prefix; household furnishing of Unhyeongung, 2-part site_object name with no building level"
+  },
+  {
+   "folder": "Unhyun_ Wooden Tray_A",
+   "site": "Unhyeongung",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "Unhyun_ prefix; household furnishing of Unhyeongung, 2-part site_object name with no building level"
+  },
+  {
+   "folder": "Wall of Inwangdong Temple Site",
+   "site": "Inwang-dong Temple Site",
+   "building": null,
+   "class": "A",
+   "confidence": "high",
+   "reason": "excavated building/structure of the Inwang-dong temple site"
+  },
+  {
+   "folder": "Weeding_Hoe",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Weights",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Well of Inwangdong Temple Site",
+   "site": "Inwang-dong Temple Site",
+   "building": null,
+   "class": "A",
+   "confidence": "high",
+   "reason": "excavated building/structure of the Inwang-dong temple site"
+  },
+  {
+   "folder": "West Corridor Inwang-dong Temple Site Gyeongju",
+   "site": "Inwang-dong Temple Site",
+   "building": null,
+   "class": "A",
+   "confidence": "high",
+   "reason": "excavated building/structure of the Inwang-dong temple site"
+  },
+  {
+   "folder": "West Transept Inwang-dong Temple Site Gyeongju",
+   "site": "Inwang-dong Temple Site",
+   "building": null,
+   "class": "A",
+   "confidence": "high",
+   "reason": "excavated building/structure of the Inwang-dong temple site"
+  },
+  {
+   "folder": "West side Abutment in Chunyanggyo Bridge",
+   "site": "Chunyanggyo",
+   "building": null,
+   "class": "A",
+   "confidence": "high",
+   "reason": "structural element of the bridge complex (gate, pavilion, pier or abutment); immovable structure in its own right"
+  },
+  {
+   "folder": "Whetstone",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Woljeonggyo Pier Chunyanggyo  Woljeonggyo",
+   "site": "Woljeonggyo",
+   "building": null,
+   "class": "A",
+   "confidence": "high",
+   "reason": "structural element of the bridge complex (gate, pavilion, pier or abutment); immovable structure in its own right"
+  },
+  {
+   "folder": "Woljeonggyo South Gate Gyeongju",
+   "site": "Woljeonggyo",
+   "building": null,
+   "class": "A",
+   "confidence": "high",
+   "reason": "structural element of the bridge complex (gate, pavilion, pier or abutment); immovable structure in its own right"
+  },
+  {
+   "folder": "Wood_Burning_Stove",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Wooden_Tray",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Yanggeum",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Yongchok",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Yoojeobsi",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Yujak",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "Yuojeongbae",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "ajaeng",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "bamboo_mat",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "building_site_inwang-dong_temple_gyeongju_2",
+   "site": "Inwang-dong Temple Site",
+   "building": null,
+   "class": "A",
+   "confidence": "high",
+   "reason": "excavated building/structure of the Inwang-dong temple site"
+  },
+  {
+   "folder": "cauldron",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "dog_of_the_twelve_zodiac_animal_deities",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "twelve zodiac deity statue with no site prefix; semantically a B-class perimeter set but unattributable from the folder name alone - promote to B once its source tomb is identified"
+  },
+  {
+   "folder": "eastern_pond_of_inwangdong_temple_site",
+   "site": "Inwang-dong Temple Site",
+   "building": null,
+   "class": "A",
+   "confidence": "high",
+   "reason": "excavated building/structure of the Inwang-dong temple site"
+  },
+  {
+   "folder": "eundogeum__baeb",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "eunggo",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "gilt-bronze_three-story_miniature_pagoda",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "glass",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "gold_waist_belt_from_cheonmachong_tomb",
+   "site": "Cheonmachong Tomb",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "grave good excavated from Cheonmachong Tomb; movable artifact attributed to a named tomb"
+  },
+  {
+   "folder": "gutter_wood",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "horse_harness_ornament",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "jija_chongtong_gun",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "lidded_jar_with_a_curved_pedestal",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "lionincenseburner",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "ridge-end_roof_tile_of_inwangdong_temple_site",
+   "site": "Inwang-dong Temple Site",
+   "building": null,
+   "class": "C",
+   "confidence": "medium",
+   "reason": "movable artifact (statue or roof tile) attributed to the Inwang-dong temple site"
+  },
+  {
+   "folder": "samingeom",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "sarira_tweezers_west_pagoda_gameunsa",
+   "site": "Gameunsa",
+   "building": null,
+   "class": "C",
+   "confidence": "high",
+   "reason": "sarira reliquary implement from the west pagoda of Gameunsa"
+  },
+  {
+   "folder": "silver_ring",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "no site prefix and no placement context in the folder name; standalone artifact"
+  },
+  {
+   "folder": "south_side_abutment_in_woljeonggyo_bridge",
+   "site": "Woljeonggyo",
+   "building": null,
+   "class": "A",
+   "confidence": "high",
+   "reason": "structural element of the bridge complex (gate, pavilion, pier or abutment); immovable structure in its own right"
+  },
+  {
+   "folder": "three_story_stone_pagoda_in_yongjangsagok_valley",
+   "site": "Yongjangsagok Valley",
+   "building": null,
+   "class": "A",
+   "confidence": "high",
+   "reason": "stone pagoda standing in Yongjangsagok valley"
+  },
+  {
+   "folder": "tiger_of_the_twelve_zodiac_animal_deities",
+   "site": null,
+   "building": null,
+   "class": "D",
+   "confidence": "low",
+   "reason": "twelve zodiac deity statue with no site prefix; semantically a B-class perimeter set but unattributable from the folder name alone - promote to B once its source tomb is identified"
+  },
+  {
+   "folder": "tomb_of_kim_yu-sin_12_zodiac_animal_deities_009",
+   "site": "Tomb of Kim Yu-sin",
+   "building": null,
+   "class": "B",
+   "confidence": "high",
+   "reason": "twelve zodiac deity relief set around the tomb perimeter; regular circular arrangement"
+  },
+  {
+   "folder": "yeongnyeongjeon_hall",
+   "site": "Jongmyo",
+   "building": "Yeongnyeongjeon",
+   "class": "A",
+   "confidence": "high",
+   "reason": "Yeongnyeongjeon is a hall within the Jongmyo precinct"
+  }
+ ]
+}

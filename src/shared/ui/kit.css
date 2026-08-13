@@ -409,3 +409,128 @@ body {
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 3px; }
 .cesium-viewer-bottom { display: none !important; }
+
+/* ================= 유물 아카이브 ================= */
+.artifact-archive { flex: 1; overflow-y: auto; background: var(--bg); padding: 28px 32px 48px; }
+.aa-head { max-width: 1180px; margin: 0 auto 24px; }
+.aa-title { font-size: 26px; font-weight: 800; letter-spacing: -0.5px; color: var(--ink); margin: 0 0 8px; }
+.aa-sub { font-size: 12.5px; line-height: 1.7; color: var(--ink-2); margin: 0; max-width: 620px; }
+
+.aa-grid {
+  max-width: 1180px; margin: 0 auto; display: grid; gap: 1px;
+  grid-template-columns: repeat(auto-fill, minmax(226px, 1fr));
+  background: var(--border); border: 1px solid var(--border);
+}
+.aa-card {
+  display: flex; flex-direction: column; text-align: left; padding: 0; cursor: pointer;
+  background: var(--surface); border: none; border-radius: 0; font-family: inherit;
+  transition: background .15s ease;
+}
+.aa-card:hover { background: var(--highlight); }
+.aa-thumb { aspect-ratio: 4 / 3; overflow: hidden; background: var(--surface-2); }
+.aa-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .25s ease; }
+.aa-card:hover .aa-thumb img { transform: scale(1.04); }
+.aa-card-body { padding: 12px 14px 14px; }
+.aa-card-title { font-size: 14px; font-weight: 700; color: var(--ink); letter-spacing: -0.2px; line-height: 1.35; }
+.aa-card-en { font-size: 10.5px; color: var(--ink-3); margin-top: 3px; }
+
+.aa-chips { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 9px; }
+.aa-chip {
+  font-size: 10px; font-weight: 600; color: var(--ink-3); background: var(--surface-2);
+  border: 1px solid var(--border); border-radius: 0; padding: 2px 7px;
+}
+.aa-chip-site { color: var(--accent); background: var(--accent-soft); border-color: var(--accent-soft-2); }
+
+/* -------- 상세 모달 -------- */
+.aa-modal {
+  position: fixed; inset: 0; z-index: 150; background: rgba(15, 13, 10, 0.62);
+  display: flex; align-items: center; justify-content: center; padding: 32px;
+}
+.aa-modal-card {
+  background: var(--surface); border-radius: 0; box-shadow: var(--shadow-lg);
+  width: min(1020px, 100%); max-height: 88vh; display: flex; flex-direction: column;
+}
+.aa-modal-head {
+  padding: 20px 24px 16px; border-bottom: 1px solid var(--border);
+  display: flex; align-items: flex-start; justify-content: space-between; gap: 16px;
+}
+.aa-modal-title { font-size: 19px; font-weight: 800; color: var(--ink); letter-spacing: -0.3px; }
+.aa-modal-sub { font-size: 11px; color: var(--ink-3); margin-top: 5px; }
+.aa-modal-body { flex: 1; min-height: 0; display: grid; grid-template-columns: 1.55fr 1fr; }
+.aa-modal-info { padding: 20px 24px 24px; overflow-y: auto; border-left: 1px solid var(--border); }
+.aa-desc { font-size: 12.5px; line-height: 1.75; color: var(--ink-2); margin: 0 0 4px; white-space: pre-line; }
+.aa-credit { font-size: 10.5px; line-height: 1.6; color: var(--ink-3); margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--border); }
+
+/* -------- Three.js 뷰어 -------- */
+.artifact-viewer { position: relative; background: var(--surface); min-height: 420px; }
+.av-canvas { position: absolute; inset: 0; }
+.av-canvas canvas { display: block; width: 100%; height: 100%; }
+.av-overlay {
+  position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 12px; background: var(--surface); pointer-events: none;
+}
+.av-overlay-text { font-size: 12px; font-weight: 600; color: var(--ink-2); }
+.av-error { color: var(--accent); max-width: 260px; text-align: center; line-height: 1.6; }
+.av-spinner {
+  width: 26px; height: 26px; border: 2px solid var(--border);
+  border-top-color: var(--accent); border-radius: 50%; animation: avSpin .9s linear infinite;
+}
+@keyframes avSpin { to { transform: rotate(360deg); } }
+.av-hint {
+  position: absolute; left: 0; right: 0; bottom: 10px; text-align: center;
+  font-size: 10.5px; color: var(--ink-3); pointer-events: none;
+}
+
+@media (max-width: 860px) {
+  .aa-modal-body { grid-template-columns: 1fr; overflow-y: auto; }
+  .aa-modal-info { border-left: none; border-top: 1px solid var(--border); }
+}
+
+/* -------- 헤더 네비게이션 -------- */
+.topnav { display: flex; align-items: center; gap: 18px; }
+.topnav a {
+  font-size: 12.5px; font-weight: 600; color: var(--navy-soft); text-decoration: none;
+  padding: 4px 0; border-bottom: 2px solid transparent;
+}
+.topnav a:hover { color: #fff; }
+.topnav a.active { color: #fff; border-bottom-color: var(--accent); }
+
+/* -------- 유물 아카이브: 추정 명칭 표시 · 공공누리 출처 고지 -------- */
+.aa-tentative {
+  margin-left: 5px; font-size: 9px; font-weight: 700; letter-spacing: .02em;
+  color: var(--ink-3); background: var(--surface-2);
+  border: 1px solid var(--border); padding: 1px 4px; vertical-align: 1px;
+}
+.aa-legal {
+  max-width: 1180px; margin: 28px auto 0; padding: 16px 0 8px;
+  border-top: 1px solid var(--border);
+  font-size: 10.5px; line-height: 1.75; color: var(--ink-3);
+}
+.aa-legal p { margin: 0 0 4px; }
+.aa-legal strong { color: var(--ink-2); font-weight: 600; }
+.aa-legal a { color: var(--accent); text-decoration: none; }
+.aa-legal a:hover, .aa-legal a:focus-visible { text-decoration: underline; }
+.aa-legal-sep { margin: 0 8px; color: var(--border); }
+
+/* -------- 유물 아카이브: 페이지네이션 -------- */
+.aa-range {
+  font-size: 11px; color: var(--ink-3); margin: 6px 0 0;
+  font-variant-numeric: tabular-nums;
+}
+.aa-pager {
+  max-width: 1180px; margin: 20px auto 0;
+  display: flex; align-items: center; justify-content: center; gap: 4px; flex-wrap: wrap;
+}
+.aa-page-btn {
+  min-width: 30px; height: 30px; padding: 0 9px;
+  font-size: 11.5px; font-weight: 600; font-variant-numeric: tabular-nums;
+  color: var(--ink-2); background: var(--surface);
+  border: 1px solid var(--border); border-radius: 0; cursor: pointer;
+}
+.aa-page-btn:hover:not(:disabled) { color: var(--accent); border-color: var(--accent); }
+.aa-page-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.aa-page-btn:disabled { color: var(--ink-4, var(--ink-3)); opacity: .45; cursor: default; }
+.aa-page-btn.is-current {
+  color: var(--surface); background: var(--accent); border-color: var(--accent);
+}
+.aa-page-gap { padding: 0 2px; font-size: 11.5px; color: var(--ink-3); }

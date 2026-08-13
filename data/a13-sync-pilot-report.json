@@ -1,0 +1,596 @@
+{
+  "generated_at": "2026-08-11T07:40:23.931258+00:00",
+  "target_user": "KHS_Asset",
+  "list_api": {
+    "endpoint": "https://api.sketchfab.com/v3/models?user=KHS_Asset&count=24",
+    "total_count_field_returned_by_api": null,
+    "total_count_note": "the API returns no totalCount/count field; the catalogue size is only knowable by walking to the last page",
+    "total_models_measured": 917,
+    "pages_fetched": 39,
+    "unique_models_collected": 917,
+    "pagination": {
+      "top_level_keys": [
+        "cursors",
+        "next",
+        "previous",
+        "results"
+      ],
+      "cursors_sample": {
+        "next": "cD0yMDI1LTAyLTEzVDAwJTNBNTglM0EwNS45MTA0MDE=",
+        "previous": null
+      },
+      "uses_next_url": true
+    },
+    "model_fields_available": [
+      "animationCount",
+      "archives",
+      "categories",
+      "commentCount",
+      "createdAt",
+      "description",
+      "embedUrl",
+      "faceCount",
+      "isAgeRestricted",
+      "isDownloadable",
+      "isProtected",
+      "license",
+      "likeCount",
+      "name",
+      "price",
+      "publishedAt",
+      "soundCount",
+      "staffpickedAt",
+      "tags",
+      "thumbnails",
+      "uid",
+      "uri",
+      "user",
+      "vertexCount",
+      "viewCount",
+      "viewerUrl"
+    ],
+    "rate_headers_seen": [
+      {},
+      {},
+      {}
+    ]
+  },
+  "pagination_defect": {
+    "summary": "cursors are plain base64 offsets (o=24, o=48, ...) over an unstable default ordering, so an unsorted walk serves some models twice and never serves others",
+    "default_order_walk": {
+      "sort_by": "(api default)",
+      "rows_returned": 917,
+      "unique_models": 740,
+      "duplicate_rows": 177,
+      "models_never_served": 177,
+      "coverage_ratio": 0.807
+    },
+    "sorted_walk": {
+      "sort_by": "-publishedAt",
+      "rows_returned": 917,
+      "unique_models": 917,
+      "duplicate_rows": 0
+    },
+    "mechanism": {
+      "default_cursor_style": "offset",
+      "default_cursor_sample": "o=24",
+      "sorted_cursor_style": "keyset",
+      "sorted_cursor_sample": "p=2025-02-13T00%3A58%3A05.910401",
+      "explanation": "without sort_by the API pages by numeric offset over an unstable ordering; with sort_by it switches to a keyset cursor on the sort key, which cannot skip or repeat rows"
+    },
+    "fix": "always pass sort_by=-publishedAt (or another stable key); this made the walk exact at 917/917"
+  },
+  "downloadability": {
+    "sampled_models": 917,
+    "isDownloadable_true": 899,
+    "isDownloadable_false": 18,
+    "isDownloadable_ratio": 0.9804,
+    "models_with_archives_field": 915,
+    "archive_formats_seen": [
+      "glb",
+      "gltf",
+      "gltf-ar",
+      "source",
+      "usdz"
+    ]
+  },
+  "local_crosscheck": {
+    "asset_folders_total": 506,
+    "license_uids_extracted": 30,
+    "uid_extraction_problems": [],
+    "matched_against_listed_models": 30,
+    "local_layout_reference": {
+      "folder": "A_frame_Carrier",
+      "files": [
+        "license.txt",
+        "scene.bin",
+        "scene.gltf",
+        "textures/Material_37_baseColor.png",
+        "textures/Material_37_metallicRoughness.png",
+        "textures/Material_37_normal.png"
+      ],
+      "file_count": 6
+    }
+  },
+  "download_api_probe": {
+    "calls_attempted": 10,
+    "pacing_seconds": 2.0,
+    "http_200": 10,
+    "status_breakdown": {
+      "200": 10
+    },
+    "formats_offered_counts": {
+      "source": 10,
+      "gltf": 10,
+      "usdz": 10,
+      "glb": 10
+    },
+    "gltf_size_bytes": {
+      "min": 226424,
+      "max": 14128273,
+      "mean": 5951126
+    },
+    "stopped_early": null,
+    "calls": [
+      {
+        "n": 1,
+        "uid": "509aa21de73d4ca380cfe09fafaca9d9",
+        "folder": "A_frame_Carrier",
+        "name": "A_frame_Carrier",
+        "status": 200,
+        "elapsed_s": 1.102,
+        "rate_headers": {},
+        "formats": {
+          "source": {
+            "size": 29584646,
+            "expires": 300,
+            "url_host_path": "https://sketchfab-prod-media.s3.amazonaws.com/archives/509aa21de73d4ca380cfe09fafaca9d9/source/1db3b89c1e1442b6a17b3dd097525312/a-frame-carrier.zip"
+          },
+          "gltf": {
+            "size": 14128273,
+            "expires": 300,
+            "url_host_path": "https://sketchfab-prod-media.s3.amazonaws.com/archives/509aa21de73d4ca380cfe09fafaca9d9/gltf/4724739a274e4555a5b9f506b8b7cbbd/a_frame_carrier.zip"
+          },
+          "usdz": {
+            "size": 5509293,
+            "expires": 300,
+            "url_host_path": "https://sketchfab-prod-media.s3.amazonaws.com/archives/509aa21de73d4ca380cfe09fafaca9d9/usdz/0bbc059075ef4a4d9c267c2d387c33c1/A_frame_Carrier.usdz"
+          },
+          "glb": {
+            "size": 3861644,
+            "expires": 300,
+            "url_host_path": "https://sketchfab-prod-media.s3.amazonaws.com/archives/509aa21de73d4ca380cfe09fafaca9d9/glb/8e10c07fc16247fe89d79b2c164c57fd/a_frame_carrier.glb"
+          }
+        }
+      },
+      {
+        "n": 2,
+        "uid": "38eec351128f47b790ab445d41180d47",
+        "folder": "Abak",
+        "name": "Abak",
+        "status": 200,
+        "elapsed_s": 0.389,
+        "rate_headers": {},
+        "formats": {
+          "source": {
+            "size": 24634344,
+            "expires": 300,
+            "url_host_path": "https://sketchfab-prod-media.s3.amazonaws.com/archives/38eec351128f47b790ab445d41180d47/source/e5862a94443b4a80be64365e934f4e93/abak.zip"
+          },
+          "gltf": {
+            "size": 12185118,
+            "expires": 300,
+            "url_host_path": "https://sketchfab-prod-media.s3.amazonaws.com/archives/38eec351128f47b790ab445d41180d47/gltf/06f96ca3c4f74ea09e9e0f693018829c/abak.zip"
+          },
+          "usdz": {
+            "size": 6623833,
+            "expires": 300,
+            "url_host_path": "https://sketchfab-prod-media.s3.amazonaws.com/archives/38eec351128f47b790ab445d41180d47/usdz/c58504b0626744478abcccb24b7499e6/Abak.usdz"
+          },
+          "glb": {
+            "size": 5578920,
+            "expires": 300,
+            "url_host_path": "https://sketchfab-prod-media.s3.amazonaws.com/archives/38eec351128f47b790ab445d41180d47/glb/9b4cd7fc4ada4916baa0653795add72e/abak.glb"
+          }
+        }
+      },
+      {
+        "n": 3,
+        "uid": "deb855ad41084aa8a7a293520c4364c2",
+        "folder": "AcheongsaekJeokeui",
+        "name": "AcheongsaekJeokeui",
+        "status": 200,
+        "elapsed_s": 0.746,
+        "rate_headers": {},
+        "formats": {
+          "source": {
+            "size": 23510278,
+            "expires": 300,
+            "url_host_path": "https://sketchfab-prod-media.s3.amazonaws.com/archives/deb855ad41084aa8a7a293520c4364c2/source/169babb8dcdd4e05b8f2d2b573b03ebc/acheongsaekjeokeui.zip"
+          },
+          "gltf": {
+            "size": 12217542,
+            "expires": 300,
+            "url_host_path": "https://sketchfab-prod-media.s3.amazonaws.com/archives/deb855ad41084aa8a7a293520c4364c2/gltf/976d066acdea4909b51651a8e02774ef/acheongsaekjeokeui.zip"
+          },
+          "usdz": {
+            "size": 5806361,
+            "expires": 300,
+            "url_host_path": "https://sketchfab-prod-media.s3.amazonaws.com/archives/deb855ad41084aa8a7a293520c4364c2/usdz/8ea9a2ba23904139b4a3ae8e8624294b/AcheongsaekJeokeui.usdz"
+          },
+          "glb": {
+            "size": 4044044,
+            "expires": 300,
+            "url_host_path": "https://sketchfab-prod-media.s3.amazonaws.com/archives/deb855ad41084aa8a7a293520c4364c2/glb/723144bbdbba4b1fafdaa04e0659e9b2/acheongsaekjeokeui.glb"
+          }
+        }
+      },
+      {
+        "n": 4,
+        "uid": "7d46d2b876cd43aabc938d0146904bef",
+        "folder": "Animal-shaped Funerary Objects",
+        "name": "Animal-shaped Funerary Objects",
+        "status": 200,
+        "elapsed_s": 0.894,
+        "rate_headers": {},
+        "formats": {
+          "source": {
+            "size": 6925308,
+            "expires": 300,
+            "url_host_path": "https://sketchfab-prod-media.s3.amazonaws.com/archives/7d46d2b876cd43aabc938d0146904bef/source/4881860997fb4e98a49be5eefc368a0f/animal-shaped-funerary-objects.zip"
+          },
+          "gltf": {
+            "size": 5783668,
+            "expires": 300,
+            "url_host_path": "https://sketchfab-prod-media.s3.amazonaws.com/archives/7d46d2b876cd43aabc938d0146904bef/gltf/6928b6adf82a44349b7cfb8fc1fc08a4/animal-shaped_funerary_objects.zip"
+          },
+          "usdz": {
+            "size": 2936539,
+            "expires": 300,
+            "url_host_path": "https://sketchfab-prod-media.s3.amazonaws.com/archives/7d46d2b876cd43aabc938d0146904bef/usdz/89194de800744dabb7314598950ca781/Animal-shaped_Funerary_Objects.usdz"
+          },
+          "glb": {
+            "size": 5846352,
+            "expires": 300,
+            "url_host_path": "https://sketchfab-prod-media.s3.amazonaws.com/archives/7d46d2b876cd43aabc938d0146904bef/glb/73f7d8b27b624f99adcd6064d344c5c1/animal-shaped_funerary_objects.glb"
+          }
+        }
+      },
+      {
+        "n": 5,
+        "uid": "5faf0f2b2fcf40e1b85410747dbf8140",
+        "folder": "Anvil",
+        "name": "Anvil",
+        "status": 200,
+        "elapsed_s": 0.885,
+        "rate_headers": {},
+        "formats": {
+          "source": {
+            "size": 6676588,
+            "expires": 300,
+            "url_host_path": "https://sketchfab-prod-media.s3.amazonaws.com/archives/5faf0f2b2fcf40e1b85410747dbf8140/source/9a6424f706d64d7b8e1191b922b720ad/anvil.zip"
+          },
+          "gltf": {
+            "size": 3498045,
+            "expires": 300,
+            "url_host_path": "https://sketchfab-prod-media.s3.amazonaws.com/archives/5faf0f2b2fcf40e1b85410747dbf8140/gltf/d230968d0735486bafefbf3bda28792c/anvil.zip"
+          },
+          "usdz": {
+            "size": 1365606,
+            "expires": 300,
+            "url_host_path": "https://sketchfab-prod-media.s3.amazonaws.com/archives/5faf0f2b2fcf40e1b85410747dbf8140/usdz/a52203e60aa94380a7cb56be810f4856/Anvil.usdz"
+          },
+          "glb": {
+            "size": 3513628,
+            "expires": 300,
+            "url_host_path": "https://sketchfab-prod-media.s3.amazonaws.com/archives/5faf0f2b2fcf40e1b85410747dbf8140/glb/c8a227b51df84263a13baafc4d851ef3/anvil.glb"
+          }
+        }
+      },
+      {
+        "n": 6,
+        "uid": "a5f7eecb4e614ef6925f4e80eff9596f",
+        "folder": "Baduk",
+        "name": "Baduk",
+        "status": 200,
+        "elapsed_s": 0.977,
+        "rate_headers": {},
+        "formats": {
+          "source": {
+            "size": 428042,
+            "expires": 300,
+            "url_host_path": "https://sketchfab-prod-media.s3.amazonaws.com/archives/a5f7eecb4e614ef6925f4e80eff9596f/source/7a30d5c329394633896644f4c06870be/baduk.zip"
+          },
+          "gltf": {
+            "size": 226424,
+            "expires": 300,
+            "url_host_path": "https://sketchfab-prod-media.s3.amazonaws.com/archives/a5f7eecb4e614ef6925f4e80eff9596f/gltf/a934eb0ac1154274a317525cd21d9a2b/baduk.zip"
+          },
+          "usdz": {
+            "size": 98984,
+            "expires": 300,
+            "url_host_path": "https://sketchfab-prod-media.s3.amazonaws.com/archives/a5f7eecb4e614ef6925f4e80eff9596f/usdz/2ed39dd09529463db382a807f80989de/Baduk.usdz"
+          },
+          "glb": {
+            "size": 237344,
+            "expires": 300,
+            "url_host_path": "https://sketchfab-prod-media.s3.amazonaws.com/archives/a5f7eecb4e614ef6925f4e80eff9596f/glb/0f8d53ba6c0d4f3e924f1a3910f8e41d/baduk.glb"
+          }
+        }
+      },
+      {
+        "n": 7,
+        "uid": "6c7e1244d46c457fb6f3d6194663073b",
+        "folder": "Bamboo_Basket",
+        "name": "Bamboo_Basket",
+        "status": 200,
+        "elapsed_s": 1.136,
+        "rate_headers": {},
+        "formats": {
+          "source": {
+            "size": 932816,
+            "expires": 300,
+            "url_host_path": "https://sketchfab-prod-media.s3.amazonaws.com/archives/6c7e1244d46c457fb6f3d6194663073b/source/7bf22846435d411e8925b9278e0b35cf/bamboo-basket.zip"
+          },
+          "gltf": {
+            "size": 475296,
+            "expires": 300,
+            "url_host_path": "https://sketchfab-prod-media.s3.amazonaws.com/archives/6c7e1244d46c457fb6f3d6194663073b/gltf/ac08c3e8c9004ef9a37a11488796f636/bamboo_basket.zip"
+          },
+          "usdz": {
+            "size": 267624,
+            "expires": 300,
+            "url_host_path": "https://sketchfab-prod-media.s3.amazonaws.com/archives/6c7e1244d46c457fb6f3d6194663073b/usdz/2c1ddc14b6724ecbbe6361075d21f6c0/Bamboo_Basket.usdz"
+          },
+          "glb": {
+            "size": 495180,
+            "expires": 300,
+            "url_host_path": "https://sketchfab-prod-media.s3.amazonaws.com/archives/6c7e1244d46c457fb6f3d6194663073b/glb/2cc3a2b69cbc4a8b9f6bef09cda98c6e/bamboo_basket.glb"
+          }
+        }
+      },
+      {
+        "n": 8,
+        "uid": "340dc595943144f29962cb45a3a2d769",
+        "folder": "Bibimbap",
+        "name": "Bibimbap",
+        "status": 200,
+        "elapsed_s": 0.924,
+        "rate_headers": {},
+        "formats": {
+          "source": {
+            "size": 2267923,
+            "expires": 300,
+            "url_host_path": "https://sketchfab-prod-media.s3.amazonaws.com/archives/340dc595943144f29962cb45a3a2d769/source/b011261260b5488d90ee35b88f7fd569/bibimbap.zip"
+          },
+          "gltf": {
+            "size": 1088584,
+            "expires": 300,
+            "url_host_path": "https://sketchfab-prod-media.s3.amazonaws.com/archives/340dc595943144f29962cb45a3a2d769/gltf/266295bc95724eb2a613fb15ef3dd65b/bibimbap.zip"
+          },
+          "usdz": {
+            "size": 426282,
+            "expires": 300,
+            "url_host_path": "https://sketchfab-prod-media.s3.amazonaws.com/archives/340dc595943144f29962cb45a3a2d769/usdz/e5651ed254ee4d53b51e8285a23f114c/Bibimbap.usdz"
+          },
+          "glb": {
+            "size": 1099264,
+            "expires": 300,
+            "url_host_path": "https://sketchfab-prod-media.s3.amazonaws.com/archives/340dc595943144f29962cb45a3a2d769/glb/54e6beae4549418e9ba7b6d3419a9a18/bibimbap.glb"
+          }
+        }
+      },
+      {
+        "n": 9,
+        "uid": "32580a2388004a948a3dfd1921edac4f",
+        "folder": "Bird Feed Pouch",
+        "name": "Bird Feed Pouch",
+        "status": 200,
+        "elapsed_s": 0.397,
+        "rate_headers": {},
+        "formats": {
+          "source": {
+            "size": 4809449,
+            "expires": 300,
+            "url_host_path": "https://sketchfab-prod-media.s3.amazonaws.com/archives/32580a2388004a948a3dfd1921edac4f/source/1d9214688718482c91dae7d543e796b3/bird-feed-pouch.zip"
+          },
+          "gltf": {
+            "size": 4527164,
+            "expires": 300,
+            "url_host_path": "https://sketchfab-prod-media.s3.amazonaws.com/archives/32580a2388004a948a3dfd1921edac4f/gltf/1bb7ee638a1e479f8b342f089eb70281/bird_feed_pouch.zip"
+          },
+          "usdz": {
+            "size": 2097350,
+            "expires": 300,
+            "url_host_path": "https://sketchfab-prod-media.s3.amazonaws.com/archives/32580a2388004a948a3dfd1921edac4f/usdz/e9d9db9e2ace47b2b79d19ff2301603a/Bird_Feed_Pouch.usdz"
+          },
+          "glb": {
+            "size": 4648172,
+            "expires": 300,
+            "url_host_path": "https://sketchfab-prod-media.s3.amazonaws.com/archives/32580a2388004a948a3dfd1921edac4f/glb/76b6e59ded01451c983b26ed3c9f4333/bird_feed_pouch.glb"
+          }
+        }
+      },
+      {
+        "n": 10,
+        "uid": "98e1e7e8fd8242b4a1c979a769e38842",
+        "folder": "Birdcage Eori",
+        "name": "Birdcage (Eori)",
+        "status": 200,
+        "elapsed_s": 0.44,
+        "rate_headers": {},
+        "formats": {
+          "source": {
+            "size": 5989036,
+            "expires": 300,
+            "url_host_path": "https://sketchfab-prod-media.s3.amazonaws.com/archives/98e1e7e8fd8242b4a1c979a769e38842/source/36edd0b75ea9420ea604a71ccd0fcd99/birdcage-eori.zip"
+          },
+          "gltf": {
+            "size": 5381150,
+            "expires": 300,
+            "url_host_path": "https://sketchfab-prod-media.s3.amazonaws.com/archives/98e1e7e8fd8242b4a1c979a769e38842/gltf/c9743edda26443cabf6e52378b22d597/birdcage_eori.zip"
+          },
+          "usdz": {
+            "size": 2588072,
+            "expires": 300,
+            "url_host_path": "https://sketchfab-prod-media.s3.amazonaws.com/archives/98e1e7e8fd8242b4a1c979a769e38842/usdz/3f60c1630aa1412286a4f205b1e85412/Birdcage_Eori.usdz"
+          },
+          "glb": {
+            "size": 5668884,
+            "expires": 300,
+            "url_host_path": "https://sketchfab-prod-media.s3.amazonaws.com/archives/98e1e7e8fd8242b4a1c979a769e38842/glb/572788c6e67f42fe9e9f284b5fe6bdb6/birdcage_eori.glb"
+          }
+        }
+      }
+    ]
+  },
+  "download_verification": [
+    {
+      "uid": "a5f7eecb4e614ef6925f4e80eff9596f",
+      "folder": "Baduk",
+      "declared_size": 226424,
+      "http_status": 200,
+      "downloaded_bytes": 226424,
+      "size_matches": true,
+      "is_zip": true,
+      "archive_entries": [
+        "license.txt",
+        "scene.bin",
+        "scene.gltf",
+        "textures/",
+        "textures/SM_Baduk02a_baseColor.png",
+        "textures/SM_Baduk02a_metallicRoughness.png",
+        "textures/SM_Baduk02a_normal.png"
+      ],
+      "archive_entry_count": 7,
+      "has_scene_gltf": true,
+      "has_scene_bin": true,
+      "has_textures_dir": true,
+      "has_license_txt": true,
+      "local_comparison": {
+        "local_folder": "Baduk",
+        "local_file_count": 6,
+        "archive_file_count": 6,
+        "identical_set": true,
+        "only_local": [],
+        "only_in_archive": [],
+        "common_count": 6
+      }
+    },
+    {
+      "uid": "6c7e1244d46c457fb6f3d6194663073b",
+      "folder": "Bamboo_Basket",
+      "declared_size": 475296,
+      "http_status": 200,
+      "downloaded_bytes": 475296,
+      "size_matches": true,
+      "is_zip": true,
+      "archive_entries": [
+        "license.txt",
+        "scene.bin",
+        "scene.gltf",
+        "textures/",
+        "textures/M_Bamboo_Basket_baseColor.png",
+        "textures/M_Bamboo_Basket_metallicRoughness.png",
+        "textures/M_Bamboo_Basket_normal.png"
+      ],
+      "archive_entry_count": 7,
+      "has_scene_gltf": true,
+      "has_scene_bin": true,
+      "has_textures_dir": true,
+      "has_license_txt": true,
+      "local_comparison": {
+        "local_folder": "Bamboo_Basket",
+        "local_file_count": 6,
+        "archive_file_count": 6,
+        "identical_set": true,
+        "only_local": [],
+        "only_in_archive": [],
+        "common_count": 6
+      }
+    }
+  ],
+  "quota": {
+    "rate_limit_headers_exposed": false,
+    "retry_after_header_present": false,
+    "unpaced_burst": {
+      "successes_before_429": 15,
+      "429_at_call": 16,
+      "seconds_to_429": 7.56
+    },
+    "paced_2s_run": {
+      "successes_before_429": 15,
+      "429_at_call": 16,
+      "elapsed_to_429_s": 42.8,
+      "note": "identical cutoff to the unpaced burst, so the constraint is a quota of 15 calls per window, not a per-second rate"
+    },
+    "sustained_run_latest": {
+      "pace_s": 5.0,
+      "calls": 30,
+      "requests_per_min": 10.6,
+      "status_breakdown": {
+        "200": 30
+      },
+      "rate_limited": false
+    },
+    "sustained_run_20s": {
+      "pace_s": 20,
+      "calls": 12,
+      "requests_per_min": 3.1,
+      "status_breakdown": {
+        "200": 12
+      },
+      "rate_limited": false
+    },
+    "cooldown_observed_s": 54.5,
+    "cooldown_poll_interval_s": 10,
+    "interpretation": {
+      "model": "roughly 15 calls per rolling 60 second window",
+      "evidence": "429 landed on call 16 in three independent runs (unpaced, 2s paced, 2s paced again); after exhaustion service resumed once the oldest call aged out",
+      "bucket_capacity_calls": 15,
+      "sustainable_calls_per_min": 12,
+      "measured_clean_rate_per_min": 10.6,
+      "safe_pacing_seconds": 5,
+      "scope": "applies to GET /models/{uid}/download; the list endpoint served 117 pages at 0.5s pacing with no 429",
+      "s3_transfer_metered": false
+    }
+  },
+  "delta_sync_signal": {
+    "list_endpoint_has_updatedAt": false,
+    "model_endpoint_has_updatedAt": true,
+    "model_endpoint_time_fields": {
+      "createdAt": "2023-12-13T05:36:09.857454",
+      "publishedAt": "2023-12-13T05:41:58.220951",
+      "updatedAt": "2024-05-18T04:56:31.417331"
+    },
+    "list_exposes_archive_sizes": true,
+    "recommended_change_fingerprint": "archives.{fmt}.size + faceCount/vertexCount/textureCount from the list walk; these change when a model is re-uploaded and cost 39 list requests for the whole catalogue",
+    "note": "per-model GET /models/{uid} exposes updatedAt but returns no archives block, so it cannot replace the list walk"
+  },
+  "projection": {
+    "downloadable_models": 899,
+    "gltf_total_bytes": 36267266472,
+    "gltf_total_gb": 33.78,
+    "gltf_size_mb": {
+      "median": 7.29,
+      "mean": 40.34,
+      "max": 1439.79,
+      "over_100mb": 78,
+      "over_500mb": 13
+    },
+    "full_seed": {
+      "pacing_seconds": 5.0,
+      "api_seconds": 4495,
+      "api_hours": 1.25,
+      "days_at_weekly_cycle": 1,
+      "verdict": "a single unattended run of roughly 1.3 hours of API pacing; wall clock is set by the ~34GB S3 transfer, which is not metered by this quota"
+    },
+    "weekly_delta": {
+      "catalogue_scan_requests": 39,
+      "scan_cost": "list endpoint, no observed rate limit",
+      "download_calls_per_changed_model": 1,
+      "changed_models_affordable_per_hour": 720,
+      "verdict": "a weekly cycle fits with room to spare: 720 changed models per hour at safe pacing, far above any plausible weekly churn for this catalogue"
+    }
+  }
+}

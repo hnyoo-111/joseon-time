@@ -1,0 +1,10 @@
+[Unit]
+Description=조선의 시간 · 주 1회 동기화 (설계 §3 — 원천 게시 빈도가 낮아 주 1회로 충분)
+
+[Timer]
+OnCalendar=Mon 03:00
+Persistent=true
+RandomizedDelaySec=30m
+
+[Install]
+WantedBy=timers.target

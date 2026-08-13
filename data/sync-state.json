@@ -1,0 +1,4590 @@
+{
+ "baseline": {
+  "661eccfbbe4f4b5081a7f441dc5ab106": {
+   "gltfSize": 2738677,
+   "faceCount": 14336,
+   "vertexCount": 7168
+  },
+  "a2ec012186074e3ab1f6ade759c77717": {
+   "gltfSize": 5347347,
+   "faceCount": 55416,
+   "vertexCount": 27888
+  },
+  "cb14f9a63c094fa3a25d53edaa7bc507": {
+   "gltfSize": 4838185,
+   "faceCount": 77840,
+   "vertexCount": 38902
+  },
+  "3542260fe54f43f1895f806e0d436bfb": {
+   "gltfSize": 3711790,
+   "faceCount": 34560,
+   "vertexCount": 17288
+  },
+  "9d9911847bcb4549a5918769e25a3d84": {
+   "gltfSize": 2918462,
+   "faceCount": 7352,
+   "vertexCount": 3680
+  },
+  "b39f8874295744028e57d017ea68708b": {
+   "gltfSize": 2742040,
+   "faceCount": 10022,
+   "vertexCount": 5090
+  },
+  "20b0f9762296454ba9f1b31a38ff65b6": {
+   "gltfSize": 3613919,
+   "faceCount": 61468,
+   "vertexCount": 30734
+  },
+  "a805fd73aceb4522a0a98c512e9409df": {
+   "gltfSize": 30594247,
+   "faceCount": 732160,
+   "vertexCount": 366082
+  },
+  "3f8137517dec411eb84a77e637b81292": {
+   "gltfSize": 3803227,
+   "faceCount": 31732,
+   "vertexCount": 16009
+  },
+  "6e60d78807b648ff913741aa72c79285": {
+   "gltfSize": 1358484,
+   "faceCount": 4804,
+   "vertexCount": 2400
+  },
+  "cacee2c22cb640dfaa1c68e9d045ed4a": {
+   "gltfSize": 7725718,
+   "faceCount": 110720,
+   "vertexCount": 55360
+  },
+  "15be1d6d1cf0456b85a47b5eaed57213": {
+   "gltfSize": 11891564,
+   "faceCount": 4824,
+   "vertexCount": 2451
+  },
+  "a125e17fb23b4830bbe16f802cb3d280": {
+   "gltfSize": 3351955,
+   "faceCount": 35840,
+   "vertexCount": 17924
+  },
+  "e0c9a12afdda417f8ad2b7fc18cf7228": {
+   "gltfSize": 212440715,
+   "faceCount": 1625287,
+   "vertexCount": 846056
+  },
+  "b11ebd481c8e410c8e573c3990e9794a": {
+   "gltfSize": 43659067,
+   "faceCount": 223492,
+   "vertexCount": 125699
+  },
+  "5ed1ec1b9aab4c97a14a2166f0dd83b6": {
+   "gltfSize": 57464665,
+   "faceCount": 382421,
+   "vertexCount": 214757
+  },
+  "77d37fd1f8174c31b236c495c9c92f7e": {
+   "gltfSize": 141031899,
+   "faceCount": 1071256,
+   "vertexCount": 573997
+  },
+  "a2e7232e11994968a9a73ca2914fbeae": {
+   "gltfSize": 73298105,
+   "faceCount": 470792,
+   "vertexCount": 255621
+  },
+  "d12e46abad3d4f0da72c567c536a1891": {
+   "gltfSize": 51482018,
+   "faceCount": 131523,
+   "vertexCount": 73089
+  },
+  "b574e1a84c824fb0b970e7bf9ef660fa": {
+   "gltfSize": 50070207,
+   "faceCount": 292821,
+   "vertexCount": 160585
+  },
+  "506deb316d384ba78a078dbd90804010": {
+   "gltfSize": 381645725,
+   "faceCount": 815390,
+   "vertexCount": 441502
+  },
+  "f75356ba3d0f4c4db77f49f6b43e1b45": {
+   "gltfSize": 52625724,
+   "faceCount": 131523,
+   "vertexCount": 73103
+  },
+  "1d113d4d0f914e7c85b482acaa00c329": {
+   "gltfSize": 47894737,
+   "faceCount": 298369,
+   "vertexCount": 161224
+  },
+  "01cd4113bb2449b9a4b4e0d57ae4013f": {
+   "gltfSize": 74781374,
+   "faceCount": 61592,
+   "vertexCount": 31158
+  },
+  "4976e39010364d90b3a4db1eb2d70f0d": {
+   "gltfSize": 115096144,
+   "faceCount": 982571,
+   "vertexCount": 516601
+  },
+  "87e23f91863b45a4be6b8a101a9c83b5": {
+   "gltfSize": 143068759,
+   "faceCount": 1085940,
+   "vertexCount": 583404
+  },
+  "34b43359c73041008a8c03cd8f864461": {
+   "gltfSize": 142168741,
+   "faceCount": 1071180,
+   "vertexCount": 573949
+  },
+  "30dd9a5f70fd4aa1b5fa686246be6c4a": {
+   "gltfSize": 225740057,
+   "faceCount": 1777760,
+   "vertexCount": 934709
+  },
+  "41ad8b99666a4e47bb1288844f5f7c33": {
+   "gltfSize": 1439786030,
+   "faceCount": 815402,
+   "vertexCount": 441477
+  },
+  "6e04aa196906461c8d74b25bf424e136": {
+   "gltfSize": 2936813,
+   "faceCount": 6976,
+   "vertexCount": 3488
+  },
+  "cd937171f24d4688b8100fedecb4cf1e": {
+   "gltfSize": 3967260,
+   "faceCount": 5504,
+   "vertexCount": 2752
+  },
+  "bd6dabb5a5ae4dcf9741a3b3ec5c1afb": {
+   "gltfSize": 4149282,
+   "faceCount": 2610,
+   "vertexCount": 1318
+  },
+  "41008cc0e9f6477c91baae7cac95fb1b": {
+   "gltfSize": 631952071,
+   "faceCount": 164742,
+   "vertexCount": 91994
+  },
+  "c56a94c9e58d40b294544ca429d0cf98": {
+   "gltfSize": 230298317,
+   "faceCount": 51362,
+   "vertexCount": 26090
+  },
+  "81ced265789d477986dcbe72a4d48538": {
+   "gltfSize": 367785746,
+   "faceCount": 867386,
+   "vertexCount": 467879
+  },
+  "186cc54fa6dd43338d898453d9119faf": {
+   "gltfSize": 987269558,
+   "faceCount": 78064,
+   "vertexCount": 41556
+  },
+  "b7d142a589594f9c82038cdf31024bee": {
+   "gltfSize": null,
+   "faceCount": 870064,
+   "vertexCount": 469290
+  },
+  "1028cbe4217b48a1b61ab806ead52fc8": {
+   "gltfSize": 2028124,
+   "faceCount": 187334,
+   "vertexCount": 105111
+  },
+  "5ed08ab2696e4cf296e846362e2800ec": {
+   "gltfSize": 697872192,
+   "faceCount": 143835,
+   "vertexCount": 79526
+  },
+  "b69ad7eb0d9d4502839219bc05875a06": {
+   "gltfSize": 734809236,
+   "faceCount": 42086,
+   "vertexCount": 22336
+  },
+  "adf6072961814b3c9aeaaf6274c05c31": {
+   "gltfSize": 3870327,
+   "faceCount": 2854,
+   "vertexCount": 1459
+  },
+  "3950cb085a8b41ee88b93a029a48bec6": {
+   "gltfSize": 10122201,
+   "faceCount": 11740,
+   "vertexCount": 5870
+  },
+  "2da73c2f9747417c84775961acf83706": {
+   "gltfSize": 38132304,
+   "faceCount": 3982,
+   "vertexCount": 1993
+  },
+  "f16ef1cf0c1841b28db202ffdf5451a9": {
+   "gltfSize": 74335982,
+   "faceCount": 18126,
+   "vertexCount": 9065
+  },
+  "bbd1b6d2987e4a63917cf306fa42938d": {
+   "gltfSize": 46404993,
+   "faceCount": 16332,
+   "vertexCount": 8168
+  },
+  "df21040b91d54e6d9536d09a4788ae08": {
+   "gltfSize": 691397881,
+   "faceCount": 326534,
+   "vertexCount": 181467
+  },
+  "26810545956a433bbc77ca533a7f9c06": {
+   "gltfSize": 489781766,
+   "faceCount": 129836,
+   "vertexCount": 73982
+  },
+  "a46d9a5bf37d48b98e27506c3a9ea897": {
+   "gltfSize": 1112199787,
+   "faceCount": 87688,
+   "vertexCount": 46530
+  },
+  "16eaf772adf448b6b77f41c3f827ebb2": {
+   "gltfSize": 774473312,
+   "faceCount": 47694,
+   "vertexCount": 25511
+  },
+  "108205843d5f4a41966864bbf24507fc": {
+   "gltfSize": 2313103,
+   "faceCount": 5198,
+   "vertexCount": 2593
+  },
+  "d2cf4c5aa0c441c098ebc95824e6cc09": {
+   "gltfSize": 3740377,
+   "faceCount": 12528,
+   "vertexCount": 6252
+  },
+  "015fdce9e8e5412598f46c7aee10989c": {
+   "gltfSize": 442127834,
+   "faceCount": 84734,
+   "vertexCount": 45253
+  },
+  "fff9d89e6fd644ef96c9aa9df020c81d": {
+   "gltfSize": 2033842,
+   "faceCount": 1280,
+   "vertexCount": 642
+  },
+  "1e6d10cf66eb4429927c8b71028dc2d2": {
+   "gltfSize": 1022000913,
+   "faceCount": 419260,
+   "vertexCount": 229256
+  },
+  "00cb16d3230f4f93bec5816c271fc254": {
+   "gltfSize": 1181362647,
+   "faceCount": 82738,
+   "vertexCount": 44465
+  },
+  "20d5024d2d564d39af06f23736f6320b": {
+   "gltfSize": 87750957,
+   "faceCount": 9502,
+   "vertexCount": 5037
+  },
+  "b25886227c2e4fd1b94351f0d86e01cc": {
+   "gltfSize": 6262519,
+   "faceCount": 33558,
+   "vertexCount": 16781
+  },
+  "f381b3352b4849c5b16bc15ac62ccae7": {
+   "gltfSize": 227234679,
+   "faceCount": 78064,
+   "vertexCount": 41556
+  },
+  "129a9a9627ce4d6cb33f5cdd62d28cb0": {
+   "gltfSize": 5143889,
+   "faceCount": 5016,
+   "vertexCount": 2550
+  },
+  "00ea3fbc28da47bab229ed9f69c23cf4": {
+   "gltfSize": 2263734,
+   "faceCount": 768,
+   "vertexCount": 386
+  },
+  "153e491f19b0412b9a0f6ca8c0e38b20": {
+   "gltfSize": 5714031,
+   "faceCount": 30870,
+   "vertexCount": 15522
+  },
+  "070cff1edf05478cad06b6dbb79590c2": {
+   "gltfSize": 1537554,
+   "faceCount": 896,
+   "vertexCount": 450
+  },
+  "ea15b316032045bc95992f78f40d2567": {
+   "gltfSize": 2176556,
+   "faceCount": 47588,
+   "vertexCount": 23858
+  },
+  "cd47e58bc0c34db482b8d4fba5223aa5": {
+   "gltfSize": 4933991,
+   "faceCount": 8032,
+   "vertexCount": 4016
+  },
+  "bbb5e765857e4ce1bae023d68aad3d6a": {
+   "gltfSize": 6093671,
+   "faceCount": 84424,
+   "vertexCount": 44354
+  },
+  "740e6813795143c29e5bcefbb168bd71": {
+   "gltfSize": 4914261,
+   "faceCount": 25948,
+   "vertexCount": 12966
+  },
+  "8fd648e38da443ef89b888c07795cc95": {
+   "gltfSize": 5268487,
+   "faceCount": 13264,
+   "vertexCount": 6630
+  },
+  "6ad087c70274487e8407d7fc6d9699aa": {
+   "gltfSize": 2537219,
+   "faceCount": 16442,
+   "vertexCount": 8223
+  },
+  "3d55555bce6e476299e3eab54bb09ad9": {
+   "gltfSize": 5568155,
+   "faceCount": 14912,
+   "vertexCount": 7458
+  },
+  "25e287c30ddf418f8823f93a5025351e": {
+   "gltfSize": 4354053,
+   "faceCount": 7148,
+   "vertexCount": 3576
+  },
+  "8486f16a169148be8781dbea504133d5": {
+   "gltfSize": 4113442,
+   "faceCount": 6700,
+   "vertexCount": 3352
+  },
+  "b4fb29cfb506467b923b18e636680c6a": {
+   "gltfSize": 244921488,
+   "faceCount": 13174,
+   "vertexCount": 7918
+  },
+  "33ddc1e93d3e4627ab4b206fc531edd2": {
+   "gltfSize": 4607981,
+   "faceCount": 8398,
+   "vertexCount": 4203
+  },
+  "72de750c3ee74f2085d36f3bae21d12a": {
+   "gltfSize": 4680242,
+   "faceCount": 5032,
+   "vertexCount": 2518
+  },
+  "c5fdc06a97f14a359181b3a8ba9e907c": {
+   "gltfSize": 3645423,
+   "faceCount": 4448,
+   "vertexCount": 2274
+  },
+  "2c93e5a1a2be4795b7e273a9058396bf": {
+   "gltfSize": 5451624,
+   "faceCount": 6134,
+   "vertexCount": 3065
+  },
+  "59d304a52eb24bafa5b63632b4ad6b29": {
+   "gltfSize": 4880433,
+   "faceCount": 16684,
+   "vertexCount": 8344
+  },
+  "1b1f6ca13ec144d18fddd680fb05f9e9": {
+   "gltfSize": 5416138,
+   "faceCount": 14020,
+   "vertexCount": 7012
+  },
+  "68225bd36ea54b86a381683a23b23c4e": {
+   "gltfSize": 51042728,
+   "faceCount": 10504,
+   "vertexCount": 5537
+  },
+  "6ebdb880c7c34489a49d7605589272d1": {
+   "gltfSize": 1021329172,
+   "faceCount": 42246,
+   "vertexCount": 23080
+  },
+  "226d380c5b17408ead2217c991ed9507": {
+   "gltfSize": 4654200,
+   "faceCount": 8050,
+   "vertexCount": 4029
+  },
+  "7468c250fd4b465e85e61601a977c33f": {
+   "gltfSize": 7306618,
+   "faceCount": 49416,
+   "vertexCount": 24838
+  },
+  "84375960b1f04a9fa3f59573287a55a7": {
+   "gltfSize": 5938257,
+   "faceCount": 46970,
+   "vertexCount": 23471
+  },
+  "1c31137bd0414b9f9db1b7ea51d45a5a": {
+   "gltfSize": 4724303,
+   "faceCount": 14428,
+   "vertexCount": 7216
+  },
+  "8523f33ceaff4fee982a16d6984629a8": {
+   "gltfSize": 4215502,
+   "faceCount": 2892,
+   "vertexCount": 1448
+  },
+  "acbb48ae0b404f4db965bf5b424be089": {
+   "gltfSize": 4048715,
+   "faceCount": 15652,
+   "vertexCount": 7828
+  },
+  "4243a3f9b183414eb9bcf8e506fe4956": {
+   "gltfSize": 1477427,
+   "faceCount": 8840,
+   "vertexCount": 4420
+  },
+  "7593c85e81224aefa0f9c35523f9d2b7": {
+   "gltfSize": 3968738,
+   "faceCount": 3100,
+   "vertexCount": 1540
+  },
+  "d1448f1114ab454aab23edd096172e63": {
+   "gltfSize": 2306982,
+   "faceCount": 1242,
+   "vertexCount": 621
+  },
+  "283823eae0a44a27914e1ebaecf06c13": {
+   "gltfSize": 2828299,
+   "faceCount": 8224,
+   "vertexCount": 4114
+  },
+  "f0365fd6c96b4958bfb697febda3d3a7": {
+   "gltfSize": 5436369,
+   "faceCount": 29186,
+   "vertexCount": 14611
+  },
+  "243d4ebabc7140909384a879fb2ada0d": {
+   "gltfSize": 6757639,
+   "faceCount": 52284,
+   "vertexCount": 26152
+  },
+  "77d0f39e8a2c4be8b01a13a47419aec2": {
+   "gltfSize": 2644265,
+   "faceCount": 12172,
+   "vertexCount": 6120
+  },
+  "49cefff5019c41c78a910b338ffdfcf9": {
+   "gltfSize": 4888509,
+   "faceCount": 15234,
+   "vertexCount": 7619
+  },
+  "d4ac1099ba874f018f255128a6883b54": {
+   "gltfSize": 2997096,
+   "faceCount": 14654,
+   "vertexCount": 7329
+  },
+  "57bd025914f747dc9910f4dca99ff954": {
+   "gltfSize": 4543425,
+   "faceCount": 16350,
+   "vertexCount": 8183
+  },
+  "98988ef166984194b2a8a982c41aa7ff": {
+   "gltfSize": 4175345,
+   "faceCount": 14112,
+   "vertexCount": 7058
+  },
+  "1f333b0f8a964dc1a664d33474cff654": {
+   "gltfSize": 5503845,
+   "faceCount": 12294,
+   "vertexCount": 6141
+  },
+  "55c8802adb364db9ac0eca68fa1391ea": {
+   "gltfSize": 106937391,
+   "faceCount": 12060,
+   "vertexCount": 6779
+  },
+  "2e6f65e858514f9cad37a33167789c6c": {
+   "gltfSize": 109194560,
+   "faceCount": 12060,
+   "vertexCount": 6779
+  },
+  "3f4ad3f930894dd082a5a2aa5c94bc02": {
+   "gltfSize": 3565298,
+   "faceCount": 6992,
+   "vertexCount": 3496
+  },
+  "0bf56e7125694f0d8052df69916d64de": {
+   "gltfSize": 4606314,
+   "faceCount": 12058,
+   "vertexCount": 6025
+  },
+  "1e91da036cbf45afa8df88e96b72a617": {
+   "gltfSize": 5641827,
+   "faceCount": 8976,
+   "vertexCount": 4500
+  },
+  "0e44aa2e133447fb9bd550c7bf42f075": {
+   "gltfSize": 4513466,
+   "faceCount": 17934,
+   "vertexCount": 9131
+  },
+  "a390bb24856f44b283ea467b2c75c470": {
+   "gltfSize": 4415841,
+   "faceCount": 1480,
+   "vertexCount": 746
+  },
+  "7423e55f0e424329a474dbea30668260": {
+   "gltfSize": 4119814,
+   "faceCount": 3418,
+   "vertexCount": 1711
+  },
+  "66c31ed630854e9bb5a096b11b2bbbba": {
+   "gltfSize": 4378982,
+   "faceCount": 13680,
+   "vertexCount": 6842
+  },
+  "4e6b72a258eb410a85c23db5a1842ef8": {
+   "gltfSize": 4581834,
+   "faceCount": 21282,
+   "vertexCount": 10627
+  },
+  "fa51411b736a4306889e197226f1b806": {
+   "gltfSize": 8087071,
+   "faceCount": 55376,
+   "vertexCount": 30040
+  },
+  "b21f0475d5df4a93b85c44a20f919556": {
+   "gltfSize": 3636786,
+   "faceCount": 27758,
+   "vertexCount": 14389
+  },
+  "1fe88e94496f4d94b0dfed2ab7e3a0e8": {
+   "gltfSize": 4189569,
+   "faceCount": 53024,
+   "vertexCount": 27770
+  },
+  "59bccc7415f542e8985ec53c7c5a6ecc": {
+   "gltfSize": 6586639,
+   "faceCount": 71543,
+   "vertexCount": 35954
+  },
+  "58b4a16f49ba49e898fa836f0e55256f": {
+   "gltfSize": 2618014,
+   "faceCount": 71028,
+   "vertexCount": 35514
+  },
+  "86dad0c18ca949e9ac4269611261c01b": {
+   "gltfSize": 1211208250,
+   "faceCount": 86488,
+   "vertexCount": 46207
+  },
+  "bd4a5fc978d44876b887e0ec7f42ff8c": {
+   "gltfSize": 1243090439,
+   "faceCount": 198775,
+   "vertexCount": 106284
+  },
+  "91b0f8ef12dd4a5a99d17d802b3bf41f": {
+   "gltfSize": 3731961,
+   "faceCount": 5180,
+   "vertexCount": 2592
+  },
+  "816cc4d3221e4d14bb499c3e0477ea3d": {
+   "gltfSize": 5981389,
+   "faceCount": 13434,
+   "vertexCount": 6718
+  },
+  "7d18e55a52dc4a73a2060c4d42afc998": {
+   "gltfSize": 6910933,
+   "faceCount": 44569,
+   "vertexCount": 22091
+  },
+  "ede9a22228b54d33a6b81dd33735c828": {
+   "gltfSize": 6678964,
+   "faceCount": 56968,
+   "vertexCount": 28562
+  },
+  "ef6631dc3c5a45a19d74f49d75492c54": {
+   "gltfSize": 4411259,
+   "faceCount": 27670,
+   "vertexCount": 13900
+  },
+  "84303058398745578204e47e1581ed3f": {
+   "gltfSize": 4520158,
+   "faceCount": 15392,
+   "vertexCount": 7698
+  },
+  "a0fbbfb48db44ce2be7a49a15fd9f7e2": {
+   "gltfSize": 5490799,
+   "faceCount": 39996,
+   "vertexCount": 20000
+  },
+  "e8f3b45895f341879691e3d9e2793807": {
+   "gltfSize": 4188601,
+   "faceCount": 9838,
+   "vertexCount": 4921
+  },
+  "07d36209485341b6836cacb2b3c54076": {
+   "gltfSize": 5625811,
+   "faceCount": 11520,
+   "vertexCount": 5771
+  },
+  "7d46d2b876cd43aabc938d0146904bef": {
+   "gltfSize": 5783668,
+   "faceCount": 3632,
+   "vertexCount": 1818
+  },
+  "774df903b40a4473bb456da87d1d87c8": {
+   "gltfSize": 4045693,
+   "faceCount": 13136,
+   "vertexCount": 6584
+  },
+  "88fcc8e4d6bd4c85a73503f7608ae4ca": {
+   "gltfSize": 4720568,
+   "faceCount": 6194,
+   "vertexCount": 3110
+  },
+  "1443f5a3ff754151931917c0ca7f0f84": {
+   "gltfSize": 4204146,
+   "faceCount": 2880,
+   "vertexCount": 1440
+  },
+  "f3152f11bf7e4571ac7544f12b738be5": {
+   "gltfSize": 7114106,
+   "faceCount": 41822,
+   "vertexCount": 21578
+  },
+  "f83538c3077a44248b05cb7e706b903b": {
+   "gltfSize": 17990026,
+   "faceCount": 3392,
+   "vertexCount": 1698
+  },
+  "3498e4f0aaf34fdeb7db1d0c5857f203": {
+   "gltfSize": 5338609,
+   "faceCount": 8912,
+   "vertexCount": 4458
+  },
+  "e4f71d5f6aac4283b9ca91760140af47": {
+   "gltfSize": 7787700,
+   "faceCount": 81748,
+   "vertexCount": 42438
+  },
+  "ae6ef6df57cd4471aafa74f1ff06b4dd": {
+   "gltfSize": 4204506,
+   "faceCount": 9784,
+   "vertexCount": 4888
+  },
+  "b6440d6be309496fb93cd8876b7b6520": {
+   "gltfSize": 2653899,
+   "faceCount": 5168,
+   "vertexCount": 2633
+  },
+  "fbc118adf0d8418985cd55b978061545": {
+   "gltfSize": 5497972,
+   "faceCount": 5856,
+   "vertexCount": 2946
+  },
+  "96a36298363147ffa86b5190f682062a": {
+   "gltfSize": 1654389,
+   "faceCount": 4406,
+   "vertexCount": 2205
+  },
+  "d3490c6dd817463a878a4364e5ff73f9": {
+   "gltfSize": 49734590,
+   "faceCount": 53818,
+   "vertexCount": 28613
+  },
+  "b7e2914353f6467ea57c36362ab367e6": {
+   "gltfSize": 2769929,
+   "faceCount": 1152,
+   "vertexCount": 578
+  },
+  "87878ecd2ee24f12a5eb314fd550cc5e": {
+   "gltfSize": 6735839,
+   "faceCount": 84964,
+   "vertexCount": 42486
+  },
+  "34027070d129451380ac7f454482ae75": {
+   "gltfSize": 5409277,
+   "faceCount": 27236,
+   "vertexCount": 13651
+  },
+  "fc75d069fb3248e8b3ddd177e8ff82da": {
+   "gltfSize": 5005242,
+   "faceCount": 28506,
+   "vertexCount": 14269
+  },
+  "37b6e254f52847548cb9e7fd60b777f5": {
+   "gltfSize": 3615749,
+   "faceCount": 5584,
+   "vertexCount": 2826
+  },
+  "dff2e467e1b74e8ea4f8eb9e6f92e749": {
+   "gltfSize": 1664911,
+   "faceCount": 21966,
+   "vertexCount": 11111
+  },
+  "a7700423049d4bbca5bc69ab3b81fda5": {
+   "gltfSize": 3468495,
+   "faceCount": 12445,
+   "vertexCount": 6357
+  },
+  "e3e3eacc4b6e441c9fa82599bd137d9b": {
+   "gltfSize": 1360999,
+   "faceCount": 13510,
+   "vertexCount": 6934
+  },
+  "d014764849bf4f1f9a1da6672cd6b360": {
+   "gltfSize": 1600019,
+   "faceCount": 4702,
+   "vertexCount": 2359
+  },
+  "0b0240b8fb344f779415ef3b3a63777f": {
+   "gltfSize": 3069390,
+   "faceCount": 374,
+   "vertexCount": 198
+  },
+  "d13a6042973c4d0a9214697ef9e6f39f": {
+   "gltfSize": 3692166,
+   "faceCount": 16718,
+   "vertexCount": 8509
+  },
+  "5bdc4b2fd08a49c6aece763a224c5d55": {
+   "gltfSize": 3219472,
+   "faceCount": 15100,
+   "vertexCount": 7641
+  },
+  "cde5612b5de8458aa5b5e623030df52c": {
+   "gltfSize": 2748271,
+   "faceCount": 7648,
+   "vertexCount": 3824
+  },
+  "8c873114c74842b2bc2d524da3784579": {
+   "gltfSize": 5476176,
+   "faceCount": 12112,
+   "vertexCount": 6108
+  },
+  "a64479321bd0453590f47203947dabae": {
+   "gltfSize": 5316131,
+   "faceCount": 4896,
+   "vertexCount": 2486
+  },
+  "befac817b1894789b7c6ea51fbe7333c": {
+   "gltfSize": 5237997,
+   "faceCount": 4896,
+   "vertexCount": 2486
+  },
+  "9fa481bccd924754a7c51d7a6b4b6532": {
+   "gltfSize": 4396660,
+   "faceCount": 2328,
+   "vertexCount": 1166
+  },
+  "2806bdf03aa14d769f319ee173370d67": {
+   "gltfSize": 1988454,
+   "faceCount": 19712,
+   "vertexCount": 9991
+  },
+  "6236b722475641c2a19873d2a25bb3f5": {
+   "gltfSize": 4721298,
+   "faceCount": 31391,
+   "vertexCount": 16276
+  },
+  "8586ec8dc9af4ca08d8e67446345cb3c": {
+   "gltfSize": 6614611,
+   "faceCount": 40040,
+   "vertexCount": 19999
+  },
+  "7a5df79b8f844d49b9cf120aa8e2c97c": {
+   "gltfSize": 3143718,
+   "faceCount": 7916,
+   "vertexCount": 4011
+  },
+  "2ebdaf0f3d1f45b99d3541484551668d": {
+   "gltfSize": 3106766,
+   "faceCount": 4064,
+   "vertexCount": 2085
+  },
+  "3726ed8d08f34790949d9e5064503870": {
+   "gltfSize": 2494592,
+   "faceCount": 10240,
+   "vertexCount": 5128
+  },
+  "508c0390668d4d7ba39c06e05f1bc3b1": {
+   "gltfSize": 1990645,
+   "faceCount": 5138,
+   "vertexCount": 2623
+  },
+  "e4e936d4b5224d9a9533f49fb53a7008": {
+   "gltfSize": 6407624,
+   "faceCount": 75156,
+   "vertexCount": 41384
+  },
+  "d96fd823052f44c1adbb1d5786bb502e": {
+   "gltfSize": 3508176,
+   "faceCount": 10208,
+   "vertexCount": 5106
+  },
+  "f04d07e525f74f76810143f7040625a7": {
+   "gltfSize": 5477931,
+   "faceCount": 23856,
+   "vertexCount": 12087
+  },
+  "415035f91b3c4b1d8589391bf71095e2": {
+   "gltfSize": 5064552,
+   "faceCount": 15988,
+   "vertexCount": 7994
+  },
+  "cf03b827d5204e50b91e3a77b99e0ad0": {
+   "gltfSize": 4616780,
+   "faceCount": 1636,
+   "vertexCount": 820
+  },
+  "11f7e82c58844497911cba6ab6084b0c": {
+   "gltfSize": 2960385,
+   "faceCount": 2454,
+   "vertexCount": 1229
+  },
+  "ff67ec3156cb4b6eae0cbfeabf68598e": {
+   "gltfSize": 3051548,
+   "faceCount": 41948,
+   "vertexCount": 20930
+  },
+  "a2fcf0469b5f49cd8abdf9b38e8b75d6": {
+   "gltfSize": 3608273,
+   "faceCount": 6336,
+   "vertexCount": 3172
+  },
+  "7caa9be140264945bfe531d9fc7da23a": {
+   "gltfSize": 5151774,
+   "faceCount": 14744,
+   "vertexCount": 7374
+  },
+  "a2a5ceeb1674408cb3f4095ad15af362": {
+   "gltfSize": 4749325,
+   "faceCount": 14018,
+   "vertexCount": 7011
+  },
+  "f5c8cd36a6a54753b40e82cec902a906": {
+   "gltfSize": 5128564,
+   "faceCount": 11238,
+   "vertexCount": 5621
+  },
+  "0039033936ce4215bb01945f118af774": {
+   "gltfSize": 4897990,
+   "faceCount": 12556,
+   "vertexCount": 6280
+  },
+  "4f9690bfc796492cb89d07ea6861e1bd": {
+   "gltfSize": 4470222,
+   "faceCount": 16540,
+   "vertexCount": 8272
+  },
+  "d3b1b2e11dae44b686c0efbb2f991307": {
+   "gltfSize": 443534,
+   "faceCount": 592,
+   "vertexCount": 298
+  },
+  "32580a2388004a948a3dfd1921edac4f": {
+   "gltfSize": 4527164,
+   "faceCount": 8357,
+   "vertexCount": 4222
+  },
+  "c738fd8083bd41d68dcb81a4f3017262": {
+   "gltfSize": 2419179,
+   "faceCount": 11758,
+   "vertexCount": 5877
+  },
+  "b1f6f2cad60a4f14bb9c3ff019f4f248": {
+   "gltfSize": 5179076,
+   "faceCount": 14534,
+   "vertexCount": 7269
+  },
+  "1bfc609d409e4b13b58f7371c1116733": {
+   "gltfSize": 6437649,
+   "faceCount": 45030,
+   "vertexCount": 22229
+  },
+  "b398b0305cec4a24864bf5ce2d4d1925": {
+   "gltfSize": 3310151,
+   "faceCount": 15656,
+   "vertexCount": 7810
+  },
+  "98e1e7e8fd8242b4a1c979a769e38842": {
+   "gltfSize": 5381150,
+   "faceCount": 18492,
+   "vertexCount": 9322
+  },
+  "1d664c106a284de7a5cb6286ab21725e": {
+   "gltfSize": 3107945,
+   "faceCount": 19203,
+   "vertexCount": 9753
+  },
+  "ab533ce32e374c29a8d116136409ba6c": {
+   "gltfSize": 3292275,
+   "faceCount": 19528,
+   "vertexCount": 9764
+  },
+  "c05b3846dc0742d095892c7f956f5881": {
+   "gltfSize": 6173289,
+   "faceCount": 16470,
+   "vertexCount": 8227
+  },
+  "f7609a6bfdf74ee195f27a7f81ea9bbb": {
+   "gltfSize": 4289391,
+   "faceCount": 8544,
+   "vertexCount": 4310
+  },
+  "092ff1d1a3c14130931cb96502d5929a": {
+   "gltfSize": 5636073,
+   "faceCount": 16428,
+   "vertexCount": 8229
+  },
+  "5c41a5847fac45f8b8b470a747ae4e08": {
+   "gltfSize": 6342183,
+   "faceCount": 20924,
+   "vertexCount": 10440
+  },
+  "9d04c09d41b849789dfc352dcacd3cc9": {
+   "gltfSize": 4879783,
+   "faceCount": 7203,
+   "vertexCount": 3606
+  },
+  "de084fb4b8cf491dad7d936b78523130": {
+   "gltfSize": 5124217,
+   "faceCount": 8624,
+   "vertexCount": 4346
+  },
+  "2c99a3722d3f4981b81af584fe5f82bf": {
+   "gltfSize": 4845982,
+   "faceCount": 24532,
+   "vertexCount": 12374
+  },
+  "0a124e5532ac47de977921c6f20bce54": {
+   "gltfSize": 4180450,
+   "faceCount": 6076,
+   "vertexCount": 3040
+  },
+  "ec1e9c1cff6e4cdf897502d958a6fdec": {
+   "gltfSize": 3572616,
+   "faceCount": 19426,
+   "vertexCount": 9707
+  },
+  "5fb0a3256ebb45718acfc84507ff4f37": {
+   "gltfSize": 4520151,
+   "faceCount": 15392,
+   "vertexCount": 7698
+  },
+  "3749914d8db746fbba8a8780e0d089b4": {
+   "gltfSize": 1005222,
+   "faceCount": 7816,
+   "vertexCount": 3912
+  },
+  "68de27bef2404937aea0e6891d36ad61": {
+   "gltfSize": 6167782,
+   "faceCount": 15296,
+   "vertexCount": 7747
+  },
+  "7d2ba21e64934b4395d3641597ed76a1": {
+   "gltfSize": 3691152,
+   "faceCount": 1428,
+   "vertexCount": 716
+  },
+  "13024b3f216c41069e5a19ea92bf23fe": {
+   "gltfSize": 3926480,
+   "faceCount": 14153,
+   "vertexCount": 7104
+  },
+  "b4ed3932048a426fa777fb80b3a453d3": {
+   "gltfSize": 3583128,
+   "faceCount": 6144,
+   "vertexCount": 3267
+  },
+  "c699c95d7b0541d3b9f08f93fd2ba55d": {
+   "gltfSize": 4461526,
+   "faceCount": 100028,
+   "vertexCount": 51028
+  },
+  "4664212e8f7847fc814ef884d5db06c6": {
+   "gltfSize": 4409196,
+   "faceCount": 49826,
+   "vertexCount": 25383
+  },
+  "edef50abfa1d465a94fd6faa88958c7c": {
+   "gltfSize": 4370601,
+   "faceCount": 24413,
+   "vertexCount": 12876
+  },
+  "50d98d0b3bf94c418919dc9cf2f91bba": {
+   "gltfSize": 11381514,
+   "faceCount": 8154,
+   "vertexCount": 4160
+  },
+  "6f82af9976df434b9b6d72d21bd45bd5": {
+   "gltfSize": 3573935,
+   "faceCount": 456,
+   "vertexCount": 230
+  },
+  "b2ea15f4318d4484901e53ec4bc9b110": {
+   "gltfSize": 5305756,
+   "faceCount": 135940,
+   "vertexCount": 74250
+  },
+  "75c317f4385249fda2698d403da1b5f7": {
+   "gltfSize": 6460070,
+   "faceCount": 13360,
+   "vertexCount": 6787
+  },
+  "941f45801cec4c508594f9ad359d2a49": {
+   "gltfSize": 4855993,
+   "faceCount": 13922,
+   "vertexCount": 6935
+  },
+  "d3b8fd33c6e5478a861d539617d2b055": {
+   "gltfSize": 8307588,
+   "faceCount": 67206,
+   "vertexCount": 33646
+  },
+  "44ff1c7ebfb641b2874db10fd2dd9e9b": {
+   "gltfSize": 5254947,
+   "faceCount": 13590,
+   "vertexCount": 6779
+  },
+  "e06d666ffe1f47b9b53cba08e95866b1": {
+   "gltfSize": 11063255,
+   "faceCount": 16258,
+   "vertexCount": 8155
+  },
+  "4956c3f5ce2645f3baaeb12387ed3c7b": {
+   "gltfSize": 7009968,
+   "faceCount": 20688,
+   "vertexCount": 11017
+  },
+  "38e65d0ced734f2a92310700083e1a06": {
+   "gltfSize": 4320300,
+   "faceCount": 17938,
+   "vertexCount": 9048
+  },
+  "502026e7b7be4d54aa2a4b92ed260bd8": {
+   "gltfSize": 2493424,
+   "faceCount": 13232,
+   "vertexCount": 6626
+  },
+  "21a34228faab4123a94fc55f9dd3f855": {
+   "gltfSize": 3109294,
+   "faceCount": 6514,
+   "vertexCount": 3259
+  },
+  "8880b85219314c9e92b664f8edf3298d": {
+   "gltfSize": 4232755,
+   "faceCount": 20012,
+   "vertexCount": 9999
+  },
+  "0435af9800244d69b34e69d145f96a11": {
+   "gltfSize": 4749974,
+   "faceCount": 15184,
+   "vertexCount": 7389
+  },
+  "32047b40807f424bb3069625b14a3006": {
+   "gltfSize": 9934081,
+   "faceCount": 195980,
+   "vertexCount": 99778
+  },
+  "cc92a7a4500a40f2853601c12756bb7b": {
+   "gltfSize": 4179378,
+   "faceCount": 2688,
+   "vertexCount": 1348
+  },
+  "94d16644503740eea1afe86bc7adb8b2": {
+   "gltfSize": 3656072,
+   "faceCount": 7674,
+   "vertexCount": 3839
+  },
+  "5bee1a25b37c4db59bb8a46d60c9f5c0": {
+   "gltfSize": 5763459,
+   "faceCount": 8212,
+   "vertexCount": 4137
+  },
+  "d2ee200febc74da392d14b4c42834157": {
+   "gltfSize": 4554793,
+   "faceCount": 3724,
+   "vertexCount": 1874
+  },
+  "668e6329914a494fba751d0fba6c0af3": {
+   "gltfSize": 4089725,
+   "faceCount": 3748,
+   "vertexCount": 1876
+  },
+  "feb6ef51e0bb4ab4bb52ca97b82bb0d2": {
+   "gltfSize": 6989864,
+   "faceCount": 34415,
+   "vertexCount": 17464
+  },
+  "210443c54a0d43108505cd0a25751771": {
+   "gltfSize": 3380924,
+   "faceCount": 4462,
+   "vertexCount": 2221
+  },
+  "878fe625b0d14910a71e61b2094cd678": {
+   "gltfSize": 4282162,
+   "faceCount": 1828,
+   "vertexCount": 912
+  },
+  "b7757b349c864e91aae5043f6c350a55": {
+   "gltfSize": 6783409,
+   "faceCount": 60706,
+   "vertexCount": 33697
+  },
+  "7eb60368fe4c480da9c24a74f614ea89": {
+   "gltfSize": 6277128,
+   "faceCount": 720,
+   "vertexCount": 468
+  },
+  "cc7685929b52438ca738a41716dce40b": {
+   "gltfSize": 3703524,
+   "faceCount": 6144,
+   "vertexCount": 3267
+  },
+  "4b1daa311a924407b4911e935705c6a5": {
+   "gltfSize": 6005449,
+   "faceCount": 19935,
+   "vertexCount": 9960
+  },
+  "187aeef52ce44c5caf633fb929df8320": {
+   "gltfSize": 2944503,
+   "faceCount": 4224,
+   "vertexCount": 2098
+  },
+  "032893b9d4d44d2f872e65d1109217f4": {
+   "gltfSize": 3848859,
+   "faceCount": 8586,
+   "vertexCount": 4293
+  },
+  "e083ddb4f7b64570a0e5244ed8e34c09": {
+   "gltfSize": 80118414,
+   "faceCount": 126669,
+   "vertexCount": 65302
+  },
+  "5310c526ff404a47b64b277ee3f2e41c": {
+   "gltfSize": 6015254,
+   "faceCount": 98300,
+   "vertexCount": 58354
+  },
+  "3dd09cf0a6f848b3acfb33926fd53791": {
+   "gltfSize": 6570033,
+   "faceCount": 50005,
+   "vertexCount": 24999
+  },
+  "37006a1b338b4fb6b762d93d9922cf17": {
+   "gltfSize": 4375292,
+   "faceCount": 3996,
+   "vertexCount": 2000
+  },
+  "af2ed772d79745f4af9ffc6c45de8ffb": {
+   "gltfSize": 6061203,
+   "faceCount": 8524,
+   "vertexCount": 4264
+  },
+  "daac16682c6d4c7fa6478443a467957e": {
+   "gltfSize": 85060156,
+   "faceCount": 126669,
+   "vertexCount": 65302
+  },
+  "9602e89633ee44b2bf707116b493a351": {
+   "gltfSize": 4353981,
+   "faceCount": 14472,
+   "vertexCount": 7224
+  },
+  "d3a795d56be74cebbfb05934fc58535b": {
+   "gltfSize": 6436673,
+   "faceCount": 29580,
+   "vertexCount": 14752
+  },
+  "8e40d7ab938f4e9cbf9aec8950951c48": {
+   "gltfSize": 4230931,
+   "faceCount": 6950,
+   "vertexCount": 3501
+  },
+  "6892eb8d7c064ddbbb8def36c96ad049": {
+   "gltfSize": 4857440,
+   "faceCount": 7437,
+   "vertexCount": 3829
+  },
+  "05fca4174c9c45c88ccd5a66dc2105a6": {
+   "gltfSize": 8578787,
+   "faceCount": 113469,
+   "vertexCount": 56276
+  },
+  "f5ec84ff5712470096f6878199e9ac07": {
+   "gltfSize": 4773140,
+   "faceCount": 4514,
+   "vertexCount": 2261
+  },
+  "95330b064da6491c97652715e63fc716": {
+   "gltfSize": 3713445,
+   "faceCount": 4746,
+   "vertexCount": 2377
+  },
+  "9b3421f7c26e4324978aa2432ce6eba1": {
+   "gltfSize": 2708516,
+   "faceCount": 2332,
+   "vertexCount": 1168
+  },
+  "46b9d74b09a54edda2b78136d2b3b556": {
+   "gltfSize": 4362086,
+   "faceCount": 7387,
+   "vertexCount": 3918
+  },
+  "498b5fd9b0134095b14ba20effc0c41a": {
+   "gltfSize": 6111509,
+   "faceCount": 40014,
+   "vertexCount": 19999
+  },
+  "db671d35db5b4b8db46d2d9203591177": {
+   "gltfSize": 4998788,
+   "faceCount": 10156,
+   "vertexCount": 5080
+  },
+  "3e0bcf224ff94e4aa15260b9e4b52674": {
+   "gltfSize": 4888996,
+   "faceCount": 19930,
+   "vertexCount": 9967
+  },
+  "d5e87761a10448a6934da5d9512848fd": {
+   "gltfSize": 2293291,
+   "faceCount": 12026,
+   "vertexCount": 6015
+  },
+  "641e45abc4774d72b4e1124381a49e43": {
+   "gltfSize": 5392030,
+   "faceCount": 15808,
+   "vertexCount": 7970
+  },
+  "efc1a94d51454c30aeed94e0d965ff50": {
+   "gltfSize": 2562879,
+   "faceCount": 4902,
+   "vertexCount": 2451
+  },
+  "59965195988942abac42447f1f05edd1": {
+   "gltfSize": 5122435,
+   "faceCount": 12638,
+   "vertexCount": 6321
+  },
+  "e989b930c7474232a5b52d43b1abd89e": {
+   "gltfSize": 4214480,
+   "faceCount": 36412,
+   "vertexCount": 18192
+  },
+  "6517860483814b7abc277e6693dbb3d4": {
+   "gltfSize": 6375438,
+   "faceCount": 36669,
+   "vertexCount": 18535
+  },
+  "aa58228923cf49d3898e97c56a279d8e": {
+   "gltfSize": 10853235,
+   "faceCount": 208816,
+   "vertexCount": 105162
+  },
+  "1622b8c1dfbd42ffa727d203c149a3b5": {
+   "gltfSize": 8635250,
+   "faceCount": 147334,
+   "vertexCount": 73947
+  },
+  "154f39b15b61484380e466482f681791": {
+   "gltfSize": 4940357,
+   "faceCount": 11804,
+   "vertexCount": 6102
+  },
+  "f788dc730c624c82aff4e035bdeb57cd": {
+   "gltfSize": 4132926,
+   "faceCount": 25092,
+   "vertexCount": 12929
+  },
+  "17f5634c05f148cb848e091c98285c2e": {
+   "gltfSize": 4150595,
+   "faceCount": 26314,
+   "vertexCount": 13157
+  },
+  "f8ddf1d1b5c34f408c07874b57941e37": {
+   "gltfSize": 5976423,
+   "faceCount": 15556,
+   "vertexCount": 8050
+  },
+  "0a6200cfe6554767af9eb937173c4178": {
+   "gltfSize": 50905134,
+   "faceCount": 276599,
+   "vertexCount": 157648
+  },
+  "2f7bf827bb9144f8bef67ec26e18b73b": {
+   "gltfSize": 16825499,
+   "faceCount": 23754,
+   "vertexCount": 12345
+  },
+  "daeed88ecb864a1aabb0aac7dc7f8c85": {
+   "gltfSize": 12909154,
+   "faceCount": 28901,
+   "vertexCount": 14957
+  },
+  "8d1996b067ea469a8574ad7dc4439379": {
+   "gltfSize": 6604417,
+   "faceCount": 23364,
+   "vertexCount": 12071
+  },
+  "7f971065048843a4913a53bce07ebf1a": {
+   "gltfSize": 14981035,
+   "faceCount": 22014,
+   "vertexCount": 11350
+  },
+  "fa711cf6b6ea4927ad678d97338370e3": {
+   "gltfSize": 17047570,
+   "faceCount": 40583,
+   "vertexCount": 21387
+  },
+  "2e903043a23d43eb957e13bf16c74d12": {
+   "gltfSize": 15988169,
+   "faceCount": 50040,
+   "vertexCount": 25664
+  },
+  "72c54f0441e749889b1b70f63280ebd1": {
+   "gltfSize": 14876198,
+   "faceCount": 84055,
+   "vertexCount": 43212
+  },
+  "ba379dc49860471492897e8eb77b6cee": {
+   "gltfSize": 7765722,
+   "faceCount": 59213,
+   "vertexCount": 30044
+  },
+  "619edc34e64b4fc3a48e53b00ee17deb": {
+   "gltfSize": 4932738,
+   "faceCount": 48201,
+   "vertexCount": 24794
+  },
+  "21a3ff8a95414c21b8d84562d7215c25": {
+   "gltfSize": 25629095,
+   "faceCount": 125545,
+   "vertexCount": 77742
+  },
+  "3f78e9a05747461c8a0f9312061e7e9a": {
+   "gltfSize": 25570935,
+   "faceCount": 174986,
+   "vertexCount": 115631
+  },
+  "3c14bbf293104163b236ac85a0dfe4de": {
+   "gltfSize": 41639897,
+   "faceCount": 163505,
+   "vertexCount": 105893
+  },
+  "2a777a20f51445c48ab3f3d543d07ace": {
+   "gltfSize": 46861509,
+   "faceCount": 167038,
+   "vertexCount": 99879
+  },
+  "1577767c5eae4848ab0c2f6888d1cd89": {
+   "gltfSize": 2353612,
+   "faceCount": 800,
+   "vertexCount": 402
+  },
+  "e8e788bdf0c144e28c226cfa45e78fa0": {
+   "gltfSize": 3293622,
+   "faceCount": 2542,
+   "vertexCount": 1325
+  },
+  "595e0bf6dc1844a78662e5e5f71f8365": {
+   "gltfSize": 2083017,
+   "faceCount": 418,
+   "vertexCount": 240
+  },
+  "8283bf622b53433a97f8e416ccbdc53c": {
+   "gltfSize": 7787798,
+   "faceCount": 1342,
+   "vertexCount": 662
+  },
+  "f41f3364f6614209ae0f063c8223e65c": {
+   "gltfSize": 9390350,
+   "faceCount": 1084,
+   "vertexCount": 609
+  },
+  "5b9973cdcb7046d186e2d9cd0ff286c8": {
+   "gltfSize": 1044898,
+   "faceCount": 1452,
+   "vertexCount": 778
+  },
+  "4707b7c1b4ac4b01903c249f3802b496": {
+   "gltfSize": 660353,
+   "faceCount": 530,
+   "vertexCount": 272
+  },
+  "b9f37a91d41e4dcf8216666db1024c6d": {
+   "gltfSize": 853628,
+   "faceCount": 774,
+   "vertexCount": 391
+  },
+  "249ba9b74bec4923bbf50937767e0b96": {
+   "gltfSize": 12842157,
+   "faceCount": 17642,
+   "vertexCount": 9342
+  },
+  "74df022ba003426c9d87cd3e64f570ed": {
+   "gltfSize": 7730064,
+   "faceCount": 6094,
+   "vertexCount": 3088
+  },
+  "8a8437132c07402799c2f4987f1fc773": {
+   "gltfSize": 21874694,
+   "faceCount": 25923,
+   "vertexCount": 13520
+  },
+  "8249848dbc2c4fb58b1c58209b6a82a0": {
+   "gltfSize": 9083707,
+   "faceCount": 8304,
+   "vertexCount": 4204
+  },
+  "37a39156808c4836a62c493f4f279aa2": {
+   "gltfSize": 11319280,
+   "faceCount": 9560,
+   "vertexCount": 4856
+  },
+  "63eb5dc7456640b08a572c5f1606a63c": {
+   "gltfSize": 11084662,
+   "faceCount": 7100,
+   "vertexCount": 3636
+  },
+  "d706c9a34faa42e1bc5005e1a748d230": {
+   "gltfSize": 14584051,
+   "faceCount": 8127,
+   "vertexCount": 4090
+  },
+  "9854b8ccd8f341f8bba13ca94c6c5d37": {
+   "gltfSize": 14496601,
+   "faceCount": 3592,
+   "vertexCount": 1815
+  },
+  "34764a8b9f0f4c2cbfb4e872e77cdbd4": {
+   "gltfSize": 14206425,
+   "faceCount": 96418,
+   "vertexCount": 50880
+  },
+  "c3e1fd48447a472dbd088eced03fe700": {
+   "gltfSize": 7439602,
+   "faceCount": 3816,
+   "vertexCount": 1910
+  },
+  "629ea163425f40359a4c0ab69eb8032f": {
+   "gltfSize": 12577192,
+   "faceCount": 11984,
+   "vertexCount": 6118
+  },
+  "82007497e2d54ca29f3ea2fbfff64418": {
+   "gltfSize": 11979563,
+   "faceCount": 6292,
+   "vertexCount": 3266
+  },
+  "b4fe7776dd5e49019b6de19e71db10fd": {
+   "gltfSize": 13856931,
+   "faceCount": 3592,
+   "vertexCount": 1815
+  },
+  "e2fad0ec897c4158940eddb720a60b2e": {
+   "gltfSize": 12928859,
+   "faceCount": 17642,
+   "vertexCount": 9342
+  },
+  "24d8fa33d07b4e34bf8065b81f832cd3": {
+   "gltfSize": 12004573,
+   "faceCount": 3674,
+   "vertexCount": 1847
+  },
+  "a0d3336d726c42c7ac0da47d04e9c947": {
+   "gltfSize": 16991293,
+   "faceCount": 4678,
+   "vertexCount": 3010
+  },
+  "17ed197f848d42da8a78008c296ce746": {
+   "gltfSize": 12398569,
+   "faceCount": 8046,
+   "vertexCount": 5218
+  },
+  "ae93f429dedf45ae86cc612cd744de71": {
+   "gltfSize": 11888786,
+   "faceCount": 29550,
+   "vertexCount": 15440
+  },
+  "f9bf6b1e13c74e48830cc44b2b0ad3d4": {
+   "gltfSize": 36034409,
+   "faceCount": 11574,
+   "vertexCount": 6038
+  },
+  "802ffbfc11f748b0bebdf4074b544fe1": {
+   "gltfSize": 12817163,
+   "faceCount": 20592,
+   "vertexCount": 10888
+  },
+  "9f097195a6e14bb49091a9ff064e671d": {
+   "gltfSize": 15739732,
+   "faceCount": 1300,
+   "vertexCount": 663
+  },
+  "ba4ababde03842df97027d9ad7538918": {
+   "gltfSize": 10703116,
+   "faceCount": 24433,
+   "vertexCount": 13018
+  },
+  "a5656668997545ff985e9b1719425cd6": {
+   "gltfSize": 13056999,
+   "faceCount": 6501,
+   "vertexCount": 4235
+  },
+  "e58ad42a2ccd406fb6eb817fbec40b10": {
+   "gltfSize": 6187881,
+   "faceCount": 2788,
+   "vertexCount": 1398
+  },
+  "6361b674ea5d49bfa4cda445e2903005": {
+   "gltfSize": 13337782,
+   "faceCount": 424,
+   "vertexCount": 214
+  },
+  "1ef0d4a5db9242b3a1c0a14f9b62e836": {
+   "gltfSize": 9642562,
+   "faceCount": 10333,
+   "vertexCount": 5561
+  },
+  "b618ff280a93441e8e6a56583d79363d": {
+   "gltfSize": 9746990,
+   "faceCount": 58458,
+   "vertexCount": 30807
+  },
+  "b0f8c33ef8454069a0cbc7a946b85f9d": {
+   "gltfSize": 5740184,
+   "faceCount": 2924,
+   "vertexCount": 1464
+  },
+  "a9e53898f8414035a05b3be6309950a5": {
+   "gltfSize": 21788001,
+   "faceCount": 6934,
+   "vertexCount": 3688
+  },
+  "dc9207ff0ae7430eb005f131adf6a737": {
+   "gltfSize": 4531211,
+   "faceCount": 8576,
+   "vertexCount": 4481
+  },
+  "150f3095f58e479da0220260612627c4": {
+   "gltfSize": 7004829,
+   "faceCount": 3828,
+   "vertexCount": 1916
+  },
+  "b91dc984fd2645419ebb37b94ec880e0": {
+   "gltfSize": 11818469,
+   "faceCount": 9890,
+   "vertexCount": 5654
+  },
+  "75f3aface9284ab3a5dd2e44387e528c": {
+   "gltfSize": 7076762,
+   "faceCount": 1224,
+   "vertexCount": 614
+  },
+  "ad95ee2ec8764eb5a29ae1e42beaa5cc": {
+   "gltfSize": 11234801,
+   "faceCount": 4394,
+   "vertexCount": 2207
+  },
+  "ff9621f64f704e15b6d9cfb65f7285f2": {
+   "gltfSize": 9396726,
+   "faceCount": 4472,
+   "vertexCount": 2350
+  },
+  "c693ea4a3cab4a1ca7d50c693b43d106": {
+   "gltfSize": 12309221,
+   "faceCount": 11650,
+   "vertexCount": 6538
+  },
+  "2bac1bae32c747cfa547b8ab9bea8351": {
+   "gltfSize": 22826031,
+   "faceCount": 126806,
+   "vertexCount": 81786
+  },
+  "3eb63179e3e04272b86e19890c728acc": {
+   "gltfSize": 47320154,
+   "faceCount": 8081,
+   "vertexCount": 4109
+  },
+  "3b2c9b7f40ef460c80d71913de73fc83": {
+   "gltfSize": 8018732,
+   "faceCount": 12228,
+   "vertexCount": 6244
+  },
+  "641be491fee643bab891d69581918346": {
+   "gltfSize": 38607521,
+   "faceCount": 106059,
+   "vertexCount": 94975
+  },
+  "aedaae3e89644cc79ab3c10572eedf33": {
+   "gltfSize": 8231837,
+   "faceCount": 52278,
+   "vertexCount": 27435
+  },
+  "79bd9775e5334059bd39a9f6200f0762": {
+   "gltfSize": 6895988,
+   "faceCount": 31768,
+   "vertexCount": 16964
+  },
+  "8c6f3e98227349d8952de449d4ef23f0": {
+   "gltfSize": 13448834,
+   "faceCount": 10138,
+   "vertexCount": 5143
+  },
+  "81e59f7885ad4debb33d94e62c407218": {
+   "gltfSize": 15008320,
+   "faceCount": 111202,
+   "vertexCount": 65791
+  },
+  "35e1f78794394a1398c76306db5917a3": {
+   "gltfSize": 12924080,
+   "faceCount": 6148,
+   "vertexCount": 3158
+  },
+  "db5f789cdad444e7845c4e7e358b7591": {
+   "gltfSize": 41598613,
+   "faceCount": 12,
+   "vertexCount": 8
+  },
+  "077d21757d4b4c4386ce305068bd7103": {
+   "gltfSize": 10319851,
+   "faceCount": 9859,
+   "vertexCount": 5254
+  },
+  "267c470230b646cba2dba90866bb7800": {
+   "gltfSize": 11991294,
+   "faceCount": 11249,
+   "vertexCount": 5883
+  },
+  "5cc77b9e002f40f9b0523e61e2686049": {
+   "gltfSize": 6808933,
+   "faceCount": 11232,
+   "vertexCount": 5672
+  },
+  "d3ef6dc490d84cf0ad49fedb783d5f48": {
+   "gltfSize": 17142756,
+   "faceCount": 6973,
+   "vertexCount": 3570
+  },
+  "026ab68222dc46f7baf2212fd3ac742a": {
+   "gltfSize": 11727546,
+   "faceCount": 19152,
+   "vertexCount": 9645
+  },
+  "cc9491ba28b1495c9adf368bee1a6875": {
+   "gltfSize": 11931726,
+   "faceCount": 19992,
+   "vertexCount": 10086
+  },
+  "17645a03c23c4f9d9be5ad1920433510": {
+   "gltfSize": 11726497,
+   "faceCount": 19432,
+   "vertexCount": 9792
+  },
+  "f85f3773aaad463286b8289938e31966": {
+   "gltfSize": 11873951,
+   "faceCount": 19712,
+   "vertexCount": 9939
+  },
+  "d7b9da404fd242f6a9263ae59d7c5c97": {
+   "gltfSize": 12190653,
+   "faceCount": 9477,
+   "vertexCount": 4829
+  },
+  "510ce906e22547b9815b10f6b75c4054": {
+   "gltfSize": 12305924,
+   "faceCount": 9477,
+   "vertexCount": 4829
+  },
+  "3be89a0e0d374ff18919a5ed6a2f71ee": {
+   "gltfSize": 10904854,
+   "faceCount": 13056,
+   "vertexCount": 6632
+  },
+  "72290a20e7634d28966cb1befc61ae72": {
+   "gltfSize": 13403629,
+   "faceCount": 10138,
+   "vertexCount": 5143
+  },
+  "27fd910822764710a4a43102c6461922": {
+   "gltfSize": 7730812,
+   "faceCount": 1720,
+   "vertexCount": 869
+  },
+  "0f881cd6ff7d49cf82db7fda3781b1b2": {
+   "gltfSize": 15171464,
+   "faceCount": 19487,
+   "vertexCount": 15642
+  },
+  "db7764a393604a42a03e276dcf3b7324": {
+   "gltfSize": 37588226,
+   "faceCount": 10574,
+   "vertexCount": 5522
+  },
+  "e687e8193a5747d8b70f25a59b2f3c8c": {
+   "gltfSize": 1280367,
+   "faceCount": 136,
+   "vertexCount": 72
+  },
+  "d40308f52a374114903c62441858289a": {
+   "gltfSize": 7123993,
+   "faceCount": 1670,
+   "vertexCount": 837
+  },
+  "05d24045703d4c3d9df8f0f4897669e3": {
+   "gltfSize": 8211227,
+   "faceCount": 3240,
+   "vertexCount": 1750
+  },
+  "b77f2c1ecd0b4560ad61e13a4e227b94": {
+   "gltfSize": 7748153,
+   "faceCount": 1859,
+   "vertexCount": 947
+  },
+  "fbbf71f752054177b5af264a50edbdea": {
+   "gltfSize": 6517704,
+   "faceCount": 18998,
+   "vertexCount": 9522
+  },
+  "2a5300a7e67c4c35ae4693826a631501": {
+   "gltfSize": 7007608,
+   "faceCount": 4036,
+   "vertexCount": 2023
+  },
+  "ca1951dd9d9347d781eda9a114d6aee7": {
+   "gltfSize": 8180275,
+   "faceCount": 21650,
+   "vertexCount": 10955
+  },
+  "ce013bcba15e4bca84adb86c19d49d79": {
+   "gltfSize": 6528268,
+   "faceCount": 5752,
+   "vertexCount": 2913
+  },
+  "1916ba636cf74fea90f319ad684172a4": {
+   "gltfSize": 7330399,
+   "faceCount": 1848,
+   "vertexCount": 950
+  },
+  "e302f2b9aa8e4a30b3ddd57870d908fe": {
+   "gltfSize": 6093684,
+   "faceCount": 2488,
+   "vertexCount": 1296
+  },
+  "5e897fe04e2a46a7af6d6609ac9dfbed": {
+   "gltfSize": 7087686,
+   "faceCount": 896,
+   "vertexCount": 450
+  },
+  "b0b4ef4e453c4612b359dd148a74dcd7": {
+   "gltfSize": 5505263,
+   "faceCount": 960,
+   "vertexCount": 482
+  },
+  "a8b992a056f04986a296a4b4389633ee": {
+   "gltfSize": 8794966,
+   "faceCount": 1670,
+   "vertexCount": 837
+  },
+  "27cca7330d6a456ea6f77aa84bfcaa99": {
+   "gltfSize": 10582917,
+   "faceCount": 31504,
+   "vertexCount": 15894
+  },
+  "dabdd2fbc067449fbb8201d736be3a89": {
+   "gltfSize": 4931527,
+   "faceCount": 10396,
+   "vertexCount": 5584
+  },
+  "db666d571a9b40b38070c027d390b531": {
+   "gltfSize": 10790330,
+   "faceCount": 3545,
+   "vertexCount": 1944
+  },
+  "bf5cf3e3673a4f57b9f4a69567d3e9dd": {
+   "gltfSize": 7004649,
+   "faceCount": 3240,
+   "vertexCount": 1750
+  },
+  "08a50c6aa2bd418889d98b454c601b7b": {
+   "gltfSize": 9403656,
+   "faceCount": 2244,
+   "vertexCount": 1132
+  },
+  "3b7b7c9eaaba474bbc9afa16c3b8f235": {
+   "gltfSize": 11962661,
+   "faceCount": 1640,
+   "vertexCount": 822
+  },
+  "f63f1227eecf4558865316c35073c46d": {
+   "gltfSize": 5525458,
+   "faceCount": 864,
+   "vertexCount": 434
+  },
+  "9789b6e8fabf4b8ab7c2695f3af10992": {
+   "gltfSize": 2281473,
+   "faceCount": 14161,
+   "vertexCount": 9534
+  },
+  "e5174b54bc1143e88c0ed3687bda0890": {
+   "gltfSize": 11085338,
+   "faceCount": 2752,
+   "vertexCount": 1384
+  },
+  "55b083b97d3a4edba29cca69bb8bae35": {
+   "gltfSize": 7926681,
+   "faceCount": 15938,
+   "vertexCount": 7976
+  },
+  "1249db1e427e457f8c18ac73d8b1002a": {
+   "gltfSize": 9524672,
+   "faceCount": 4128,
+   "vertexCount": 2086
+  },
+  "f8eeb7dd522f460999eba17cab0465ce": {
+   "gltfSize": 9332300,
+   "faceCount": 10214,
+   "vertexCount": 6924
+  },
+  "bbf055c06a4d4ae8a9c3bb80ecba2bba": {
+   "gltfSize": 5371771,
+   "faceCount": 1796,
+   "vertexCount": 906
+  },
+  "5a1c48bf305b4116b27042970b25aee3": {
+   "gltfSize": 9897029,
+   "faceCount": 12032,
+   "vertexCount": 6144
+  },
+  "56c1a9de31234769bf06db5d94c9278c": {
+   "gltfSize": 10818405,
+   "faceCount": 4194,
+   "vertexCount": 2105
+  },
+  "f144e0a4c68e49fe975efcfe2f9e9697": {
+   "gltfSize": 10206287,
+   "faceCount": 7645,
+   "vertexCount": 3876
+  },
+  "64a7b5d81e4a445f95cf44fea20deb78": {
+   "gltfSize": 12265865,
+   "faceCount": 8078,
+   "vertexCount": 4103
+  },
+  "0d7f1d24d71f4723b8ffa78519dba437": {
+   "gltfSize": 9612243,
+   "faceCount": 2796,
+   "vertexCount": 1392
+  },
+  "c915a59513394c99b4d9d84a72bc89bb": {
+   "gltfSize": 9509602,
+   "faceCount": 658,
+   "vertexCount": 331
+  },
+  "24e42159a2d9437b9e52680074de4e79": {
+   "gltfSize": 12721298,
+   "faceCount": 35934,
+   "vertexCount": 17977
+  },
+  "9e39f12f53774456a8bdc24986ab4c05": {
+   "gltfSize": 12708136,
+   "faceCount": 8258,
+   "vertexCount": 4258
+  },
+  "4815f84f5c1941deb83be1eae8198967": {
+   "gltfSize": 6045113,
+   "faceCount": 2266,
+   "vertexCount": 1145
+  },
+  "d93ab6ec9a8a47368a2a0cc37e41e94f": {
+   "gltfSize": 9776753,
+   "faceCount": 12032,
+   "vertexCount": 6144
+  },
+  "8023d82560a947f886e90d06e00cf60f": {
+   "gltfSize": 15237010,
+   "faceCount": 4036,
+   "vertexCount": 2034
+  },
+  "5f8522b73e6c46729701be98479e7de6": {
+   "gltfSize": 33198142,
+   "faceCount": 40974,
+   "vertexCount": 20513
+  },
+  "da79db6757a5434cabe8e3076768f29b": {
+   "gltfSize": 20122905,
+   "faceCount": 26336,
+   "vertexCount": 13196
+  },
+  "486b6174cc434896991c4ad43d3d108b": {
+   "gltfSize": 12064597,
+   "faceCount": 59036,
+   "vertexCount": 30266
+  },
+  "deb855ad41084aa8a7a293520c4364c2": {
+   "gltfSize": 12217542,
+   "faceCount": 9477,
+   "vertexCount": 4829
+  },
+  "8181352477504a5f84da30413f168608": {
+   "gltfSize": 16277915,
+   "faceCount": 118444,
+   "vertexCount": 60978
+  },
+  "38eec351128f47b790ab445d41180d47": {
+   "gltfSize": 12185118,
+   "faceCount": 37507,
+   "vertexCount": 19878
+  },
+  "5bda30594e7f4f0aaa59f3204f6cc69f": {
+   "gltfSize": 9829244,
+   "faceCount": 356,
+   "vertexCount": 240
+  },
+  "81c408c49f2247ee9f57fef7f4a5911f": {
+   "gltfSize": 6530374,
+   "faceCount": 1384,
+   "vertexCount": 694
+  },
+  "469d90000fc140c78f7d00a84dd1720a": {
+   "gltfSize": 7643300,
+   "faceCount": 5584,
+   "vertexCount": 3258
+  },
+  "b7c8961fec674ae3897dc1ede2d7b34e": {
+   "gltfSize": 5470950,
+   "faceCount": 1246,
+   "vertexCount": 623
+  },
+  "99c0e4733c154155923cd869a2f6dd29": {
+   "gltfSize": 5155944,
+   "faceCount": 3500,
+   "vertexCount": 1782
+  },
+  "b714eef91b714de386b066712cda5e89": {
+   "gltfSize": 10221848,
+   "faceCount": 22375,
+   "vertexCount": 17859
+  },
+  "74003577f5f240129a896454dbca3db3": {
+   "gltfSize": 4396266,
+   "faceCount": 13094,
+   "vertexCount": 6846
+  },
+  "18cd8a4aa09b49e3a4594df6e7ffd1b5": {
+   "gltfSize": 8142830,
+   "faceCount": 16288,
+   "vertexCount": 8398
+  },
+  "b6ea66f70612474387d49f8a2a1fbc46": {
+   "gltfSize": 7693758,
+   "faceCount": 4814,
+   "vertexCount": 2407
+  },
+  "e3df1156abf54c1a9d1e41e16938df14": {
+   "gltfSize": 23825128,
+   "faceCount": 71801,
+   "vertexCount": 52265
+  },
+  "f849576878b4467388089c52ddcc95db": {
+   "gltfSize": 8999186,
+   "faceCount": 10518,
+   "vertexCount": 5490
+  },
+  "4d7b42a8e5744253960d6cebb803b3f4": {
+   "gltfSize": 2881147,
+   "faceCount": 7739,
+   "vertexCount": 4925
+  },
+  "233ee93c5cd14182b67d825b20ce1973": {
+   "gltfSize": 8476033,
+   "faceCount": 3542,
+   "vertexCount": 1939
+  },
+  "5dfeebe29ae249cc9ee5e80db68272f5": {
+   "gltfSize": 11725856,
+   "faceCount": 11064,
+   "vertexCount": 5537
+  },
+  "9736a6a7064d42698dcc7c9113510320": {
+   "gltfSize": 15242067,
+   "faceCount": 7372,
+   "vertexCount": 3696
+  },
+  "f9d14daedc6c4c3caa88684fc0962a60": {
+   "gltfSize": 13579763,
+   "faceCount": 4238,
+   "vertexCount": 2121
+  },
+  "2251075a35bf40f69535b4bc2ce726e3": {
+   "gltfSize": 6703285,
+   "faceCount": 28406,
+   "vertexCount": 16627
+  },
+  "de716bf809c0400abe334fc1cde66009": {
+   "gltfSize": 21116172,
+   "faceCount": 4734,
+   "vertexCount": 2379
+  },
+  "e8bbbf1da86b4a94b1d5b8efb3c47757": {
+   "gltfSize": 7608076,
+   "faceCount": 19602,
+   "vertexCount": 10019
+  },
+  "e6afd6f0ea4e48f896d881d76b270160": {
+   "gltfSize": 4352370,
+   "faceCount": 3572,
+   "vertexCount": 1800
+  },
+  "398d57ec90424c0fbd0711f3941938f9": {
+   "gltfSize": 4696847,
+   "faceCount": 98676,
+   "vertexCount": 50155
+  },
+  "e4d5b35855f9493b810ef2c662fbc76f": {
+   "gltfSize": 7215388,
+   "faceCount": 5488,
+   "vertexCount": 2852
+  },
+  "95eebbef7a0f460f8045a373e55d22c4": {
+   "gltfSize": 17493389,
+   "faceCount": 127546,
+   "vertexCount": 65530
+  },
+  "5da01d9363b9430d80d797b3afab48e9": {
+   "gltfSize": 6697399,
+   "faceCount": 13746,
+   "vertexCount": 6867
+  },
+  "77eee05730d049979c86ee46e1bb15a4": {
+   "gltfSize": 3683346,
+   "faceCount": 8164,
+   "vertexCount": 5633
+  },
+  "85b7523d7c4f4d6bb418f65d23f75b2d": {
+   "gltfSize": 15224513,
+   "faceCount": 968,
+   "vertexCount": 529
+  },
+  "6b441e8fea3f488f8e0d86676c14ccf1": {
+   "gltfSize": 7201828,
+   "faceCount": 3154,
+   "vertexCount": 1579
+  },
+  "332c5aae96344ee4a1fff55d70d67f7a": {
+   "gltfSize": 13603059,
+   "faceCount": 14722,
+   "vertexCount": 7784
+  },
+  "26071b8c2f6b4b7daaada1e822e07bf2": {
+   "gltfSize": 5646650,
+   "faceCount": 2358,
+   "vertexCount": 1181
+  },
+  "76f395d8f6cb4859a3b2739fbd3bfc7d": {
+   "gltfSize": 5038847,
+   "faceCount": 500,
+   "vertexCount": 256
+  },
+  "1aed2f78a6c54cb5942d8953b6d6c0a4": {
+   "gltfSize": 8712922,
+   "faceCount": 6763,
+   "vertexCount": 3478
+  },
+  "f5bbd5eda5994aa8a3096e0e0a2870b9": {
+   "gltfSize": 7626970,
+   "faceCount": 2109,
+   "vertexCount": 1121
+  },
+  "c2a83954a63c4db7a82afd03a239bc6f": {
+   "gltfSize": 12980118,
+   "faceCount": 3592,
+   "vertexCount": 1815
+  },
+  "44b69f1eec19435c9051b04fb8633c69": {
+   "gltfSize": 9650054,
+   "faceCount": 6763,
+   "vertexCount": 3478
+  },
+  "c39a373c887040f0a0023b32a28cfb7d": {
+   "gltfSize": 9048827,
+   "faceCount": 6763,
+   "vertexCount": 3478
+  },
+  "368ca24ce8f34d51bcd01adcf9aa11e3": {
+   "gltfSize": 7230462,
+   "faceCount": 4718,
+   "vertexCount": 2375
+  },
+  "dbd44831caae4625834665c86e63af25": {
+   "gltfSize": 5253330,
+   "faceCount": 8938,
+   "vertexCount": 7266
+  },
+  "b18bfab0c53b47b59170bad7e11f227f": {
+   "gltfSize": 8271870,
+   "faceCount": 11100,
+   "vertexCount": 6035
+  },
+  "6107df71981542e2be107c68020d04eb": {
+   "gltfSize": 5441134,
+   "faceCount": 966,
+   "vertexCount": 512
+  },
+  "a4d6afe23c2c4b78862cb37fede528a1": {
+   "gltfSize": 11767564,
+   "faceCount": 5408,
+   "vertexCount": 2736
+  },
+  "bf1602ea09e44b57ad5bc53603f92bb6": {
+   "gltfSize": 10030593,
+   "faceCount": 15481,
+   "vertexCount": 9799
+  },
+  "29b3ea995fd047e8842144490b1d0e20": {
+   "gltfSize": 12341845,
+   "faceCount": 6534,
+   "vertexCount": 3351
+  },
+  "34e0bbe9cdac459a98ec5bc4981873d3": {
+   "gltfSize": 12159250,
+   "faceCount": 11058,
+   "vertexCount": 3357
+  },
+  "2c0ed76196204d269638c6fecaf531a6": {
+   "gltfSize": 17801528,
+   "faceCount": 80330,
+   "vertexCount": 41234
+  },
+  "6361204072cd48d9b6b2e271f1f5aa53": {
+   "gltfSize": 23679398,
+   "faceCount": 7036,
+   "vertexCount": 4036
+  },
+  "037d3912e29f472ebfae2ab067eb249f": {
+   "gltfSize": 13209941,
+   "faceCount": 48147,
+   "vertexCount": 24882
+  },
+  "d10df403fca64b18b3f7a2cc217b245b": {
+   "gltfSize": 16448149,
+   "faceCount": 1108,
+   "vertexCount": 558
+  },
+  "c11ea4ffaa794b309c2cc96b0dce3660": {
+   "gltfSize": 924999,
+   "faceCount": 186,
+   "vertexCount": 93
+  },
+  "c4dd67981bde4d30951450a922a474fa": {
+   "gltfSize": 4994776,
+   "faceCount": 1536,
+   "vertexCount": 776
+  },
+  "546a7b15fc2744339791c97b000b9f7f": {
+   "gltfSize": 893252,
+   "faceCount": 186,
+   "vertexCount": 93
+  },
+  "1352878865444adfb44a4876e5313c7d": {
+   "gltfSize": 4861674,
+   "faceCount": 14602,
+   "vertexCount": 7502
+  },
+  "8a475aee5b304d1986a862ac175028fe": {
+   "gltfSize": 13123506,
+   "faceCount": 2206,
+   "vertexCount": 1127
+  },
+  "184a23f4c7434a65b2b19d46e3056022": {
+   "gltfSize": 10279146,
+   "faceCount": 1837,
+   "vertexCount": 942
+  },
+  "f9627657441e45cb94ef47bb288ad726": {
+   "gltfSize": 4338164,
+   "faceCount": 1000,
+   "vertexCount": 516
+  },
+  "80951159a7354f7fb3347f9e21184f1b": {
+   "gltfSize": 13574077,
+   "faceCount": 88,
+   "vertexCount": 56
+  },
+  "d74c06b8a4184c098a419e1a4aa956b0": {
+   "gltfSize": 5886129,
+   "faceCount": 15472,
+   "vertexCount": 7740
+  },
+  "09dfd8fa3c5f49b4bc87fdc0ce8a27e1": {
+   "gltfSize": 5439450,
+   "faceCount": 1936,
+   "vertexCount": 981
+  },
+  "fd77c76fb1b94232aac0441165bf8f9f": {
+   "gltfSize": 5110160,
+   "faceCount": 10896,
+   "vertexCount": 5606
+  },
+  "8e8bbd51d75e4510b52d03cdc27ad0c3": {
+   "gltfSize": 6534857,
+   "faceCount": 1792,
+   "vertexCount": 898
+  },
+  "438ed47ac11948a18337a0e182d5aed2": {
+   "gltfSize": 4443566,
+   "faceCount": 6684,
+   "vertexCount": 3328
+  },
+  "88b58764b76842609ab5fefb162c47cb": {
+   "gltfSize": 5806095,
+   "faceCount": 2494,
+   "vertexCount": 1253
+  },
+  "dae87cc20e494044ba9b1c223e6425b3": {
+   "gltfSize": 8284094,
+   "faceCount": 1446,
+   "vertexCount": 727
+  },
+  "0e527180dad345da9e0c6eb28018f1e0": {
+   "gltfSize": 11065773,
+   "faceCount": 14614,
+   "vertexCount": 7320
+  },
+  "294f9d73bd484351ba0099f976cd09bf": {
+   "gltfSize": 1971292,
+   "faceCount": 84,
+   "vertexCount": 44
+  },
+  "2cb25da10fad4dbeade6b55d05db64f0": {
+   "gltfSize": 4549050,
+   "faceCount": 628,
+   "vertexCount": 316
+  },
+  "87d2a2e1d9104d038d5fd5c460a99504": {
+   "gltfSize": 7689198,
+   "faceCount": 44,
+   "vertexCount": 24
+  },
+  "9d85ff29a2254352a65db2e7b68d90c4": {
+   "gltfSize": 6998495,
+   "faceCount": 44,
+   "vertexCount": 24
+  },
+  "6ea11e4518874c758cc5f29dd7b70eeb": {
+   "gltfSize": 7294799,
+   "faceCount": 44,
+   "vertexCount": 24
+  },
+  "1083572f16494575a581e8645a215c17": {
+   "gltfSize": 8774534,
+   "faceCount": 5014,
+   "vertexCount": 2551
+  },
+  "014589e8c31c40e1ba056f770d80f91f": {
+   "gltfSize": 7406640,
+   "faceCount": 3308,
+   "vertexCount": 1665
+  },
+  "1986f8a4ecfd4435b126426443d8853a": {
+   "gltfSize": 10691005,
+   "faceCount": 288,
+   "vertexCount": 146
+  },
+  "241be778ca6b41ac86e920dc77b81d36": {
+   "gltfSize": 5987735,
+   "faceCount": 10800,
+   "vertexCount": 5456
+  },
+  "132ba9f84b714546aaaf5b707d67a713": {
+   "gltfSize": 11523680,
+   "faceCount": 8,
+   "vertexCount": 9
+  },
+  "6469102fd8974d75b5f68a50b6e5d242": {
+   "gltfSize": 57533697,
+   "faceCount": 9520,
+   "vertexCount": 4762
+  },
+  "4ff4adbcbbf54e1cadae054d6f8d4db2": {
+   "gltfSize": 820587,
+   "faceCount": 156,
+   "vertexCount": 88
+  },
+  "5e8a0e410f6f491b9e9f6819c0d91bbe": {
+   "gltfSize": 3173816,
+   "faceCount": 1554,
+   "vertexCount": 858
+  },
+  "ef5a2cd45f3e472ea4406b77375706f8": {
+   "gltfSize": 14286981,
+   "faceCount": 1818,
+   "vertexCount": 911
+  },
+  "5ec9845070a842d8bb6b0c8e7ab82767": {
+   "gltfSize": 5058114,
+   "faceCount": 576,
+   "vertexCount": 290
+  },
+  "61f09cad81e948c78588c7f9da5303c4": {
+   "gltfSize": 4682287,
+   "faceCount": 3784,
+   "vertexCount": 1894
+  },
+  "b931d4f978ae45a283736e71ede453e9": {
+   "gltfSize": 1597127,
+   "faceCount": 76,
+   "vertexCount": 40
+  },
+  "c70785f96b9f4ee5ad4bde448e1a2eea": {
+   "gltfSize": 3148758,
+   "faceCount": 188,
+   "vertexCount": 96
+  },
+  "662bafedbbc14902a26fba7db37a83e6": {
+   "gltfSize": 1022684,
+   "faceCount": 44,
+   "vertexCount": 24
+  },
+  "ba0dd150c84a4adeac3c745a86d3d3be": {
+   "gltfSize": 935077,
+   "faceCount": 52,
+   "vertexCount": 28
+  },
+  "c8ff5a5a96b64f06aafb39cd15ce93c7": {
+   "gltfSize": 642012,
+   "faceCount": 44,
+   "vertexCount": 24
+  },
+  "5aa7ac9dd45144a890f012096b87d156": {
+   "gltfSize": 1040370,
+   "faceCount": 52,
+   "vertexCount": 28
+  },
+  "c56fce5a31e2444897bc3caedc214343": {
+   "gltfSize": 832818,
+   "faceCount": 52,
+   "vertexCount": 28
+  },
+  "45ef5cde5bec4500983afbd7702510f0": {
+   "gltfSize": 6226581,
+   "faceCount": 28,
+   "vertexCount": 16
+  },
+  "c35dc784061b4e9989431ec9c4b94e32": {
+   "gltfSize": 6087666,
+   "faceCount": 28,
+   "vertexCount": 16
+  },
+  "a18fdcbb216d4a0fa2ebf4c66bdcbd1d": {
+   "gltfSize": 1050598,
+   "faceCount": 668,
+   "vertexCount": 336
+  },
+  "e7f653dd2a234cbdaa190d58155ef72d": {
+   "gltfSize": 733283,
+   "faceCount": 36,
+   "vertexCount": 24
+  },
+  "76e97176ea374be6aa46218588de36c8": {
+   "gltfSize": 3549663,
+   "faceCount": 240,
+   "vertexCount": 124
+  },
+  "db346b08a7d64795877f74929afb5530": {
+   "gltfSize": 4704297,
+   "faceCount": 5396,
+   "vertexCount": 3082
+  },
+  "c6e7d4f5672348aaa874f181454ceb05": {
+   "gltfSize": 1081855,
+   "faceCount": 136,
+   "vertexCount": 70
+  },
+  "a5f7eecb4e614ef6925f4e80eff9596f": {
+   "gltfSize": 226424,
+   "faceCount": 276,
+   "vertexCount": 160
+  },
+  "a18f1a3753074dd69eecc1b30ed29327": {
+   "gltfSize": 236614,
+   "faceCount": 276,
+   "vertexCount": 160
+  },
+  "eb94faecea934a4b9401dcfe150895da": {
+   "gltfSize": 4367142,
+   "faceCount": 2412,
+   "vertexCount": 1236
+  },
+  "85bf6de1b1ba4f4b939c513d4db3fffb": {
+   "gltfSize": 2760682,
+   "faceCount": 712,
+   "vertexCount": 433
+  },
+  "a91270d8d54d472f8559247f32dbd79a": {
+   "gltfSize": 3748842,
+   "faceCount": 1404,
+   "vertexCount": 716
+  },
+  "4da998589f76460e802e6bbd1b05b1dc": {
+   "gltfSize": 2992780,
+   "faceCount": 2416,
+   "vertexCount": 1317
+  },
+  "fb23b5a305c043a79f14b4fd463e6604": {
+   "gltfSize": 779843,
+   "faceCount": 716,
+   "vertexCount": 407
+  },
+  "5510105e64a94dda9ee8ba47e809e2ed": {
+   "gltfSize": 3386262,
+   "faceCount": 642,
+   "vertexCount": 347
+  },
+  "948e9e031c354b3ba84f29bc44237894": {
+   "gltfSize": 1483255,
+   "faceCount": 270,
+   "vertexCount": 155
+  },
+  "60f1c3064e5144a4981d8d8e353c2140": {
+   "gltfSize": 3365825,
+   "faceCount": 4606,
+   "vertexCount": 2406
+  },
+  "c40e3617745d4e52b702961ac64759b5": {
+   "gltfSize": 2524548,
+   "faceCount": 318,
+   "vertexCount": 161
+  },
+  "c720990539ab43e6a4b670f83aeaf2da": {
+   "gltfSize": 189378,
+   "faceCount": 324,
+   "vertexCount": 194
+  },
+  "347623040e514c53a544017ee1a3daaf": {
+   "gltfSize": 944707,
+   "faceCount": 396,
+   "vertexCount": 200
+  },
+  "4c66d40383e84340a4ce2f09b18b4b1c": {
+   "gltfSize": 1094534,
+   "faceCount": 396,
+   "vertexCount": 200
+  },
+  "1027aec3d7f540b3a5944aa82edd112e": {
+   "gltfSize": 4129250,
+   "faceCount": 1828,
+   "vertexCount": 1002
+  },
+  "a19af3dfb76d480caed85fbfa7005462": {
+   "gltfSize": 783029,
+   "faceCount": 2136,
+   "vertexCount": 1109
+  },
+  "1c630a55dc5b407e92dd81a353ead6f6": {
+   "gltfSize": 12035013,
+   "faceCount": 9086,
+   "vertexCount": 4672
+  },
+  "59ae879f47cb4bf3b9f2defd1e8c1f02": {
+   "gltfSize": 13273707,
+   "faceCount": 11144,
+   "vertexCount": 5474
+  },
+  "3250485a1ea142b68afe3ad36b09ceab": {
+   "gltfSize": 3321691,
+   "faceCount": 1619,
+   "vertexCount": 897
+  },
+  "2b43503572c94b33a162d35cb4846805": {
+   "gltfSize": 2942637,
+   "faceCount": 2500,
+   "vertexCount": 1336
+  },
+  "0a2481f90aad4865816249755338237d": {
+   "gltfSize": 4331123,
+   "faceCount": 2818,
+   "vertexCount": 1429
+  },
+  "718fb31444744537add63f85a5efde22": {
+   "gltfSize": 800095,
+   "faceCount": 260,
+   "vertexCount": 150
+  },
+  "80c2d2308bee42db936169b58a3d4b46": {
+   "gltfSize": 3314387,
+   "faceCount": 3828,
+   "vertexCount": 1958
+  },
+  "1fc21b4e6a9a4c1a9cecbe9c79b805be": {
+   "gltfSize": 2873802,
+   "faceCount": 3840,
+   "vertexCount": 2024
+  },
+  "beb7f50df9a24acb91f00845c5c1e6a1": {
+   "gltfSize": 1161418,
+   "faceCount": 2512,
+   "vertexCount": 1294
+  },
+  "aba01a0a142c4db085cf97e4bca5b204": {
+   "gltfSize": 3303922,
+   "faceCount": 1024,
+   "vertexCount": 514
+  },
+  "e8a56a1f24cd49628cd312c932472a50": {
+   "gltfSize": 4464392,
+   "faceCount": 2242,
+   "vertexCount": 1132
+  },
+  "c42f70876eaf43729c6f7c19fc5ad0dd": {
+   "gltfSize": 11874181,
+   "faceCount": 1440,
+   "vertexCount": 714
+  },
+  "fdcad285ad7d47b2b2b681dd64a12f4d": {
+   "gltfSize": 14591585,
+   "faceCount": 2416,
+   "vertexCount": 978
+  },
+  "7856279691904ae88dea0da6212937e5": {
+   "gltfSize": 15583156,
+   "faceCount": 2624,
+   "vertexCount": 1090
+  },
+  "381dd1f1ed3d44cf9ef4449c18838faf": {
+   "gltfSize": 7817979,
+   "faceCount": 2528,
+   "vertexCount": 1026
+  },
+  "ac0b4994e29d46b4ba59626d6d925c4c": {
+   "gltfSize": 4115068,
+   "faceCount": 1188,
+   "vertexCount": 598
+  },
+  "6fb577744f6c47e1bd2a182a7e3ec6bf": {
+   "gltfSize": 2637724,
+   "faceCount": 412,
+   "vertexCount": 216
+  },
+  "f026d776c8d94bda9898b4d3b268b850": {
+   "gltfSize": 3002360,
+   "faceCount": 3868,
+   "vertexCount": 1956
+  },
+  "2e57bc9b7d8046d6995546d7aef95788": {
+   "gltfSize": 1772562,
+   "faceCount": 712,
+   "vertexCount": 372
+  },
+  "baf42932f14e44bda9140c91b99946fa": {
+   "gltfSize": 58777377,
+   "faceCount": 576,
+   "vertexCount": 290
+  },
+  "7fd620d075c547f4ad593a78f9415040": {
+   "gltfSize": 50750042,
+   "faceCount": 117512,
+   "vertexCount": 58956
+  },
+  "3ad8a12cc75440cf99c2955034073008": {
+   "gltfSize": 57384022,
+   "faceCount": 310681,
+   "vertexCount": 155603
+  },
+  "f881ffdd8a474c9faf4bdeb4e7c5797c": {
+   "gltfSize": 47094625,
+   "faceCount": 288994,
+   "vertexCount": 144752
+  },
+  "518e81dc05734e7ebcd9b83e8ef7d4a5": {
+   "gltfSize": 56927982,
+   "faceCount": 283809,
+   "vertexCount": 142230
+  },
+  "ce60dcd9360542ea939a822b8d1f2c63": {
+   "gltfSize": 45566354,
+   "faceCount": 293603,
+   "vertexCount": 146937
+  },
+  "df4e5efa3b8c4f228d27224ba4d7478e": {
+   "gltfSize": 58503878,
+   "faceCount": 304403,
+   "vertexCount": 152565
+  },
+  "d9fc7a5493304a90b699a1529b6d7425": {
+   "gltfSize": 214271491,
+   "faceCount": 1797148,
+   "vertexCount": 900155
+  },
+  "22abae2f0b1b442dbe1055a67fca49bd": {
+   "gltfSize": 29611446,
+   "faceCount": 6092,
+   "vertexCount": 3070
+  },
+  "31358b33042d470cb2d3257294fa56f0": {
+   "gltfSize": 19200847,
+   "faceCount": 2124,
+   "vertexCount": 1142
+  },
+  "666c7d8e064e4a68a42bfcadb59aff5c": {
+   "gltfSize": 33871747,
+   "faceCount": 20,
+   "vertexCount": 12
+  },
+  "00ee5454d9104b9d90869943fd2af171": {
+   "gltfSize": 14102017,
+   "faceCount": 1486,
+   "vertexCount": 745
+  },
+  "4f1565768d74400cbfcd9a3240492c41": {
+   "gltfSize": 25877482,
+   "faceCount": 3336,
+   "vertexCount": 1668
+  },
+  "6d9871b2dfb34e2d948746acdb5d9a82": {
+   "gltfSize": 55657744,
+   "faceCount": 134112,
+   "vertexCount": 67188
+  },
+  "a835c38424674e6c891839fcd2cfb7b1": {
+   "gltfSize": 18295358,
+   "faceCount": 2536,
+   "vertexCount": 1648
+  },
+  "50f90ad70e9f43459528125ff3f4bfb0": {
+   "gltfSize": 22837180,
+   "faceCount": 3722,
+   "vertexCount": 1879
+  },
+  "02fb7c6f17e24b1e8d1e8f8b0299cc1c": {
+   "gltfSize": 12654043,
+   "faceCount": 4252,
+   "vertexCount": 2128
+  },
+  "c7eb8b60ecb54d50b015f3e79b38cd37": {
+   "gltfSize": 10695495,
+   "faceCount": 5304,
+   "vertexCount": 2654
+  },
+  "e3e6139ac56b49f08e06274bd922690d": {
+   "gltfSize": 3922643,
+   "faceCount": 61674,
+   "vertexCount": 30848
+  },
+  "f4280acfefdb49eaa51721d8ca188e3f": {
+   "gltfSize": 6985431,
+   "faceCount": 1984,
+   "vertexCount": 1024
+  },
+  "8b99ce68979241af801a05da9b5aff79": {
+   "gltfSize": 2915259,
+   "faceCount": 32810,
+   "vertexCount": 16407
+  },
+  "6075a35f06734489aaf47c49230ce42c": {
+   "gltfSize": 41235870,
+   "faceCount": 15220,
+   "vertexCount": 7690
+  },
+  "4f5df4feebe24faea9450ee140947925": {
+   "gltfSize": 1872638,
+   "faceCount": 3540,
+   "vertexCount": 1772
+  },
+  "4ace759ac4a14e5cb63334a663772652": {
+   "gltfSize": 24992234,
+   "faceCount": 3540,
+   "vertexCount": 1772
+  },
+  "ad6a1461c75c40aebb78e22a07c2e939": {
+   "gltfSize": 1949884,
+   "faceCount": 1056,
+   "vertexCount": 530
+  },
+  "e18247353a284eeb820b4cde24bb4f0d": {
+   "gltfSize": 1343636,
+   "faceCount": 1216,
+   "vertexCount": 610
+  },
+  "8cf79545ab8e45ea8cea7a55051fba8d": {
+   "gltfSize": 8012495,
+   "faceCount": 916,
+   "vertexCount": 460
+  },
+  "ca356bcb6e11490783825fae1e74fe45": {
+   "gltfSize": 1555436,
+   "faceCount": 1418,
+   "vertexCount": 711
+  },
+  "23ea466e9a76451685caf5f71f6e4a1f": {
+   "gltfSize": 8799372,
+   "faceCount": 1322,
+   "vertexCount": 663
+  },
+  "1c784316545d46949fb66220a23ab605": {
+   "gltfSize": 5316278,
+   "faceCount": 81774,
+   "vertexCount": 40909
+  },
+  "33a87b79aeb94cf09c2f48e3c9bb02e4": {
+   "gltfSize": 11579284,
+   "faceCount": 8700,
+   "vertexCount": 4500
+  },
+  "43c2ee0ef8204e0c9bc1f99a3b9e127f": {
+   "gltfSize": 11760375,
+   "faceCount": 4104,
+   "vertexCount": 2174
+  },
+  "2853a77a056e48368bcc939f8c8bbd68": {
+   "gltfSize": 11603280,
+   "faceCount": 5248,
+   "vertexCount": 2620
+  },
+  "3fa3800498144ac592dcc252318fbe85": {
+   "gltfSize": 11543142,
+   "faceCount": 1728,
+   "vertexCount": 866
+  },
+  "f2e072a50dc44e198c76e35dd18ddf4d": {
+   "gltfSize": 8101905,
+   "faceCount": 6904,
+   "vertexCount": 3456
+  },
+  "67c90dfe3a314e12b97c6112177419b3": {
+   "gltfSize": 5235330,
+   "faceCount": 19456,
+   "vertexCount": 9730
+  },
+  "ddf9580a551e44eb82c0ab1ffe22bc72": {
+   "gltfSize": 3171515,
+   "faceCount": 3966,
+   "vertexCount": 1985
+  },
+  "ee53a264290c49d083c5504214c29c12": {
+   "gltfSize": 2025324,
+   "faceCount": 5118,
+   "vertexCount": 2561
+  },
+  "edd354e093cf4aa28db6018950b47454": {
+   "gltfSize": 2376006,
+   "faceCount": 3966,
+   "vertexCount": 1985
+  },
+  "3c092926478a45738982d72b114dbb11": {
+   "gltfSize": 1020714,
+   "faceCount": 560,
+   "vertexCount": 282
+  },
+  "396f7e03abb34b999ca6fec837192191": {
+   "gltfSize": 4202605,
+   "faceCount": 4222,
+   "vertexCount": 2113
+  },
+  "3274a60974c94755bbeb456fa478d2ed": {
+   "gltfSize": 4914960,
+   "faceCount": 3326,
+   "vertexCount": 1665
+  },
+  "def66374f62d44f0adaa07d4438aa452": {
+   "gltfSize": 3233858,
+   "faceCount": 4094,
+   "vertexCount": 2049
+  },
+  "36722d08576c4b52a59d5fdec404010a": {
+   "gltfSize": 1963813,
+   "faceCount": 46,
+   "vertexCount": 25
+  },
+  "9aba1631cbcb493ea2c0f810deaeca9d": {
+   "gltfSize": 7215650,
+   "faceCount": 4734,
+   "vertexCount": 2369
+  },
+  "bda22bc9b77f4737815d34f2b6e4cac4": {
+   "gltfSize": 1789301,
+   "faceCount": 30,
+   "vertexCount": 17
+  },
+  "e38f213145404cd388c4184bbafad54c": {
+   "gltfSize": 2500524,
+   "faceCount": 208,
+   "vertexCount": 104
+  },
+  "d79b9dee531a44deb213f7d4b34bdcf4": {
+   "gltfSize": 4563912,
+   "faceCount": 4222,
+   "vertexCount": 2113
+  },
+  "b6e9217209574fc694d189fe03524a5c": {
+   "gltfSize": 4619867,
+   "faceCount": 7550,
+   "vertexCount": 3777
+  },
+  "69f6f60096874598860886582d9726d4": {
+   "gltfSize": 1116152,
+   "faceCount": 580,
+   "vertexCount": 300
+  },
+  "8ca9bfa040e442a99564fc65d841bbd7": {
+   "gltfSize": 813908,
+   "faceCount": 384,
+   "vertexCount": 194
+  },
+  "4f3606be8d504f0e8e22601fb4cc6bee": {
+   "gltfSize": 1657690,
+   "faceCount": 1280,
+   "vertexCount": 746
+  },
+  "fba2aff3d7314dbb892bef1250f0e96e": {
+   "gltfSize": 291186,
+   "faceCount": 384,
+   "vertexCount": 194
+  },
+  "b808fc9c6bb246458f7692c2f1cf5b10": {
+   "gltfSize": 128255,
+   "faceCount": 404,
+   "vertexCount": 204
+  },
+  "14e10c561377407aa714427086aaea8e": {
+   "gltfSize": 312116,
+   "faceCount": 404,
+   "vertexCount": 204
+  },
+  "cd3a48a13cde45619d3de94c47df9f70": {
+   "gltfSize": 6179966,
+   "faceCount": 15232,
+   "vertexCount": 7618
+  },
+  "6723c5a724b6468f873cf6708b307183": {
+   "gltfSize": 324201,
+   "faceCount": 296,
+   "vertexCount": 150
+  },
+  "f66d816fc2664bfc90b96c63536013f3": {
+   "gltfSize": 44249164,
+   "faceCount": 28484,
+   "vertexCount": 15162
+  },
+  "9b21029d0a0541848283fd8acb4de5bc": {
+   "gltfSize": 493841,
+   "faceCount": 320,
+   "vertexCount": 162
+  },
+  "48aaae4ddf0c40a5a791f101f0c960b6": {
+   "gltfSize": 7736561,
+   "faceCount": 12956,
+   "vertexCount": 6524
+  },
+  "5277d906d8ba44008060cfce41c224fe": {
+   "gltfSize": 31123920,
+   "faceCount": 55164,
+   "vertexCount": 32305
+  },
+  "b0d8a6a2d3c9455b9640b75796d6e295": {
+   "gltfSize": 3410811,
+   "faceCount": 404,
+   "vertexCount": 204
+  },
+  "0e3a72ea6b1041969ce474548e7780da": {
+   "gltfSize": 20796057,
+   "faceCount": 11040,
+   "vertexCount": 5580
+  },
+  "0455214bce84455ab8c734a5db243ba5": {
+   "gltfSize": 812159,
+   "faceCount": 40,
+   "vertexCount": 32
+  },
+  "15b50e0eefb24e42b56b53ada6bdef67": {
+   "gltfSize": 17009799,
+   "faceCount": 1736,
+   "vertexCount": 972
+  },
+  "3a50b334e1ba439c82ffb184acfcd4cc": {
+   "gltfSize": 846368,
+   "faceCount": 1130,
+   "vertexCount": 567
+  },
+  "3a17ab5d2c6c445a836fd5f435b69df2": {
+   "gltfSize": 26148757,
+   "faceCount": 4651,
+   "vertexCount": 2417
+  },
+  "47363d75972541a89550e729328826ac": {
+   "gltfSize": 2292715,
+   "faceCount": 528,
+   "vertexCount": 276
+  },
+  "4813ff4cf11a4995a7d2849563bbf89a": {
+   "gltfSize": 2853045,
+   "faceCount": 312,
+   "vertexCount": 160
+  },
+  "0f5d2931d82e4e5b88dedef64bcd5fd3": {
+   "gltfSize": 1957360,
+   "faceCount": 716,
+   "vertexCount": 358
+  },
+  "65b2448f5c0844ff8dcdcd8cb45fe210": {
+   "gltfSize": 17015405,
+   "faceCount": 34164,
+   "vertexCount": 19209
+  },
+  "4557685605e144a5a5e46cadffe9d068": {
+   "gltfSize": 671951,
+   "faceCount": 794,
+   "vertexCount": 434
+  },
+  "f118c8b707fb48389a85d757f89c717c": {
+   "gltfSize": 398308,
+   "faceCount": 740,
+   "vertexCount": 407
+  },
+  "5d28b1851d26473695f5540958fe2a2c": {
+   "gltfSize": 37267324,
+   "faceCount": 41862,
+   "vertexCount": 22586
+  },
+  "43fb7683710441b79b2a592a5129a698": {
+   "gltfSize": 71320129,
+   "faceCount": 55472,
+   "vertexCount": 32461
+  },
+  "9f8b53ee295646ee81671442705bfd4a": {
+   "gltfSize": 815978,
+   "faceCount": 1180,
+   "vertexCount": 594
+  },
+  "b16f47a09d0e4399af6274afceb4982f": {
+   "gltfSize": 48478284,
+   "faceCount": 4772,
+   "vertexCount": 2470
+  },
+  "8c33f757ecba4b01b0d68bc8b5b98267": {
+   "gltfSize": 26769637,
+   "faceCount": 22351,
+   "vertexCount": 11243
+  },
+  "ca145520f2954c8e9b60ec15cb41bdb9": {
+   "gltfSize": 15447105,
+   "faceCount": 2360,
+   "vertexCount": 1280
+  },
+  "f6aa7368d40944f596b411e3d33ff351": {
+   "gltfSize": 20648677,
+   "faceCount": 64976,
+   "vertexCount": 35496
+  },
+  "782d455e8ce04a0384a1ac93dca9e770": {
+   "gltfSize": 22231249,
+   "faceCount": 4260,
+   "vertexCount": 2418
+  },
+  "98935ef083854fbeba47a36adf91f94f": {
+   "gltfSize": 47863212,
+   "faceCount": 2812,
+   "vertexCount": 1406
+  },
+  "63340bb822d3423097afb481e5fe6b28": {
+   "gltfSize": 430595,
+   "faceCount": 916,
+   "vertexCount": 464
+  },
+  "5c7ebf919097415db9839a4a2ed43471": {
+   "gltfSize": 927864,
+   "faceCount": 750,
+   "vertexCount": 377
+  },
+  "a9ce983c8bbc4ddb9db2c784c2b984e1": {
+   "gltfSize": 108713,
+   "faceCount": 376,
+   "vertexCount": 190
+  },
+  "72579e93c8c747aa97bf25a94e46eab5": {
+   "gltfSize": 47784500,
+   "faceCount": 6404,
+   "vertexCount": 3234
+  },
+  "8025f22e416640f6b253236a9057464d": {
+   "gltfSize": 42442308,
+   "faceCount": 68,
+   "vertexCount": 36
+  },
+  "71ac56e30aed44128d5046fe9d5568e9": {
+   "gltfSize": 32326670,
+   "faceCount": 8016,
+   "vertexCount": 4031
+  },
+  "82dd756031d240a2b398d5749f5c6d4e": {
+   "gltfSize": 173295,
+   "faceCount": 612,
+   "vertexCount": 308
+  },
+  "854096c497954622a924bae5c7c40b6a": {
+   "gltfSize": 157225,
+   "faceCount": 1222,
+   "vertexCount": 613
+  },
+  "7f4f5a8e6347428197c5c8e61ac7c7b1": {
+   "gltfSize": 5195571,
+   "faceCount": 10860,
+   "vertexCount": 5575
+  },
+  "fe2c3c6d87de450d8ea2afad5ce41f97": {
+   "gltfSize": 871454,
+   "faceCount": 1728,
+   "vertexCount": 952
+  },
+  "2611130d941b43359397d5836bfb01d0": {
+   "gltfSize": 46483525,
+   "faceCount": 2812,
+   "vertexCount": 1406
+  },
+  "ecf92e523df74874930a1f945e72c172": {
+   "gltfSize": 109863,
+   "faceCount": 680,
+   "vertexCount": 342
+  },
+  "0abd2e46cfa94e508c9459e1084b1387": {
+   "gltfSize": 4013067,
+   "faceCount": 6396,
+   "vertexCount": 3225
+  },
+  "0c1a22aaf22847ceb019ca1d88895210": {
+   "gltfSize": 255849,
+   "faceCount": 694,
+   "vertexCount": 349
+  },
+  "8721b6ac215f46b5805775d51e5775bf": {
+   "gltfSize": 55844,
+   "faceCount": 1116,
+   "vertexCount": 564
+  },
+  "39b3802bf36545c7b65976c255b1230e": {
+   "gltfSize": 3563765,
+   "faceCount": 13604,
+   "vertexCount": 6840
+  },
+  "c92c6b3af7b542ee9a2051818448d94a": {
+   "gltfSize": 738057,
+   "faceCount": 4160,
+   "vertexCount": 2132
+  },
+  "fc8ff81d713c41a8b7fe5370c3d26d7b": {
+   "gltfSize": 5124607,
+   "faceCount": 14189,
+   "vertexCount": 7589
+  },
+  "43905ae801b545f7a99f622415008d0a": {
+   "gltfSize": 105708,
+   "faceCount": 848,
+   "vertexCount": 426
+  },
+  "5f2d3b0cdd184b78b9ae90a922fd47b3": {
+   "gltfSize": 36737527,
+   "faceCount": 8016,
+   "vertexCount": 4032
+  },
+  "042844e6183248dfb3898dcb1ec68f44": {
+   "gltfSize": 265892,
+   "faceCount": 188,
+   "vertexCount": 96
+  },
+  "68b72b5393414a5290c321295a57294d": {
+   "gltfSize": 5513565,
+   "faceCount": 17704,
+   "vertexCount": 8914
+  },
+  "6e78736031c1471bb1285f66d5db453a": {
+   "gltfSize": 223101,
+   "faceCount": 824,
+   "vertexCount": 414
+  },
+  "8afa453088964a8e9df46419b8eebe26": {
+   "gltfSize": 7481968,
+   "faceCount": 11850,
+   "vertexCount": 5945
+  },
+  "19842a19ce8e483885c870bd4362c3a5": {
+   "gltfSize": 1082912,
+   "faceCount": 500,
+   "vertexCount": 264
+  },
+  "d737c1135c29419481a24281f0edfdf0": {
+   "gltfSize": 22104129,
+   "faceCount": 18776,
+   "vertexCount": 10208
+  },
+  "291095a93e064c96a6db4d335f4744a6": {
+   "gltfSize": 19997976,
+   "faceCount": 11076,
+   "vertexCount": 5926
+  },
+  "340dc595943144f29962cb45a3a2d769": {
+   "gltfSize": 1088584,
+   "faceCount": 468,
+   "vertexCount": 245
+  },
+  "0ce6dca7d17448be926510f6a78de281": {
+   "gltfSize": 1195955,
+   "faceCount": 480,
+   "vertexCount": 244
+  },
+  "c301959a03b54ce6810e158f80d5229e": {
+   "gltfSize": 2770601,
+   "faceCount": 16624,
+   "vertexCount": 8372
+  },
+  "6b3ee4520ec64a388d40ac33d813bfe8": {
+   "gltfSize": 1109855,
+   "faceCount": 448,
+   "vertexCount": 235
+  },
+  "405b4b3b225b47f2b26fa4b5b55dc910": {
+   "gltfSize": 39769952,
+   "faceCount": 764,
+   "vertexCount": 432
+  },
+  "a72a9e3cbf1749f5a057d94dafb85406": {
+   "gltfSize": 1039605,
+   "faceCount": 448,
+   "vertexCount": 235
+  },
+  "0b74c7412bff497d89ffee632948427a": {
+   "gltfSize": 1407763,
+   "faceCount": 848,
+   "vertexCount": 432
+  },
+  "c54956727228462f8545f6de16303ba4": {
+   "gltfSize": 5811968,
+   "faceCount": 1700,
+   "vertexCount": 861
+  },
+  "e0084cc5f59d4c4ba0b88bf1ce1db2c6": {
+   "gltfSize": 2023435,
+   "faceCount": 1004,
+   "vertexCount": 510
+  },
+  "33e78a10778c420290fc049328bf670b": {
+   "gltfSize": 1989640,
+   "faceCount": 796,
+   "vertexCount": 402
+  },
+  "bf4c592241ae4e33b5ca9dd5ca445413": {
+   "gltfSize": 1673716,
+   "faceCount": 1514,
+   "vertexCount": 761
+  },
+  "805e44cad87b4126b844a46285ad0105": {
+   "gltfSize": 43019591,
+   "faceCount": 25558,
+   "vertexCount": 14055
+  },
+  "a364c90b33764440ba9fc298d4de0ba4": {
+   "gltfSize": 30698447,
+   "faceCount": 17250,
+   "vertexCount": 8704
+  },
+  "ad7fa3c4c32642c19e351d21490be9ab": {
+   "gltfSize": 6572445,
+   "faceCount": 20396,
+   "vertexCount": 10220
+  },
+  "56c1f62aa6e048f8a788306cb480b4f9": {
+   "gltfSize": 8769284,
+   "faceCount": 3336,
+   "vertexCount": 1692
+  },
+  "9ad9a60fa6774fa6b193e499827f2c5d": {
+   "gltfSize": 20140249,
+   "faceCount": 8048,
+   "vertexCount": 4026
+  },
+  "3e40bc0f63684263b9a4b1fd9fff93e4": {
+   "gltfSize": 39337032,
+   "faceCount": 14144,
+   "vertexCount": 7074
+  },
+  "53664abf35d64bf39ce4d22d40770756": {
+   "gltfSize": 6473582,
+   "faceCount": 5308,
+   "vertexCount": 2688
+  },
+  "cd5b154e4b0748a0853eda81b3ed04ba": {
+   "gltfSize": 13382917,
+   "faceCount": 7512,
+   "vertexCount": 3844
+  },
+  "5d9320d8c96248009a60e6a5986c5abf": {
+   "gltfSize": 12354630,
+   "faceCount": 10112,
+   "vertexCount": 5058
+  },
+  "f479961b9e564584957080aa47dde3c9": {
+   "gltfSize": 9564399,
+   "faceCount": 16510,
+   "vertexCount": 8384
+  },
+  "b125a69faea74160a157ae326649aa8d": {
+   "gltfSize": 14277018,
+   "faceCount": 36680,
+   "vertexCount": 18382
+  },
+  "19394b9a07db40018ffd39e4942e41d0": {
+   "gltfSize": 11012301,
+   "faceCount": 3212,
+   "vertexCount": 1636
+  },
+  "04ecccfd0660443e86adf0a07230b5c1": {
+   "gltfSize": 38518258,
+   "faceCount": 102074,
+   "vertexCount": 51298
+  },
+  "9a3d6d41778e4c75afaaf3a2d79f8bd0": {
+   "gltfSize": 6414220,
+   "faceCount": 4734,
+   "vertexCount": 2369
+  },
+  "c3a5df0353ce450aa6e75c04b8004b82": {
+   "gltfSize": 13137839,
+   "faceCount": 33726,
+   "vertexCount": 16867
+  },
+  "19ed86f82cba4c9a95b632c79591bb9d": {
+   "gltfSize": 12774791,
+   "faceCount": 15616,
+   "vertexCount": 7810
+  },
+  "2d13cc81fcd74c0fa18077c3c0840bb8": {
+   "gltfSize": 55148983,
+   "faceCount": 9060,
+   "vertexCount": 4806
+  },
+  "a4fe6dbb055f4bf1bd52b8c614c0c5a5": {
+   "gltfSize": 6479711,
+   "faceCount": 7996,
+   "vertexCount": 4039
+  },
+  "ab511201f30e4e08a12c2b26e1eaad49": {
+   "gltfSize": 7956574,
+   "faceCount": 12872,
+   "vertexCount": 6434
+  },
+  "38256149f2834031a3e47242baeb77fd": {
+   "gltfSize": 7347034,
+   "faceCount": 15896,
+   "vertexCount": 7956
+  },
+  "cf6a8d8923c047a2b1ace9c82d435ce8": {
+   "gltfSize": 6255160,
+   "faceCount": 4222,
+   "vertexCount": 2113
+  },
+  "7440620e99874cae9445ccbef327ec34": {
+   "gltfSize": 5690187,
+   "faceCount": 14336,
+   "vertexCount": 7170
+  },
+  "81dc54b4f5624913822dafefdd8f018b": {
+   "gltfSize": 7021725,
+   "faceCount": 18816,
+   "vertexCount": 9410
+  },
+  "039dc977a8034e9dbccab1a36a2d0ad6": {
+   "gltfSize": 11231752,
+   "faceCount": 1556,
+   "vertexCount": 780
+  },
+  "73f6ae70fbd744afa3d37f4a9f68b5d8": {
+   "gltfSize": 14760247,
+   "faceCount": 11000,
+   "vertexCount": 5510
+  },
+  "2ca8fcd892514a97a13008fce4571119": {
+   "gltfSize": 9702234,
+   "faceCount": 45568,
+   "vertexCount": 22788
+  },
+  "63ec9c6b965b42e1a311e3a4a5a379a0": {
+   "gltfSize": 3929711,
+   "faceCount": 11120,
+   "vertexCount": 5562
+  },
+  "b45c1e72638741f9be0b52b323c69986": {
+   "gltfSize": 40471219,
+   "faceCount": 11984,
+   "vertexCount": 6090
+  },
+  "18eb9caf2c3a48ce92cbac7a79f149be": {
+   "gltfSize": 39226911,
+   "faceCount": 20804,
+   "vertexCount": 10618
+  },
+  "6b0209cc65db435e921d0c10db469d52": {
+   "gltfSize": 12731597,
+   "faceCount": 27328,
+   "vertexCount": 14110
+  },
+  "f515e6f6d6784abf982450b86a2f941c": {
+   "gltfSize": 5540198,
+   "faceCount": 9736,
+   "vertexCount": 4878
+  },
+  "88efa73f411a49fdb6cc6522634f88f1": {
+   "gltfSize": 2542314,
+   "faceCount": 4350,
+   "vertexCount": 2177
+  },
+  "d5cca644a90a4dad8ace20319f99f78e": {
+   "gltfSize": null,
+   "faceCount": 3710,
+   "vertexCount": 1857
+  },
+  "55a721df69ef409f9b007c854b35017c": {
+   "gltfSize": 11984319,
+   "faceCount": 7678,
+   "vertexCount": 3841
+  },
+  "4431ceaa9d214c58bb6e6caf02c57fe9": {
+   "gltfSize": 61975643,
+   "faceCount": 58500,
+   "vertexCount": 29969
+  },
+  "c96284649c664071a35222fa1d56a7b5": {
+   "gltfSize": 12270151,
+   "faceCount": 11510,
+   "vertexCount": 5941
+  },
+  "391c96a9d4a14c12b0dff37cc8b4005a": {
+   "gltfSize": 9201467,
+   "faceCount": 4030,
+   "vertexCount": 2017
+  },
+  "5e5c0e8eb23b499d894df32f66d59e8a": {
+   "gltfSize": 8171969,
+   "faceCount": 4734,
+   "vertexCount": 2369
+  },
+  "1672445e46ed41b79fcc5f5abf8d3dc8": {
+   "gltfSize": 15625912,
+   "faceCount": 7736,
+   "vertexCount": 3941
+  },
+  "848acdd9fc6748febfa93fd1d4043c88": {
+   "gltfSize": 15647722,
+   "faceCount": 17360,
+   "vertexCount": 9573
+  },
+  "23a6d5a557654c088a6b5a17bf18e58d": {
+   "gltfSize": 9050349,
+   "faceCount": 4222,
+   "vertexCount": 2113
+  },
+  "d6609ea875bc4e9cb86f69cd3a223afc": {
+   "gltfSize": 11587230,
+   "faceCount": 97094,
+   "vertexCount": 48705
+  },
+  "a725920044c748af81abab735f8e8cf1": {
+   "gltfSize": 9086593,
+   "faceCount": 41088,
+   "vertexCount": 20546
+  },
+  "b5715b993cc6445e89ac393ec6e5b3ff": {
+   "gltfSize": 11577780,
+   "faceCount": 5436,
+   "vertexCount": 2758
+  },
+  "3238386b0fc2494cbf99991118b8f58e": {
+   "gltfSize": 52034830,
+   "faceCount": 88360,
+   "vertexCount": 45796
+  },
+  "305efa4f6a954daea8bc457a62c38f8d": {
+   "gltfSize": 10930169,
+   "faceCount": 15588,
+   "vertexCount": 7896
+  },
+  "0d5241fbc468489ca116e971ac09a344": {
+   "gltfSize": 29321930,
+   "faceCount": 33376,
+   "vertexCount": 17092
+  },
+  "3fc81ba6c6504cd0a6c2e4ee295265ee": {
+   "gltfSize": 14074020,
+   "faceCount": 27628,
+   "vertexCount": 13822
+  },
+  "9b208bbff65a447e8bbffd353ec5bd70": {
+   "gltfSize": 8513800,
+   "faceCount": 18468,
+   "vertexCount": 9430
+  },
+  "ba55b8f812924b9a9fa02dd0fe3b070c": {
+   "gltfSize": 10539463,
+   "faceCount": 4350,
+   "vertexCount": 2177
+  },
+  "5aea9da6c5844223968e091991dd4822": {
+   "gltfSize": 10435414,
+   "faceCount": 47744,
+   "vertexCount": 23876
+  },
+  "81de87c5e7194bbf946ac0e8a858ecd8": {
+   "gltfSize": 41095895,
+   "faceCount": 16692,
+   "vertexCount": 8576
+  },
+  "747f6a3f5e6e4ece94df47e775e40126": {
+   "gltfSize": 13572355,
+   "faceCount": 3688,
+   "vertexCount": 1856
+  },
+  "ca926b28a542431caf10364d0e110b5e": {
+   "gltfSize": 51815351,
+   "faceCount": 40220,
+   "vertexCount": 22320
+  },
+  "4d510138e3f84d7d81badf6e7790ed8c": {
+   "gltfSize": 13415371,
+   "faceCount": 271584,
+   "vertexCount": 139606
+  },
+  "39bdc941cd7b4f5682d785f12eaef2a0": {
+   "gltfSize": 6076942,
+   "faceCount": 5904,
+   "vertexCount": 2940
+  },
+  "3a8d1afd4148479791f3294b6c03c8c9": {
+   "gltfSize": 6348102,
+   "faceCount": 5984,
+   "vertexCount": 3014
+  },
+  "c88ff7a3763848be8a4ec6c484f2553f": {
+   "gltfSize": 8574847,
+   "faceCount": 3106,
+   "vertexCount": 1662
+  },
+  "deadd7fc4f2e4baab64d4dd404e76384": {
+   "gltfSize": 24419027,
+   "faceCount": 3800,
+   "vertexCount": 1908
+  },
+  "696a185cccdc4e8388b1686a353df06b": {
+   "gltfSize": 4012356,
+   "faceCount": 47496,
+   "vertexCount": 24114
+  },
+  "916272e9892343fcbec3a66d1061f773": {
+   "gltfSize": 492316,
+   "faceCount": 436,
+   "vertexCount": 236
+  },
+  "9e5fab209b5e4013ba5fe43daf685e2e": {
+   "gltfSize": 10423606,
+   "faceCount": 2812,
+   "vertexCount": 1406
+  },
+  "be19cb79e1894f69b6680bea71ebbdb8": {
+   "gltfSize": 12794030,
+   "faceCount": 955,
+   "vertexCount": 503
+  },
+  "065204757a5d4dbe82eb15ca044fc07f": {
+   "gltfSize": 10331451,
+   "faceCount": 1009,
+   "vertexCount": 539
+  },
+  "022dbfc6add1447fb2df7d52208f17a4": {
+   "gltfSize": 9680649,
+   "faceCount": 89716,
+   "vertexCount": 46971
+  },
+  "0073cd4b63ae40648497aabf7aee0751": {
+   "gltfSize": 1630289,
+   "faceCount": 592,
+   "vertexCount": 300
+  },
+  "b45c6bed536d4e55b3a9fb1063ce4edf": {
+   "gltfSize": 1257657,
+   "faceCount": 4690,
+   "vertexCount": 2456
+  },
+  "729f3ee2e3264b86ab537a4a369f57df": {
+   "gltfSize": 1532571,
+   "faceCount": 4116,
+   "vertexCount": 2078
+  },
+  "3db9e2490ad5454f939ec4cb79c544b2": {
+   "gltfSize": 31448732,
+   "faceCount": 110140,
+   "vertexCount": 61942
+  },
+  "fad246457cc94a718b88748acffca13f": {
+   "gltfSize": 11026318,
+   "faceCount": 111744,
+   "vertexCount": 56706
+  },
+  "006f422dc0ca4115a99ac99c83e42950": {
+   "gltfSize": 7781205,
+   "faceCount": 2522,
+   "vertexCount": 1276
+  },
+  "0c860a91d4474cd7a446c6f255ee31db": {
+   "gltfSize": 25185338,
+   "faceCount": 13716,
+   "vertexCount": 7145
+  },
+  "6161575eb6f2485f827ba19bd5d8962a": {
+   "gltfSize": 41213252,
+   "faceCount": 89556,
+   "vertexCount": 45295
+  },
+  "d56759dea92f4efb81862468438f3fca": {
+   "gltfSize": 22271511,
+   "faceCount": 2108,
+   "vertexCount": 1113
+  },
+  "9f0595ed8cea4e88b7668772ea6d919e": {
+   "gltfSize": 44861119,
+   "faceCount": 13592,
+   "vertexCount": 7066
+  },
+  "7f2a310b790048599ed5c0478d5179bf": {
+   "gltfSize": 8079527,
+   "faceCount": 660,
+   "vertexCount": 332
+  },
+  "969ac244686b43e885bbcca197a682e1": {
+   "gltfSize": 27018885,
+   "faceCount": 29414,
+   "vertexCount": 14872
+  },
+  "a0f0493094514dd0bbe7c2d3eeee3e84": {
+   "gltfSize": 27850481,
+   "faceCount": 4228,
+   "vertexCount": 2323
+  },
+  "c0b91f8896164e60ba6299a5e4f86864": {
+   "gltfSize": 17396647,
+   "faceCount": 10412,
+   "vertexCount": 5413
+  },
+  "2253262e248045abbf30ed1fbef9197d": {
+   "gltfSize": 8423534,
+   "faceCount": 28,
+   "vertexCount": 16
+  },
+  "8f98988a27334967bf24eead1375101c": {
+   "gltfSize": 52326032,
+   "faceCount": 90510,
+   "vertexCount": 48518
+  },
+  "64a6c6fe0c5946ed8e4917d4ebef3be3": {
+   "gltfSize": 210239495,
+   "faceCount": 2111954,
+   "vertexCount": 1128235
+  },
+  "7c07f92cabf046e98282286788112a25": {
+   "gltfSize": 4358987,
+   "faceCount": 42784,
+   "vertexCount": 23228
+  },
+  "4714bb06ab274f79b95b79e55a603192": {
+   "gltfSize": 69215768,
+   "faceCount": 4540,
+   "vertexCount": 2408
+  },
+  "82a2d406b2b946c6bce343e9311a064d": {
+   "gltfSize": 27478487,
+   "faceCount": 4196,
+   "vertexCount": 2100
+  },
+  "5da223b07509449b9059ac5ea44da38c": {
+   "gltfSize": 7114760,
+   "faceCount": 3168,
+   "vertexCount": 1586
+  },
+  "334a316ec63341158eb7d64af059f329": {
+   "gltfSize": 47029988,
+   "faceCount": 101232,
+   "vertexCount": 51971
+  },
+  "074dd6b7e44d49e08e45e64e00a1e228": {
+   "gltfSize": 19531055,
+   "faceCount": 17856,
+   "vertexCount": 9076
+  },
+  "1a6fe27f9cd04fc591b71d0a417d0f03": {
+   "gltfSize": 69584852,
+   "faceCount": 5568,
+   "vertexCount": 2792
+  },
+  "ee790d4c1a9d4a4f841d9a07c9aa063e": {
+   "gltfSize": 3894069,
+   "faceCount": 8579,
+   "vertexCount": 4539
+  },
+  "61775871db37497d8dad1004745f0e6c": {
+   "gltfSize": 92918762,
+   "faceCount": 22104,
+   "vertexCount": 11404
+  },
+  "f60f6ef5b6f34962af14338dc5c08454": {
+   "gltfSize": 3628672,
+   "faceCount": 7117,
+   "vertexCount": 3751
+  },
+  "b0b187a6b87a42e7a6a43a966fc22134": {
+   "gltfSize": 3782581,
+   "faceCount": 7065,
+   "vertexCount": 3725
+  },
+  "c51ccee44dcc492c8a1e96bfee633465": {
+   "gltfSize": 38164267,
+   "faceCount": 9388,
+   "vertexCount": 4760
+  },
+  "44402a8a03694603914b821430fbfc09": {
+   "gltfSize": 43462308,
+   "faceCount": 24636,
+   "vertexCount": 12934
+  },
+  "470e18bade884d619f2500f72ab90c97": {
+   "gltfSize": 31314076,
+   "faceCount": 25494,
+   "vertexCount": 13920
+  },
+  "92e48d4bc5a14f99bfdd1b5dc9ac73be": {
+   "gltfSize": 4422741,
+   "faceCount": 15820,
+   "vertexCount": 8329
+  },
+  "b5316f9e86e145d49b3e80442db4ac8f": {
+   "gltfSize": 600516,
+   "faceCount": 616,
+   "vertexCount": 330
+  },
+  "c3e056e63d5e40699704b96e838a4095": {
+   "gltfSize": 700930,
+   "faceCount": 1277,
+   "vertexCount": 727
+  },
+  "5faf0f2b2fcf40e1b85410747dbf8140": {
+   "gltfSize": 3498045,
+   "faceCount": 632,
+   "vertexCount": 324
+  },
+  "4f66c4fad48046138c95cc43cf0df7f8": {
+   "gltfSize": 910887,
+   "faceCount": 1442,
+   "vertexCount": 729
+  },
+  "54532f81b636442ca6f95c15654051d5": {
+   "gltfSize": 18693318,
+   "faceCount": 3250,
+   "vertexCount": 1639
+  },
+  "cd26114e523a43ac9dabccab206f5b54": {
+   "gltfSize": 26654741,
+   "faceCount": 10446,
+   "vertexCount": 5211
+  },
+  "81c4ca6fd9b340228a68587e25907e6a": {
+   "gltfSize": 2106785,
+   "faceCount": 454,
+   "vertexCount": 252
+  },
+  "63fa65ea2589412ca4a2c2ea20faa2ae": {
+   "gltfSize": 3208207,
+   "faceCount": 724,
+   "vertexCount": 368
+  },
+  "31c5cc998f1043ebb16883cac05c49f3": {
+   "gltfSize": 885358,
+   "faceCount": 1212,
+   "vertexCount": 628
+  },
+  "6c8d5a38ab4f4c83aac0667d259851e1": {
+   "gltfSize": 23174631,
+   "faceCount": 3584,
+   "vertexCount": 1786
+  },
+  "7097b42e48354d5d8abfd10e6406df3d": {
+   "gltfSize": 33883697,
+   "faceCount": 332,
+   "vertexCount": 180
+  },
+  "14e577027b0249ce9a6ef7d4dfb3b703": {
+   "gltfSize": 31520107,
+   "faceCount": 113981,
+   "vertexCount": 58594
+  },
+  "46ee4975752040379b456d11335c4e65": {
+   "gltfSize": 41328033,
+   "faceCount": 756,
+   "vertexCount": 380
+  },
+  "f097383b0dc949759f7a544b49a4729b": {
+   "gltfSize": 1151650,
+   "faceCount": 656,
+   "vertexCount": 330
+  },
+  "e777b82d85fc466dbe767d82f3b1206f": {
+   "gltfSize": 647641,
+   "faceCount": 252,
+   "vertexCount": 128
+  },
+  "6e929316e3164c8197c89b66208674de": {
+   "gltfSize": 3694050,
+   "faceCount": 188,
+   "vertexCount": 96
+  },
+  "23ff4449ccb540e0a8fe45f63be4ee1f": {
+   "gltfSize": 843423,
+   "faceCount": 944,
+   "vertexCount": 478
+  },
+  "9701e2fc21354c40b29d34242975174e": {
+   "gltfSize": 983616,
+   "faceCount": 772,
+   "vertexCount": 392
+  },
+  "bee2ad63551248838449986327b1327c": {
+   "gltfSize": 43596021,
+   "faceCount": 15364,
+   "vertexCount": 7771
+  },
+  "e241d70f0c9048b98ae351c1be54c0cf": {
+   "gltfSize": 6151911,
+   "faceCount": 12820,
+   "vertexCount": 6412
+  },
+  "9e9963470c8a4e81ba5f91fffb80ed3d": {
+   "gltfSize": 519910,
+   "faceCount": 886,
+   "vertexCount": 445
+  },
+  "14675af52deb496098d6054b3a012873": {
+   "gltfSize": 309426,
+   "faceCount": 348,
+   "vertexCount": 176
+  },
+  "6e5d2964662d44c29dadb27cb0fa1859": {
+   "gltfSize": 2548792,
+   "faceCount": 10208,
+   "vertexCount": 5268
+  },
+  "5f00c9981f6a4de99f91b0a34bf88fcb": {
+   "gltfSize": 700628,
+   "faceCount": 80,
+   "vertexCount": 42
+  },
+  "d6ad993be8c34b2eb59709c1b6efdfc9": {
+   "gltfSize": 8387741,
+   "faceCount": 1948,
+   "vertexCount": 1039
+  },
+  "1a8f4af2daf84d42bc2ccb65a9d90eec": {
+   "gltfSize": 2635270,
+   "faceCount": 664,
+   "vertexCount": 356
+  },
+  "980beac796c34e45b2a1173b4db83584": {
+   "gltfSize": 24232460,
+   "faceCount": 5546,
+   "vertexCount": 2962
+  },
+  "db7bc0796f414344a358bead5dbc720a": {
+   "gltfSize": 55560371,
+   "faceCount": 550,
+   "vertexCount": 277
+  },
+  "9f687a5e94c34848bbbce01feffb121d": {
+   "gltfSize": 1138368,
+   "faceCount": 300,
+   "vertexCount": 152
+  },
+  "f730359b822c464ea7a7f94b8789a70a": {
+   "gltfSize": 51445789,
+   "faceCount": 550,
+   "vertexCount": 277
+  },
+  "4630710ed6784d0fb2591c78395443a0": {
+   "gltfSize": 635385,
+   "faceCount": 288,
+   "vertexCount": 153
+  },
+  "80a4d6553ea24e91b9e57fca9d8e5902": {
+   "gltfSize": 756336,
+   "faceCount": 320,
+   "vertexCount": 166
+  },
+  "1df6cd9e49ce47758bdccec02eedb339": {
+   "gltfSize": 59129882,
+   "faceCount": 550,
+   "vertexCount": 277
+  },
+  "4f1041e9c88845b19e8acdcf1d91b24e": {
+   "gltfSize": 32483928,
+   "faceCount": 60,
+   "vertexCount": 32
+  },
+  "de3cab6a9fa74f068daee7b09662762e": {
+   "gltfSize": 58461604,
+   "faceCount": 550,
+   "vertexCount": 277
+  },
+  "27acd87cbc8344eb9576389099c14644": {
+   "gltfSize": 59365634,
+   "faceCount": 550,
+   "vertexCount": 277
+  },
+  "7ac5ddc9dd8d48b58277bd12ab3089fb": {
+   "gltfSize": 1134585,
+   "faceCount": 464,
+   "vertexCount": 234
+  },
+  "bf766922034b436cb15f5f7e517ea2ea": {
+   "gltfSize": 939743,
+   "faceCount": 752,
+   "vertexCount": 378
+  },
+  "6c7e1244d46c457fb6f3d6194663073b": {
+   "gltfSize": 475296,
+   "faceCount": 1088,
+   "vertexCount": 546
+  },
+  "85ac3c045e2549b4a4e745fbf65c5149": {
+   "gltfSize": 1633121,
+   "faceCount": 3308,
+   "vertexCount": 1668
+  },
+  "e5b92f468b59475390e570926ca44053": {
+   "gltfSize": 736111,
+   "faceCount": 348,
+   "vertexCount": 176
+  },
+  "c1b42be1370e49458973015674f74364": {
+   "gltfSize": 3876407,
+   "faceCount": 944,
+   "vertexCount": 474
+  },
+  "5c9f37e18acb456cacbda4537e55a499": {
+   "gltfSize": 535747,
+   "faceCount": 1500,
+   "vertexCount": 760
+  },
+  "c3dbc11b869043819c032777c3c9ddac": {
+   "gltfSize": 1378396,
+   "faceCount": 1184,
+   "vertexCount": 602
+  },
+  "7905e21b424d4df1b397e8da4e371d4e": {
+   "gltfSize": 56945127,
+   "faceCount": 550,
+   "vertexCount": 277
+  },
+  "e29fd48add3d471ab0bf25e9ae1213d5": {
+   "gltfSize": 3284933,
+   "faceCount": 4996,
+   "vertexCount": 2491
+  },
+  "cf22e9568c5b4799b60f2cbf9d16dca0": {
+   "gltfSize": 1044426,
+   "faceCount": 276,
+   "vertexCount": 140
+  },
+  "9feb9dfd4f824c27b9455732aae886aa": {
+   "gltfSize": 44201802,
+   "faceCount": 550,
+   "vertexCount": 277
+  },
+  "17ae63f568134e47b5929811ae169c90": {
+   "gltfSize": 3415521,
+   "faceCount": 244,
+   "vertexCount": 124
+  },
+  "4bd65305793741eebee40881310f89b8": {
+   "gltfSize": 7133258,
+   "faceCount": 1924,
+   "vertexCount": 980
+  },
+  "c81aa1f553054e40b4cfd39bdd944424": {
+   "gltfSize": 6027755,
+   "faceCount": 12,
+   "vertexCount": 8
+  },
+  "a345f9daa7664fbabc6331ed8ec3c2e0": {
+   "gltfSize": 4493938,
+   "faceCount": 1708,
+   "vertexCount": 878
+  },
+  "fb39098ead854ef0b8d8795942325c62": {
+   "gltfSize": 56249729,
+   "faceCount": 550,
+   "vertexCount": 277
+  },
+  "bf0f30a5361a4a0d84c73cdc1eaf1713": {
+   "gltfSize": 3739804,
+   "faceCount": 9020,
+   "vertexCount": 4670
+  },
+  "56544f04be5049cfbfab1161a5702a53": {
+   "gltfSize": 50177569,
+   "faceCount": 550,
+   "vertexCount": 277
+  },
+  "943b6103c1874e1abe3cfef64fab4e94": {
+   "gltfSize": 3225522,
+   "faceCount": 2632,
+   "vertexCount": 1334
+  },
+  "38ca1b292f454d6285fe4b024fa06469": {
+   "gltfSize": 11967602,
+   "faceCount": 1252,
+   "vertexCount": 680
+  },
+  "2daa8ef4f23a4c439399cbbe4318a88e": {
+   "gltfSize": 3548934,
+   "faceCount": 482,
+   "vertexCount": 243
+  },
+  "0f57b1cc694243af95d39da7ff7011ac": {
+   "gltfSize": 2862911,
+   "faceCount": 1688,
+   "vertexCount": 504
+  },
+  "7f6540bfb9b74096ba094494b4714b9c": {
+   "gltfSize": 983914,
+   "faceCount": 308,
+   "vertexCount": 170
+  },
+  "8f0c77caef7f4e1997f4829eea85ba6c": {
+   "gltfSize": 748605,
+   "faceCount": 1440,
+   "vertexCount": 722
+  },
+  "808e2dd43f3249ab9d7aa685d6b2f336": {
+   "gltfSize": 640114,
+   "faceCount": 856,
+   "vertexCount": 437
+  },
+  "1c92d9c75c5a4fcb84c4b62f2103198c": {
+   "gltfSize": 57593295,
+   "faceCount": 550,
+   "vertexCount": 277
+  },
+  "3056ff4a0eff4df887b507d425e94af8": {
+   "gltfSize": 2938705,
+   "faceCount": 1172,
+   "vertexCount": 595
+  },
+  "7857ca48f2f54493a74b21e6e53f8a3e": {
+   "gltfSize": 791313,
+   "faceCount": 1280,
+   "vertexCount": 642
+  },
+  "1043e0664c404dc8b57e6ccc62491567": {
+   "gltfSize": 993325,
+   "faceCount": 1014,
+   "vertexCount": 521
+  },
+  "509aa21de73d4ca380cfe09fafaca9d9": {
+   "gltfSize": 14128273,
+   "faceCount": 5464,
+   "vertexCount": 3118
+  },
+  "6e503af8148d47e3adce23fc345c6d0e": {
+   "gltfSize": 53127299,
+   "faceCount": 550,
+   "vertexCount": 277
+  },
+  "acbdd0f5fa3142658adca5a67b810af5": {
+   "gltfSize": 827131,
+   "faceCount": 1072,
+   "vertexCount": 538
+  },
+  "bc43790f77f34e71ad9b2901ca81b593": {
+   "gltfSize": 4491406,
+   "faceCount": 11592,
+   "vertexCount": 5841
+  },
+  "d00a1cb787314ffb9c5bd9c830e67b94": {
+   "gltfSize": 890485,
+   "faceCount": 1088,
+   "vertexCount": 542
+  },
+  "9908305b49f74af2a32bad7240fe1021": {
+   "gltfSize": 3369570,
+   "faceCount": 856,
+   "vertexCount": 430
+  },
+  "41af1b457d1047c993e3c96622896b88": {
+   "gltfSize": 3375253,
+   "faceCount": 856,
+   "vertexCount": 430
+  },
+  "15df1ecb95624fa194a77e4ba57f5846": {
+   "gltfSize": 50200176,
+   "faceCount": 550,
+   "vertexCount": 277
+  },
+  "c8e8dc18b73946daaa4d51f81783ceab": {
+   "gltfSize": 909365,
+   "faceCount": 392,
+   "vertexCount": 198
+  },
+  "3bc35dda4ca74b3e8fecd2cce621999e": {
+   "gltfSize": 35881923,
+   "faceCount": 3430,
+   "vertexCount": 1956
+  },
+  "5d6d209d5dfe40f1b1be3ea53f7e3456": {
+   "gltfSize": 556100,
+   "faceCount": 212,
+   "vertexCount": 108
+  },
+  "5495e795c0e7497b936c7f99f47974db": {
+   "gltfSize": 57150198,
+   "faceCount": 37288,
+   "vertexCount": 18790
+  },
+  "c64af63bcbee4c30819062baeec48279": {
+   "gltfSize": 15280036,
+   "faceCount": 25112,
+   "vertexCount": 12530
+  },
+  "a99d69389ffc4b01b363adcb6f69c67a": {
+   "gltfSize": 58777467,
+   "faceCount": 576,
+   "vertexCount": 290
+  },
+  "006b419b44b945ea88d5a594acfb22b9": {
+   "gltfSize": 56961632,
+   "faceCount": 100734,
+   "vertexCount": 50667
+  },
+  "2ee7e644ce694ee4acce57acf4484375": {
+   "gltfSize": 984037,
+   "faceCount": 760,
+   "vertexCount": 382
+  },
+  "630389233e0b4e1bba3ba92a662d592b": {
+   "gltfSize": 748623,
+   "faceCount": 914,
+   "vertexCount": 461
+  },
+  "6d970c76887f478a83de7769e7382eda": {
+   "gltfSize": 732037,
+   "faceCount": 476,
+   "vertexCount": 259
+  },
+  "c3d62eaeac8f46da9f4441145194e981": {
+   "gltfSize": 3370171,
+   "faceCount": 100,
+   "vertexCount": 63
+  },
+  "c034c93df48642d899cb0ba45aef0da3": {
+   "gltfSize": 595489,
+   "faceCount": 256,
+   "vertexCount": 130
+  },
+  "152dee076f524534a13daee190d34c75": {
+   "gltfSize": 3013383,
+   "faceCount": 584,
+   "vertexCount": 294
+  },
+  "1c8de013d6aa4aadb165582f21482b4c": {
+   "gltfSize": 502170,
+   "faceCount": 1654,
+   "vertexCount": 924
+  },
+  "faf4980ad7734748a400d43c9b87db64": {
+   "gltfSize": 3281590,
+   "faceCount": 1368,
+   "vertexCount": 750
+  },
+  "f3c4b7b0f29e48dfa8b361668b6938d7": {
+   "gltfSize": 786374,
+   "faceCount": 440,
+   "vertexCount": 260
+  },
+  "e11f9ee66df74288be83f9fede578bd4": {
+   "gltfSize": 58361724,
+   "faceCount": 96537,
+   "vertexCount": 48533
+  },
+  "92b41592f14a4ac9a60a001a7761f77e": {
+   "gltfSize": 168729512,
+   "faceCount": 399920,
+   "vertexCount": 200190
+  },
+  "b921d297d72b490d809494893564a0c1": {
+   "gltfSize": 164397462,
+   "faceCount": 399783,
+   "vertexCount": 199970
+  },
+  "5a668ebb353b403dba53119bc3ce87b6": {
+   "gltfSize": 209457444,
+   "faceCount": 333778,
+   "vertexCount": 167155
+  },
+  "ae5bac4452284e79b50eecdd15c9eaed": {
+   "gltfSize": 132841462,
+   "faceCount": 475568,
+   "vertexCount": 237493
+  },
+  "c0b75873afb24df6882d7560fb04339f": {
+   "gltfSize": 68342221,
+   "faceCount": 77501,
+   "vertexCount": 39188
+  },
+  "fdbf7b6f683644408b026f6fcc81d19a": {
+   "gltfSize": 348506530,
+   "faceCount": 1016494,
+   "vertexCount": 510522
+  },
+  "e81bdc359c7f42c1899260deefae7e5e": {
+   "gltfSize": 327293019,
+   "faceCount": 741594,
+   "vertexCount": 372505
+  },
+  "8381b060f1094fa2a00f2b1524640c72": {
+   "gltfSize": 376503633,
+   "faceCount": 1016628,
+   "vertexCount": 510852
+  },
+  "6a27522c7af64a9ab443165e22e08d64": {
+   "gltfSize": 32605491,
+   "faceCount": 52068,
+   "vertexCount": 26036
+  },
+  "0a0666a90ff14960bcef17d76e9fcd55": {
+   "gltfSize": 141883182,
+   "faceCount": 38182,
+   "vertexCount": 19093
+  },
+  "8e67cbb38ab4462091f99a5d258aa566": {
+   "gltfSize": 11446245,
+   "faceCount": 65708,
+   "vertexCount": 32852
+  },
+  "06b25940e7634949a2e2f1e6373d37a4": {
+   "gltfSize": 111990858,
+   "faceCount": 39666,
+   "vertexCount": 19835
+  },
+  "e4c3703fa27345758f7c0a7ee3196a0c": {
+   "gltfSize": 96356860,
+   "faceCount": 40330,
+   "vertexCount": 20167
+  },
+  "5c3c18731e1d4a6bad22d1e76056ff18": {
+   "gltfSize": 152053579,
+   "faceCount": 37388,
+   "vertexCount": 18696
+  },
+  "e36f12d14dfc4156b1c6835b4bd1d28f": {
+   "gltfSize": 54349970,
+   "faceCount": 45720,
+   "vertexCount": 22862
+  },
+  "08727583099a419c85c1e81f35f43ace": {
+   "gltfSize": 138542160,
+   "faceCount": 40402,
+   "vertexCount": 20203
+  },
+  "c988caa68fbb43b9952d4b87721f83fc": {
+   "gltfSize": 117181118,
+   "faceCount": 30000,
+   "vertexCount": 14990
+  },
+  "3dfbbb64af38435fa3271b8832c5a3e4": {
+   "gltfSize": 142231564,
+   "faceCount": 47280,
+   "vertexCount": 23642
+  },
+  "fae0aaa386aa4889903534e8166f7cbd": {
+   "gltfSize": 54235038,
+   "faceCount": 225239,
+   "vertexCount": 112954
+  },
+  "7ac79a000635419c890794dc54db568c": {
+   "gltfSize": 46842891,
+   "faceCount": 17722,
+   "vertexCount": 8861
+  },
+  "b7cc6215915443c6a40cf7b4b0c0c86f": {
+   "gltfSize": 157082267,
+   "faceCount": 82920,
+   "vertexCount": 41432
+  },
+  "5756331be3b6471b9357c0cbbfa257ba": {
+   "gltfSize": 67017505,
+   "faceCount": 197244,
+   "vertexCount": 102883
+  },
+  "d9b3c2ddf8464605a8dd9e9b0f2b5f3e": {
+   "gltfSize": 57261641,
+   "faceCount": 256816,
+   "vertexCount": 138288
+  },
+  "e796df99b52846c19bf48571f98f51dd": {
+   "gltfSize": 158225778,
+   "faceCount": 795137,
+   "vertexCount": 398294
+  },
+  "702251c5756e4577a5d6d37ba04b423e": {
+   "gltfSize": 105949351,
+   "faceCount": 188128,
+   "vertexCount": 94066
+  },
+  "35807384df224fdd9053a074f2ef82b2": {
+   "gltfSize": 171037075,
+   "faceCount": 56866,
+   "vertexCount": 28618
+  },
+  "1d5ced0db7de4bfb9272d8bcefd957f8": {
+   "gltfSize": 177191463,
+   "faceCount": 56229,
+   "vertexCount": 28266
+  },
+  "ccabf877587a4495b1bbbbf6d2bc9b1d": {
+   "gltfSize": 205582773,
+   "faceCount": 56336,
+   "vertexCount": 28336
+  },
+  "25b4650101e14f538b49b67514ca5583": {
+   "gltfSize": 188327697,
+   "faceCount": 53995,
+   "vertexCount": 27181
+  },
+  "465f7cfa1e354534a2b14ecf79f8dc1f": {
+   "gltfSize": 203691201,
+   "faceCount": 55477,
+   "vertexCount": 27921
+  },
+  "e8d1556651af4d4582e3860dad52a7e4": {
+   "gltfSize": 194787652,
+   "faceCount": 55900,
+   "vertexCount": 28121
+  },
+  "8bcca93ad7204dff9ed375cc0252fe1d": {
+   "gltfSize": 176211805,
+   "faceCount": 50655,
+   "vertexCount": 25500
+  },
+  "6108a35433584216a2346f0a9b2bf524": {
+   "gltfSize": 235095881,
+   "faceCount": 52065,
+   "vertexCount": 26254
+  },
+  "0422f6ced6e74469bd43091c150e39f0": {
+   "gltfSize": 204392547,
+   "faceCount": 56093,
+   "vertexCount": 28267
+  },
+  "b79f2fa10ca64f3b8cca1d2e1cdb262d": {
+   "gltfSize": 198333979,
+   "faceCount": 56962,
+   "vertexCount": 28701
+  },
+  "d1e216b78cc54eb5b4a5a5bf6f98a0c0": {
+   "gltfSize": 82601884,
+   "faceCount": 24882,
+   "vertexCount": 12563
+  },
+  "553c8af39a924e9cb4b6d345171c142e": {
+   "gltfSize": 121407149,
+   "faceCount": 17379,
+   "vertexCount": 8821
+  },
+  "4b083e30023f42ad8ffb93fb85d74c4a": {
+   "gltfSize": 75926622,
+   "faceCount": 20277,
+   "vertexCount": 10368
+  },
+  "dcf7bc48e6034719ae68610aba4649b7": {
+   "gltfSize": 123938234,
+   "faceCount": 49902,
+   "vertexCount": 25195
+  },
+  "254e66fc019e4ff0916d8c3ca07c2585": {
+   "gltfSize": 87181830,
+   "faceCount": 54737,
+   "vertexCount": 27594
+  },
+  "177a89808ff4402baaeb75452e1e9f00": {
+   "gltfSize": 111632160,
+   "faceCount": 61841,
+   "vertexCount": 31292
+  },
+  "c2e79cda6ae04acaa03d96edd9098644": {
+   "gltfSize": 36823610,
+   "faceCount": 68128,
+   "vertexCount": 34727
+  },
+  "6c985ad1963c4d488434df38563c5b36": {
+   "gltfSize": 107820884,
+   "faceCount": 91655,
+   "vertexCount": 46393
+  },
+  "077b52096f024178bb502343bb04a7e4": {
+   "gltfSize": 191286749,
+   "faceCount": 32328,
+   "vertexCount": 16166
+  },
+  "7767144c1f1d42e0b2ca78838a9dcdeb": {
+   "gltfSize": 189169152,
+   "faceCount": 35160,
+   "vertexCount": 17582
+  },
+  "b391851ab5da46f3af9764583700a084": {
+   "gltfSize": 185861082,
+   "faceCount": 32804,
+   "vertexCount": 16404
+  },
+  "0ddadb2890a449789846e659831add8d": {
+   "gltfSize": 188019295,
+   "faceCount": 32732,
+   "vertexCount": 16368
+  },
+  "d4f6abb3e8d54953abfed2a20fbf8a0d": {
+   "gltfSize": 193799833,
+   "faceCount": 33632,
+   "vertexCount": 16818
+  },
+  "427015ea71aa4d8b85c215547f0d88ff": {
+   "gltfSize": 190220403,
+   "faceCount": 31742,
+   "vertexCount": 15873
+  },
+  "7950a58d35d3404086bb4fb700b9c9e9": {
+   "gltfSize": 184915902,
+   "faceCount": 32708,
+   "vertexCount": 16356
+  },
+  "0b85d99f00184962be4c765cd851e859": {
+   "gltfSize": 184224125,
+   "faceCount": 33840,
+   "vertexCount": 16922
+  },
+  "3ebfbe43ca02455fbe82e1e65ba03f38": {
+   "gltfSize": 196331134,
+   "faceCount": 37846,
+   "vertexCount": 18925
+  },
+  "46380347fa4649fd92128e73ac3270bb": {
+   "gltfSize": 197611043,
+   "faceCount": 36746,
+   "vertexCount": 18375
+  },
+  "a5b2ae68b8bb4941981f055ad4512576": {
+   "gltfSize": 86773756,
+   "faceCount": 171249,
+   "vertexCount": 86229
+  },
+  "e9d29bbbd353478e94d51ab656edf9db": {
+   "gltfSize": 187359672,
+   "faceCount": 38396,
+   "vertexCount": 19200
+  },
+  "544e7fdc2ce5418689f59270cd82b453": {
+   "gltfSize": 169051754,
+   "faceCount": 293117,
+   "vertexCount": 147589
+  },
+  "6d4835420d354359a9381b70f90dd15b": {
+   "gltfSize": 186669405,
+   "faceCount": 31100,
+   "vertexCount": 15552
+  },
+  "e4f8f4541a574e8fbd4d51924bf56940": {
+   "gltfSize": 36080950,
+   "faceCount": 56493,
+   "vertexCount": 28418
+  },
+  "5181b10c7ee247b29d82f9c3b4c847f5": {
+   "gltfSize": 161380338,
+   "faceCount": 188201,
+   "vertexCount": 94300
+  },
+  "acd07fcdae0d4f688225a3b9912e3e0e": {
+   "gltfSize": 94467233,
+   "faceCount": 182060,
+   "vertexCount": 91032
+  },
+  "f605392efebb482db884609dfcd122d6": {
+   "gltfSize": 25898529,
+   "faceCount": 156171,
+   "vertexCount": 78393
+  },
+  "be127db27c8b4b5d9fab381d2d5a4623": {
+   "gltfSize": 131818598,
+   "faceCount": 203099,
+   "vertexCount": 98969
+  },
+  "3d713925a701419fb18d7b7d325abe15": {
+   "gltfSize": 121430918,
+   "faceCount": 253497,
+   "vertexCount": 127347
+  },
+  "5d30a65013c54f429907597be6142e7b": {
+   "gltfSize": 123301897,
+   "faceCount": 188406,
+   "vertexCount": 94711
+  },
+  "a7b069d1f56f406d9e74113f417d5244": {
+   "gltfSize": 160717266,
+   "faceCount": 142218,
+   "vertexCount": 71291
+  },
+  "1cc42d08511442f4b372895675426ba5": {
+   "gltfSize": 31503108,
+   "faceCount": 94220,
+   "vertexCount": 47063
+  },
+  "d9aecc78a57e4b039bfa83f3d82a0fa8": {
+   "gltfSize": 55761016,
+   "faceCount": 88814,
+   "vertexCount": 44362
+  },
+  "fa887308b13a46889b1add16d992bc88": {
+   "gltfSize": 23175971,
+   "faceCount": 95722,
+   "vertexCount": 47832
+  },
+  "e71fc15c3d8b40b5a20b9d1a66340c68": {
+   "gltfSize": 28173887,
+   "faceCount": 92979,
+   "vertexCount": 46537
+  },
+  "4e7d93e3cf21434fb5a8316ef4278dd0": {
+   "gltfSize": 29280339,
+   "faceCount": 99195,
+   "vertexCount": 49696
+  },
+  "5c8c99e79ecb4c4b9a191032fef2ef0d": {
+   "gltfSize": 26321106,
+   "faceCount": 97395,
+   "vertexCount": 48442
+  },
+  "48e4e4f7092c4850b3a397bb5e6ed332": {
+   "gltfSize": 31341156,
+   "faceCount": 103164,
+   "vertexCount": 51721
+  },
+  "f5bec035ea6449eba8a77ff2ee3619e5": {
+   "gltfSize": 38672537,
+   "faceCount": 101382,
+   "vertexCount": 50652
+  },
+  "7bce2a89e8e74749b44535ab6c3ee83c": {
+   "gltfSize": 25673698,
+   "faceCount": 95234,
+   "vertexCount": 47571
+  },
+  "fd82fcc3d2d84ca2895f66c299b7d105": {
+   "gltfSize": 24695501,
+   "faceCount": 90122,
+   "vertexCount": 45144
+  },
+  "a0efb939a2904e2ca00fc4f52eaced8e": {
+   "gltfSize": 29926616,
+   "faceCount": 99506,
+   "vertexCount": 47641
+  },
+  "5bf531bf6d1c4cf386f20158042594e7": {
+   "gltfSize": 35417324,
+   "faceCount": 103268,
+   "vertexCount": 51540
+  },
+  "adc732d625144cb2963aafd27fc35b38": {
+   "gltfSize": 14731592,
+   "faceCount": 98140,
+   "vertexCount": 47891
+  },
+  "70cb56029e5248259d42404cadcc761d": {
+   "gltfSize": 18523260,
+   "faceCount": 91004,
+   "vertexCount": 45481
+  },
+  "d76bbb4da2a849819a042ed4ae1adb7b": {
+   "gltfSize": 20026252,
+   "faceCount": 96444,
+   "vertexCount": 48174
+  },
+  "a9d258330c5d4c7ab5ec2f5e325b8fbb": {
+   "gltfSize": 23299097,
+   "faceCount": 100388,
+   "vertexCount": 50196
+  },
+  "cd1ea0a067d740849f7fea9a9057e343": {
+   "gltfSize": 24774642,
+   "faceCount": 117136,
+   "vertexCount": 58510
+  },
+  "3c83f8c32ab748be825f44ef8c741569": {
+   "gltfSize": 105547185,
+   "faceCount": 84920,
+   "vertexCount": 42448
+  },
+  "33d068fbd1f34b2e8eaac2c7fc8df869": {
+   "gltfSize": 29048690,
+   "faceCount": 109168,
+   "vertexCount": 54568
+  },
+  "8cb4e7386de94d588365703ebf3f2202": {
+   "gltfSize": 59573752,
+   "faceCount": 101540,
+   "vertexCount": 50772
+  },
+  "617ece082eae4204ad90e69ade49f0c1": {
+   "gltfSize": 16831459,
+   "faceCount": 100256,
+   "vertexCount": 50174
+  },
+  "2f373dba7a1a4155acdbc585cc2f3a4e": {
+   "gltfSize": 23636170,
+   "faceCount": 102896,
+   "vertexCount": 51440
+  },
+  "a443c6412a8044acba8c13e66e0d5e3b": {
+   "gltfSize": 48204021,
+   "faceCount": 98418,
+   "vertexCount": 49179
+  },
+  "935fc599ca6c426cb71f71e737487409": {
+   "gltfSize": 17752473,
+   "faceCount": 95422,
+   "vertexCount": 47660
+  },
+  "86a6ac3f9f5c4c29a6c43f81af725161": {
+   "gltfSize": 20668055,
+   "faceCount": 115090,
+   "vertexCount": 57578
+  },
+  "5a8ae2c03aa54912a0bde9005de391f7": {
+   "gltfSize": 21140624,
+   "faceCount": 107492,
+   "vertexCount": 53707
+  },
+  "cd356ef2e0864e1586cb0309db4bb74b": {
+   "gltfSize": 26317481,
+   "faceCount": 127002,
+   "vertexCount": 63467
+  },
+  "933f62c7bad34c39b1e14c34faee905e": {
+   "gltfSize": 31228274,
+   "faceCount": 94410,
+   "vertexCount": 47127
+  },
+  "d6fc0aeaba974fee9e48fa0acaa899ee": {
+   "gltfSize": 15740984,
+   "faceCount": 119986,
+   "vertexCount": 60150
+  },
+  "6769f865df3a40a183a7b013ea92ee52": {
+   "gltfSize": 18867158,
+   "faceCount": 83082,
+   "vertexCount": 41516
+  }
+ },
+ "failed": {}
+}

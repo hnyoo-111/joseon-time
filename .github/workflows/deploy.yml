@@ -1,0 +1,65 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build
+        run: npm run build
+        env:
+          BASE_PATH: /joseon-time/
+          VITE_CESIUM_ION_TOKEN: ${{ secrets.VITE_CESIUM_ION_TOKEN }}
+
+      # vite-plugin-cesium은 base를 dist 하위 폴더로 취급해 dist/joseon-time/cesium에 복사하지만,
+      # Pages는 dist 루트를 /joseon-time/ 으로 서빙하므로 dist/cesium 으로 올려야 경로가 맞는다.
+      - name: Fix cesium asset path for Pages
+        run: |
+          if [ -d dist/joseon-time/cesium ]; then
+            mv dist/joseon-time/cesium dist/cesium
+            rmdir dist/joseon-time
+          fi
+
+      # SPA 라우팅: GitHub Pages는 서버 rewrite가 없으므로 404.html로 index를 복제
+      - name: SPA fallback
+        run: cp dist/index.html dist/404.html
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

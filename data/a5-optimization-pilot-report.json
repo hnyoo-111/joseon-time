@@ -1,0 +1,1348 @@
+{
+  "generatedBy": "data/scripts/a5_pilot_report.mjs",
+  "generatedAt": "2026-08-11T08:17:59.445Z",
+  "designTargets": {
+    "nearFieldMaxBytes": 4194304,
+    "lod1MaxBytes": 409600,
+    "totalTargetGiB": 2,
+    "note": "설계서 §5 기준. 근거리 ≤4MB, 원거리(LOD1) ≤400KB, 전체 ~2GB"
+  },
+  "toolVersions": {
+    "node": "v24.14.1",
+    "gltf-transform": "4.4.2",
+    "KTX-Software": "v4.4.2 (ktx.exe / toktx.exe)",
+    "sharp": "0.35.3",
+    "ktxInstallPath": "C:\\ktxsw\\bin",
+    "ktxAcquired": true,
+    "ktxAcquisitionNote": "winget 에 패키지 없음. GitHub 공식 릴리스(KTX-Software-4.4.2-Windows-x64.exe, NSIS)를 받아 /S /D=C:\\ktxsw 로 무인 설치. gltf-transform 4.x 는 toktx 가 아니라 ktx CLI 를 호출한다."
+  },
+  "environmentFixes": [
+    {
+      "issue": "gltf-transform resize 단계가 libvips 오류로 전면 실패 (colourspace: parameter space not set)",
+      "cause": "@gltf-transform/cli 안에 sharp 0.34.5(libvips 8.17.3)와 ndarray-pixels 의 중첩 sharp 0.35.3(libvips 8.18.3)이 공존. 두 네이티브 애드온이 동일 이름 libvips-42.dll 을 로드해 먼저 로드된 8.17.3 이 승리, 8.18.3 용 enum 값(32)이 범위를 벗어남.",
+      "fix": "CLI 패키지에서 npm install sharp@0.35.3 --no-save 로 단일 버전 통일 (중첩 사본 제거됨)",
+      "impact": "해당 조치 전에는 resize 단계가 100% 실패했다. 재현 환경 구축 시 반드시 필요."
+    },
+    {
+      "issue": "gltf-transform.cmd 실행 실패",
+      "cause": "사용자 홈 경로의 괄호(조건희(GeonheeJo))가 cmd 셸 파싱을 깨뜨림",
+      "fix": "스크립트에서 node 로 cli.js 엔트리포인트를 직접 실행 (shell:false)"
+    }
+  ],
+  "pipeline": {
+    "baseline": [
+      "a_copy: scene.gltf → .glb 단일화",
+      "b_resize: 텍스처 2048 상한",
+      "c_texture_ktx2: uastc --level 2 --zstd 18 (KHR_texture_basisu)",
+      "d_meshopt: meshopt --level high (EXT_meshopt_compression)",
+      "e_lod1_simplify: simplify --ratio 0.1 --error 0.01"
+    ],
+    "recommended": [
+      "copy → resize 2048 → etc1s --quality 128 → meshopt --level high  (근거리)",
+      "copy → simplify --ratio 0.1 --error 0.01 → resize 256 → etc1s --quality 100 → meshopt  (LOD1)"
+    ]
+  },
+  "keyFindings": [
+    "LOD1 은 simplify 만으로는 목표에 근접조차 못 한다. simplify 는 지오메트리만 줄이는데 이 코퍼스의 GLB 는 텍스처가 용량의 대부분이라, 근거리 대비 LOD1 감소폭이 0.2% 수준에 그쳤다. LOD1 에는 별도의 텍스처 축소(256px 급)가 반드시 필요하다.",
+    "UASTC L2 는 근거리 ≤4MB 목표를 만족시키지 못한다. 2048x2048 UASTC 텍스처 1장이 3.5~4MB 라, 텍스처 3장짜리 평범한 에셋도 10MB를 넘는다. 동일 해상도에서 ETC1S 로 바꾸면 약 7배 작아진다.",
+    "resize 단계는 원본 텍스처가 2048 이하인 에셋에서 오히려 용량을 키운다(재인코딩 오버헤드). 원본이 4096 이상인 대형 에셋에서만 큰 이득이 난다."
+  ],
+  "pilotAssets": [
+    {
+      "folder": "Bowl",
+      "class": "D",
+      "role": "min",
+      "selectionReason": "카탈로그 전체 최소 용량(0.13MB). 소형 기물의 하한 케이스 — 압축 오버헤드가 이득을 넘어서는지 확인",
+      "sourceBytes": 138121,
+      "sourceMiB": 0.13,
+      "finalBytes": 168604,
+      "finalMiB": 0.161,
+      "lod1Bytes": 169584,
+      "lod1KiB": 165.6,
+      "reductionPercent": -22.07,
+      "meetsNearTarget": true,
+      "meetsLod1Target": true,
+      "totalSeconds": 3.6,
+      "steps": [
+        {
+          "step": "a_copy",
+          "ok": true,
+          "seconds": 0.6,
+          "outBytes": 135320,
+          "command": "gltf-transform copy C:\\project\\joseon_time\\heritage\\asset\\Bowl\\scene.gltf C:\\project\\joseon_time\\build\\a5_pilot\\Bowl\\s1_copy.glb"
+        },
+        {
+          "step": "b_resize",
+          "ok": true,
+          "seconds": 0.7,
+          "outBytes": 145080,
+          "command": "gltf-transform resize C:\\project\\joseon_time\\build\\a5_pilot\\Bowl\\s1_copy.glb C:\\project\\joseon_time\\build\\a5_pilot\\Bowl\\s2_resize.glb --width 2048 --height 2048"
+        },
+        {
+          "step": "c_texture_ktx2",
+          "ok": true,
+          "seconds": 1,
+          "outBytes": 177976,
+          "command": "gltf-transform uastc C:\\project\\joseon_time\\build\\a5_pilot\\Bowl\\s2_resize.glb C:\\project\\joseon_time\\build\\a5_pilot\\Bowl\\s3_tex.glb --level 2 --zstd 18",
+          "encoder": "uastc level=2 zstd=18"
+        },
+        {
+          "step": "d_meshopt",
+          "ok": true,
+          "seconds": 0.7,
+          "outBytes": 168604,
+          "command": "gltf-transform meshopt C:\\project\\joseon_time\\build\\a5_pilot\\Bowl\\s3_tex.glb C:\\project\\joseon_time\\build\\a5_pilot\\Bowl\\scene.glb --level high"
+        },
+        {
+          "step": "e_lod1_simplify",
+          "ok": true,
+          "seconds": 0.6,
+          "outBytes": 169584,
+          "command": "gltf-transform simplify C:\\project\\joseon_time\\build\\a5_pilot\\Bowl\\scene.glb C:\\project\\joseon_time\\build\\a5_pilot\\Bowl\\scene.lod1.glb --ratio 0.1 --error 0.01"
+        }
+      ],
+      "errors": [],
+      "inspectFinal": {
+        "textureFormats": {
+          "image/ktx2": 2
+        },
+        "meshes": {
+          "meshCount": 1,
+          "meshPrimitives": 1,
+          "glPrimitives": 404,
+          "vertices": 288
+        },
+        "textures": {
+          "textureCount": 2,
+          "resolutions": [
+            "512x256"
+          ],
+          "compressions": [
+            "UASTC"
+          ]
+        }
+      },
+      "inspectLod1": {
+        "textureFormats": {
+          "image/ktx2": 2
+        },
+        "meshes": {
+          "meshCount": 1,
+          "meshPrimitives": 1,
+          "glPrimitives": 306,
+          "vertices": 231
+        },
+        "textures": {
+          "textureCount": 2,
+          "resolutions": [
+            "512x256"
+          ],
+          "compressions": [
+            "UASTC"
+          ]
+        }
+      }
+    },
+    {
+      "folder": "A_frame_Carrier",
+      "class": "D",
+      "role": "median",
+      "selectionReason": "506건 크기 정렬 시 중앙값 위치(index 252, 13.60MB). 전체 분포의 대표값",
+      "sourceBytes": 14262836,
+      "sourceMiB": 13.6,
+      "finalBytes": 11319872,
+      "finalMiB": 10.795,
+      "lod1Bytes": 11301136,
+      "lod1KiB": 11036.3,
+      "reductionPercent": 20.63,
+      "meetsNearTarget": false,
+      "meetsLod1Target": false,
+      "totalSeconds": 7,
+      "steps": [
+        {
+          "step": "a_copy",
+          "ok": true,
+          "seconds": 0.6,
+          "outBytes": 14259488,
+          "command": "gltf-transform copy C:\\project\\joseon_time\\heritage\\asset\\A_frame_Carrier\\scene.gltf C:\\project\\joseon_time\\build\\a5_pilot\\A_frame_Carrier\\s1_copy.glb"
+        },
+        {
+          "step": "b_resize",
+          "ok": true,
+          "seconds": 0.8,
+          "outBytes": 18932260,
+          "command": "gltf-transform resize C:\\project\\joseon_time\\build\\a5_pilot\\A_frame_Carrier\\s1_copy.glb C:\\project\\joseon_time\\build\\a5_pilot\\A_frame_Carrier\\s2_resize.glb --width 2048 --height 2048"
+        },
+        {
+          "step": "c_texture_ktx2",
+          "ok": true,
+          "seconds": 4.4,
+          "outBytes": 11540256,
+          "command": "gltf-transform uastc C:\\project\\joseon_time\\build\\a5_pilot\\A_frame_Carrier\\s2_resize.glb C:\\project\\joseon_time\\build\\a5_pilot\\A_frame_Carrier\\s3_tex.glb --level 2 --zstd 18",
+          "encoder": "uastc level=2 zstd=18"
+        },
+        {
+          "step": "d_meshopt",
+          "ok": true,
+          "seconds": 0.6,
+          "outBytes": 11319872,
+          "command": "gltf-transform meshopt C:\\project\\joseon_time\\build\\a5_pilot\\A_frame_Carrier\\s3_tex.glb C:\\project\\joseon_time\\build\\a5_pilot\\A_frame_Carrier\\scene.glb --level high"
+        },
+        {
+          "step": "e_lod1_simplify",
+          "ok": true,
+          "seconds": 0.6,
+          "outBytes": 11301136,
+          "command": "gltf-transform simplify C:\\project\\joseon_time\\build\\a5_pilot\\A_frame_Carrier\\scene.glb C:\\project\\joseon_time\\build\\a5_pilot\\A_frame_Carrier\\scene.lod1.glb --ratio 0.1 --error 0.01"
+        }
+      ],
+      "errors": [],
+      "inspectFinal": {
+        "textureFormats": {
+          "image/ktx2": 3
+        },
+        "meshes": {
+          "meshCount": 1,
+          "meshPrimitives": 1,
+          "glPrimitives": 5464,
+          "vertices": 4361
+        },
+        "textures": {
+          "textureCount": 3,
+          "resolutions": [
+            "2048x2048"
+          ],
+          "compressions": [
+            "UASTC"
+          ]
+        }
+      },
+      "inspectLod1": {
+        "textureFormats": {
+          "image/ktx2": 3
+        },
+        "meshes": {
+          "meshCount": 1,
+          "meshPrimitives": 1,
+          "glPrimitives": 987,
+          "vertices": 1484
+        },
+        "textures": {
+          "textureCount": 3,
+          "resolutions": [
+            "2048x2048"
+          ],
+          "compressions": [
+            "UASTC"
+          ]
+        }
+      }
+    },
+    {
+      "folder": "Gyeongbokgung_Sajeongjeon_Kings Chair",
+      "class": "C",
+      "role": "class-C",
+      "selectionReason": "C클래스(실내 기물) 158건의 중앙값(21.56MB)이자 Gyeongbokgung_* 계열 실내 가구",
+      "sourceBytes": 22610536,
+      "sourceMiB": 21.56,
+      "finalBytes": 18245600,
+      "finalMiB": 17.4,
+      "lod1Bytes": 18158424,
+      "lod1KiB": 17732.8,
+      "reductionPercent": 19.3,
+      "meetsNearTarget": false,
+      "meetsLod1Target": false,
+      "totalSeconds": 10.6,
+      "steps": [
+        {
+          "step": "a_copy",
+          "ok": true,
+          "seconds": 0.6,
+          "outBytes": 22604704,
+          "command": "gltf-transform copy C:\\project\\joseon_time\\heritage\\asset\\Gyeongbokgung_Sajeongjeon_Kings Chair\\scene.gltf C:\\project\\joseon_time\\build\\a5_pilot\\Gyeongbokgung_Sajeongjeon_Kings Chair\\s1_copy.glb"
+        },
+        {
+          "step": "b_resize",
+          "ok": true,
+          "seconds": 1,
+          "outBytes": 25787088,
+          "command": "gltf-transform resize C:\\project\\joseon_time\\build\\a5_pilot\\Gyeongbokgung_Sajeongjeon_Kings Chair\\s1_copy.glb C:\\project\\joseon_time\\build\\a5_pilot\\Gyeongbokgung_Sajeongjeon_Kings Chair\\s2_resize.glb --width 2048 --height 2048"
+        },
+        {
+          "step": "c_texture_ktx2",
+          "ok": true,
+          "seconds": 7.6,
+          "outBytes": 18964396,
+          "command": "gltf-transform uastc C:\\project\\joseon_time\\build\\a5_pilot\\Gyeongbokgung_Sajeongjeon_Kings Chair\\s2_resize.glb C:\\project\\joseon_time\\build\\a5_pilot\\Gyeongbokgung_Sajeongjeon_Kings Chair\\s3_tex.glb --level 2 --zstd 18",
+          "encoder": "uastc level=2 zstd=18"
+        },
+        {
+          "step": "d_meshopt",
+          "ok": true,
+          "seconds": 0.7,
+          "outBytes": 18245600,
+          "command": "gltf-transform meshopt C:\\project\\joseon_time\\build\\a5_pilot\\Gyeongbokgung_Sajeongjeon_Kings Chair\\s3_tex.glb C:\\project\\joseon_time\\build\\a5_pilot\\Gyeongbokgung_Sajeongjeon_Kings Chair\\scene.glb --level high"
+        },
+        {
+          "step": "e_lod1_simplify",
+          "ok": true,
+          "seconds": 0.7,
+          "outBytes": 18158424,
+          "command": "gltf-transform simplify C:\\project\\joseon_time\\build\\a5_pilot\\Gyeongbokgung_Sajeongjeon_Kings Chair\\scene.glb C:\\project\\joseon_time\\build\\a5_pilot\\Gyeongbokgung_Sajeongjeon_Kings Chair\\scene.lod1.glb --ratio 0.1 --error 0.01"
+        }
+      ],
+      "errors": [],
+      "inspectFinal": {
+        "textureFormats": {
+          "image/ktx2": 9
+        },
+        "meshes": {
+          "meshCount": 3,
+          "meshPrimitives": 3,
+          "glPrimitives": 18776,
+          "vertices": 14144
+        },
+        "textures": {
+          "textureCount": 9,
+          "resolutions": [
+            "2048x2048"
+          ],
+          "compressions": [
+            "UASTC"
+          ]
+        }
+      },
+      "inspectLod1": {
+        "textureFormats": {
+          "image/ktx2": 9
+        },
+        "meshes": {
+          "meshCount": 3,
+          "meshPrimitives": 3,
+          "glPrimitives": 2887,
+          "vertices": 4000
+        },
+        "textures": {
+          "textureCount": 9,
+          "resolutions": [
+            "2048x2048"
+          ],
+          "compressions": [
+            "UASTC"
+          ]
+        }
+      }
+    },
+    {
+      "folder": "Tomb of King Seongdeok_Stone Guardian",
+      "class": "B",
+      "role": "class-B",
+      "selectionReason": "B클래스(능묘 석물) 45건의 중앙값(116.31MB). 포토그래메트리 고밀도 메시 + 대형 텍스처",
+      "sourceBytes": 121958592,
+      "sourceMiB": 116.31,
+      "finalBytes": 14546304,
+      "finalMiB": 13.872,
+      "lod1Bytes": 14453600,
+      "lod1KiB": 14114.8,
+      "reductionPercent": 88.07,
+      "meetsNearTarget": false,
+      "meetsLod1Target": false,
+      "totalSeconds": 10.4,
+      "steps": [
+        {
+          "step": "a_copy",
+          "ok": true,
+          "seconds": 0.8,
+          "outBytes": 121955200,
+          "command": "gltf-transform copy C:\\project\\joseon_time\\heritage\\asset\\Tomb of King Seongdeok_Stone Guardian\\scene.gltf C:\\project\\joseon_time\\build\\a5_pilot\\Tomb of King Seongdeok_Stone Guardian\\s1_copy.glb"
+        },
+        {
+          "step": "b_resize",
+          "ok": true,
+          "seconds": 1.8,
+          "outBytes": 15217908,
+          "command": "gltf-transform resize C:\\project\\joseon_time\\build\\a5_pilot\\Tomb of King Seongdeok_Stone Guardian\\s1_copy.glb C:\\project\\joseon_time\\build\\a5_pilot\\Tomb of King Seongdeok_Stone Guardian\\s2_resize.glb --width 2048 --height 2048"
+        },
+        {
+          "step": "c_texture_ktx2",
+          "ok": true,
+          "seconds": 6.3,
+          "outBytes": 15101896,
+          "command": "gltf-transform uastc C:\\project\\joseon_time\\build\\a5_pilot\\Tomb of King Seongdeok_Stone Guardian\\s2_resize.glb C:\\project\\joseon_time\\build\\a5_pilot\\Tomb of King Seongdeok_Stone Guardian\\s3_tex.glb --level 2 --zstd 18",
+          "encoder": "uastc level=2 zstd=18"
+        },
+        {
+          "step": "d_meshopt",
+          "ok": true,
+          "seconds": 0.7,
+          "outBytes": 14546304,
+          "command": "gltf-transform meshopt C:\\project\\joseon_time\\build\\a5_pilot\\Tomb of King Seongdeok_Stone Guardian\\s3_tex.glb C:\\project\\joseon_time\\build\\a5_pilot\\Tomb of King Seongdeok_Stone Guardian\\scene.glb --level high"
+        },
+        {
+          "step": "e_lod1_simplify",
+          "ok": true,
+          "seconds": 0.8,
+          "outBytes": 14453600,
+          "command": "gltf-transform simplify C:\\project\\joseon_time\\build\\a5_pilot\\Tomb of King Seongdeok_Stone Guardian\\scene.glb C:\\project\\joseon_time\\build\\a5_pilot\\Tomb of King Seongdeok_Stone Guardian\\scene.lod1.glb --ratio 0.1 --error 0.01"
+        }
+      ],
+      "errors": [],
+      "inspectFinal": {
+        "textureFormats": {
+          "image/ktx2": 4
+        },
+        "meshes": {
+          "meshCount": 1,
+          "meshPrimitives": 1,
+          "glPrimitives": 17379,
+          "vertices": 9965
+        },
+        "textures": {
+          "textureCount": 4,
+          "resolutions": [
+            "2048x2048"
+          ],
+          "compressions": [
+            "UASTC"
+          ]
+        }
+      },
+      "inspectLod1": {
+        "textureFormats": {
+          "image/ktx2": 4
+        },
+        "meshes": {
+          "meshCount": 1,
+          "meshPrimitives": 1,
+          "glPrimitives": 1736,
+          "vertices": 1399
+        },
+        "textures": {
+          "textureCount": 4,
+          "resolutions": [
+            "2048x2048"
+          ],
+          "compressions": [
+            "UASTC"
+          ]
+        }
+      }
+    },
+    {
+      "folder": "Chunyanggyo West Gate Gyeongju",
+      "class": "A",
+      "role": "max",
+      "selectionReason": "카탈로그 전체 최대 용량(1405.76MB). 파이프라인 상한 스트레스 및 빌드 시간 상한 측정",
+      "sourceBytes": 1474048088,
+      "sourceMiB": 1405.76,
+      "finalBytes": 264751772,
+      "finalMiB": 252.487,
+      "lod1Bytes": 265550756,
+      "lod1KiB": 259326.9,
+      "reductionPercent": 82.04,
+      "meetsNearTarget": false,
+      "meetsLod1Target": false,
+      "totalSeconds": 82.6,
+      "steps": [
+        {
+          "step": "a_copy",
+          "ok": true,
+          "seconds": 2.9,
+          "outBytes": 1473942196,
+          "command": "gltf-transform copy C:\\project\\joseon_time\\heritage\\asset\\Chunyanggyo West Gate Gyeongju\\scene.gltf C:\\project\\joseon_time\\build\\a5_pilot\\Chunyanggyo West Gate Gyeongju\\s1_copy.glb"
+        },
+        {
+          "step": "b_resize",
+          "ok": true,
+          "seconds": 11,
+          "outBytes": 488945996,
+          "command": "gltf-transform resize C:\\project\\joseon_time\\build\\a5_pilot\\Chunyanggyo West Gate Gyeongju\\s1_copy.glb C:\\project\\joseon_time\\build\\a5_pilot\\Chunyanggyo West Gate Gyeongju\\s2_resize.glb --width 2048 --height 2048"
+        },
+        {
+          "step": "c_texture_ktx2",
+          "ok": true,
+          "seconds": 65.1,
+          "outBytes": 303922376,
+          "command": "gltf-transform uastc C:\\project\\joseon_time\\build\\a5_pilot\\Chunyanggyo West Gate Gyeongju\\s2_resize.glb C:\\project\\joseon_time\\build\\a5_pilot\\Chunyanggyo West Gate Gyeongju\\s3_tex.glb --level 2 --zstd 18",
+          "encoder": "uastc level=2 zstd=18"
+        },
+        {
+          "step": "d_meshopt",
+          "ok": true,
+          "seconds": 1.9,
+          "outBytes": 264751772,
+          "command": "gltf-transform meshopt C:\\project\\joseon_time\\build\\a5_pilot\\Chunyanggyo West Gate Gyeongju\\s3_tex.glb C:\\project\\joseon_time\\build\\a5_pilot\\Chunyanggyo West Gate Gyeongju\\scene.glb --level high"
+        },
+        {
+          "step": "e_lod1_simplify",
+          "ok": true,
+          "seconds": 1.7,
+          "outBytes": 265550756,
+          "command": "gltf-transform simplify C:\\project\\joseon_time\\build\\a5_pilot\\Chunyanggyo West Gate Gyeongju\\scene.glb C:\\project\\joseon_time\\build\\a5_pilot\\Chunyanggyo West Gate Gyeongju\\scene.lod1.glb --ratio 0.1 --error 0.01"
+        }
+      ],
+      "errors": [],
+      "inspectFinal": {
+        "textureFormats": {
+          "image/ktx2": 139
+        },
+        "meshes": {
+          "meshCount": 69,
+          "meshPrimitives": 69,
+          "glPrimitives": 815311,
+          "vertices": 795561
+        },
+        "textures": {
+          "textureCount": 139,
+          "resolutions": [
+            "256x256",
+            "1024x1024",
+            "2048x2048",
+            "512x512"
+          ],
+          "compressions": [
+            "UASTC"
+          ]
+        }
+      },
+      "inspectLod1": {
+        "textureFormats": {
+          "image/ktx2": 139
+        },
+        "meshes": {
+          "meshCount": 69,
+          "meshPrimitives": 69,
+          "glPrimitives": 226491,
+          "vertices": 330331
+        },
+        "textures": {
+          "textureCount": 139,
+          "resolutions": [
+            "256x256",
+            "1024x1024",
+            "2048x2048",
+            "512x512"
+          ],
+          "compressions": [
+            "UASTC"
+          ]
+        }
+      }
+    }
+  ],
+  "variantExperiments": [
+    {
+      "folder": "Bowl",
+      "sourceBytes": 135320,
+      "nearVariants": [
+        {
+          "id": "v0_2048_uastc2",
+          "desc": "기준 파이프라인 (설계서 §5 원안)",
+          "resolution": 2048,
+          "encoder": "uastc",
+          "bytes": 168604,
+          "MiB": 0.161,
+          "seconds": 2.1,
+          "meetsNearTarget": true
+        },
+        {
+          "id": "v1_2048_etc1s",
+          "desc": "해상도 유지, ETC1S 로 교체",
+          "resolution": 2048,
+          "encoder": "etc1s",
+          "bytes": 31048,
+          "MiB": 0.03,
+          "seconds": 2.2,
+          "meetsNearTarget": true
+        },
+        {
+          "id": "v2_1024_uastc2",
+          "desc": "해상도 1024, UASTC 유지",
+          "resolution": 1024,
+          "encoder": "uastc",
+          "bytes": 168604,
+          "MiB": 0.161,
+          "seconds": 2.1,
+          "meetsNearTarget": true
+        },
+        {
+          "id": "v3_1024_etc1s",
+          "desc": "해상도 1024 + ETC1S",
+          "resolution": 1024,
+          "encoder": "etc1s",
+          "bytes": 31048,
+          "MiB": 0.03,
+          "seconds": 2.1,
+          "meetsNearTarget": true
+        },
+        {
+          "id": "v4_512_etc1s",
+          "desc": "해상도 512 + ETC1S (근거리 하한 탐색)",
+          "resolution": 512,
+          "encoder": "etc1s",
+          "bytes": 31048,
+          "MiB": 0.03,
+          "seconds": 2,
+          "meetsNearTarget": true
+        }
+      ],
+      "lod1Variants": [
+        {
+          "id": "lod1_256_etc1s",
+          "desc": "simplify 0.1 + 256px ETC1S",
+          "resolution": 256,
+          "bytes": 13380,
+          "KiB": 13.1,
+          "seconds": 2.6,
+          "meetsLod1Target": true
+        },
+        {
+          "id": "lod1_128_etc1s",
+          "desc": "simplify 0.1 + 128px ETC1S",
+          "resolution": 128,
+          "bytes": 9788,
+          "KiB": 9.6,
+          "seconds": 2.7,
+          "meetsLod1Target": true
+        }
+      ]
+    },
+    {
+      "folder": "Gyeongbokgung_Sajeongjeon_TableB",
+      "sourceBytes": 3188868,
+      "nearVariants": [
+        {
+          "id": "v0_2048_uastc2",
+          "desc": "기준 파이프라인 (설계서 §5 원안)",
+          "resolution": 2048,
+          "encoder": "uastc",
+          "bytes": 2814400,
+          "MiB": 2.684,
+          "seconds": 4.7,
+          "meetsNearTarget": true
+        },
+        {
+          "id": "v1_2048_etc1s",
+          "desc": "해상도 유지, ETC1S 로 교체",
+          "resolution": 2048,
+          "encoder": "etc1s",
+          "bytes": 530024,
+          "MiB": 0.505,
+          "seconds": 3.8,
+          "meetsNearTarget": true
+        },
+        {
+          "id": "v2_1024_uastc2",
+          "desc": "해상도 1024, UASTC 유지",
+          "resolution": 1024,
+          "encoder": "uastc",
+          "bytes": 1036712,
+          "MiB": 0.989,
+          "seconds": 2.8,
+          "meetsNearTarget": true
+        },
+        {
+          "id": "v3_1024_etc1s",
+          "desc": "해상도 1024 + ETC1S",
+          "resolution": 1024,
+          "encoder": "etc1s",
+          "bytes": 269300,
+          "MiB": 0.257,
+          "seconds": 2.9,
+          "meetsNearTarget": true
+        },
+        {
+          "id": "v4_512_etc1s",
+          "desc": "해상도 512 + ETC1S (근거리 하한 탐색)",
+          "resolution": 512,
+          "encoder": "etc1s",
+          "bytes": 185144,
+          "MiB": 0.177,
+          "seconds": 2.5,
+          "meetsNearTarget": true
+        }
+      ],
+      "lod1Variants": [
+        {
+          "id": "lod1_256_etc1s",
+          "desc": "simplify 0.1 + 256px ETC1S",
+          "resolution": 256,
+          "bytes": 51124,
+          "KiB": 49.9,
+          "seconds": 2.9,
+          "meetsLod1Target": true
+        },
+        {
+          "id": "lod1_128_etc1s",
+          "desc": "simplify 0.1 + 128px ETC1S",
+          "resolution": 128,
+          "bytes": 38868,
+          "KiB": 38,
+          "seconds": 3.1,
+          "meetsLod1Target": true
+        }
+      ]
+    },
+    {
+      "folder": "A_frame_Carrier",
+      "sourceBytes": 14259488,
+      "nearVariants": [
+        {
+          "id": "v0_2048_uastc2",
+          "desc": "기준 파이프라인 (설계서 §5 원안)",
+          "resolution": 2048,
+          "encoder": "uastc",
+          "bytes": 11319872,
+          "MiB": 10.795,
+          "seconds": 6.5,
+          "meetsNearTarget": false
+        },
+        {
+          "id": "v1_2048_etc1s",
+          "desc": "해상도 유지, ETC1S 로 교체",
+          "resolution": 2048,
+          "encoder": "etc1s",
+          "bytes": 1594660,
+          "MiB": 1.521,
+          "seconds": 4.7,
+          "meetsNearTarget": true
+        },
+        {
+          "id": "v2_1024_uastc2",
+          "desc": "해상도 1024, UASTC 유지",
+          "resolution": 1024,
+          "encoder": "uastc",
+          "bytes": 3294208,
+          "MiB": 3.142,
+          "seconds": 3.1,
+          "meetsNearTarget": true
+        },
+        {
+          "id": "v3_1024_etc1s",
+          "desc": "해상도 1024 + ETC1S",
+          "resolution": 1024,
+          "encoder": "etc1s",
+          "bytes": 497008,
+          "MiB": 0.474,
+          "seconds": 2.8,
+          "meetsNearTarget": true
+        },
+        {
+          "id": "v4_512_etc1s",
+          "desc": "해상도 512 + ETC1S (근거리 하한 탐색)",
+          "resolution": 512,
+          "encoder": "etc1s",
+          "bytes": 197888,
+          "MiB": 0.189,
+          "seconds": 2.4,
+          "meetsNearTarget": true
+        }
+      ],
+      "lod1Variants": [
+        {
+          "id": "lod1_256_etc1s",
+          "desc": "simplify 0.1 + 256px ETC1S",
+          "resolution": 256,
+          "bytes": 58056,
+          "KiB": 56.7,
+          "seconds": 2.9,
+          "meetsLod1Target": true
+        },
+        {
+          "id": "lod1_128_etc1s",
+          "desc": "simplify 0.1 + 128px ETC1S",
+          "resolution": 128,
+          "bytes": 33236,
+          "KiB": 32.5,
+          "seconds": 3,
+          "meetsLod1Target": true
+        }
+      ]
+    },
+    {
+      "folder": "Gyeongbokgung_Sajeongjeon_Kings Chair",
+      "sourceBytes": 22604704,
+      "nearVariants": [
+        {
+          "id": "v0_2048_uastc2",
+          "desc": "기준 파이프라인 (설계서 §5 원안)",
+          "resolution": 2048,
+          "encoder": "uastc",
+          "bytes": 18245600,
+          "MiB": 17.4,
+          "seconds": 9.7,
+          "meetsNearTarget": false
+        },
+        {
+          "id": "v1_2048_etc1s",
+          "desc": "해상도 유지, ETC1S 로 교체",
+          "resolution": 2048,
+          "encoder": "etc1s",
+          "bytes": 2596036,
+          "MiB": 2.476,
+          "seconds": 5.3,
+          "meetsNearTarget": true
+        },
+        {
+          "id": "v2_1024_uastc2",
+          "desc": "해상도 1024, UASTC 유지",
+          "resolution": 1024,
+          "encoder": "uastc",
+          "bytes": 5747580,
+          "MiB": 5.481,
+          "seconds": 4.1,
+          "meetsNearTarget": false
+        },
+        {
+          "id": "v3_1024_etc1s",
+          "desc": "해상도 1024 + ETC1S",
+          "resolution": 1024,
+          "encoder": "etc1s",
+          "bytes": 959316,
+          "MiB": 0.915,
+          "seconds": 3.3,
+          "meetsNearTarget": true
+        },
+        {
+          "id": "v4_512_etc1s",
+          "desc": "해상도 512 + ETC1S (근거리 하한 탐색)",
+          "resolution": 512,
+          "encoder": "etc1s",
+          "bytes": 460992,
+          "MiB": 0.44,
+          "seconds": 2.7,
+          "meetsNearTarget": true
+        }
+      ],
+      "lod1Variants": [
+        {
+          "id": "lod1_256_etc1s",
+          "desc": "simplify 0.1 + 256px ETC1S",
+          "resolution": 256,
+          "bytes": 136592,
+          "KiB": 133.4,
+          "seconds": 3.4,
+          "meetsLod1Target": true
+        },
+        {
+          "id": "lod1_128_etc1s",
+          "desc": "simplify 0.1 + 128px ETC1S",
+          "resolution": 128,
+          "bytes": 86836,
+          "KiB": 84.8,
+          "seconds": 3.8,
+          "meetsLod1Target": true
+        }
+      ]
+    },
+    {
+      "folder": "Tomb of King Seongdeok_Stone Guardian",
+      "sourceBytes": 121955200,
+      "nearVariants": [
+        {
+          "id": "v0_2048_uastc2",
+          "desc": "기준 파이프라인 (설계서 §5 원안)",
+          "resolution": 2048,
+          "encoder": "uastc",
+          "bytes": 14546304,
+          "MiB": 13.872,
+          "seconds": 9.6,
+          "meetsNearTarget": false
+        },
+        {
+          "id": "v1_2048_etc1s",
+          "desc": "해상도 유지, ETC1S 로 교체",
+          "resolution": 2048,
+          "encoder": "etc1s",
+          "bytes": 2745524,
+          "MiB": 2.618,
+          "seconds": 6.1,
+          "meetsNearTarget": true
+        },
+        {
+          "id": "v2_1024_uastc2",
+          "desc": "해상도 1024, UASTC 유지",
+          "resolution": 1024,
+          "encoder": "uastc",
+          "bytes": 4215660,
+          "MiB": 4.02,
+          "seconds": 4.5,
+          "meetsNearTarget": false
+        },
+        {
+          "id": "v3_1024_etc1s",
+          "desc": "해상도 1024 + ETC1S",
+          "resolution": 1024,
+          "encoder": "etc1s",
+          "bytes": 877788,
+          "MiB": 0.837,
+          "seconds": 3.9,
+          "meetsNearTarget": true
+        },
+        {
+          "id": "v4_512_etc1s",
+          "desc": "해상도 512 + ETC1S (근거리 하한 탐색)",
+          "resolution": 512,
+          "encoder": "etc1s",
+          "bytes": 360108,
+          "MiB": 0.343,
+          "seconds": 3.1,
+          "meetsNearTarget": true
+        }
+      ],
+      "lod1Variants": [
+        {
+          "id": "lod1_256_etc1s",
+          "desc": "simplify 0.1 + 256px ETC1S",
+          "resolution": 256,
+          "bytes": 82048,
+          "KiB": 80.1,
+          "seconds": 3.6,
+          "meetsLod1Target": true
+        },
+        {
+          "id": "lod1_128_etc1s",
+          "desc": "simplify 0.1 + 128px ETC1S",
+          "resolution": 128,
+          "bytes": 42388,
+          "KiB": 41.4,
+          "seconds": 3.6,
+          "meetsLod1Target": true
+        }
+      ]
+    },
+    {
+      "folder": "Chunyanggyo West Gate Gyeongju",
+      "sourceBytes": 1473942196,
+      "nearVariants": [
+        {
+          "id": "v0_2048_uastc2",
+          "desc": "기준 파이프라인 (설계서 §5 원안)",
+          "resolution": 2048,
+          "encoder": "uastc",
+          "bytes": 264751772,
+          "MiB": 252.487,
+          "seconds": 80.7,
+          "meetsNearTarget": false
+        },
+        {
+          "id": "v1_2048_etc1s",
+          "desc": "해상도 유지, ETC1S 로 교체",
+          "resolution": 2048,
+          "encoder": "etc1s",
+          "bytes": 42353764,
+          "MiB": 40.392,
+          "seconds": 61.9,
+          "meetsNearTarget": false
+        },
+        {
+          "id": "v2_1024_uastc2",
+          "desc": "해상도 1024, UASTC 유지",
+          "resolution": 1024,
+          "encoder": "uastc",
+          "bytes": 84677340,
+          "MiB": 80.755,
+          "seconds": 43,
+          "meetsNearTarget": false
+        },
+        {
+          "id": "v3_1024_etc1s",
+          "desc": "해상도 1024 + ETC1S",
+          "resolution": 1024,
+          "encoder": "etc1s",
+          "bytes": 18091556,
+          "MiB": 17.253,
+          "seconds": 27.9,
+          "meetsNearTarget": false
+        },
+        {
+          "id": "v4_512_etc1s",
+          "desc": "해상도 512 + ETC1S (근거리 하한 탐색)",
+          "resolution": 512,
+          "encoder": "etc1s",
+          "bytes": 11243728,
+          "MiB": 10.723,
+          "seconds": 12.3,
+          "meetsNearTarget": false
+        }
+      ],
+      "lod1Variants": [
+        {
+          "id": "lod1_256_etc1s",
+          "desc": "simplify 0.1 + 256px ETC1S",
+          "resolution": 256,
+          "bytes": 4117092,
+          "KiB": 4020.6,
+          "seconds": 13.5,
+          "meetsLod1Target": false
+        },
+        {
+          "id": "lod1_128_etc1s",
+          "desc": "simplify 0.1 + 128px ETC1S",
+          "resolution": 128,
+          "bytes": 3571592,
+          "KiB": 3487.9,
+          "seconds": 13.3,
+          "meetsLod1Target": false
+        }
+      ]
+    }
+  ],
+  "perAssetTargetRisk": {
+    "model": "근거리 추정 = 텍스처 장수 x 장당 단가(ETC1S@2048 실측)",
+    "meanBytesPerTexture": 311569,
+    "meanMiBPerTexture": 0.297,
+    "worstMiBPerTexture": 0.655,
+    "samplesUsed": [
+      {
+        "folder": "Bowl",
+        "textures": 2,
+        "MiB": 0.03
+      },
+      {
+        "folder": "Gyeongbokgung_Sajeongjeon_TableB",
+        "textures": 3,
+        "MiB": 0.505
+      },
+      {
+        "folder": "A_frame_Carrier",
+        "textures": 3,
+        "MiB": 1.521
+      },
+      {
+        "folder": "Gyeongbokgung_Sajeongjeon_Kings Chair",
+        "textures": 9,
+        "MiB": 2.476
+      },
+      {
+        "folder": "Tomb of King Seongdeok_Stone Guardian",
+        "textures": 4,
+        "MiB": 2.618
+      },
+      {
+        "folder": "Chunyanggyo West Gate Gyeongju",
+        "textures": 139,
+        "MiB": 40.392
+      }
+    ],
+    "textureCountDistribution": [
+      {
+        "range": "1-3",
+        "assetCount": 16
+      },
+      {
+        "range": "3-6",
+        "assetCount": 418
+      },
+      {
+        "range": "6-12",
+        "assetCount": 38
+      },
+      {
+        "range": "12-30",
+        "assetCount": 9
+      },
+      {
+        "range": "30+",
+        "assetCount": 24
+      }
+    ],
+    "estimatedOver4MB_meanPricing": 29,
+    "estimatedOver4MB_worstPricing": 46,
+    "estimatedOver4MB_percent": 5.7,
+    "worstOffenders": [
+      {
+        "folder": "Chunyanggyo East Gate Gyeongju",
+        "class": "A",
+        "texturesCount": 198,
+        "estimatedNearMiB": 58.83
+      },
+      {
+        "folder": "Woljeonggyo South Gate Gyeongju",
+        "class": "A",
+        "texturesCount": 196,
+        "estimatedNearMiB": 58.24
+      },
+      {
+        "folder": "Main Hall Site Inwang-dong Temple Gyeongju V01",
+        "class": "A",
+        "texturesCount": 192,
+        "estimatedNearMiB": 57.05
+      },
+      {
+        "folder": "Main Hall Site Inwang-dong Temple Gyeongju V02",
+        "class": "A",
+        "texturesCount": 192,
+        "estimatedNearMiB": 57.05
+      },
+      {
+        "folder": "Cross-Shaped Building Site Temple Site V01",
+        "class": "A",
+        "texturesCount": 188,
+        "estimatedNearMiB": 55.86
+      },
+      {
+        "folder": "Main Hall Site Inwang-dong Temple Gyeongju V03",
+        "class": "A",
+        "texturesCount": 148,
+        "estimatedNearMiB": 43.98
+      },
+      {
+        "folder": "Chunyanggyo West Gate Gyeongju",
+        "class": "A",
+        "texturesCount": 139,
+        "estimatedNearMiB": 41.3
+      },
+      {
+        "folder": "Chunyanggyo Pavilion Chunyanggyo  Woljeonggyo",
+        "class": "A",
+        "texturesCount": 136,
+        "estimatedNearMiB": 40.41
+      },
+      {
+        "folder": "Lecture Hall Inwang-dong Temple Gyeongju",
+        "class": "A",
+        "texturesCount": 124,
+        "estimatedNearMiB": 36.84
+      },
+      {
+        "folder": "Cross-Shaped Building Site Temple Site V02",
+        "class": "A",
+        "texturesCount": 104,
+        "estimatedNearMiB": 30.9
+      },
+      {
+        "folder": "South Side of the West Corridor Temple Site V01",
+        "class": "A",
+        "texturesCount": 96,
+        "estimatedNearMiB": 28.53
+      },
+      {
+        "folder": "Building Site Inwang-dong Temple Gyeongju 9",
+        "class": "A",
+        "texturesCount": 95,
+        "estimatedNearMiB": 28.23
+      }
+    ],
+    "note": "텍스처 장수가 많은 대형 A클래스 건축물은 텍스처 압축만으로는 개별 4MB 예산을 맞출 수 없다. gltf-transform join/dedup 로 머티리얼·텍스처를 병합하거나(아틀라스화), 건물 단위를 청크로 분할하거나, 해당 군에는 별도 예산(예: 환경 에셋 40MB)을 두는 설계 결정이 필요하다."
+  },
+  "fullCorpusEstimate": {
+    "method": "원본 크기 구간별로 로그-크기 최근접 실측 샘플의 감축률·처리속도를 대입해 506건 합산. 구간에 직접 샘플이 없으면 가장 가까운 샘플로 대체하므로 오차가 커진다(sampleLogDistance 참고).",
+    "assetCount": 506,
+    "sourceGiB": 28.29,
+    "scenarios": [
+      {
+        "scenario": "baseline_2048_uastc2",
+        "available": true,
+        "sampleFolders": [
+          "Bowl",
+          "A_frame_Carrier",
+          "Gyeongbokgung_Sajeongjeon_Kings Chair",
+          "Tomb of King Seongdeok_Stone Guardian",
+          "Chunyanggyo West Gate Gyeongju"
+        ],
+        "buckets": [
+          {
+            "bucket": "0-1MB",
+            "assetCount": 24,
+            "sourceGiB": 0.014,
+            "representativeSample": "Bowl",
+            "bucketMidMiB": 0.22,
+            "sampleLogDistance": 0.529,
+            "measuredNearRatio": 1.2207,
+            "measuredLod1Ratio": 1.22779,
+            "measuredSecPerMiB": 27.33,
+            "estimatedNearGiB": 0.017,
+            "estimatedLod1GiB": 0.017,
+            "estimatedSeconds": 393
+          },
+          {
+            "bucket": "1-5MB",
+            "assetCount": 83,
+            "sourceGiB": 0.269,
+            "representativeSample": "A_frame_Carrier",
+            "bucketMidMiB": 2.24,
+            "sampleLogDistance": 1.806,
+            "measuredNearRatio": 0.7937,
+            "measuredLod1Ratio": 0.79235,
+            "measuredSecPerMiB": 0.515,
+            "estimatedNearGiB": 0.213,
+            "estimatedLod1GiB": 0.213,
+            "estimatedSeconds": 142
+          },
+          {
+            "bucket": "5-20MB",
+            "assetCount": 189,
+            "sourceGiB": 2.004,
+            "representativeSample": "A_frame_Carrier",
+            "bucketMidMiB": 10,
+            "sampleLogDistance": 0.308,
+            "measuredNearRatio": 0.7937,
+            "measuredLod1Ratio": 0.79235,
+            "measuredSecPerMiB": 0.515,
+            "estimatedNearGiB": 1.591,
+            "estimatedLod1GiB": 1.588,
+            "estimatedSeconds": 1056
+          },
+          {
+            "bucket": "20-100MB",
+            "assetCount": 140,
+            "sourceGiB": 5.99,
+            "representativeSample": "Gyeongbokgung_Sajeongjeon_Kings Chair",
+            "bucketMidMiB": 44.72,
+            "sampleLogDistance": 0.729,
+            "measuredNearRatio": 0.807,
+            "measuredLod1Ratio": 0.8031,
+            "measuredSecPerMiB": 0.492,
+            "estimatedNearGiB": 4.834,
+            "estimatedLod1GiB": 4.811,
+            "estimatedSeconds": 3015
+          },
+          {
+            "bucket": "100-500MB",
+            "assetCount": 61,
+            "sourceGiB": 11.199,
+            "representativeSample": "Tomb of King Seongdeok_Stone Guardian",
+            "bucketMidMiB": 223.61,
+            "sampleLogDistance": 0.654,
+            "measuredNearRatio": 0.1193,
+            "measuredLod1Ratio": 0.11851,
+            "measuredSecPerMiB": 0.089,
+            "estimatedNearGiB": 1.336,
+            "estimatedLod1GiB": 1.327,
+            "estimatedSeconds": 1025
+          },
+          {
+            "bucket": "500MB+",
+            "assetCount": 9,
+            "sourceGiB": 8.811,
+            "representativeSample": "Chunyanggyo West Gate Gyeongju",
+            "bucketMidMiB": 866.03,
+            "sampleLogDistance": 0.484,
+            "measuredNearRatio": 0.1796,
+            "measuredLod1Ratio": 0.18015,
+            "measuredSecPerMiB": 0.059,
+            "estimatedNearGiB": 1.583,
+            "estimatedLod1GiB": 1.587,
+            "estimatedSeconds": 530
+          }
+        ],
+        "estimatedNearFieldGiB": 9.57,
+        "estimatedLod1GiB": 9.544,
+        "estimatedCombinedGiB": 19.12,
+        "estimatedReductionPercent": 32.42,
+        "meetsTotalTarget": false,
+        "estimatedBuildSeconds": 6162,
+        "estimatedBuildHours": 1.71,
+        "estimatedBuildHoursParallel4": 0.43
+      },
+      {
+        "scenario": "recommended_2048_etc1s",
+        "available": true,
+        "sampleFolders": [
+          "Bowl",
+          "Gyeongbokgung_Sajeongjeon_TableB",
+          "A_frame_Carrier",
+          "Gyeongbokgung_Sajeongjeon_Kings Chair",
+          "Tomb of King Seongdeok_Stone Guardian",
+          "Chunyanggyo West Gate Gyeongju"
+        ],
+        "buckets": [
+          {
+            "bucket": "0-1MB",
+            "assetCount": 24,
+            "sourceGiB": 0.014,
+            "representativeSample": "Bowl",
+            "bucketMidMiB": 0.22,
+            "sampleLogDistance": 0.55,
+            "measuredNearRatio": 0.2294,
+            "measuredLod1Ratio": 0.09888,
+            "measuredSecPerMiB": 37.195,
+            "estimatedNearGiB": 0.003,
+            "estimatedLod1GiB": 0.001,
+            "estimatedSeconds": 535
+          },
+          {
+            "bucket": "1-5MB",
+            "assetCount": 83,
+            "sourceGiB": 0.269,
+            "representativeSample": "Gyeongbokgung_Sajeongjeon_TableB",
+            "bucketMidMiB": 2.24,
+            "sampleLogDistance": 0.308,
+            "measuredNearRatio": 0.1662,
+            "measuredLod1Ratio": 0.01603,
+            "measuredSecPerMiB": 2.203,
+            "estimatedNearGiB": 0.045,
+            "estimatedLod1GiB": 0.004,
+            "estimatedSeconds": 606
+          },
+          {
+            "bucket": "5-20MB",
+            "assetCount": 189,
+            "sourceGiB": 2.004,
+            "representativeSample": "A_frame_Carrier",
+            "bucketMidMiB": 10,
+            "sampleLogDistance": 0.307,
+            "measuredNearRatio": 0.1118,
+            "measuredLod1Ratio": 0.00407,
+            "measuredSecPerMiB": 0.559,
+            "estimatedNearGiB": 0.224,
+            "estimatedLod1GiB": 0.008,
+            "estimatedSeconds": 1147
+          },
+          {
+            "bucket": "20-100MB",
+            "assetCount": 140,
+            "sourceGiB": 5.99,
+            "representativeSample": "Gyeongbokgung_Sajeongjeon_Kings Chair",
+            "bucketMidMiB": 44.72,
+            "sampleLogDistance": 0.73,
+            "measuredNearRatio": 0.1148,
+            "measuredLod1Ratio": 0.00604,
+            "measuredSecPerMiB": 0.404,
+            "estimatedNearGiB": 0.688,
+            "estimatedLod1GiB": 0.036,
+            "estimatedSeconds": 2476
+          },
+          {
+            "bucket": "100-500MB",
+            "assetCount": 61,
+            "sourceGiB": 11.199,
+            "representativeSample": "Tomb of King Seongdeok_Stone Guardian",
+            "bucketMidMiB": 223.61,
+            "sampleLogDistance": 0.654,
+            "measuredNearRatio": 0.0225,
+            "measuredLod1Ratio": 0.00067,
+            "measuredSecPerMiB": 0.083,
+            "estimatedNearGiB": 0.252,
+            "estimatedLod1GiB": 0.008,
+            "estimatedSeconds": 956
+          },
+          {
+            "bucket": "500MB+",
+            "assetCount": 9,
+            "sourceGiB": 8.811,
+            "representativeSample": "Chunyanggyo West Gate Gyeongju",
+            "bucketMidMiB": 866.03,
+            "sampleLogDistance": 0.484,
+            "measuredNearRatio": 0.0287,
+            "measuredLod1Ratio": 0.00279,
+            "measuredSecPerMiB": 0.054,
+            "estimatedNearGiB": 0.253,
+            "estimatedLod1GiB": 0.025,
+            "estimatedSeconds": 484
+          }
+        ],
+        "estimatedNearFieldGiB": 1.47,
+        "estimatedLod1GiB": 0.082,
+        "estimatedCombinedGiB": 1.55,
+        "estimatedReductionPercent": 94.53,
+        "meetsTotalTarget": true,
+        "estimatedBuildSeconds": 6204,
+        "estimatedBuildHours": 1.72,
+        "estimatedBuildHoursParallel4": 0.43
+      }
+    ],
+    "parallelNote": "4-way 병렬은 CPU 코어 여유를 가정한 단순 나눗셈. gltf-transform 의 텍스처 인코딩이 이미 멀티코어를 쓰므로 실제 이득은 이보다 작다."
+  }
+}

@@ -1,0 +1,1124 @@
+{
+ "generatedBy": "data/scripts/a2_dedup_quarantine.py",
+ "assetDir": "C:/project/joseon_time/heritage/asset",
+ "archiveDir": "C:/project/joseon_time/_archive/duplicate_folders",
+ "method": "normalized folder name (lowercase, separators and ' (N)' copy suffix removed); content compared by file-name set + per-file size, no content hashing",
+ "dryRun": false,
+ "summary": {
+  "foldersScanned": 571,
+  "duplicateGroups": 65,
+  "foldersMovedToArchive": 65,
+  "foldersFlaggedForReview": 0,
+  "reclaimedBytes": 9166475320,
+  "reclaimedGiB": 8.537,
+  "canonicalFoldersRemaining": 506,
+  "note": "foldersScanned spans live + archived folders so the report reproduces after the moves have been applied; foldersMovedToArchive counts every folder that belongs in the archive, whether moved this run or previously"
+ },
+ "groups": [
+  {
+   "key": "bottlewithstampeddesigns",
+   "canonical": "Bottle with Stamped Designs",
+   "canonicalSizeBytes": 4467573,
+   "canonicalFileCount": 6,
+   "moved": [
+    {
+     "folder": "bottle_with_stamped_designs",
+     "sizeBytes": 4467573,
+     "fileCount": 6,
+     "archivedTo": "C:/project/joseon_time/_archive/duplicate_folders/bottle_with_stamped_designs",
+     "status": "already-archived",
+     "match": "identical file names and sizes"
+    }
+   ],
+   "review": []
+  },
+  {
+   "key": "brickfragmentwithpagodadesign",
+   "canonical": "Brick Fragment with Pagoda Design",
+   "canonicalSizeBytes": 2288356,
+   "canonicalFileCount": 6,
+   "moved": [
+    {
+     "folder": "brick_fragment_with_pagoda_design",
+     "sizeBytes": 2288356,
+     "fileCount": 6,
+     "archivedTo": "C:/project/joseon_time/_archive/duplicate_folders/brick_fragment_with_pagoda_design",
+     "status": "already-archived",
+     "match": "identical file names and sizes"
+    }
+   ],
+   "review": []
+  },
+  {
+   "key": "bronzehandbellwithbodhisattvaguardian",
+   "canonical": "Bronze Handbell with Bodhisattva  Guardian",
+   "canonicalSizeBytes": 5803624,
+   "canonicalFileCount": 6,
+   "moved": [
+    {
+     "folder": "bronze_handbell_with_bodhisattva__guardian",
+     "sizeBytes": 5803624,
+     "fileCount": 6,
+     "archivedTo": "C:/project/joseon_time/_archive/duplicate_folders/bronze_handbell_with_bodhisattva__guardian",
+     "status": "already-archived",
+     "match": "identical file names and sizes"
+    }
+   ],
+   "review": []
+  },
+  {
+   "key": "buildingsiteinwangdongtemplegyeongju7",
+   "canonical": "Building Site Inwang-dong Temple Gyeongju 7",
+   "canonicalSizeBytes": 495883801,
+   "canonicalFileCount": 55,
+   "moved": [
+    {
+     "folder": "building_site_inwang-dong_temple_gyeongju_7",
+     "sizeBytes": 495883801,
+     "fileCount": 55,
+     "archivedTo": "C:/project/joseon_time/_archive/duplicate_folders/building_site_inwang-dong_temple_gyeongju_7",
+     "status": "already-archived",
+     "match": "identical file names and sizes"
+    }
+   ],
+   "review": []
+  },
+  {
+   "key": "cheongwannyeosattireshoeshye",
+   "canonical": "Cheon-gwan-nyeos Attire  Shoes Hye",
+   "canonicalSizeBytes": 5422618,
+   "canonicalFileCount": 6,
+   "moved": [
+    {
+     "folder": "cheon-gwan-nyeos_attire__shoes_hye",
+     "sizeBytes": 5422618,
+     "fileCount": 6,
+     "archivedTo": "C:/project/joseon_time/_archive/duplicate_folders/cheon-gwan-nyeos_attire__shoes_hye",
+     "status": "already-archived",
+     "match": "identical file names and sizes"
+    }
+   ],
+   "review": []
+  },
+  {
+   "key": "chunyanggyoeastgategyeongju",
+   "canonical": "Chunyanggyo East Gate Gyeongju",
+   "canonicalSizeBytes": 418964327,
+   "canonicalFileCount": 201,
+   "moved": [
+    {
+     "folder": "chunyanggyo_east_gate_gyeongju",
+     "sizeBytes": 418964327,
+     "fileCount": 201,
+     "archivedTo": "C:/project/joseon_time/_archive/duplicate_folders/chunyanggyo_east_gate_gyeongju",
+     "status": "already-archived",
+     "match": "identical file names and sizes"
+    }
+   ],
+   "review": []
+  },
+  {
+   "key": "chunyanggyopavilionchunyanggyowoljeonggyo",
+   "canonical": "Chunyanggyo Pavilion Chunyanggyo  Woljeonggyo",
+   "canonicalSizeBytes": 294445068,
+   "canonicalFileCount": 139,
+   "moved": [
+    {
+     "folder": "chunyanggyo_pavilion_chunyanggyo__woljeonggyo",
+     "sizeBytes": 294445068,
+     "fileCount": 139,
+     "archivedTo": "C:/project/joseon_time/_archive/duplicate_folders/chunyanggyo_pavilion_chunyanggyo__woljeonggyo",
+     "status": "already-archived",
+     "match": "identical file names and sizes"
+    }
+   ],
+   "review": []
+  },
+  {
+   "key": "chunyanggyowestgategyeongju",
+   "canonical": "Chunyanggyo West Gate Gyeongju",
+   "canonicalSizeBytes": 1474048088,
+   "canonicalFileCount": 142,
+   "moved": [
+    {
+     "folder": "chunyanggyo_west_gate_gyeongju",
+     "sizeBytes": 1474048088,
+     "fileCount": 142,
+     "archivedTo": "C:/project/joseon_time/_archive/duplicate_folders/chunyanggyo_west_gate_gyeongju",
+     "status": "already-archived",
+     "match": "identical file names and sizes"
+    }
+   ],
+   "review": []
+  },
+  {
+   "key": "eastcorridorinwangdongtemplesitegyeongju",
+   "canonical": "East Corridor Inwang-dong Temple Site Gyeongju",
+   "canonicalSizeBytes": 60870125,
+   "canonicalFileCount": 79,
+   "moved": [
+    {
+     "folder": "east_corridor_inwang-dong_temple_site_gyeongju",
+     "sizeBytes": 60870125,
+     "fileCount": 79,
+     "archivedTo": "C:/project/joseon_time/_archive/duplicate_folders/east_corridor_inwang-dong_temple_site_gyeongju",
+     "status": "already-archived",
+     "match": "identical file names and sizes"
+    }
+   ],
+   "review": []
+  },
+  {
+   "key": "fiveroyaltombsgyeongju",
+   "canonical": "Five Royal Tombs Gyeongju",
+   "canonicalSizeBytes": 125561453,
+   "canonicalFileCount": 7,
+   "moved": [
+    {
+     "folder": "five_royal_tombs_gyeongju",
+     "sizeBytes": 125561453,
+     "fileCount": 7,
+     "archivedTo": "C:/project/joseon_time/_archive/duplicate_folders/five_royal_tombs_gyeongju",
+     "status": "already-archived",
+     "match": "identical file names and sizes"
+    }
+   ],
+   "review": []
+  },
+  {
+   "key": "giltbronzeinfantbuddhawoljeonggyobridge",
+   "canonical": "Gilt-bronze Infant Buddha Woljeonggyo Bridge",
+   "canonicalSizeBytes": 5440425,
+   "canonicalFileCount": 6,
+   "moved": [
+    {
+     "folder": "gilt-bronze_infant_buddha_woljeonggyo_bridge",
+     "sizeBytes": 5440425,
+     "fileCount": 6,
+     "archivedTo": "C:/project/joseon_time/_archive/duplicate_folders/gilt-bronze_infant_buddha_woljeonggyo_bridge",
+     "status": "already-archived",
+     "match": "identical file names and sizes"
+    }
+   ],
+   "review": []
+  },
+  {
+   "key": "giltbronzeshoesofthesikrichongtomb",
+   "canonical": "Gilt-Bronze Shoes of the Sikrichong Tomb",
+   "canonicalSizeBytes": 5396001,
+   "canonicalFileCount": 6,
+   "moved": [
+    {
+     "folder": "gilt-bronze_shoes_of_the_sikrichong_tomb",
+     "sizeBytes": 5396001,
+     "fileCount": 6,
+     "archivedTo": "C:/project/joseon_time/_archive/duplicate_folders/gilt-bronze_shoes_of_the_sikrichong_tomb",
+     "status": "already-archived",
+     "match": "identical file names and sizes"
+    }
+   ],
+   "review": []
+  },
+  {
+   "key": "goldcapfromthegeumgwanchongtomb",
+   "canonical": "Gold Cap from the Geumgwanchong Tomb",
+   "canonicalSizeBytes": 5156971,
+   "canonicalFileCount": 6,
+   "moved": [
+    {
+     "folder": "gold_cap_from_the_geumgwanchong_tomb",
+     "sizeBytes": 5156971,
+     "fileCount": 6,
+     "archivedTo": "C:/project/joseon_time/_archive/duplicate_folders/gold_cap_from_the_geumgwanchong_tomb",
+     "status": "already-archived",
+     "match": "identical file names and sizes"
+    }
+   ],
+   "review": []
+  },
+  {
+   "key": "goldcrownfromcheonmachongtomb",
+   "canonical": "Gold Crown From Cheonmachong Tomb",
+   "canonicalSizeBytes": 63166668,
+   "canonicalFileCount": 23,
+   "moved": [
+    {
+     "folder": "gold_crown_from_cheonmachong_tomb",
+     "sizeBytes": 63166668,
+     "fileCount": 23,
+     "archivedTo": "C:/project/joseon_time/_archive/duplicate_folders/gold_crown_from_cheonmachong_tomb",
+     "status": "already-archived",
+     "match": "identical file names and sizes"
+    }
+   ],
+   "review": []
+  },
+  {
+   "key": "goldcrownfromthegeumgwanchongtomb",
+   "canonical": "Gold Crown from the Geumgwanchong Tomb",
+   "canonicalSizeBytes": 12669110,
+   "canonicalFileCount": 6,
+   "moved": [
+    {
+     "folder": "gold_crown_from_the_geumgwanchong_tomb",
+     "sizeBytes": 12669110,
+     "fileCount": 6,
+     "archivedTo": "C:/project/joseon_time/_archive/duplicate_folders/gold_crown_from_the_geumgwanchong_tomb",
+     "status": "already-archived",
+     "match": "identical file names and sizes"
+    }
+   ],
+   "review": []
+  },
+  {
+   "key": "gwanghwamungatehaetaea",
+   "canonical": "Gwanghwamun Gate_HaetaeA",
+   "canonicalSizeBytes": 59880641,
+   "canonicalFileCount": 6,
+   "moved": [
+    {
+     "folder": "gwanghwamun_gate_haetaea",
+     "sizeBytes": 59880641,
+     "fileCount": 6,
+     "archivedTo": "C:/project/joseon_time/_archive/duplicate_folders/gwanghwamun_gate_haetaea",
+     "status": "already-archived",
+     "match": "identical file names and sizes"
+    }
+   ],
+   "review": []
+  },
+  {
+   "key": "gyeongbokgunggeunjeongjeonrankstonec",
+   "canonical": "Gyeongbokgung_Geunjeongjeon_RankstoneC",
+   "canonicalSizeBytes": 57814103,
+   "canonicalFileCount": 6,
+   "moved": [
+    {
+     "folder": "gyeongbokgung_geunjeongjeon_rankstonec (2)",
+     "sizeBytes": 57814103,
+     "fileCount": 6,
+     "archivedTo": "C:/project/joseon_time/_archive/duplicate_folders/gyeongbokgung_geunjeongjeon_rankstonec (2)",
+     "status": "already-archived",
+     "match": "identical file names and sizes"
+    }
+   ],
+   "review": []
+  },
+  {
+   "key": "gyeongbokgunggeunjeongjeonrankstonel",
+   "canonical": "Gyeongbokgung_Geunjeongjeon_RankstoneL",
+   "canonicalSizeBytes": 55648555,
+   "canonicalFileCount": 6,
+   "moved": [
+    {
+     "folder": "gyeongbokgung_geunjeongjeon_rankstonel (2)",
+     "sizeBytes": 55648555,
+     "fileCount": 6,
+     "archivedTo": "C:/project/joseon_time/_archive/duplicate_folders/gyeongbokgung_geunjeongjeon_rankstonel (2)",
+     "status": "already-archived",
+     "match": "identical file names and sizes"
+    }
+   ],
+   "review": []
+  },
+  {
+   "key": "gyeongbokgunggeunjeongjeonroyalsealbox",
+   "canonical": "Gyeongbokgung_Geunjeongjeon_RoyalsealBox",
+   "canonicalSizeBytes": 27789078,
+   "canonicalFileCount": 9,
+   "moved": [
+    {
+     "folder": "gyeongbokgung_geunjeongjeon_royalsealbox (2)",
+     "sizeBytes": 27789078,
+     "fileCount": 9,
+     "archivedTo": "C:/project/joseon_time/_archive/duplicate_folders/gyeongbokgung_geunjeongjeon_royalsealbox (2)",
+     "status": "already-archived",
+     "match": "identical file names and sizes"
+    }
+   ],
+   "review": []
+  },
+  {
+   "key": "hongmalgun",
+   "canonical": "Hong_ Malgun",
+   "canonicalSizeBytes": 12076907,
+   "canonicalFileCount": 6,
+   "moved": [
+    {
+     "folder": "hong__malgun",
+     "sizeBytes": 12076907,
+     "fileCount": 6,
+     "archivedTo": "C:/project/joseon_time/_archive/duplicate_folders/hong__malgun",
+     "status": "already-archived",
+     "match": "identical file names and sizes"
+    }
+   ],
+   "review": []
+  },
+  {
+   "key": "hornshapedcupwithmountedwarriorfigurine",
+   "canonical": "Horn-shaped Cup with Mounted Warrior Figurine",
+   "canonicalSizeBytes": 7132494,
+   "canonicalFileCount": 6,
+   "moved": [
+    {
+     "folder": "horn-shaped_cup_with_mounted_warrior_figurine",
+     "sizeBytes": 7132494,
+     "fileCount": 6,
+     "archivedTo": "C:/project/joseon_time/_archive/duplicate_folders/horn-shaped_cup_with_mounted_warrior_figurine",
+     "status": "already-archived",
+     "match": "identical file names and sizes"
+    }
+   ],
+   "review": []
+  },
+  {
+   "key": "horseofthetwelvezodiacanimaldeities",
+   "canonical": "Horse of the Twelve Zodiac Animal Deities",
+   "canonicalSizeBytes": 5096539,
+   "canonicalFileCount": 6,
+   "moved": [
+    {
+     "folder": "horse_of_the_twelve_zodiac_animal_deities",
+     "sizeBytes": 5096539,
+     "fileCount": 6,
+     "archivedTo": "C:/project/joseon_time/_archive/duplicate_folders/horse_of_the_twelve_zodiac_animal_deities",
+     "status": "already-archived",
+     "match": "identical file names and sizes"
+    }
+   ],
+   "review": []
+  },
+  {
+   "key": "hyangdaecheongoffice",
+   "canonical": "Hyangdaecheong Office",
+   "canonicalSizeBytes": 142356739,
+   "canonicalFileCount": 7,
+   "moved": [
+    {
+     "folder": "hyangdaecheong_office",
+     "sizeBytes": 142356739,
+     "fileCount": 7,
+     "archivedTo": "C:/project/joseon_time/_archive/duplicate_folders/hyangdaecheong_office",
+     "status": "already-archived",
+     "match": "identical file names and sizes"
+    }
+   ],
+   "review": []
+  },
+  {
+   "key": "jeonsacheongoffice",
+   "canonical": "Jeonsacheong Office",
+   "canonicalSizeBytes": 215330115,
+   "canonicalFileCount": 6,
+   "moved": [
+    {
+     "folder": "jeonsacheong_office",
+     "sizeBytes": 215330115,
+     "fileCount": 6,
+     "archivedTo": "C:/project/joseon_time/_archive/duplicate_folders/jeonsacheong_office",
+     "status": "already-archived",
+     "match": "identical file names and sizes"
+    }
+   ],
+   "review": []
+  },
+  {
+   "key": "jidangpan",
+   "canonical": "Jidang Pan",
+   "canonicalSizeBytes": 26706098,
+   "canonicalFileCount": 12,
+   "moved": [
+    {
+     "folder": "jidang_pan",
+     "sizeBytes": 26706098,
+     "fileCount": 12,
+     "archivedTo": "C:/project/joseon_time/_archive/duplicate_folders/jidang_pan",
+     "status": "already-archived",
+     "match": "identical file names and sizes"
+    }
+   ],
+   "review": []
+  },
+  {
+   "key": "jongmyojeryeinstrument02",
+   "canonical": "Jongmyo Jerye_Instrument_02",
+   "canonicalSizeBytes": 16916790,
+   "canonicalFileCount": 4,
+   "moved": [
+    {
+     "folder": "jongmyo_jerye_instrument_02",
+     "sizeBytes": 16916790,
+     "fileCount": 4,
+     "archivedTo": "C:/project/joseon_time/_archive/duplicate_folders/jongmyo_jerye_instrument_02",
+     "status": "already-archived",
+     "match": "identical file names and sizes"
+    }
+   ],
+   "review": []
+  },
+  {
+   "key": "lecturehallinwangdongtemplegyeongju",
+   "canonical": "Lecture Hall Inwang-dong Temple Gyeongju",
+   "canonicalSizeBytes": 1041722982,
+   "canonicalFileCount": 127,
+   "moved": [
+    {
+     "folder": "lecture_hall_inwang-dong_temple_gyeongju",
+     "sizeBytes": 1041722982,
+     "fileCount": 127,
+     "archivedTo": "C:/project/joseon_time/_archive/duplicate_folders/lecture_hall_inwang-dong_temple_gyeongju",
+     "status": "already-archived",
+     "match": "identical file names and sizes"
+    }
+   ],
+   "review": []
+  },
+  {
+   "key": "madopotteryb",
+   "canonical": "Mado_PotteryB",
+   "canonicalSizeBytes": 1594428,
+   "canonicalFileCount": 6,
+   "moved": [
+    {
+     "folder": "mado_potteryb (2)",
+     "sizeBytes": 1594428,
+     "fileCount": 6,
+     "archivedTo": "C:/project/joseon_time/_archive/duplicate_folders/mado_potteryb (2)",
+     "status": "already-archived",
+     "match": "identical file names and sizes"
+    }
+   ],
+   "review": []
+  },
+  {
+   "key": "mainhallsiteinwangdongtemplegyeongjuv03",
+   "canonical": "Main Hall Site Inwang-dong Temple Gyeongju V03",
+   "canonicalSizeBytes": 152004570,
+   "canonicalFileCount": 151,
+   "moved": [
+    {
+     "folder": "main_hall_site_inwang-dong_temple_gyeongju_v03",
+     "sizeBytes": 152004570,
+     "fileCount": 151,
+     "archivedTo": "C:/project/joseon_time/_archive/duplicate_folders/main_hall_site_inwang-dong_temple_gyeongju_v03",
+     "status": "already-archived",
+     "match": "identical file names and sizes"
+    }
+   ],
+   "review": []
+  },
+  {
+   "key": "mediummortar",
+   "canonical": "Medium_Mortar",
+   "canonicalSizeBytes": 4502959,
+   "canonicalFileCount": 6,
+   "moved": [
+    {
+     "folder": "medium_mortar (2)",
+     "sizeBytes": 4502959,
+     "fileCount": 6,
+     "archivedTo": "C:/project/joseon_time/_archive/duplicate_folders/medium_mortar (2)",
+     "status": "already-archived",
+     "match": "identical file names and sizes"
+    }
+   ],
+   "review": []
+  },
+  {
+   "key": "monkeyofthetwelvezodiacanimaldeities",
+   "canonical": "Monkey of the Twelve Zodiac Animal Deities",
+   "canonicalSizeBytes": 4265125,
+   "canonicalFileCount": 6,
+   "moved": [
+    {
+     "folder": "monkey_of_the_twelve_zodiac_animal_deities",
+     "sizeBytes": 4265125,
+     "fileCount": 6,
+     "archivedTo": "C:/project/joseon_time/_archive/duplicate_folders/monkey_of_the_twelve_zodiac_animal_deities",
+     "status": "already-archived",
+     "match": "identical file names and sizes"
+    }
+   ],
+   "review": []
+  },
+  {
+   "key": "oxofthetwelvezodiacanimaldeities",
+   "canonical": "Ox of the Twelve Zodiac Animal Deities",
+   "canonicalSizeBytes": 4747147,
+   "canonicalFileCount": 6,
+   "moved": [
+    {
+     "folder": "ox_of_the_twelve_zodiac_animal_deities",
+     "sizeBytes": 4747147,
+     "fileCount": 6,
+     "archivedTo": "C:/project/joseon_time/_archive/duplicate_folders/ox_of_the_twelve_zodiac_animal_deities",
+     "status": "already-archived",
+     "match": "identical file names and sizes"
+    }
+   ],
+   "review": []
+  },
+  {
+   "key": "pigofthetwelvezodiacanimaldeities",
+   "canonical": "Pig of the Twelve Zodiac Animal Deities",
+   "canonicalSizeBytes": 5283314,
+   "canonicalFileCount": 6,
+   "moved": [
+    {
+     "folder": "pig_of_the_twelve_zodiac_animal_deities",
+     "sizeBytes": 5283314,
+     "fileCount": 6,
+     "archivedTo": "C:/project/joseon_time/_archive/duplicate_folders/pig_of_the_twelve_zodiac_animal_deities",
+     "status": "already-archived",
+     "match": "identical file names and sizes"
+    }
+   ],
+   "review": []
+  },
+  {
+   "key": "privatehouseanchae",
+   "canonical": "Private House - Anchae",
+   "canonicalSizeBytes": 1253577213,
+   "canonicalFileCount": 82,
+   "moved": [
+    {
+     "folder": "private_house_-_anchae",
+     "sizeBytes": 1253577213,
+     "fileCount": 82,
+     "archivedTo": "C:/project/joseon_time/_archive/duplicate_folders/private_house_-_anchae",
+     "status": "already-archived",
+     "match": "identical file names and sizes"
+    }
+   ],
+   "review": []
+  },
+  {
+   "key": "rabbitofthetwelvezodiacanimaldeities",
+   "canonical": "Rabbit of the Twelve Zodiac Animal Deities",
+   "canonicalSizeBytes": 46674110,
+   "canonicalFileCount": 6,
+   "moved": [
+    {
+     "folder": "rabbit_of_the_twelve_zodiac_animal_deities",
+     "sizeBytes": 46674110,
+     "fileCount": 6,
+     "archivedTo": "C:/project/joseon_time/_archive/duplicate_folders/rabbit_of_the_twelve_zodiac_animal_deities",
+     "status": "already-archived",
+     "match": "identical file names and sizes"
+    }
+   ],
+   "review": []
+  },
+  {
+   "key": "raingaugeofimunwonhall",
+   "canonical": "Rain Gauge of Imunwon hall",
+   "canonicalSizeBytes": 33434224,
+   "canonicalFileCount": 7,
+   "moved": [
+    {
+     "folder": "rain_gauge_of_imunwon_hall",
+     "sizeBytes": 33434224,
+     "fileCount": 7,
+     "archivedTo": "C:/project/joseon_time/_archive/duplicate_folders/rain_gauge_of_imunwon_hall",
+     "status": "already-archived",
+     "match": "identical file names and sizes"
+    }
+   ],
+   "review": []
+  },
+  {
+   "key": "raingaugepedestalofimunwonhall",
+   "canonical": "Rain Gauge Pedestal of Imunwon hall",
+   "canonicalSizeBytes": 142872295,
+   "canonicalFileCount": 6,
+   "moved": [
+    {
+     "folder": "rain_gauge_pedestal_of_imunwon_hall",
+     "sizeBytes": 142872295,
+     "fileCount": 6,
+     "archivedTo": "C:/project/joseon_time/_archive/duplicate_folders/rain_gauge_pedestal_of_imunwon_hall",
+     "status": "already-archived",
+     "match": "identical file names and sizes"
+    }
+   ],
+   "review": []
+  },
+  {
+   "key": "ritualwellofinwangdongtemplesite",
+   "canonical": "Ritual Well of Inwangdong Temple Site",
+   "canonicalSizeBytes": 11333530,
+   "canonicalFileCount": 12,
+   "moved": [
+    {
+     "folder": "ritual_well_of_inwangdong_temple_site",
+     "sizeBytes": 11333530,
+     "fileCount": 12,
+     "archivedTo": "C:/project/joseon_time/_archive/duplicate_folders/ritual_well_of_inwangdong_temple_site",
+     "status": "already-archived",
+     "match": "identical file names and sizes"
+    }
+   ],
+   "review": []
+  },
+  {
+   "key": "sarirascoopwestpagodagameunsa",
+   "canonical": "Sarira Scoop West Pagoda Gameunsa",
+   "canonicalSizeBytes": 4429657,
+   "canonicalFileCount": 6,
+   "moved": [
+    {
+     "folder": "sarira_scoop_west_pagoda_gameunsa",
+     "sizeBytes": 4429657,
+     "fileCount": 6,
+     "archivedTo": "C:/project/joseon_time/_archive/duplicate_folders/sarira_scoop_west_pagoda_gameunsa",
+     "status": "already-archived",
+     "match": "identical file names and sizes"
+    }
+   ],
+   "review": []
+  },
+  {
+   "key": "sheepofthetwelvezodiacanimaldeities",
+   "canonical": "Sheep of the Twelve Zodiac Animal Deities",
+   "canonicalSizeBytes": 5891903,
+   "canonicalFileCount": 6,
+   "moved": [
+    {
+     "folder": "sheep_of_the_twelve_zodiac_animal_deities",
+     "sizeBytes": 5891903,
+     "fileCount": 6,
+     "archivedTo": "C:/project/joseon_time/_archive/duplicate_folders/sheep_of_the_twelve_zodiac_animal_deities",
+     "status": "already-archived",
+     "match": "identical file names and sizes"
+    }
+   ],
+   "review": []
+  },
+  {
+   "key": "silverladlesouthmoundofhwangnamdaechong",
+   "canonical": "Silver ladle South Mound of Hwangnamdaechong",
+   "canonicalSizeBytes": 5611768,
+   "canonicalFileCount": 6,
+   "moved": [
+    {
+     "folder": "silver_ladle_south_mound_of_hwangnamdaechong",
+     "sizeBytes": 5611768,
+     "fileCount": 6,
+     "archivedTo": "C:/project/joseon_time/_archive/duplicate_folders/silver_ladle_south_mound_of_hwangnamdaechong",
+     "status": "already-archived",
+     "match": "identical file names and sizes"
+    }
+   ],
+   "review": []
+  },
+  {
+   "key": "tilewithbuddhaandpagodadesign",
+   "canonical": "Tile with Buddha and Pagoda Design",
+   "canonicalSizeBytes": 3209950,
+   "canonicalFileCount": 6,
+   "moved": [
+    {
+     "folder": "tile_with_buddha_and_pagoda_design",
+     "sizeBytes": 3209950,
+     "fileCount": 6,
+     "archivedTo": "C:/project/joseon_time/_archive/duplicate_folders/tile_with_buddha_and_pagoda_design",
+     "status": "already-archived",
+     "match": "identical file names and sizes"
+    }
+   ],
+   "review": []
+  },
+  {
+   "key": "tombofkimyusin12zodiacanimaldeities001",
+   "canonical": "Tomb of Kim Yu-sin_12 Zodiac Animal Deities_001",
+   "canonicalSizeBytes": 191038197,
+   "canonicalFileCount": 7,
+   "moved": [
+    {
+     "folder": "tomb_of_kim_yu-sin_12_zodiac_animal_deities_001",
+     "sizeBytes": 191038197,
+     "fileCount": 7,
+     "archivedTo": "C:/project/joseon_time/_archive/duplicate_folders/tomb_of_kim_yu-sin_12_zodiac_animal_deities_001",
+     "status": "already-archived",
+     "match": "identical file names and sizes"
+    }
+   ],
+   "review": []
+  },
+  {
+   "key": "tombofkimyusin12zodiacanimaldeities008",
+   "canonical": "Tomb of Kim Yu-sin_12 Zodiac Animal Deities_008",
+   "canonicalSizeBytes": 194620507,
+   "canonicalFileCount": 7,
+   "moved": [
+    {
+     "folder": "tomb_of_kim_yu-sin_12_zodiac_animal_deities_008",
+     "sizeBytes": 194620507,
+     "fileCount": 7,
+     "archivedTo": "C:/project/joseon_time/_archive/duplicate_folders/tomb_of_kim_yu-sin_12_zodiac_animal_deities_008",
+     "status": "already-archived",
+     "match": "identical file names and sizes"
+    }
+   ],
+   "review": []
+  },
+  {
+   "key": "tombofkimyusin12zodiacanimaldeities010",
+   "canonical": "Tomb of Kim Yu-sin_12 Zodiac Animal Deities_010",
+   "canonicalSizeBytes": 186586565,
+   "canonicalFileCount": 7,
+   "moved": [
+    {
+     "folder": "tomb_of_kim_yu-sin_12_zodiac_animal_deities_010",
+     "sizeBytes": 186586565,
+     "fileCount": 7,
+     "archivedTo": "C:/project/joseon_time/_archive/duplicate_folders/tomb_of_kim_yu-sin_12_zodiac_animal_deities_010",
+     "status": "already-archived",
+     "match": "identical file names and sizes"
+    }
+   ],
+   "review": []
+  },
+  {
+   "key": "tombofkimyusin12zodiacanimaldeities012",
+   "canonical": "Tomb of Kim Yu-sin_12 Zodiac Animal Deities_012",
+   "canonicalSizeBytes": 192033169,
+   "canonicalFileCount": 7,
+   "moved": [
+    {
+     "folder": "tomb_of_kim_yu-sin_12_zodiac_animal_deities_012",
+     "sizeBytes": 192033169,
+     "fileCount": 7,
+     "archivedTo": "C:/project/joseon_time/_archive/duplicate_folders/tomb_of_kim_yu-sin_12_zodiac_animal_deities_012",
+     "status": "already-archived",
+     "match": "identical file names and sizes"
+    }
+   ],
+   "review": []
+  },
+  {
+   "key": "tombofkimyusingyeongju",
+   "canonical": "Tomb of Kim Yu-sin Gyeongju",
+   "canonicalSizeBytes": 162984457,
+   "canonicalFileCount": 7,
+   "moved": [
+    {
+     "folder": "tomb_of_kim_yu-sin_gyeongju",
+     "sizeBytes": 162984457,
+     "fileCount": 7,
+     "archivedTo": "C:/project/joseon_time/_archive/duplicate_folders/tomb_of_kim_yu-sin_gyeongju",
+     "status": "already-archived",
+     "match": "identical file names and sizes"
+    }
+   ],
+   "review": []
+  },
+  {
+   "key": "tombofkimyusinmonument001",
+   "canonical": "Tomb of Kim Yu-sin_Monument_001",
+   "canonicalSizeBytes": 97588696,
+   "canonicalFileCount": 7,
+   "moved": [
+    {
+     "folder": "tomb_of_kim_yu-sin_monument_001",
+     "sizeBytes": 97588696,
+     "fileCount": 7,
+     "archivedTo": "C:/project/joseon_time/_archive/duplicate_folders/tomb_of_kim_yu-sin_monument_001",
+     "status": "already-archived",
+     "match": "identical file names and sizes"
+    }
+   ],
+   "review": []
+  },
+  {
+   "key": "tombofkimyusinstonetable",
+   "canonical": "Tomb of Kim Yu-sin_Stone Table",
+   "canonicalSizeBytes": 37037125,
+   "canonicalFileCount": 7,
+   "moved": [
+    {
+     "folder": "tomb_of_kim_yu-sin_stone_table",
+     "sizeBytes": 37037125,
+     "fileCount": 7,
+     "archivedTo": "C:/project/joseon_time/_archive/duplicate_folders/tomb_of_kim_yu-sin_stone_table",
+     "status": "already-archived",
+     "match": "identical file names and sizes"
+    }
+   ],
+   "review": []
+  },
+  {
+   "key": "tombofkinggyeongdeokgyeongju",
+   "canonical": "Tomb Of King Gyeongdeok Gyeongju",
+   "canonicalSizeBytes": 136598112,
+   "canonicalFileCount": 7,
+   "moved": [
+    {
+     "folder": "tomb_of_king_gyeongdeok_gyeongju",
+     "sizeBytes": 136598112,
+     "fileCount": 7,
+     "archivedTo": "C:/project/joseon_time/_archive/duplicate_folders/tomb_of_king_gyeongdeok_gyeongju",
+     "status": "already-archived",
+     "match": "identical file names and sizes"
+    }
+   ],
+   "review": []
+  },
+  {
+   "key": "tombofkingheondeokgyeongju",
+   "canonical": "Tomb of King Heondeok Gyeongju",
+   "canonicalSizeBytes": 164273350,
+   "canonicalFileCount": 6,
+   "moved": [
+    {
+     "folder": "tomb_of_king_heondeok_gyeongju",
+     "sizeBytes": 164273350,
+     "fileCount": 6,
+     "archivedTo": "C:/project/joseon_time/_archive/duplicate_folders/tomb_of_king_heondeok_gyeongju",
+     "status": "already-archived",
+     "match": "identical file names and sizes"
+    }
+   ],
+   "review": []
+  },
+  {
+   "key": "tombofkinghuiganggyeongju",
+   "canonical": "Tomb of King Huigang Gyeongju",
+   "canonicalSizeBytes": 89780492,
+   "canonicalFileCount": 7,
+   "moved": [
+    {
+     "folder": "tomb_of_king_huigang_gyeongju",
+     "sizeBytes": 89780492,
+     "fileCount": 7,
+     "archivedTo": "C:/project/joseon_time/_archive/duplicate_folders/tomb_of_king_huigang_gyeongju",
+     "status": "already-archived",
+     "match": "identical file names and sizes"
+    }
+   ],
+   "review": []
+  },
+  {
+   "key": "tombofkingseongdeok12zodiacanimaldeities1",
+   "canonical": "Tomb of King Seongdeok_12Zodiac Animal Deities1",
+   "canonicalSizeBytes": 199335904,
+   "canonicalFileCount": 7,
+   "moved": [
+    {
+     "folder": "tomb_of_king_seongdeok_12zodiac_animal_deities1",
+     "sizeBytes": 199335904,
+     "fileCount": 7,
+     "archivedTo": "C:/project/joseon_time/_archive/duplicate_folders/tomb_of_king_seongdeok_12zodiac_animal_deities1",
+     "status": "already-archived",
+     "match": "identical file names and sizes"
+    }
+   ],
+   "review": []
+  },
+  {
+   "key": "tombofkingseongdeok12zodiacanimaldeities10",
+   "canonical": "Tomb of King Seongdeok_12Zodiac Animal Deities10",
+   "canonicalSizeBytes": 172151694,
+   "canonicalFileCount": 7,
+   "moved": [
+    {
+     "folder": "tomb_of_king_seongdeok_12zodiac_animal_deities10",
+     "sizeBytes": 172151694,
+     "fileCount": 7,
+     "archivedTo": "C:/project/joseon_time/_archive/duplicate_folders/tomb_of_king_seongdeok_12zodiac_animal_deities10",
+     "status": "already-archived",
+     "match": "identical file names and sizes"
+    }
+   ],
+   "review": []
+  },
+  {
+   "key": "tombofkingseongdeok12zodiacanimaldeities5",
+   "canonical": "Tomb of King Seongdeok_12Zodiac Animal Deities5",
+   "canonicalSizeBytes": 205407700,
+   "canonicalFileCount": 7,
+   "moved": [
+    {
+     "folder": "tomb_of_king_seongdeok_12zodiac_animal_deities5",
+     "sizeBytes": 205407700,
+     "fileCount": 7,
+     "archivedTo": "C:/project/joseon_time/_archive/duplicate_folders/tomb_of_king_seongdeok_12zodiac_animal_deities5",
+     "status": "already-archived",
+     "match": "identical file names and sizes"
+    }
+   ],
+   "review": []
+  },
+  {
+   "key": "tombofkingseongdeok12zodiacanimaldeities7",
+   "canonical": "Tomb of King Seongdeok_12Zodiac Animal Deities7",
+   "canonicalSizeBytes": 204680172,
+   "canonicalFileCount": 7,
+   "moved": [
+    {
+     "folder": "tomb_of_king_seongdeok_12zodiac_animal_deities7",
+     "sizeBytes": 204680172,
+     "fileCount": 7,
+     "archivedTo": "C:/project/joseon_time/_archive/duplicate_folders/tomb_of_king_seongdeok_12zodiac_animal_deities7",
+     "status": "already-archived",
+     "match": "identical file names and sizes"
+    }
+   ],
+   "review": []
+  },
+  {
+   "key": "tombofkingseongdeokmonument",
+   "canonical": "Tomb of King Seongdeok_Monument",
+   "canonicalSizeBytes": 83198268,
+   "canonicalFileCount": 7,
+   "moved": [
+    {
+     "folder": "tomb_of_king_seongdeok_monument",
+     "sizeBytes": 83198268,
+     "fileCount": 7,
+     "archivedTo": "C:/project/joseon_time/_archive/duplicate_folders/tomb_of_king_seongdeok_monument",
+     "status": "already-archived",
+     "match": "identical file names and sizes"
+    }
+   ],
+   "review": []
+  },
+  {
+   "key": "tombofkingseongdeokstoneguardian",
+   "canonical": "Tomb of King Seongdeok_Stone Guardian",
+   "canonicalSizeBytes": 121958592,
+   "canonicalFileCount": 7,
+   "moved": [
+    {
+     "folder": "tomb_of_king_seongdeok_stone_guardian",
+     "sizeBytes": 121958592,
+     "fileCount": 7,
+     "archivedTo": "C:/project/joseon_time/_archive/duplicate_folders/tomb_of_king_seongdeok_stone_guardian",
+     "status": "already-archived",
+     "match": "identical file names and sizes"
+    }
+   ],
+   "review": []
+  },
+  {
+   "key": "tombofkingseongdeokstonelion001",
+   "canonical": "Tomb of King Seongdeok_Stone Lion_001",
+   "canonicalSizeBytes": 112669261,
+   "canonicalFileCount": 7,
+   "moved": [
+    {
+     "folder": "tomb_of_king_seongdeok_stone_lion_001",
+     "sizeBytes": 112669261,
+     "fileCount": 7,
+     "archivedTo": "C:/project/joseon_time/_archive/duplicate_folders/tomb_of_king_seongdeok_stone_lion_001",
+     "status": "already-archived",
+     "match": "identical file names and sizes"
+    }
+   ],
+   "review": []
+  },
+  {
+   "key": "tombofkingseongdeokstoneliteratus",
+   "canonical": "Tomb of King Seongdeok_Stone Literatus",
+   "canonicalSizeBytes": 76858313,
+   "canonicalFileCount": 7,
+   "moved": [
+    {
+     "folder": "tomb_of_king_seongdeok_stone_literatus",
+     "sizeBytes": 76858313,
+     "fileCount": 7,
+     "archivedTo": "C:/project/joseon_time/_archive/duplicate_folders/tomb_of_king_seongdeok_stone_literatus",
+     "status": "already-archived",
+     "match": "identical file names and sizes"
+    }
+   ],
+   "review": []
+  },
+  {
+   "key": "tombofkingseongdeokstonetable",
+   "canonical": "Tomb of King Seongdeok_Stone Table",
+   "canonicalSizeBytes": 37866562,
+   "canonicalFileCount": 7,
+   "moved": [
+    {
+     "folder": "tomb_of_king_seongdeok_stone_table",
+     "sizeBytes": 37866562,
+     "fileCount": 7,
+     "archivedTo": "C:/project/joseon_time/_archive/duplicate_folders/tomb_of_king_seongdeok_stone_table",
+     "status": "already-archived",
+     "match": "identical file names and sizes"
+    }
+   ],
+   "review": []
+  },
+  {
+   "key": "unhyunthreetieredcupboard",
+   "canonical": "Unhyun_ Threetiered Cupboard",
+   "canonicalSizeBytes": 43977531,
+   "canonicalFileCount": 6,
+   "moved": [
+    {
+     "folder": "unhyun__threetiered_cupboard",
+     "sizeBytes": 43977531,
+     "fileCount": 6,
+     "archivedTo": "C:/project/joseon_time/_archive/duplicate_folders/unhyun__threetiered_cupboard",
+     "status": "already-archived",
+     "match": "identical file names and sizes"
+    }
+   ],
+   "review": []
+  },
+  {
+   "key": "unhyunwashbasin",
+   "canonical": "Unhyun_ Washbasin",
+   "canonicalSizeBytes": 6513402,
+   "canonicalFileCount": 6,
+   "moved": [
+    {
+     "folder": "unhyun__washbasin",
+     "sizeBytes": 6513402,
+     "fileCount": 6,
+     "archivedTo": "C:/project/joseon_time/_archive/duplicate_folders/unhyun__washbasin",
+     "status": "already-archived",
+     "match": "identical file names and sizes"
+    }
+   ],
+   "review": []
+  },
+  {
+   "key": "wellofinwangdongtemplesite",
+   "canonical": "Well of Inwangdong Temple Site",
+   "canonicalSizeBytes": 11568014,
+   "canonicalFileCount": 12,
+   "moved": [
+    {
+     "folder": "well_of_inwangdong_temple_site",
+     "sizeBytes": 11568014,
+     "fileCount": 12,
+     "archivedTo": "C:/project/joseon_time/_archive/duplicate_folders/well_of_inwangdong_temple_site",
+     "status": "already-archived",
+     "match": "identical file names and sizes"
+    }
+   ],
+   "review": []
+  },
+  {
+   "key": "westsideabutmentinchunyanggyobridge",
+   "canonical": "West side Abutment in Chunyanggyo Bridge",
+   "canonicalSizeBytes": 110261795,
+   "canonicalFileCount": 9,
+   "moved": [
+    {
+     "folder": "west_side_abutment_in_chunyanggyo_bridge",
+     "sizeBytes": 110261795,
+     "fileCount": 9,
+     "archivedTo": "C:/project/joseon_time/_archive/duplicate_folders/west_side_abutment_in_chunyanggyo_bridge",
+     "status": "already-archived",
+     "match": "identical file names and sizes"
+    }
+   ],
+   "review": []
+  }
+ ]
+}

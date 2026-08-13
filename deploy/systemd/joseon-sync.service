@@ -1,0 +1,33 @@
+[Unit]
+Description=조선의 시간 · 주기 동기화 (S1 수집 → S7 빌드 → S8 게시)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=joseon
+WorkingDirectory=/srv/joseon-time
+Environment=APP_ROOT=/srv/joseon-time
+EnvironmentFile=/srv/joseon-time/.env
+
+# 1) 수집 — 델타만. 429는 워커가 스스로 중단하고 다음 주기로 이월한다(A13: 15회/60초 쿼터).
+#    --limit 는 1주기 상한. 393건 미보유분을 점진 수신하는 동안의 안전판이다.
+ExecStart=/usr/bin/python3 /srv/joseon-time/scripts/sync_worker.py --apply --limit 120
+# 2) 빌드 — 변경분만 재변환 후 새 릴리스 생성
+ExecStart=/usr/bin/node /srv/joseon-time/scripts/build_release.mjs
+# 3) 게시는 사람이 확인 후 수행한다(publish.sh). 자동 게시를 원하면 아래 주석을 해제:
+# ExecStart=/usr/bin/bash /srv/joseon-time/scripts/publish_latest.sh
+
+TimeoutStartSec=6h
+Nice=10
+IOSchedulingClass=idle
+
+# 하드닝 — 워커는 아웃바운드만 필요하고 앱 디렉터리 밖을 쓸 일이 없다
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/srv/joseon-time
+
+[Install]
+WantedBy=multi-user.target

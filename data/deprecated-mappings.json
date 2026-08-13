@@ -1,0 +1,771 @@
+{
+ "generatedBy": "data/scripts/a4_deprecate_mappings.py",
+ "deprecationNotice": {
+  "status": "DEPRECATED",
+  "declaredOn": "2026-08-11",
+  "statement": "heritage/data/ 의 기존 유산명-에셋 매핑(gltf_mapping.json, gltf_mapping_improved.json, heritage_graph.json 의 folder/eng_name 필드, khs_search_mapping 계열)을 전면 폐기한다. 이 매핑들은 한국어 유산명과 영문 폴더명 사이의 문자열 유사도로 생성되어 의미 검증을 거치지 않았고, 국보·보물·사적을 전혀 무관한 에셋에 연결하는 오매핑을 구조적으로 포함한다. 어떤 신규 기능도 이 파일들을 신뢰 소스로 사용해서는 안 된다.",
+  "originalFilesUntouched": true,
+  "replacement": "data/assets.catalog.json + data/classification.json 을 기준으로 사이트 귀속과 배치 클래스를 재구축하고, 유산명 연결은 sketchfabUid 기반 검증을 거친 신규 매핑으로 대체한다.",
+  "rootCause": "heritage/scripts/ 의 map_assets.py / improve_mapping.py / targeted_mapping.py / rebuild_mapping_v3.py 계열이 이름 유사도 점수만으로 최적 후보를 선택하고, 임계값 미만에서도 최근접 후보를 강제 채택했기 때문"
+ },
+ "deprecatedFiles": [
+  {
+   "file": "heritage/data/gltf_mapping.json",
+   "sizeBytes": 7375,
+   "kind": "korean heritage name -> asset folder mapping",
+   "entryCount": 33,
+   "folderAssignments": 33,
+   "deprecated": true,
+   "reason": "이름 유사도 기반 자동 매핑. 검증되지 않은 오매핑 다수"
+  },
+  {
+   "file": "heritage/data/gltf_mapping_improved.json",
+   "sizeBytes": 11133,
+   "kind": "korean heritage name -> asset folder mapping",
+   "entryCount": 48,
+   "folderAssignments": 48,
+   "deprecated": true,
+   "reason": "이름 유사도 기반 자동 매핑. 검증되지 않은 오매핑 다수"
+  },
+  {
+   "file": "heritage/data/heritage_graph.json",
+   "sizeBytes": 3134028,
+   "kind": "heritage graph with asset folder assignments",
+   "entryCount": 11888,
+   "folderAssignments": 44,
+   "deprecated": true,
+   "reason": "이름 유사도 매칭으로 생성된 folder/eng_name 필드가 국보·보물·사적을 무관한 에셋에 연결함"
+  },
+  {
+   "file": "heritage/data/khs_search_mapping.json",
+   "sizeBytes": 4590,
+   "kind": "korean heritage name -> ccbaCpno lookup",
+   "entryCount": 82,
+   "folderAssignments": 0,
+   "deprecated": true,
+   "reason": "에셋 매핑은 아니나 폐기 대상 매핑 파이프라인의 입력 인덱스. 신규 매핑 재구축 시 재검증 후에만 재사용",
+   "note": "폴더 매핑을 포함하지 않으므로 오매핑 사례의 직접 원인은 아님"
+  },
+  {
+   "file": "heritage/data/khs_search_mapping_full.json",
+   "sizeBytes": 254623,
+   "kind": "korean heritage name -> ccbaCpno lookup",
+   "entryCount": 2969,
+   "folderAssignments": 0,
+   "deprecated": true,
+   "reason": "에셋 매핑은 아니나 폐기 대상 매핑 파이프라인의 입력 인덱스. 신규 매핑 재구축 시 재검증 후에만 재사용",
+   "note": "폴더 매핑을 포함하지 않으므로 오매핑 사례의 직접 원인은 아님"
+  },
+  {
+   "file": "heritage/data/legacy_uid_mapping.json",
+   "sizeBytes": 2,
+   "kind": "legacy uid mapping",
+   "entryCount": 0,
+   "folderAssignments": 0,
+   "deprecated": true,
+   "reason": "내용이 비어 있음(빈 객체). 사용처 없음"
+  },
+  {
+   "file": "heritage/data/local_assets_uid.json",
+   "sizeBytes": 69802,
+   "kind": "local folder -> sketchfab uid index",
+   "entryCount": 506,
+   "folderAssignments": 506,
+   "deprecated": false,
+   "reason": "의미 매핑이 아니라 로컬 폴더-uid 사실 인덱스이므로 폐기 대상 아님. 단 A2 격리 이후 폴더명 기준 재생성 필요"
+  },
+  {
+   "file": "heritage/data/sketchfab_models_all.json",
+   "sizeBytes": 182254,
+   "kind": "sketchfab model listing",
+   "entryCount": 917,
+   "folderAssignments": 0,
+   "deprecated": false,
+   "reason": "원본 스케치팹 목록. 사실 데이터이므로 유지"
+  }
+ ],
+ "evidenceSummary": {
+  "curatedMismappings": 38,
+  "curatedVerifiedAgainstSource": 38,
+  "curatedUnverified": [],
+  "stalePointers": 5,
+  "granularityErrors": 5,
+  "genericAssetForDesignatedTreasure": 18,
+  "crossFileDisagreements": 7,
+  "graphFolderAssignments": 44
+ },
+ "curatedMismappings": [
+  {
+   "file": "heritage/data/heritage_graph.json",
+   "heritageName": "부여 정림사지 오층석탑",
+   "designation": "국보",
+   "mappedFolder": "Chisel",
+   "folderActuallyIs": "끌(목공 공구)",
+   "verifiedAgainstSource": true,
+   "folderExists": true,
+   "folderClass": "D",
+   "why": "백제 오층석탑을 목공 공구 모델에 연결. 유물 종류·시대·크기 모두 무관하며 이름 유사도 매칭이 만들어 낸 대표적 오매핑."
+  },
+  {
+   "file": "heritage/data/heritage_graph.json",
+   "heritageName": "경주 독락당",
+   "designation": "보물",
+   "mappedFolder": "Jar",
+   "folderActuallyIs": "항아리(무맥락 단독 도기)",
+   "verifiedAgainstSource": true,
+   "folderExists": true,
+   "folderClass": "D",
+   "why": "독락당은 조선시대 건축물(부동산)인데 이동 가능한 일반 항아리 모델에 연결."
+  },
+  {
+   "file": "heritage/data/heritage_graph.json",
+   "heritageName": "익산 나바위성당",
+   "designation": "사적",
+   "mappedFolder": "Rock",
+   "folderActuallyIs": "바위(무맥락 자연물)",
+   "verifiedAgainstSource": true,
+   "folderExists": true,
+   "folderClass": "D",
+   "why": "근대 성당 건축물을 '바위' 모델에 연결. 사적(부동산)을 무맥락 D급 에셋에 매핑한 category error."
+  },
+  {
+   "file": "heritage/data/heritage_graph.json",
+   "heritageName": "담양 금성산성",
+   "designation": "사적",
+   "mappedFolder": "Yanggeum",
+   "folderActuallyIs": "양금(현악기)",
+   "verifiedAgainstSource": true,
+   "folderExists": true,
+   "folderClass": "D",
+   "why": "산성(부동산)을 국악기 모델에 연결. 두 대상 사이에 어떤 의미적 연결도 없음."
+  },
+  {
+   "file": "heritage/data/heritage_graph.json",
+   "heritageName": "강화 덕진진",
+   "designation": "사적",
+   "mappedFolder": "Fire_Pot",
+   "folderActuallyIs": "화로",
+   "verifiedAgainstSource": true,
+   "folderExists": true,
+   "folderClass": "D",
+   "why": "강화도 해안 진(요새) 유적을 화로 기물에 연결."
+  },
+  {
+   "file": "heritage/data/heritage_graph.json",
+   "heritageName": "구서이면사무소",
+   "designation": "문화유산자료",
+   "mappedFolder": "Miyeonsa",
+   "folderActuallyIs": "미연사(기물/악곡명)",
+   "verifiedAgainstSource": true,
+   "folderExists": true,
+   "folderClass": "D",
+   "why": "근대 면사무소 건물을 발음이 비슷한 별개 항목에 연결. '이면사무소'와 'Miyeonsa'의 표기 유사도에 의한 오매핑."
+  },
+  {
+   "file": "heritage/data/heritage_graph.json",
+   "heritageName": "비",
+   "designation": "시도기념물",
+   "mappedFolder": "Mado_Ricebags",
+   "folderActuallyIs": "마도 침몰선 출토 쌀가마니",
+   "verifiedAgainstSource": true,
+   "folderExists": true,
+   "folderClass": "C",
+   "why": "한 글자 이름 '비'(비석)가 마도선 화물 에셋에 연결됨. 짧은 이름이 유사도 매칭에서 폭주한 사례."
+  },
+  {
+   "file": "heritage/data/heritage_graph.json",
+   "heritageName": "금관총 금관 및 금제 관식",
+   "designation": "국보",
+   "mappedFolder": "Jegwan_samryanggwan",
+   "folderActuallyIs": "제관 삼량관(조선 제례용 관모)",
+   "verifiedAgainstSource": true,
+   "folderExists": true,
+   "folderClass": "D",
+   "why": "신라 금관을 조선시대 제례 관모에 연결. 시대(신라 vs 조선)와 재질이 모두 다름."
+  },
+  {
+   "file": "heritage/data/heritage_graph.json",
+   "heritageName": "청동 은입사 포류수금문 정병",
+   "designation": "국보",
+   "mappedFolder": "GeumgunPodallyeong",
+   "folderActuallyIs": "금군 포달령(복식)",
+   "verifiedAgainstSource": true,
+   "folderExists": true,
+   "folderClass": "D",
+   "why": "고려 청동 물병(정병)을 조선 군복 복식에 연결."
+  },
+  {
+   "file": "heritage/data/heritage_graph.json",
+   "heritageName": "용암당 혜언 진영",
+   "designation": "시도유형문화유산",
+   "mappedFolder": "Danghye_female",
+   "folderActuallyIs": "당혜(여성용 신발)",
+   "verifiedAgainstSource": true,
+   "folderExists": true,
+   "folderClass": "D",
+   "why": "승려 초상화(진영)를 신발 모델에 연결. '혜언'과 'Danghye'의 음절 겹침이 원인."
+  },
+  {
+   "file": "heritage/data/heritage_graph.json",
+   "heritageName": "진천 정철 신도비",
+   "designation": "시도유형문화유산",
+   "mappedFolder": "Jeongjeol",
+   "folderActuallyIs": "정절(기물)",
+   "verifiedAgainstSource": true,
+   "folderExists": true,
+   "folderClass": "D",
+   "why": "신도비(석비)를 발음이 유사한 별개 기물에 연결."
+  },
+  {
+   "file": "heritage/data/heritage_graph.json",
+   "heritageName": "이하응 초상 일괄 - 흑단령포본, 금관조복본, 와룡관학창의본, 흑건청포본, 복건심의본",
+   "designation": "보물",
+   "mappedFolder": "Bokgeon",
+   "folderActuallyIs": "복건(두건)",
+   "verifiedAgainstSource": true,
+   "folderExists": true,
+   "folderClass": "D",
+   "why": "흥선대원군 초상화 일괄(회화)을 복식 에셋에 연결. 유산명 끝의 '복건심의본'이라는 이본(異本) 이름에서 '복건'만 떼어 매칭한 결과로, 부분 문자열 일치가 전체 유물 종류를 뒤집은 사례."
+  },
+  {
+   "file": "heritage/data/heritage_graph.json",
+   "heritageName": "경복궁",
+   "designation": "사적",
+   "mappedFolder": "Gyeongbokgung_Gangnyeongjeon_Cabinet",
+   "folderActuallyIs": "경복궁 강녕전 장롱(실내 가구)",
+   "verifiedAgainstSource": true,
+   "folderExists": true,
+   "folderClass": "C",
+   "why": "궁궐 전체(사적)를 전각 하나의 실내 가구 한 점에 연결. 축척 granularity 오류."
+  },
+  {
+   "file": "heritage/data/heritage_graph.json",
+   "heritageName": "경복궁 근정전",
+   "designation": "국보",
+   "mappedFolder": "Gyeongbokgung_Geunjeongjeon_Throne Chair",
+   "folderActuallyIs": "근정전 어좌 의자(실내 기물)",
+   "verifiedAgainstSource": true,
+   "folderExists": true,
+   "folderClass": "C",
+   "why": "전각 건축물(국보)을 그 안의 의자 한 점에 연결. 건물 본체 에셋이 아님."
+  },
+  {
+   "file": "heritage/data/heritage_graph.json",
+   "heritageName": "서울 운현궁",
+   "designation": "사적",
+   "mappedFolder": "Unhyun_ Wardrobe",
+   "folderActuallyIs": "운현궁 옷장(실내 가구)",
+   "verifiedAgainstSource": true,
+   "folderExists": true,
+   "folderClass": "C",
+   "why": "궁 전체(사적)를 옷장 한 점에 연결. 축척 granularity 오류."
+  },
+  {
+   "file": "heritage/data/heritage_graph.json",
+   "heritageName": "경주 김유신묘",
+   "designation": "사적",
+   "mappedFolder": "Tomb of Kim Yu-sin_12 Zodiac Animal Deities_006",
+   "folderActuallyIs": "김유신묘 십이지신상 1기",
+   "verifiedAgainstSource": true,
+   "folderExists": true,
+   "folderClass": "B",
+   "why": "묘 본체(사적)를 둘레 십이지신상 12기 중 1기에만 연결. 본체 에셋 'Tomb of Kim Yu-sin Gyeongju'가 따로 있는데도 부속물을 가리킴."
+  },
+  {
+   "file": "heritage/data/heritage_graph.json",
+   "heritageName": "천상열차분야지도 각석",
+   "designation": "국보",
+   "mappedFolder": "Reproduction Of Celestial Chart Stone",
+   "folderActuallyIs": "복각(복제) 천상열차분야지도 각석",
+   "verifiedAgainstSource": true,
+   "folderExists": true,
+   "folderClass": "D",
+   "why": "국보 원본을 복각본 에셋에 연결. 원본 에셋 'Celestial Chart Stone'이 별도로 존재하므로 명백한 오선택."
+  },
+  {
+   "file": "heritage/data/heritage_graph.json",
+   "heritageName": "청자 양각연지어문 화형 접시",
+   "designation": "보물",
+   "mappedFolder": "Plate",
+   "folderActuallyIs": "일반 접시(무맥락)",
+   "verifiedAgainstSource": true,
+   "folderExists": true,
+   "folderClass": "D",
+   "why": "지정 보물 청자를 무맥락 일반 접시 에셋에 연결."
+  },
+  {
+   "file": "heritage/data/gltf_mapping.json",
+   "heritageName": "천마총 관모",
+   "designation": null,
+   "mappedFolder": "gold_cap_from_the_geumgwanchong_tomb",
+   "folderActuallyIs": "금관총 출토 금제 관모",
+   "verifiedAgainstSource": true,
+   "folderExists": false,
+   "folderClass": null,
+   "why": "천마총 유물을 금관총 유물 에셋에 연결. 출토 고분이 서로 다름."
+  },
+  {
+   "file": "heritage/data/gltf_mapping.json",
+   "heritageName": "천마총 금관",
+   "designation": null,
+   "mappedFolder": "gold_crown_from_the_geumgwanchong_tomb",
+   "folderActuallyIs": "금관총 금관",
+   "verifiedAgainstSource": true,
+   "folderExists": false,
+   "folderClass": null,
+   "why": "천마총 금관을 금관총 금관 에셋에 연결. 출토 고분 불일치."
+  },
+  {
+   "file": "heritage/data/gltf_mapping.json",
+   "heritageName": "황남대총 북분 은잔",
+   "designation": null,
+   "mappedFolder": "Silver Ladle from North Mound Hwangnamdaechong",
+   "folderActuallyIs": "황남대총 북분 은제 국자",
+   "verifiedAgainstSource": true,
+   "folderExists": true,
+   "folderClass": "C",
+   "why": "은잔(盞, 잔)을 은제 국자(ladle) 에셋에 연결. 고분·위치는 맞으나 기물 종류가 다름."
+  },
+  {
+   "file": "heritage/data/gltf_mapping.json",
+   "heritageName": "경주 성덕왕릉",
+   "designation": null,
+   "mappedFolder": "tomb_of_king_seongdeok_monument",
+   "folderActuallyIs": "성덕왕릉 비석",
+   "verifiedAgainstSource": true,
+   "folderExists": false,
+   "folderClass": null,
+   "why": "능 본체를 부속 비석 에셋에 연결. 본체 에셋 'Tomb Of King Seongdeok Gyeongju'가 존재함."
+  },
+  {
+   "file": "heritage/data/gltf_mapping.json",
+   "heritageName": "신법 지평일구(1985-1)",
+   "designation": null,
+   "mappedFolder": "Horizontal Sundial_1985-2",
+   "folderActuallyIs": "신법 지평일구 1985-2호",
+   "verifiedAgainstSource": true,
+   "folderExists": true,
+   "folderClass": "D",
+   "why": "지정번호 1985-1을 1985-2 에셋에 연결. 동일 계열 내 개체 번호 불일치."
+  },
+  {
+   "file": "heritage/data/gltf_mapping.json",
+   "heritageName": "백자 병",
+   "designation": null,
+   "mappedFolder": "Unhyun_ White Porcelain Bottle",
+   "folderActuallyIs": "운현궁 생활용 백자 병",
+   "verifiedAgainstSource": true,
+   "folderExists": true,
+   "folderClass": "C",
+   "why": "지정 유물 백자병을 운현궁 실내 기물 에셋에 연결. 출처·격이 다른 별개 유물."
+  },
+  {
+   "file": "heritage/data/gltf_mapping_improved.json",
+   "heritageName": "경복궁 근정전",
+   "designation": null,
+   "mappedFolder": "Eunjeo",
+   "folderActuallyIs": "은저(은수저)",
+   "verifiedAgainstSource": true,
+   "folderExists": true,
+   "folderClass": "D",
+   "why": "전각 건축물을 은수저에 연결. improved 판에서 오히려 더 나빠진 매핑."
+  },
+  {
+   "file": "heritage/data/gltf_mapping_improved.json",
+   "heritageName": "청양 장곡사 철조약사여래좌상 및 석조대좌",
+   "designation": null,
+   "mappedFolder": "Janggo",
+   "folderActuallyIs": "장구(타악기)",
+   "verifiedAgainstSource": true,
+   "folderExists": true,
+   "folderClass": "D",
+   "why": "철조 불상을 장구에 연결. '장곡사'와 'Janggo'의 로마자 표기 유사도가 원인."
+  },
+  {
+   "file": "heritage/data/gltf_mapping_improved.json",
+   "heritageName": "진주 충무공동 익룡·새·공룡발자국 화석산지",
+   "designation": null,
+   "mappedFolder": "Mugo",
+   "folderActuallyIs": "무고(북)",
+   "verifiedAgainstSource": true,
+   "folderExists": true,
+   "folderClass": "D",
+   "why": "공룡 발자국 화석산지(천연기념물, 부동산)를 북 모델에 연결."
+  },
+  {
+   "file": "heritage/data/gltf_mapping_improved.json",
+   "heritageName": "서산 용현리 마애여래삼존상",
+   "designation": null,
+   "mappedFolder": "Rock",
+   "folderActuallyIs": "바위(무맥락 자연물)",
+   "verifiedAgainstSource": true,
+   "folderExists": true,
+   "folderClass": "D",
+   "why": "국보 마애불(암벽 조각)을 무맥락 '바위' 에셋에 연결."
+  },
+  {
+   "file": "heritage/data/gltf_mapping_improved.json",
+   "heritageName": "청주 용두사지 철당간",
+   "designation": null,
+   "mappedFolder": "Flag",
+   "folderActuallyIs": "깃발",
+   "verifiedAgainstSource": true,
+   "folderExists": true,
+   "folderClass": "D",
+   "why": "철당간(철제 기둥 구조물)을 깃발 에셋에 연결. 당간에 걸던 깃발과 혼동."
+  },
+  {
+   "file": "heritage/data/gltf_mapping_improved.json",
+   "heritageName": "대금정악",
+   "designation": null,
+   "mappedFolder": "Daegeum",
+   "folderActuallyIs": "대금(악기)",
+   "verifiedAgainstSource": true,
+   "folderExists": true,
+   "folderClass": "D",
+   "why": "무형유산인 '대금정악'(음악·연주 종목)을 악기 실물 모델에 연결. 무형/유형 범주 혼동."
+  },
+  {
+   "file": "heritage/data/gltf_mapping_improved.json",
+   "heritageName": "백자 철화포도원숭이문 항아리",
+   "designation": null,
+   "mappedFolder": "Jar",
+   "folderActuallyIs": "항아리(무맥락 단독 도기)",
+   "verifiedAgainstSource": true,
+   "folderExists": true,
+   "folderClass": "D",
+   "why": "국보 백자를 무맥락 일반 항아리 에셋에 연결."
+  },
+  {
+   "file": "heritage/data/gltf_mapping_improved.json",
+   "heritageName": "천마총 자루솥",
+   "designation": null,
+   "mappedFolder": "cauldron",
+   "folderActuallyIs": "일반 솥",
+   "verifiedAgainstSource": true,
+   "folderExists": true,
+   "folderClass": "D",
+   "why": "정확한 에셋 'Three-legged Cauldron From Cheonmachong Tomb'이 있는데도 무맥락 일반 솥으로 연결. gltf_mapping.json 대비 오히려 퇴보."
+  },
+  {
+   "file": "heritage/data/gltf_mapping_improved.json",
+   "heritageName": "토우장식 장경호",
+   "designation": null,
+   "mappedFolder": "Long-necked Jar",
+   "folderActuallyIs": "일반 장경호",
+   "verifiedAgainstSource": true,
+   "folderExists": true,
+   "folderClass": "D",
+   "why": "토우 장식이 있는 국보 장경호를 무맥락 일반 장경호로 연결. 정확한 에셋 'Long necked Jar with Clay Figurines'이 존재함에도 퇴보."
+  },
+  {
+   "file": "heritage/data/gltf_mapping_improved.json",
+   "heritageName": "황남대총 남분 유리병 및 잔",
+   "designation": null,
+   "mappedFolder": "glass",
+   "folderActuallyIs": "유리(무맥락)",
+   "verifiedAgainstSource": true,
+   "folderExists": true,
+   "folderClass": "D",
+   "why": "국보 유리병 일괄을 무맥락 'glass' 에셋에 연결."
+  },
+  {
+   "file": "heritage/data/gltf_mapping_improved.json",
+   "heritageName": "무령왕릉 지석",
+   "designation": null,
+   "mappedFolder": "Tablet",
+   "folderActuallyIs": "일반 서판",
+   "verifiedAgainstSource": true,
+   "folderExists": true,
+   "folderClass": "D",
+   "why": "백제 무령왕릉 지석(국보)을 무맥락 일반 서판에 연결."
+  },
+  {
+   "file": "heritage/data/gltf_mapping_improved.json",
+   "heritageName": "청자 상감당초문 완",
+   "designation": null,
+   "mappedFolder": "Bowl",
+   "folderActuallyIs": "일반 사발",
+   "verifiedAgainstSource": true,
+   "folderExists": true,
+   "folderClass": "D",
+   "why": "국보 청자완을 무맥락 일반 사발에 연결."
+  },
+  {
+   "file": "heritage/data/gltf_mapping_improved.json",
+   "heritageName": "귀면 청동로",
+   "designation": null,
+   "mappedFolder": "Brazier",
+   "folderActuallyIs": "일반 화로",
+   "verifiedAgainstSource": true,
+   "folderExists": true,
+   "folderClass": "D",
+   "why": "국보 귀면 청동로를 무맥락 일반 화로에 연결."
+  },
+  {
+   "file": "heritage/data/gltf_mapping_improved.json",
+   "heritageName": "별전 괴불(17족)",
+   "designation": null,
+   "mappedFolder": "Coin",
+   "folderActuallyIs": "동전",
+   "verifiedAgainstSource": true,
+   "folderExists": true,
+   "folderClass": "D",
+   "why": "별전 괴불(장식용 매듭 공예품)을 동전 에셋에 연결."
+  }
+ ],
+ "automatedChecks": {
+  "stalePointers": [
+   {
+    "file": "heritage/data/heritage_graph.json",
+    "heritageName": "천마총 금관",
+    "folder": "gold_crown_from_cheonmachong_tomb",
+    "state": "archived-as-duplicate",
+    "detail": "A2 중복 격리로 대표 폴더가 바뀌어 포인터가 무효화됨"
+   },
+   {
+    "file": "heritage/data/heritage_graph.json",
+    "heritageName": "중완구(1986-1)",
+    "folder": "medium_mortar (2)",
+    "state": "archived-as-duplicate",
+    "detail": "A2 중복 격리로 대표 폴더가 바뀌어 포인터가 무효화됨"
+   },
+   {
+    "file": "heritage/data/heritage_graph.json",
+    "heritageName": "경주 경덕왕릉",
+    "folder": "tomb_of_king_gyeongdeok_gyeongju",
+    "state": "archived-as-duplicate",
+    "detail": "A2 중복 격리로 대표 폴더가 바뀌어 포인터가 무효화됨"
+   },
+   {
+    "file": "heritage/data/heritage_graph.json",
+    "heritageName": "경주 헌덕왕릉",
+    "folder": "tomb_of_king_heondeok_gyeongju",
+    "state": "archived-as-duplicate",
+    "detail": "A2 중복 격리로 대표 폴더가 바뀌어 포인터가 무효화됨"
+   },
+   {
+    "file": "heritage/data/heritage_graph.json",
+    "heritageName": "경주 오릉",
+    "folder": "five_royal_tombs_gyeongju",
+    "state": "archived-as-duplicate",
+    "detail": "A2 중복 격리로 대표 폴더가 바뀌어 포인터가 무효화됨"
+   }
+  ],
+  "granularityErrors": [
+   {
+    "heritageName": "경복궁",
+    "kind": "사적",
+    "folder": "Gyeongbokgung_Gangnyeongjeon_Cabinet",
+    "folderClass": "C",
+    "folderSite": "Gyeongbokgung",
+    "detail": "부동산 지정유산이 이동 가능한 기물/무맥락 에셋에 연결됨"
+   },
+   {
+    "heritageName": "강화 덕진진",
+    "kind": "사적",
+    "folder": "Fire_Pot",
+    "folderClass": "D",
+    "folderSite": null,
+    "detail": "부동산 지정유산이 이동 가능한 기물/무맥락 에셋에 연결됨"
+   },
+   {
+    "heritageName": "서울 운현궁",
+    "kind": "사적",
+    "folder": "Unhyun_ Wardrobe",
+    "folderClass": "C",
+    "folderSite": "Unhyeongung",
+    "detail": "부동산 지정유산이 이동 가능한 기물/무맥락 에셋에 연결됨"
+   },
+   {
+    "heritageName": "익산 나바위성당",
+    "kind": "사적",
+    "folder": "Rock",
+    "folderClass": "D",
+    "folderSite": null,
+    "detail": "부동산 지정유산이 이동 가능한 기물/무맥락 에셋에 연결됨"
+   },
+   {
+    "heritageName": "담양 금성산성",
+    "kind": "사적",
+    "folder": "Yanggeum",
+    "folderClass": "D",
+    "folderSite": null,
+    "detail": "부동산 지정유산이 이동 가능한 기물/무맥락 에셋에 연결됨"
+   }
+  ],
+  "genericAssetForDesignatedTreasure": [
+   {
+    "heritageName": "부여 정림사지 오층석탑",
+    "kind": "국보",
+    "folder": "Chisel",
+    "detail": "지정 유물이 사이트 맥락 없는 D급 일반 에셋에 연결됨"
+   },
+   {
+    "heritageName": "청자 사자형뚜껑 향로",
+    "kind": "국보",
+    "folder": "lionincenseburner",
+    "detail": "지정 유물이 사이트 맥락 없는 D급 일반 에셋에 연결됨"
+   },
+   {
+    "heritageName": "금관총 금관 및 금제 관식",
+    "kind": "국보",
+    "folder": "Jegwan_samryanggwan",
+    "detail": "지정 유물이 사이트 맥락 없는 D급 일반 에셋에 연결됨"
+   },
+   {
+    "heritageName": "청동 은입사 포류수금문 정병",
+    "kind": "국보",
+    "folder": "GeumgunPodallyeong",
+    "detail": "지정 유물이 사이트 맥락 없는 D급 일반 에셋에 연결됨"
+   },
+   {
+    "heritageName": "토우장식 장경호",
+    "kind": "국보",
+    "folder": "Long necked Jar with Clay Figurines",
+    "detail": "지정 유물이 사이트 맥락 없는 D급 일반 에셋에 연결됨"
+   },
+   {
+    "heritageName": "천상열차분야지도 각석",
+    "kind": "국보",
+    "folder": "Reproduction Of Celestial Chart Stone",
+    "detail": "지정 유물이 사이트 맥락 없는 D급 일반 에셋에 연결됨"
+   },
+   {
+    "heritageName": "귀함별황자총통(1596년조)",
+    "kind": "국보",
+    "folder": "Hwangja_Chongtong_Gun",
+    "detail": "지정 유물이 사이트 맥락 없는 D급 일반 에셋에 연결됨"
+   },
+   {
+    "heritageName": "경주 독락당",
+    "kind": "보물",
+    "folder": "Jar",
+    "detail": "지정 유물이 사이트 맥락 없는 D급 일반 에셋에 연결됨"
+   },
+   {
+    "heritageName": "금귀걸이",
+    "kind": "보물",
+    "folder": "Gold Earrings",
+    "detail": "지정 유물이 사이트 맥락 없는 D급 일반 에셋에 연결됨"
+   },
+   {
+    "heritageName": "신법 지평일구(1985-1)",
+    "kind": "보물",
+    "folder": "Horizontal Sundial_1985-1",
+    "detail": "지정 유물이 사이트 맥락 없는 D급 일반 에셋에 연결됨"
+   },
+   {
+    "heritageName": "간평일구·혼개일구",
+    "kind": "보물",
+    "folder": "Sundials",
+    "detail": "지정 유물이 사이트 맥락 없는 D급 일반 에셋에 연결됨"
+   },
+   {
+    "heritageName": "소총통",
+    "kind": "보물",
+    "folder": "Small Gun",
+    "detail": "지정 유물이 사이트 맥락 없는 D급 일반 에셋에 연결됨"
+   },
+   {
+    "heritageName": "비격진천뢰",
+    "kind": "보물",
+    "folder": "Bomb_Shell",
+    "detail": "지정 유물이 사이트 맥락 없는 D급 일반 에셋에 연결됨"
+   },
+   {
+    "heritageName": "지자총통(1986-1)",
+    "kind": "보물",
+    "folder": "jija_chongtong_gun",
+    "detail": "지정 유물이 사이트 맥락 없는 D급 일반 에셋에 연결됨"
+   },
+   {
+    "heritageName": "삼안총",
+    "kind": "보물",
+    "folder": "Three_Barrel_Gun",
+    "detail": "지정 유물이 사이트 맥락 없는 D급 일반 에셋에 연결됨"
+   },
+   {
+    "heritageName": "현자총통(1986)",
+    "kind": "보물",
+    "folder": "Hyeonja_Chongtong_Gun",
+    "detail": "지정 유물이 사이트 맥락 없는 D급 일반 에셋에 연결됨"
+   },
+   {
+    "heritageName": "청자 양각연지어문 화형 접시",
+    "kind": "보물",
+    "folder": "Plate",
+    "detail": "지정 유물이 사이트 맥락 없는 D급 일반 에셋에 연결됨"
+   },
+   {
+    "heritageName": "이하응 초상 일괄 - 흑단령포본, 금관조복본, 와룡관학창의본, 흑건청포본, 복건심의본",
+    "kind": "보물",
+    "folder": "Bokgeon",
+    "detail": "지정 유물이 사이트 맥락 없는 D급 일반 에셋에 연결됨"
+   }
+  ],
+  "crossFileDisagreements": [
+   {
+    "heritageNameKey": "천상열차분야지도각석",
+    "folderPerFile": {
+     "gltf_mapping.json": "Celestial Chart Stone",
+     "gltf_mapping_improved.json": "Celestial Chart Stone",
+     "heritage_graph.json": "Reproduction Of Celestial Chart Stone"
+    },
+    "detail": "동일 유산명이 파일마다 다른 폴더를 가리킴 - 매핑 파이프라인이 재현 불가능함을 보여주는 증거"
+   },
+   {
+    "heritageNameKey": "천마총금관",
+    "folderPerFile": {
+     "gltf_mapping.json": "gold_crown_from_the_geumgwanchong_tomb",
+     "gltf_mapping_improved.json": "gold_crown_from_cheonmachong_tomb",
+     "heritage_graph.json": "gold_crown_from_cheonmachong_tomb"
+    },
+    "detail": "동일 유산명이 파일마다 다른 폴더를 가리킴 - 매핑 파이프라인이 재현 불가능함을 보여주는 증거"
+   },
+   {
+    "heritageNameKey": "토우장식장경호",
+    "folderPerFile": {
+     "gltf_mapping.json": "Long necked Jar with Clay Figurines",
+     "gltf_mapping_improved.json": "Long-necked Jar",
+     "heritage_graph.json": "Long necked Jar with Clay Figurines"
+    },
+    "detail": "동일 유산명이 파일마다 다른 폴더를 가리킴 - 매핑 파이프라인이 재현 불가능함을 보여주는 증거"
+   },
+   {
+    "heritageNameKey": "천마총자루솥",
+    "folderPerFile": {
+     "gltf_mapping.json": "Three-legged Cauldron From Cheonmachong Tomb",
+     "gltf_mapping_improved.json": "cauldron"
+    },
+    "detail": "동일 유산명이 파일마다 다른 폴더를 가리킴 - 매핑 파이프라인이 재현 불가능함을 보여주는 증거"
+   },
+   {
+    "heritageNameKey": "경주김유신묘",
+    "folderPerFile": {
+     "gltf_mapping.json": "tomb_of_kim_yu-sin_gyeongju",
+     "gltf_mapping_improved.json": "tomb_of_kim_yu-sin_gyeongju",
+     "heritage_graph.json": "Tomb of Kim Yu-sin_12 Zodiac Animal Deities_006"
+    },
+    "detail": "동일 유산명이 파일마다 다른 폴더를 가리킴 - 매핑 파이프라인이 재현 불가능함을 보여주는 증거"
+   },
+   {
+    "heritageNameKey": "경주성덕왕릉",
+    "folderPerFile": {
+     "gltf_mapping.json": "tomb_of_king_seongdeok_monument",
+     "gltf_mapping_improved.json": "Tomb Of King Seongdeok Gyeongju",
+     "heritage_graph.json": "Tomb Of King Seongdeok Gyeongju"
+    },
+    "detail": "동일 유산명이 파일마다 다른 폴더를 가리킴 - 매핑 파이프라인이 재현 불가능함을 보여주는 증거"
+   },
+   {
+    "heritageNameKey": "경복궁근정전",
+    "folderPerFile": {
+     "gltf_mapping_improved.json": "Eunjeo",
+     "heritage_graph.json": "Gyeongbokgung_Geunjeongjeon_Throne Chair"
+    },
+    "detail": "동일 유산명이 파일마다 다른 폴더를 가리킴 - 매핑 파이프라인이 재현 불가능함을 보여주는 증거"
+   }
+  ]
+ }
+}

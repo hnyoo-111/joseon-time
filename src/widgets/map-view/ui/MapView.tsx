@@ -3,7 +3,7 @@ import * as Cesium from 'cesium';
 import { HERITAGES, heritageById, type Heritage } from '@/entities/heritage';
 import { kingById } from '@/entities/king';
 import { markerCanvas } from '../lib/markerCanvas';
-import { setupCesiumViewer, placeCalibratedModel, addHistoricalMapLayer, MODELS, MODEL_BASE_LOCAL, MODEL_BASE_NAS, DEFAULT_MODEL_FILE } from '../lib/cesiumSetup';
+import { setupCesiumViewer, placeCalibratedModel, addHistoricalMapLayer, MODELS, MODEL_BASE_LOCAL, MODEL_BASE_SERVER, DEFAULT_MODEL_FILE } from '../lib/cesiumSetup';
 
 export interface MapViewHandle {
   flyToAll: () => void;
@@ -84,8 +84,9 @@ export const MapView = forwardRef<MapViewHandle, MapViewProps>(function MapView(
         const basePosition = siteConfig.basePosition || { lon: h.lon, lat: h.lat, height: h.height };
         (siteConfig.items || []).forEach((m) => {
           const fileName = m.file || DEFAULT_MODEL_FILE;
-          const url = m.source === 'nas'
-            ? `${MODEL_BASE_NAS}${m.folder}/${fileName}`
+          // 카탈로그 폴더명에는 공백이 포함된 것이 있어 그대로 붙이면 URL이 깨진다.
+          const url = m.source === 'server'
+            ? `${MODEL_BASE_SERVER}${encodeURIComponent(m.folder)}/${fileName}`
             : `${MODEL_BASE_LOCAL}${h.id}/${m.folder ? m.folder + '/' : ''}${fileName}`;
           placeCalibratedModel(viewer, basePosition, m, url, extraLayers);
         });
