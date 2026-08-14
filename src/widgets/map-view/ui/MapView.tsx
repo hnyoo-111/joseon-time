@@ -3,7 +3,12 @@ import * as Cesium from 'cesium';
 import { HERITAGES, heritageById, type Heritage } from '@/entities/heritage';
 import { kingById } from '@/entities/king';
 import { markerCanvas } from '../lib/markerCanvas';
-import { setupCesiumViewer, placeCalibratedModel, addHistoricalMapLayer, MODELS, MODEL_BASE_LOCAL, MODEL_BASE_SERVER, DEFAULT_MODEL_FILE } from '../lib/cesiumSetup';
+import { setupCesiumViewer, placeCalibratedModel, addHistoricalMapLayer, addMap1919Layer, MODELS, MODEL_BASE_LOCAL, MODEL_BASE_SERVER, DEFAULT_MODEL_FILE } from '../lib/cesiumSetup';
+import { addHaenghaengRoute, flyToRoute, removeRoute, type HaenghaengRoute } from '../lib/haenghaengRoute';
+import {
+  buildProcession, describeTime, flyToProcession, removeProcession, seekToDay, trackLead, DEFAULT_UNITS,
+  type Procession, type ProcessionTick,
+} from '../lib/haenghaengProcession';
 
 export interface MapViewHandle {
   flyToAll: () => void;
@@ -14,18 +19,37 @@ export interface MapViewHandle {
   toggleLayers: () => void;
   toggle2D3D: () => boolean;
   toggleHistoricalMap: () => boolean;
+  /** 1919년 조선지형도(행차 회랑) 오버레이 토글. */
+  toggleMap1919: () => boolean;
+  /** 화성행차 경로 레이어를 켜고 끈다. 켜질 때 경로 전체로 카메라를 맞춘다. */
+  toggleHaenghaengRoute: () => boolean;
+  /** 켜져 있는 경우의 경로 정보(구간·총거리·고지문). 꺼져 있으면 null. */
+  haenghaengRoute: () => HaenghaengRoute | null;
+  /** 행차 경로와 행렬 시뮬레이션을 한 번에 올린다(여정 화면용). */
+  startHaenghaeng: () => Promise<Procession | null>;
+  /** 선두 추적 카메라 on/off */
+  trackProcession: (on: boolean) => void;
+  /** 재생/일시정지 토글. 변경된 재생 여부를 돌려준다. */
+  togglePlay: () => boolean;
+  /** 재생 배속(시뮬레이션 초/실제 초) */
+  /** n일차 시작(이동일이면 출발 시각)으로 시계를 옮긴다. */
+  seekDay: (dayIndex: number) => void;
 }
 
 interface MapViewProps {
+  /** Cesium 타임바·재생 컨트롤 표시 여부. 행차 시뮬레이션 화면에서만 켠다. */
+  timeline?: boolean;
   focusedHeritageId?: string | null;
   dimKingFilter?: string | null;
   showPopup?: boolean;
   onMarkerClick?: (heritageId: string) => void;
   onReady?: () => void;
+  /** 행차 시계가 흐를 때마다(초 단위로 눌러서) 현재 일자·시각을 알린다. */
+  onProcessionTick?: (tick: ProcessionTick) => void;
 }
 
 export const MapView = forwardRef<MapViewHandle, MapViewProps>(function MapView(
-  { focusedHeritageId = null, dimKingFilter = null, showPopup = true, onMarkerClick, onReady },
+  { timeline = false, focusedHeritageId = null, dimKingFilter = null, showPopup = true, onMarkerClick, onReady, onProcessionTick },
   ref,
 ) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -33,6 +57,12 @@ export const MapView = forwardRef<MapViewHandle, MapViewProps>(function MapView(
   const entitiesRef = useRef<Record<string, Cesium.Entity>>({});
   const extraLayersRef = useRef<unknown[]>([]);
   const historicalLayerRef = useRef<Cesium.ImageryLayer | null>(null);
+  const map1919LayerRef = useRef<Cesium.ImageryLayer | null>(null);
+  const routeRef = useRef<HaenghaengRoute | null>(null);
+  const routeLoadingRef = useRef(false);
+  const processionRef = useRef<Procession | null>(null);
+  const onTickRef = useRef(onProcessionTick);
+  onTickRef.current = onProcessionTick;
   const onMarkerClickRef = useRef(onMarkerClick);
   onMarkerClickRef.current = onMarkerClick;
   const popupRef = useRef<HTMLDivElement>(null);
@@ -60,10 +90,11 @@ export const MapView = forwardRef<MapViewHandle, MapViewProps>(function MapView(
     let cancelled = false;
     (async () => {
       if (!containerRef.current) return;
-      const { viewer, extraLayers } = await setupCesiumViewer(containerRef.current);
+      const { viewer, extraLayers } = await setupCesiumViewer(containerRef.current, { timeline });
       if (cancelled) { viewer.destroy(); return; }
       viewerRef.current = viewer;
       extraLayersRef.current = extraLayers;
+      map1919LayerRef.current = addMap1919Layer(viewer);
       addHistoricalMapLayer(viewer).then((layer) => {
         if (cancelled) return;
         historicalLayerRef.current = layer;
@@ -126,6 +157,10 @@ export const MapView = forwardRef<MapViewHandle, MapViewProps>(function MapView(
 
     return () => {
       cancelled = true;
+      if (viewerRef.current && processionRef.current) removeProcession(viewerRef.current, processionRef.current);
+      processionRef.current = null;
+      if (viewerRef.current && routeRef.current) removeRoute(viewerRef.current, routeRef.current);
+      routeRef.current = null;
       viewerRef.current?.destroy();
       viewerRef.current = null;
     };
@@ -197,6 +232,95 @@ export const MapView = forwardRef<MapViewHandle, MapViewProps>(function MapView(
       if (!layer) return false;
       layer.show = !layer.show;
       return layer.show;
+    },
+    toggleMap1919() {
+      const layer = map1919LayerRef.current;
+      if (!layer) return false;
+      layer.show = !layer.show;
+      return layer.show;
+    },
+    toggleHaenghaengRoute() {
+      const v = viewerRef.current;
+      if (!v) return false;
+      const route = routeRef.current;
+      if (route) {
+        route.dataSource.show = !route.dataSource.show;
+        if (route.dataSource.show) flyToRoute(v, route);
+        return route.dataSource.show;
+      }
+      // 최초 요청 시에만 GeoJSON 을 받는다. 응답 전 재클릭으로 중복 로드되지 않게 막는다.
+      if (routeLoadingRef.current) return false;
+      routeLoadingRef.current = true;
+      addHaenghaengRoute(v)
+        .then((loaded) => {
+          if (!viewerRef.current) return;
+          routeRef.current = loaded;
+          flyToRoute(viewerRef.current, loaded);
+        })
+        .catch((err) => console.error('[행차 경로 로딩 실패]', err))
+        .finally(() => { routeLoadingRef.current = false; });
+      return true;
+    },
+    haenghaengRoute() {
+      const route = routeRef.current;
+      return route && route.dataSource.show ? route : null;
+    },
+    async startHaenghaeng() {
+      const v = viewerRef.current;
+      if (!v) return null;
+      if (processionRef.current) return processionRef.current;
+      try {
+        const loaded = routeRef.current ?? (await addHaenghaengRoute(v));
+        if (!viewerRef.current) return null;
+        routeRef.current = loaded;
+        // 모델 프리페치 — 240개 엔티티가 같은 GLB 를 동시에 당기면 Cesium 요청 큐(전역 50개)를
+        // 독점해 지도·지형 타일이 굶는다(첫 진입 흰 화면). 고유 URI 만 먼저 받아 캐시를 데운다.
+        const uris = [...new Set(DEFAULT_UNITS.map((u) => u.uri).filter((u): u is string => !!u))];
+        await Promise.all(uris.map((u) => fetch(u, { cache: 'force-cache' }).catch(() => undefined)));
+        if (!viewerRef.current) return null;
+        const procession = buildProcession(viewerRef.current, loaded);
+        processionRef.current = procession;
+
+        // 시계는 매 프레임 돌지만 화면 표기는 분 단위면 충분하다 — 바뀔 때만 올린다.
+        let lastKey = '';
+        viewerRef.current.clock.onTick.addEventListener((clock) => {
+          const p = processionRef.current;
+          if (!p || !onTickRef.current) return;
+          const tick = describeTime(p, clock.currentTime);
+          const key = `${tick.dayIndex}|${tick.clock}`;
+          if (key === lastKey) return;
+          lastKey = key;
+          onTickRef.current(tick);
+        });
+        // 진입 카메라: 경로 전체가 아니라 **출발 도열 중인 행렬 전체**를 잡는다.
+        if (!flyToProcession(viewerRef.current, procession, 2.4)) {
+          flyToRoute(viewerRef.current, loaded);
+        }
+        return procession;
+      } catch (err) {
+        console.error('[행차 시뮬레이션 시작 실패]', err);
+        return null;
+      }
+    },
+    trackProcession(on: boolean) {
+      const v = viewerRef.current;
+      const p = processionRef.current;
+      if (v && p) trackLead(v, p, on);
+    },
+    togglePlay() {
+      const v = viewerRef.current;
+      if (!v) return false;
+      v.clock.shouldAnimate = !v.clock.shouldAnimate;
+      return v.clock.shouldAnimate;
+    },
+    seekDay(dayIndex: number) {
+      const v = viewerRef.current;
+      const p = processionRef.current;
+      if (!v || !p) return;
+      // 일차 점프 = "그 날의 장면"으로: 시계를 옮기고 카메라도 행렬 위치로 날아간다.
+      // (팔로우 중이면 flyToProcession 이 개입하지 않고 팔로우 카메라가 즉시 따라잡는다.)
+      seekToDay(v, p, dayIndex);
+      flyToProcession(v, p, 1.6);
     },
   }), []);
 

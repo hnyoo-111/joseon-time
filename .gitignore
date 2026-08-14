@@ -41,6 +41,8 @@ releases/
 .omc/
 __pycache__/
 *.pyc
+tmp/
+.venv-blender/
 # 서버 전송용 빌드 산출물 (10MB, 매 배포마다 재생성)
 deploy/app-dist.tar.gz
 
@@ -52,3 +54,7 @@ data/_*.json
 
 # 설계 문서 (로컬 보관)
 docs/
+# 1914 도로망 원본(5.3GB) — 굽기 재료. 산출물만 커밋한다.
+data/raw/
+# 1919 지형도 타일 — 국편 자료 재가공물(라이선스 확인 전 재배포 금지). bake_map1919_tiles.py 로 재생성.
+public/tiles/

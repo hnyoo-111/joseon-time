@@ -56,7 +56,8 @@ export function ArtifactViewer({ folder }: Props) {
     // 어두운 배경 때보다 노출을 낮춘다 — 흰 바탕에서 같은 값이면 밝은 면이 날아간다.
     renderer.toneMappingExposure = 0.95;
     renderer.shadowMap.enabled = true;
-    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    // PCFSoftShadowMap 은 이 three 버전에서 폐기 예정이라 콘솔 경고가 매 프레임 뜬다.
+    renderer.shadowMap.type = THREE.PCFShadowMap;
     host.appendChild(renderer.domElement);
 
     // 3점 조명 — HDR 환경맵 없이도 유물의 굴곡이 읽히도록 구성한다.

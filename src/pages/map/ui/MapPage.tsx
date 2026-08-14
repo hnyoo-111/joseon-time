@@ -16,6 +16,7 @@ export function MapPage() {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [panelCollapsed, setPanelCollapsed] = useState(false);
   const [historicalMapOn, setHistoricalMapOn] = useState(false);
+  const [routeOn, setRouteOn] = useState(false);
 
   // single source of truth: whenever the focused heritage changes, fly the camera there.
   useEffect(() => {
@@ -56,9 +57,20 @@ export function MapPage() {
           </div>
         )}
 
+        {routeOn && (
+          <div className="historical-map-badge route-badge">
+            ⚠ 정조 화성행차(1795, 을묘원행) — 일정은 『원행을묘정리의궤』 기록을 따르되, 지도의 선은
+            1914년 도로망(<a href="https://www.hisgeo.info/wiki/근대_교통로_DB" target="_blank" rel="noreferrer">근대 교통로 DB</a>)
+            위에서 계산한 <strong>근사 경로</strong>입니다. 1795년 행차로 그 자체는 아니며,
+            &lsquo;근사&rsquo;로 표시된 지점은 터만 남아 위치를 추정한 곳입니다.
+          </div>
+        )}
+
         <MapControls
           mapRef={mapRef}
           historicalMapOn={historicalMapOn}
+          routeOn={routeOn}
+          onToggleRoute={setRouteOn}
           onToggleHistoricalMap={setHistoricalMapOn}
           onFocusRequested={() => {
             if (mapFocusHeritageId) {

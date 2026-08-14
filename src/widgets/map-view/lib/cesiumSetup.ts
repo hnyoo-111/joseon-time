@@ -36,6 +36,29 @@ export async function addHistoricalMapLayer(viewer: Cesium.Viewer): Promise<Cesi
   return layer;
 }
 
+// -- 1919년 조선지형도 오버레이 (행차 회랑) --------------------------------------
+// 원본: 국사편찬위원회 한국근대지리정보(hgis.history.go.kr)의 1:50,000 조선지형도 WMTS.
+// EPSG:5179 그리드만 제공해 Cesium 이 직접 못 읽으므로, 행차 회랑(서울~융릉)만
+// 웹메르카토르 타일로 재투영해 자체 서빙한다(data/scripts/bake_map1919_tiles.py).
+// 측량 기반 지도라 대동여지도와 달리 현대 좌표와 정합된다.
+export const MAP1919_URL = '/tiles/map1919/{z}/{x}/{y}.png';
+export const MAP1919_RECTANGLE = Cesium.Rectangle.fromDegrees(126.86, 37.17, 127.06, 37.64);
+
+export function addMap1919Layer(viewer: Cesium.Viewer): Cesium.ImageryLayer {
+  const provider = new Cesium.UrlTemplateImageryProvider({
+    url: MAP1919_URL,
+    rectangle: MAP1919_RECTANGLE,
+    minimumLevel: 9,
+    maximumLevel: 14,
+    credit: new Cesium.Credit('1919 조선지형도 — 국사편찬위원회 한국근대지리정보'),
+  });
+  const layer = new Cesium.ImageryLayer(provider, { rectangle: MAP1919_RECTANGLE });
+  layer.alpha = 0.85;
+  layer.show = false;
+  viewer.imageryLayers.add(layer);
+  return layer;
+}
+
 export interface ModelItem {
   folder: string;
   file?: string;
@@ -53,15 +76,20 @@ export const MODELS: Record<string, SiteModelConfig> = {
   gyeongbok: {
     basePosition: { lon: 126.9766629, lat: 37.5791072 },
     items: [
-      // 서버 raw/ 에 실제로 내려받힌 폴더들. 배치는 P1~P5(placements.json)에서 확정되며,
-      // 지금은 수집분이 정상 표출되는지 확인하기 위한 임시 배열이다.
-      { folder: 'Chokdae', realSize: 0.5, offset: [0, 0], source: 'server' },
-      { folder: 'Haegeum', realSize: 0.7, offset: [1.5, 0], source: 'server' },
-      { folder: 'Cauldron', realSize: 0.8, offset: [3, 0], source: 'server' },
-      { folder: 'Broom', realSize: 1.0, offset: [4.5, 0], source: 'server' },
-      { folder: 'Wagon', realSize: 2.0, offset: [6, 0], source: 'server' },
-      // Gyeongbokgung_Cheonchujeon_* 4건은 아직 raw/ 에 수집되지 않아 404 이므로 뺐다.
-      // 수집 완료 후 되돌릴 것.
+      // 아래 5건은 서버 수집분이 지도에 뜨는지 확인하려고 임시로 올렸던 표본이다.
+      // 경복궁과 무관한 유물이라 검증을 마치고 내렸다 — 배치는 P1~P5(placements.json)에서 확정한다.
+      // { folder: 'Chokdae', realSize: 0.5, offset: [0, 0], source: 'server' },
+      // { folder: 'Haegeum', realSize: 0.7, offset: [1.5, 0], source: 'server' },
+      // { folder: 'Cauldron', realSize: 0.8, offset: [3, 0], source: 'server' },
+      // { folder: 'Broom', realSize: 1.0, offset: [4.5, 0], source: 'server' },
+      // { folder: 'Wagon', realSize: 2.0, offset: [6, 0], source: 'server' },
+      //
+      // 원래 배치 대상이던 Gyeongbokgung_Cheonchujeon_* 4건. 아직 raw/ 에 수집되지 않아
+      // 404 이므로 주석 상태다. sync 완료 후 되살릴 것.
+      // { folder: 'Gyeongbokgung_Cheonchujeon_Book', realSize: 0.3, offset: [0, 0], source: 'server' },
+      // { folder: 'Gyeongbokgung_Cheonchujeon_BookshelfA', realSize: 1.7, offset: [1.5, 0], source: 'server' },
+      // { folder: 'Gyeongbokgung_Cheonchujeon_CabinetB', realSize: 1.2, offset: [3, 0], source: 'server' },
+      // { folder: 'Gyeongbokgung_Cheonchujeon_FoldingScreenA', realSize: 2.0, offset: [4.5, 0], source: 'server' },
       // 근정전 원본(gyeongbok.glb, 2.45GB)은 브라우저에서 단일 GLB로 직접 로드하기엔 너무 커서 비활성화했습니다.
       // Cesium ion 3D Tiles 변환본(CESIUM_ION_ASSET_ID)으로 대체됩니다.
     ],
@@ -83,7 +111,16 @@ export function placeCalibratedModel(viewer: Cesium.Viewer, basePosition: { lon:
   const localT = Cesium.Matrix4.fromTranslation(new Cesium.Cartesian3(offset[0], offset[1], 0));
   const modelMatrix = Cesium.Matrix4.multiply(enu, localT, new Cesium.Matrix4());
 
-  Cesium.Model.fromGltfAsync({ url, modelMatrix, minimumPixelSize: 24 })
+  // 지형에 붙인다 — World Terrain 을 쓰면 높이 0 은 타원체 기준이라 모델이 뜨거나 묻힌다.
+  // heightReference 를 주면 Cesium 이 modelMatrix 의 이동 성분만 지형 높이로 갈아끼우고
+  // 회전(ENU)·격자 오프셋은 그대로 유지한다. scene 을 함께 넘겨야 동작한다.
+  Cesium.Model.fromGltfAsync({
+    url,
+    modelMatrix,
+    minimumPixelSize: 24,
+    scene: viewer.scene,
+    heightReference: Cesium.HeightReference.CLAMP_TO_GROUND,
+  })
     .then((model) => {
       viewer.scene.primitives.add(model);
       extraLayers.push(model);
@@ -104,7 +141,6 @@ export function loadIonTileset(viewer: Cesium.Viewer, extraLayers: unknown[], at
     .then((t) => {
       viewer.scene.primitives.add(t);
       extraLayers.push(t);
-      console.log('[Cesium ion 타일셋 로드됨]', CESIUM_ION_ASSET_ID);
     })
     .catch((err) => {
       let msg = (err && err.message) || '';
@@ -120,7 +156,15 @@ export function loadIonTileset(viewer: Cesium.Viewer, extraLayers: unknown[], at
     });
 }
 
-export async function setupCesiumViewer(container: HTMLDivElement): Promise<{ viewer: Cesium.Viewer; extraLayers: unknown[] }> {
+export interface ViewerOptions {
+  /** 행차 시뮬레이션처럼 시간축이 필요한 화면에서만 Cesium 타임바·재생 컨트롤을 켠다. */
+  timeline?: boolean;
+}
+
+export async function setupCesiumViewer(
+  container: HTMLDivElement,
+  options: ViewerOptions = {},
+): Promise<{ viewer: Cesium.Viewer; extraLayers: unknown[] }> {
   const imageryProvider = new Cesium.UrlTemplateImageryProvider({
     // 189 서버가 타일을 서빙하게 되면 VITE_TILE_URL 로 그 경로를 가리키면 된다.
     url: import.meta.env.VITE_TILE_URL ?? 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
@@ -131,7 +175,8 @@ export async function setupCesiumViewer(container: HTMLDivElement): Promise<{ vi
   const viewer = new Cesium.Viewer(container, {
     baseLayer,
     baseLayerPicker: false, geocoder: false, homeButton: false, sceneModePicker: false,
-    navigationHelpButton: false, animation: false, timeline: false, fullscreenButton: false,
+    navigationHelpButton: false, fullscreenButton: false,
+    animation: options.timeline ?? false, timeline: options.timeline ?? false,
     infoBox: false, selectionIndicator: false, creditContainer: document.createElement('div'),
   });
   baseLayer.saturation = 0.18; baseLayer.brightness = 1.28; baseLayer.contrast = 0.88; baseLayer.gamma = 0.92;

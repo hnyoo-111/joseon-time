@@ -4,7 +4,8 @@ import { journeyById, type JourneyStep } from '@/entities/journey';
 import { heritageById } from '@/entities/heritage';
 import { workById } from '@/entities/work';
 import { useAppStore } from '@/app/model/appStore';
-import { MapView, type MapViewHandle } from '@/widgets/map-view';
+import { MapView, type MapViewHandle, type DayWindow, type ProcessionTick } from '@/widgets/map-view';
+import { ProcessionTimebar } from '@/widgets/procession-timebar';
 import { JourneyTimelineBar } from '@/widgets/journey-timeline-bar';
 import { YearSplash } from '@/shared/ui/YearSplash';
 
@@ -17,6 +18,13 @@ export function JourneyPage() {
   const mapRef = useRef<MapViewHandle>(null);
   const [showSplash, setShowSplash] = useState(true);
   const [stepIndex, setStepIndex] = useState(0);
+  // 행차 시뮬레이션은 경로를 굳혀 둔 화성행차에만 있다.
+  const hasProcession = journey?.id === 'hwaseonghaenghaeng';
+  const [days, setDays] = useState<DayWindow[]>([]);
+  const [tick, setTick] = useState<ProcessionTick | null>(null);
+  const [tracking, setTracking] = useState(false);
+  const [playing, setPlaying] = useState(true);
+  const [historicalOn, setHistoricalOn] = useState(false);
 
   useEffect(() => {
     if (!journey) return;
@@ -26,12 +34,22 @@ export function JourneyPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [journey?.id]);
 
+  // 지도가 준비되면 행차 경로와 행렬을 올린다. 화면에 들어오자마자 보이는 게 이 화면의 목적이다.
+  const handleMapReady = () => {
+    if (!hasProcession) return;
+    mapRef.current?.startHaenghaeng().then((p) => setDays(p?.days ?? []));
+  };
+
   const step = journey?.steps[stepIndex];
+  // 행차 페이지 첫 진입은 출발 도열 전체를 잡는 카메라(startHaenghaeng)가 담당한다.
+  // 첫 스텝의 flyTo 가 그 비행을 덮어쓰지 않게 최초 1회는 건너뛴다.
+  const skippedInitialFly = useRef(false);
 
   useEffect(() => {
     if (!step || showSplash) return;
-    mapRef.current?.flyTo(step.lon, step.lat, step.height);
     logVisit('step', step.id, `${journey!.title} · ${step.title}`);
+    if (hasProcession && !skippedInitialFly.current) { skippedInitialFly.current = true; return; }
+    mapRef.current?.flyTo(step.lon, step.lat, step.height);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [step, showSplash]);
 
@@ -62,8 +80,45 @@ export function JourneyPage() {
   return (
     <>
       <YearSplash show={showSplash} year={journey.year} subtitle={journey.heroLine} />
-      <div className="map-wrap">
-        <MapView ref={mapRef} focusedHeritageId={step?.heritageId ?? null} showPopup={false} onMarkerClick={handleMarkerClick} />
+      <div className={`map-wrap${hasProcession ? ' has-procession' : ''}`}>
+        <MapView
+          ref={mapRef}
+
+          focusedHeritageId={step?.heritageId ?? null}
+          showPopup={false}
+          onMarkerClick={handleMarkerClick}
+          onReady={handleMapReady}
+          onProcessionTick={setTick}
+        />
+
+        {hasProcession && (
+          <details className="route-notice">
+            <summary>⚠ 근사 재현 — 실제 행차로·행렬이 아닙니다</summary>
+            <p>
+              일정은 『원행을묘정리의궤』 기록을 따르되, 지도의 선은 1914년 도로망 위에서 계산한
+              <strong> 근사 경로</strong>입니다(1795년 행차로 그 자체는 아님). &lsquo;근사&rsquo; 표시 지점은
+              터만 남아 위치를 추정한 곳이며, 행렬 모델은 국가유산청 의장 유물로 대신한 것이라 실제 행렬 구성과 다릅니다.
+            </p>
+            <p className="rn-sources">
+              출처 — 도로망: <a href="https://www.hisgeo.info/wiki/근대_교통로_DB" target="_blank" rel="noreferrer">근대 교통로 DB</a> (1914년 교통로)
+              · 배경 지도: <a href="https://hgis.history.go.kr/mod_g1/main.do" target="_blank" rel="noreferrer">국사편찬위원회 한국근대지리정보</a> (1919년 조선지형도)
+            </p>
+          </details>
+        )}
+
+        {days.length > 0 && (
+          <ProcessionTimebar
+            days={days}
+            tick={tick}
+            playing={playing}
+            tracking={tracking}
+            historicalOn={historicalOn}
+            onTogglePlay={() => setPlaying(!!mapRef.current?.togglePlay())}
+            onSeekDay={(i) => mapRef.current?.seekDay(i)}
+            onToggleTracking={() => { const next = !tracking; setTracking(next); mapRef.current?.trackProcession(next); }}
+            onToggleHistorical={() => setHistoricalOn(!!mapRef.current?.toggleMap1919())}
+          />
+        )}
 
         <div className="journey-ui">
           <div className="journey-header">
