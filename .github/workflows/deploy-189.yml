@@ -1,0 +1,66 @@
+# dev 브랜치 푸시 → 189 서버 자동 배포 (셀프호스티드 러너)
+#
+# 러너는 189 서버에 상주하며 GitHub 에 아웃바운드로만 접속한다 — 사내망으로
+# 들어오는 경로(WARP/터널)를 새로 뚫지 않는 것이 이 구조를 고른 이유다.
+# 설치·보안 설정은 deploy/RUNNER.md 를 따른다.
+#
+# [보안 전제 — public 저장소]
+#  - 이 워크플로는 push(쓰기 권한자만 가능) 트리거만 쓴다. pull_request 에서
+#    self-hosted 러너를 쓰는 워크플로를 추가하지 말 것.
+#  - Settings > Actions 에서 포크 PR 승인 필수화가 켜져 있어야 한다(RUNNER.md).
+name: Deploy to 189 (dev)
+
+on:
+  push:
+    branches: [dev]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-189
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: [self-hosted, linux, deploy-189]
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build (189 동일 출처 구성)
+        run: npm run build
+        env:
+          BASE_PATH: /
+          VITE_ASSET_BASE: /raw-asset/
+          VITE_ASSET_FILE: scene.gltf
+          VITE_CESIUM_ION_TOKEN: ${{ secrets.VITE_CESIUM_ION_TOKEN }}
+
+      - name: Publish to app dir
+        # /tiles 는 배포본에 없는 서버 상주 자산(1919 지형도, 라이선스 확인 전 저장소 미포함)
+        # 이라 --delete 에서 제외한다. 지우면 bake_map1919_tiles.py 로 다시 구워야 한다.
+        run: |
+          rsync -a --delete --exclude=/tiles dist/ /data/joseon-time/app/
+
+      - name: Reload nginx
+        run: |
+          docker exec joseon-time nginx -t
+          docker exec joseon-time nginx -s reload
+
+      - name: Smoke check
+        run: |
+          curl -fsS -o /dev/null http://127.0.0.1:4001/ \
+            && curl -fsS -o /dev/null http://127.0.0.1:4001/routes/hwaseong-haenghaeng.geojson \
+            && echo "OK"
