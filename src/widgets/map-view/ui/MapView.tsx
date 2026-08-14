@@ -21,10 +21,6 @@ export interface MapViewHandle {
   toggleHistoricalMap: () => boolean;
   /** 1919년 조선지형도(행차 회랑) 오버레이 토글. */
   toggleMap1919: () => boolean;
-  /** 화성행차 경로 레이어를 켜고 끈다. 켜질 때 경로 전체로 카메라를 맞춘다. */
-  toggleHaenghaengRoute: () => boolean;
-  /** 켜져 있는 경우의 경로 정보(구간·총거리·고지문). 꺼져 있으면 null. */
-  haenghaengRoute: () => HaenghaengRoute | null;
   /** 행차 경로와 행렬 시뮬레이션을 한 번에 올린다(여정 화면용). */
   /** 여정 id 로 행렬 시뮬레이션을 시작한다(PROCESSION_CONFIGS 에 있는 여정만). */
   startHaenghaeng: (journeyId?: string) => Promise<Procession | null>;
@@ -60,7 +56,6 @@ export const MapView = forwardRef<MapViewHandle, MapViewProps>(function MapView(
   const historicalLayerRef = useRef<Cesium.ImageryLayer | null>(null);
   const map1919LayersRef = useRef<Cesium.ImageryLayer[]>([]);
   const routeRef = useRef<HaenghaengRoute | null>(null);
-  const routeLoadingRef = useRef(false);
   const processionRef = useRef<Procession | null>(null);
   const onTickRef = useRef(onProcessionTick);
   onTickRef.current = onProcessionTick;
@@ -253,32 +248,6 @@ export const MapView = forwardRef<MapViewHandle, MapViewProps>(function MapView(
       const show = !layers[0].show;
       layers.forEach((l) => { l.show = show; });
       return show;
-    },
-    toggleHaenghaengRoute() {
-      const v = viewerRef.current;
-      if (!v) return false;
-      const route = routeRef.current;
-      if (route) {
-        route.dataSource.show = !route.dataSource.show;
-        if (route.dataSource.show) flyToRoute(v, route);
-        return route.dataSource.show;
-      }
-      // 최초 요청 시에만 GeoJSON 을 받는다. 응답 전 재클릭으로 중복 로드되지 않게 막는다.
-      if (routeLoadingRef.current) return false;
-      routeLoadingRef.current = true;
-      addHaenghaengRoute(v)
-        .then((loaded) => {
-          if (!viewerRef.current) return;
-          routeRef.current = loaded;
-          flyToRoute(viewerRef.current, loaded);
-        })
-        .catch((err) => console.error('[행차 경로 로딩 실패]', err))
-        .finally(() => { routeLoadingRef.current = false; });
-      return true;
-    },
-    haenghaengRoute() {
-      const route = routeRef.current;
-      return route && route.dataSource.show ? route : null;
     },
     async startHaenghaeng(journeyId: string = 'hwaseonghaenghaeng') {
       const v = viewerRef.current;

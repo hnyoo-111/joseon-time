@@ -8,11 +8,9 @@ interface MapControlsProps {
   onFitRequested: () => void;
   historicalMapOn: boolean;
   onToggleHistoricalMap: (on: boolean) => void;
-  routeOn: boolean;
-  onToggleRoute: (on: boolean) => void;
 }
 
-export function MapControls({ mapRef, onFocusRequested, onFitRequested, historicalMapOn, onToggleHistoricalMap, routeOn, onToggleRoute }: MapControlsProps) {
+export function MapControls({ mapRef, onFocusRequested, onFitRequested, historicalMapOn, onToggleHistoricalMap }: MapControlsProps) {
   const [mode2D, setMode2D] = useState(false);
 
   return (
@@ -34,13 +32,6 @@ export function MapControls({ mapRef, onFocusRequested, onFitRequested, historic
           onClick={() => { const on = mapRef.current?.toggleHistoricalMap(); onToggleHistoricalMap(!!on); }}
         >
           <LayersIcon />
-        </button>
-        <button
-          className={routeOn ? 'active' : ''}
-          data-tip="정조 화성행차 경로 (1795 · 근사 경로)"
-          onClick={() => { const on = mapRef.current?.toggleHaenghaengRoute(); onToggleRoute(!!on); }}
-        >
-          行
         </button>
       </div>
       <div className="mc-divider" />
