@@ -102,10 +102,13 @@ export const MapView = forwardRef<MapViewHandle, MapViewProps>(function MapView(
 
       HERITAGES.forEach((h) => {
         const entity = viewer.entities.add({
-          position: Cesium.Cartesian3.fromDegrees(h.lon, h.lat, h.height + 6),
+          // 절대 고도(h.height)로 두면 지형 로딩 후 실제 지면보다 낮아 마커가 땅에 묻힌다.
+          // 지형 기준 상대 높이로 두면 어디서든 지면 위 6m 에 뜬다.
+          position: Cesium.Cartesian3.fromDegrees(h.lon, h.lat, 6),
           billboard: {
             image: markerCanvas(h.type, false),
             verticalOrigin: Cesium.VerticalOrigin.CENTER,
+            heightReference: Cesium.HeightReference.RELATIVE_TO_GROUND,
             disableDepthTestDistance: Number.POSITIVE_INFINITY,
           },
         });
@@ -137,7 +140,15 @@ export const MapView = forwardRef<MapViewHandle, MapViewProps>(function MapView(
         if (!popup) return;
         if (!showPopup || !focusedHeritageIdRef.current) { popup.style.display = 'none'; return; }
         const entity = entitiesRef.current[focusedHeritageIdRef.current];
-        const pos = entity?.position?.getValue(viewer.clock.currentTime);
+        let pos = entity?.position?.getValue(viewer.clock.currentTime);
+        if (pos) {
+          // 마커가 지형 기준 상대 높이로 그려지므로 팝업도 지형 높이를 얹어 투영한다.
+          const carto = Cesium.Cartographic.fromCartesian(pos);
+          const ground = viewer.scene.globe.getHeight(carto);
+          if (ground !== undefined) {
+            pos = Cesium.Cartesian3.fromRadians(carto.longitude, carto.latitude, ground + carto.height);
+          }
+        }
         const win = pos ? Cesium.SceneTransforms.worldToWindowCoordinates(viewer.scene, pos) : undefined;
         if (!win) { popup.style.display = 'none'; return; }
         popup.style.display = 'block';
