@@ -6,7 +6,7 @@ import { markerCanvas } from '../lib/markerCanvas';
 import { setupCesiumViewer, placeCalibratedModel, addHistoricalMapLayer, addMap1919Layer, MODELS, MODEL_BASE_LOCAL, MODEL_BASE_SERVER, DEFAULT_MODEL_FILE } from '../lib/cesiumSetup';
 import { addHaenghaengRoute, flyToRoute, removeRoute, type HaenghaengRoute } from '../lib/haenghaengRoute';
 import {
-  buildProcession, describeTime, flyToProcession, removeProcession, seekToDay, trackLead, DEFAULT_UNITS,
+  buildProcession, describeTime, flyToProcession, removeProcession, seekToDay, trackLead, PROCESSION_CONFIGS,
   type Procession, type ProcessionTick,
 } from '../lib/haenghaengProcession';
 
@@ -26,7 +26,8 @@ export interface MapViewHandle {
   /** 켜져 있는 경우의 경로 정보(구간·총거리·고지문). 꺼져 있으면 null. */
   haenghaengRoute: () => HaenghaengRoute | null;
   /** 행차 경로와 행렬 시뮬레이션을 한 번에 올린다(여정 화면용). */
-  startHaenghaeng: () => Promise<Procession | null>;
+  /** 여정 id 로 행렬 시뮬레이션을 시작한다(PROCESSION_CONFIGS 에 있는 여정만). */
+  startHaenghaeng: (journeyId?: string) => Promise<Procession | null>;
   /** 선두 추적 카메라 on/off */
   trackProcession: (on: boolean) => void;
   /** 재생/일시정지 토글. 변경된 재생 여부를 돌려준다. */
@@ -57,7 +58,7 @@ export const MapView = forwardRef<MapViewHandle, MapViewProps>(function MapView(
   const entitiesRef = useRef<Record<string, Cesium.Entity>>({});
   const extraLayersRef = useRef<unknown[]>([]);
   const historicalLayerRef = useRef<Cesium.ImageryLayer | null>(null);
-  const map1919LayerRef = useRef<Cesium.ImageryLayer | null>(null);
+  const map1919LayersRef = useRef<Cesium.ImageryLayer[]>([]);
   const routeRef = useRef<HaenghaengRoute | null>(null);
   const routeLoadingRef = useRef(false);
   const processionRef = useRef<Procession | null>(null);
@@ -94,7 +95,7 @@ export const MapView = forwardRef<MapViewHandle, MapViewProps>(function MapView(
       if (cancelled) { viewer.destroy(); return; }
       viewerRef.current = viewer;
       extraLayersRef.current = extraLayers;
-      map1919LayerRef.current = addMap1919Layer(viewer);
+      map1919LayersRef.current = addMap1919Layer(viewer);
       addHistoricalMapLayer(viewer).then((layer) => {
         if (cancelled) return;
         historicalLayerRef.current = layer;
@@ -157,12 +158,14 @@ export const MapView = forwardRef<MapViewHandle, MapViewProps>(function MapView(
       });
 
       setLoading(false);
-      onReady?.();
+      // 기본 카메라(한반도 전경)를 먼저 놓고 나서 onReady 를 부른다 — 순서가 반대면
+      // onReady 안에서 잡은 카메라(행차 홈 뷰 등)를 이 전경 점프가 즉시 덮어써 버린다.
       viewer.camera.flyTo({
         destination: Cesium.Cartesian3.fromDegrees(127.0, 36.6, 650000),
         orientation: { heading: 0, pitch: Cesium.Math.toRadians(-75), roll: 0 },
         duration: 0,
       });
+      onReady?.();
       refreshMarkers();
     })();
 
@@ -245,10 +248,11 @@ export const MapView = forwardRef<MapViewHandle, MapViewProps>(function MapView(
       return layer.show;
     },
     toggleMap1919() {
-      const layer = map1919LayerRef.current;
-      if (!layer) return false;
-      layer.show = !layer.show;
-      return layer.show;
+      const layers = map1919LayersRef.current;
+      if (!layers.length) return false;
+      const show = !layers[0].show;
+      layers.forEach((l) => { l.show = show; });
+      return show;
     },
     toggleHaenghaengRoute() {
       const v = viewerRef.current;
@@ -276,20 +280,29 @@ export const MapView = forwardRef<MapViewHandle, MapViewProps>(function MapView(
       const route = routeRef.current;
       return route && route.dataSource.show ? route : null;
     },
-    async startHaenghaeng() {
+    async startHaenghaeng(journeyId: string = 'hwaseonghaenghaeng') {
       const v = viewerRef.current;
       if (!v) return null;
       if (processionRef.current) return processionRef.current;
+      const config = PROCESSION_CONFIGS[journeyId];
+      if (!config) return null;
+      // 경로·모델을 기다리는 동안 한반도 전경 대신 여정 지역 상공을 먼저 보여준다.
+      // 지형 타일도 미리 스트리밍되어 뒤이은 행렬 프레이밍(지형 높이 샘플)이 정확해진다.
+      v.camera.flyTo({
+        destination: Cesium.Cartesian3.fromDegrees(config.home.lon, config.home.lat, config.home.height),
+        orientation: { heading: 0, pitch: Cesium.Math.toRadians(-80), roll: 0 },
+        duration: 0,
+      });
       try {
-        const loaded = routeRef.current ?? (await addHaenghaengRoute(v));
+        const loaded = routeRef.current ?? (await addHaenghaengRoute(v, config.routeUrl));
         if (!viewerRef.current) return null;
         routeRef.current = loaded;
-        // 모델 프리페치 — 240개 엔티티가 같은 GLB 를 동시에 당기면 Cesium 요청 큐(전역 50개)를
+        // 모델 프리페치 — 수백 엔티티가 같은 GLB 를 동시에 당기면 Cesium 요청 큐(전역 50개)를
         // 독점해 지도·지형 타일이 굶는다(첫 진입 흰 화면). 고유 URI 만 먼저 받아 캐시를 데운다.
-        const uris = [...new Set(DEFAULT_UNITS.map((u) => u.uri).filter((u): u is string => !!u))];
+        const uris = [...new Set(config.units.map((u) => u.uri))];
         await Promise.all(uris.map((u) => fetch(u, { cache: 'force-cache' }).catch(() => undefined)));
         if (!viewerRef.current) return null;
-        const procession = buildProcession(viewerRef.current, loaded);
+        const procession = buildProcession(viewerRef.current, loaded, config.units);
         processionRef.current = procession;
 
         // 시계는 매 프레임 돌지만 화면 표기는 분 단위면 충분하다 — 바뀔 때만 올린다.

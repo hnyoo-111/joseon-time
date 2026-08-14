@@ -1,14 +1,15 @@
 import * as Cesium from 'cesium';
-import type { HaenghaengRoute } from './haenghaengRoute';
+import type { HaenghaengRoute, RouteDayPlan } from './haenghaengRoute';
 
 /**
- * 굳혀 둔 행차 경로 위를 시계(clock)에 맞춰 이동하는 행렬 시뮬레이션.
+ * 굳혀 둔 여정 경로 위를 시계(clock)에 맞춰 이동하는 행렬 시뮬레이션.
+ * (여정별 일정·기준일은 경로 GeoJSON 의 dayPlan/baseDate 에, 편성은 PROCESSION_CONFIGS 에 있다.)
  *
  * 시간축 설계
- *  - 시뮬레이션 시계는 **8일 일정을 실제 시간 그대로** 흐른다(1일차 07:00 출발 …).
+ *  - 시뮬레이션 시계는 일정(dayPlan)을 **실제 시간 그대로** 흐른다(화성 8일, 유배길 2일 …).
  *  - 이동 소요 시간은 임의로 정하지 않고 **행렬의 걷는 속도**에서 나온다.
  *    거리 ÷ WALK_SPEED = 소요 시간. 그래서 21.9km 구간이 약 6시간이 된다.
- *  - 감상용 압축은 시계 배속(clock.multiplier)이 담당한다. 시간축 자체는 왜곡하지 않는다.
+ *  - 시계는 1일차 출발 + 대열 전체가 길 위에 올라온 시점부터 시작한다(첫인상 확보).
  *
  * 대열 설계 — 종대(열차식) 추종
  *  - 이동일 경로를 전부 이어 하나의 폴리라인으로 만들고 **호 길이(arc length)** 로 매개화한다.
@@ -219,28 +220,90 @@ function buildBanchado(): ProcessionUnit[] {
 export const DEFAULT_UNITS: ProcessionUnit[] = buildBanchado();
 
 /**
- * 『원행을묘정리의궤』 기준 8일 일정.
- * legId 가 있는 날만 이동한다. 나머지는 화성에 머무르며 행사를 치른 날이다.
- * 출발 시각은 기록에 남은 1일차(오전 7시)만 확실하고, 나머지는 통상 이른 아침 출발로 잡은 근사값이다.
+ * 1457년 단종(노산군) 유배 호송 편성 — 실록: 첨지중추원사 어득해가 군졸 50명으로 호송.
+ *
+ * 화려한 의장·악대가 있는 행차가 아니라 실용적인 **압송·격리** 행렬이다.
+ * 험한 산길을 지나므로 좁고 긴 **1열 종대**를 기본으로, 세 그룹으로 짠다:
+ *  1) 선두 — 사령이 길을 트고 전방 호위가 따른다
+ *  2) 중앙 — 단종은 가마(남여) 탑승(GamaDanjong: 수수한 흑단령 차림 합성).
+ *     가마 앞뒤·양옆에 군사가 붙어 사방 밀착 감시하고, 뒤로 시종·내관이 따른다
+ *  3) 후미 — 어득해가 뒤에서 총괄 지휘하고, 잔여 군사 다수가 후방에 집중.
+ *     물자 짐꾼과 최후미 경계가 끝을 맺는다
+ * 50명을 26명으로 축약. 궁녀·짐말은 대응 모델이 없어 시종·짐꾼으로 대체.
+ * 수로 구간(2·3일차)은 배 모델이 없어 행렬이 강 위를 그대로 이동하는 근사다(화면 고지).
  */
-export interface DayPlan {
-  day: number;
-  lunar: string;
-  label: string;
-  legId: string | null;
-  startHour: number;
+function buildDanjongEscort(): ProcessionUnit[] {
+  const units: ProcessionUnit[] = [];
+  let g = 0;
+  const one = (folder: string, label: string, lateralM = 0, showLabel = false) => {
+    units.push({ folder, label, gapM: g, lateralM, uri: `/models/${folder}.glb`, animated: true, showLabel });
+  };
+
+  // -- 1) 선두: 길 안내·전방 감시 -----------------------------------------
+  one(NOEJA, '선두 사령', 0, true);
+  g += 2.5; one(NOEJA, '선두 사령');
+  g += 4; one(GEUMGUN, '전방 호위 군사', 0, true);
+  g += 2.5; one(GEUMGUN, '전방 호위 군사');
+  g += 2.5; one(GEUMGUN, '전방 호위 군사');
+
+  // -- 2) 중앙: 단종 가마 + 사방 밀착 감시 ---------------------------------
+  g += 4; one(GEUMGUN, '밀착 감시(전방)');
+  g += 4.5; // 가마 중심
+  units.push({ folder: 'GamaDanjong', label: '단종(노산군)', gapM: g, lateralM: 0, uri: '/models/GamaDanjong.glb', showLabel: true });
+  for (const dg of [-2.43, 2.43]) {
+    for (const dl of [-0.75, 0.75]) {
+      units.push({ folder: NOEJA, label: '가마꾼', gapM: g + dg, lateralM: dl, uri: `/models/${NOEJA}.glb`, animated: true });
+    }
+  }
+  // 양옆 밀착 감시 — 탈출·접근을 막는 핵심 대형
+  units.push({ folder: GEUMGUN, label: '밀착 감시(측면)', gapM: g, lateralM: -1.7, uri: `/models/${GEUMGUN}.glb`, animated: true });
+  units.push({ folder: GEUMGUN, label: '밀착 감시(측면)', gapM: g, lateralM: 1.7, uri: `/models/${GEUMGUN}.glb`, animated: true });
+  g += 4.5; one(GEUMGUN, '밀착 감시(후방)');
+  g += 3; one(MUN_HEUK, '수행 내관', 0, true);
+  g += 2.5; one(MUN_HEUK, '수행 시종');
+
+  // -- 3) 후미: 총괄 지휘·물자·후방 경계 -----------------------------------
+  g += 4.5; one(HORSE_MU, '어득해(호송 책임·첨지중추원사)', 0, true);
+  g += 4; one(GEUMGUN, '후미 호위 군사', 0, true);
+  g += 2.5; one(GEUMGUN, '후미 호위 군사');
+  g += 2.5; one(GEUMGUN, '후미 호위 군사');
+  g += 2.5; one(GEUMGUN, '후미 호위 군사');
+  g += 2.5; one(GEUMGUN, '후미 호위 군사');
+  g += 4; one(NOEJA, '짐꾼(물자)', 0, true);
+  g += 2.5; one(NOEJA, '짐꾼(물자)');
+  g += 4; one(GEUMGUN, '최후미 경계', 0, true);
+  return units;
 }
 
-export const DAY_PLAN: DayPlan[] = [
-  { day: 1, lunar: '윤2월 9일', label: '창덕궁 → 배다리 → 시흥행궁', legId: 'day1', startHour: 7 },
-  { day: 2, lunar: '윤2월 10일', label: '시흥행궁 → 사근참 → 화성행궁', legId: 'day2', startHour: 7 },
-  { day: 3, lunar: '윤2월 11일', label: '화성향교 알성 · 문무과 별시', legId: null, startHour: 9 },
-  { day: 4, lunar: '윤2월 12일', label: '현륭원 참배 · 서장대 야조', legId: 'day4', startHour: 8 },
-  { day: 5, lunar: '윤2월 13일', label: '봉수당 진찬연 (회갑연)', legId: null, startHour: 10 },
-  { day: 6, lunar: '윤2월 14일', label: '신풍루 사미(진휼) · 낙남헌 양로연', legId: null, startHour: 9 },
-  { day: 7, lunar: '윤2월 15일', label: '화성행궁 → 시흥행궁', legId: 'day7', startHour: 7 },
-  { day: 8, lunar: '윤2월 16일', label: '시흥행궁 → 창덕궁 환궁', legId: 'day8', startHour: 7 },
-];
+export const DANJONG_UNITS: ProcessionUnit[] = buildDanjongEscort();
+
+/** 여정별 행렬 구성 — 경로 GeoJSON 과 편성의 짝. JourneyPage 가 여정 id 로 찾는다. */
+export interface ProcessionConfig {
+  routeUrl: string;
+  units: ProcessionUnit[];
+  /** 진입 즉시 점프할 여정 지역 상공 — 경로·모델을 기다리는 동안 한반도 전경 대신
+   *  이 지역을 보여주고, 지형 타일을 미리 스트리밍시켜 행렬 프레이밍의 정확도를 높인다. */
+  home: { lon: number; lat: number; height: number };
+}
+
+export const PROCESSION_CONFIGS: Record<string, ProcessionConfig> = {
+  hwaseonghaenghaeng: {
+    routeUrl: `${import.meta.env.BASE_URL}routes/hwaseong-haenghaeng.geojson`,
+    units: DEFAULT_UNITS,
+    home: { lon: 126.99, lat: 37.43, height: 90000 },   // 서울~수원 회랑
+  },
+  'danjong-yubae': {
+    routeUrl: `${import.meta.env.BASE_URL}routes/danjong-yubae.geojson`,
+    units: DANJONG_UNITS,
+    home: { lon: 128.33, lat: 37.22, height: 45000 },   // 주천~청령포 회랑
+  },
+};
+
+/**
+ * 일정(dayPlan)은 경로 GeoJSON 의 properties 에 실려 온다 — 경로와 일정은 한 몸의 자료라
+ * 앱에 하드코딩하지 않는다(bake_*_route.py 가 굽는다). legId 가 있는 날만 이동한다.
+ */
+export type DayPlan = RouteDayPlan;
 
 export interface DayWindow extends DayPlan {
   /** 하루의 시작(00:00) */
@@ -260,7 +323,9 @@ export interface Procession {
   stop: Cesium.JulianDate;
   days: DayWindow[];
   /** 시각 → 선두 위치와 진행 방위각(라디안). 팔로우 카메라가 쓴다. */
-  poseAt: (time: Cesium.JulianDate) => { position: Cesium.Cartesian3; heading: number } | null;
+  poseAt: (time: Cesium.JulianDate, backM?: number) => { position: Cesium.Cartesian3; heading: number } | null;
+  /** 팔로우 카메라가 붙는 지점 — 왕이 탄 가마의 선두 기준 뒤 거리(m). 없으면 0(선두). */
+  focusGapM: number;
 }
 
 /** 현재 시각을 화면 표기에 쓰기 좋은 형태로 풀어 준다. */
@@ -301,8 +366,9 @@ export function buildProcession(
   const kmByLeg = Object.fromEntries(route.legs.map((l) => [l.id, l.distanceKm]));
 
   // 기준 시각은 1일차 00:00. 양력 환산은 자료마다 달라 단정하지 않고, 화면에는 음력 날짜만 쓴다.
-  const base = Cesium.JulianDate.fromIso8601('1795-03-29T00:00:00Z');
+  const base = Cesium.JulianDate.fromIso8601(route.baseDate);
   const at = (sec: number) => Cesium.JulianDate.addSeconds(base, sec, new Cesium.JulianDate());
+  const dayPlan = route.dayPlan;
 
   // 이동일들의 경로를 전부 이어 하나의 폴리라인으로 만든다. 전 일정이 이어진다 —
   // day1 도착점 = day2 출발점(시흥행궁), day2 도착 = day4 출발 = 화성행궁, day4 는 융릉 왕복이라
@@ -315,7 +381,7 @@ export function buildProcession(
 
   const days: DayWindow[] = [];
 
-  DAY_PLAN.forEach((plan, i) => {
+  dayPlan.forEach((plan, i) => {
     const dayOffset = i * DAY_SECONDS;
     const coords = plan.legId ? coordsByLeg[plan.legId] : undefined;
     const distanceKm = plan.legId ? (kmByLeg[plan.legId] ?? 0) : 0;
@@ -356,11 +422,16 @@ export function buildProcession(
   });
 
   const start = at(0);
-  const stop = at(DAY_PLAN.length * DAY_SECONDS);
+  const stop = at(dayPlan.length * DAY_SECONDS);
 
   viewer.clock.startTime = start.clone();
   viewer.clock.stopTime = stop.clone();
-  viewer.clock.currentTime = Cesium.JulianDate.addSeconds(start, 7 * 3600, new Cesium.JulianDate());
+  // 시계는 1일차 출발 시각 + **대열 전체가 길 위에 올라올 만큼 행진한 뒤**에서 시작한다.
+  // 정확히 출발 시각이면 행렬이 아직 경로 밖(첫 구간 접선의 후방 연장선)에 도열해 있는데,
+  // 고갯마루 출발(단종 솔치재)에서는 그 직선이 산비탈을 관통해 첫인상이 엉망이 된다.
+  const columnLen = units.length ? Math.max(...units.map((u) => u.gapM)) : 0;
+  viewer.clock.currentTime = Cesium.JulianDate.addSeconds(
+    start, (dayPlan[0]?.startHour ?? 7) * 3600 + columnLen / WALK_SPEED + 30, new Cesium.JulianDate());
   viewer.clock.clockRange = Cesium.ClockRange.LOOP_STOP;
   // 기본은 배속 없음 — 행렬이 실제 걷는 속도(1 m/s)로 움직인다.
   // 배속을 걸면 그만큼 빨리 감기는 것이고, 걸음 자체는 언제나 보행 속도다.
@@ -509,9 +580,9 @@ export function buildProcession(
   });
 
   /** 팔로우 카메라용 — 선두 위치와 진행 방위각. */
-  function poseAt(time: Cesium.JulianDate) {
+  function poseAt(time: Cesium.JulianDate, backM = 0) {
     if (!pathPositions.length) return null;
-    const s = leadArcCached(time);
+    const s = leadArcCached(time) - backM;
     const position = pointAt(s, new Cesium.Cartesian3());
     forwardAt(s, fwdScratch);
     const enu = Cesium.Transforms.eastNorthUpToFixedFrame(position, Cesium.Ellipsoid.WGS84, enuScratch);
@@ -520,14 +591,17 @@ export function buildProcession(
     return { position, heading: Math.atan2(local.x, local.y) };
   }
 
-  return { entities, start, stop, days, poseAt };
+  // 팔로우 카메라의 기준점 — 왕이 탄 가마(uri 에 'Gama' 포함). 없으면 선두.
+  const focusGapM = units.find((u) => u.uri.includes('Gama'))?.gapM ?? 0;
+
+  return { entities, start, stop, days, poseAt, focusGapM };
 }
 
 /** 시계 시각 → 화면 표기용 정보. */
 export function describeTime(procession: Procession, time: Cesium.JulianDate): ProcessionTick {
   const elapsed = Cesium.JulianDate.secondsDifference(time, procession.start);
   const total = Cesium.JulianDate.secondsDifference(procession.stop, procession.start);
-  const idx = Math.min(DAY_PLAN.length - 1, Math.max(0, Math.floor(elapsed / DAY_SECONDS)));
+  const idx = Math.min(procession.days.length - 1, Math.max(0, Math.floor(elapsed / DAY_SECONDS)));
   const day = procession.days[idx];
   const withinDay = elapsed - idx * DAY_SECONDS;
   const h = Math.floor(withinDay / 3600);
@@ -561,6 +635,13 @@ export function seekToDay(viewer: Cesium.Viewer, procession: Procession, dayInde
  * 팔로우 카메라가 켜져 있으면 그쪽이 시점을 잡고 있으므로 개입하지 않는다.
  * @returns 비행을 시작했으면 true (위치를 못 얻어 못 날았으면 false)
  */
+/**
+ * 진입·일차 점프 카메라 기본값 — 개발 중에는 콘솔의 __camTune 으로 실험하고 여기 확정한다.
+ *  el=내려다보는 앙각(도) · mul=행렬 크기 대비 거리 배율 · min=거리 하한(m)
+ *  ridge=카메라 지점의 능선 위 최소 여유(m)
+ */
+const CAM_DEFAULTS = { el: 10, mul: 1.0, min: 240, ridge: 80 };
+
 export function flyToProcession(viewer: Cesium.Viewer, procession: Procession, duration = 2.0): boolean {
   if (followListener) return true;
   const t = viewer.clock.currentTime;
@@ -576,16 +657,85 @@ export function flyToProcession(viewer: Cesium.Viewer, procession: Procession, d
   const d = Cesium.Matrix4.multiplyByPointAsVector(
     inv, Cesium.Cartesian3.subtract(head, tail, new Cesium.Cartesian3()), new Cesium.Cartesian3());
   const columnHeading = Math.atan2(d.x, d.y);
-  viewer.camera.flyToBoundingSphere(new Cesium.BoundingSphere(mid, radius), {
-    duration,
-    offset: new Cesium.HeadingPitchRange(
-      columnHeading + Cesium.Math.toRadians(115), Cesium.Math.toRadians(-30), 0),
+
+  // 경로 좌표는 타원체 높이 0 으로 굽는다. 산악 지대(영월 ~300m)에서는 두 가지를 지형에
+  // 맞춰야 한다: (1) 행렬 중심의 높이, (2) **카메라 위치 자체** — 골짜기 옆 능선 안으로
+  // 카메라가 들어가면 산 속을 보게 된다. 카메라 지점의 지형 높이를 재서 능선 위로 띄운다.
+  // [개발 편의] 브라우저 콘솔에서 값을 바꾸고 일차 버튼을 다시 누르면 즉시 반영된다:
+  //   __camTune = { el: 20, mul: 1.2, min: 200, side: -115, ridge: 60 }
+  // 마음에 드는 값을 찾으면 CAM_DEFAULTS 에 확정한다.
+  const tune = (import.meta.env.DEV
+    ? (window as unknown as { __camTune?: Record<string, number> }).__camTune
+    : undefined) ?? {};
+  const el = Cesium.Math.toRadians(tune.el ?? CAM_DEFAULTS.el);
+  const range = Math.max(radius * (tune.mul ?? CAM_DEFAULTS.mul), tune.min ?? CAM_DEFAULTS.min);
+  const ridgeMargin = tune.ridge ?? CAM_DEFAULTS.ridge;
+  const horiz = range * Math.cos(el);
+  const carto = Cesium.Cartographic.fromCartesian(mid);
+
+  // 카메라를 놓을 쪽은 좌우 양쪽(±115°) 중 **지형이 낮은 쪽(골짜기 쪽)**을 고른다 —
+  // 산비탈 쪽에 놓으면 능선 위로 끌어올려도 답답한 사면 부감이 된다.
+  const sides = (tune.side !== undefined ? [tune.side, tune.side] : [115, -115]).map((deg) => {
+    const viewHeading = columnHeading + Cesium.Math.toRadians(deg);
+    const az = viewHeading + Math.PI;
+    return {
+      viewHeading,
+      az,
+      camCarto: new Cesium.Cartographic(
+        carto.longitude + (horiz * Math.sin(az)) / (6371000 * Math.cos(carto.latitude)),
+        carto.latitude + (horiz * Math.cos(az)) / 6371000),
+    };
   });
+
+  const fly = (centerH: number, camGrounds: number[]) => {
+    // 지형이 낮은 쪽 선택
+    const i = camGrounds[0] <= camGrounds[1] ? 0 : 1;
+    const side = sides[i];
+    const camGroundH = camGrounds[i];
+    const center = Cesium.Cartesian3.fromRadians(carto.longitude, carto.latitude, centerH + 2);
+    const east = horiz * Math.sin(side.az);
+    const north = horiz * Math.cos(side.az);
+    let up = range * Math.sin(el);
+    // 능선 검사 — 카메라 지점의 지형보다 ridgeMargin(m) 이상 높게
+    const minCamH = camGroundH + ridgeMargin;
+    if (centerH + up < minCamH) up = minCamH - centerH;
+    const enu = Cesium.Transforms.eastNorthUpToFixedFrame(center);
+    const camPos = Cesium.Matrix4.multiplyByPoint(enu, new Cesium.Cartesian3(east, north, up), new Cesium.Cartesian3());
+    const pitch = -Math.atan2(up, horiz);
+    viewer.camera.flyTo({
+      destination: camPos,
+      orientation: { heading: side.viewHeading, pitch, roll: 0 },
+      duration,
+    });
+  };
+
+  // 행렬 중심과 좌우 카메라 후보, 세 곳의 지형 높이가 **모두 준비될 때까지 기다렸다가** 난다.
+  // 첫 진입 시에는 월드 터레인이 아직 로딩 전이라 높이가 없거나 0 으로 잡혀 카메라가
+  // 엉뚱한 높이에 놓였다(일차 버튼을 나중에 누르면 지형이 로딩된 뒤라 멀쩡했던 이유).
+  // 그 사이 새 비행 요청이 오면 이전 대기는 토큰으로 무효화한다.
+  const token = ++flightToken;
+  const tryFly = (attempt: number) => {
+    if (token !== flightToken) return;  // 더 새 비행이 요청됨 — 이 대기는 폐기
+    if (followListener) return;         // 대기 중 팔로우 카메라가 켜졌으면 개입하지 않는다
+    const h0 = viewer.scene.globe.getHeight(carto);
+    const g0 = viewer.scene.globe.getHeight(sides[0].camCarto);
+    const g1 = viewer.scene.globe.getHeight(sides[1].camCarto);
+    // tilesLoaded 까지 요구 — 원거리 저해상도 타일의 높이(오차 수십 m)로 날지 않게 한다.
+    if (h0 !== undefined && g0 !== undefined && g1 !== undefined && viewer.scene.globe.tilesLoaded) {
+      fly(h0, [g0, g1]);
+    } else if (attempt < 25) {
+      setTimeout(() => tryFly(attempt + 1), 400);
+    } else {
+      fly(h0 ?? 0, [g0 ?? 0, g1 ?? 0]); // 10초를 기다려도 없으면 그냥 난다
+    }
+  };
+  tryFly(0);
   return true;
 }
 
 export function removeProcession(viewer: Cesium.Viewer, procession: Procession | null) {
   if (!procession) return;
+  flightToken++; // 지형을 기다리던 진입 비행이 있으면 폐기 — 화면을 떠난 뒤 발사되면 안 된다
   if (followListener) {
     viewer.scene.preRender.removeEventListener(followListener);
     followListener = null;
@@ -596,10 +746,12 @@ export function removeProcession(viewer: Cesium.Viewer, procession: Procession |
 
 // 팔로우 카메라 리스너 — 행렬은 한 번에 하나만 있으므로 모듈 스코프로 관리한다.
 let followListener: (() => void) | null = null;
+// 진입 카메라의 지형 대기 토큰 — 새 비행 요청이 오면 이전 대기를 폐기한다.
+let flightToken = 0;
 
 /**
- * 행렬을 따라다니는 카메라. **진행 방향 정면**에서 행렬을 마주 보며 후진하듯 같이 움직인다.
- * (trackedEntity 는 시점이 임의라 등짝만 보게 되기 일쑤였다.)
+ * 행렬을 따라다니는 카메라. 왕이 탄 가마 **뒤에서 진행 방향을 바라보며** 같이 움직인다 —
+ * 가마가 가까이 보이고 그 앞으로 행렬이 뻗어가는 구도다(사용자 요청으로 정면 뷰에서 변경).
  * 끄면 시점 고정을 풀고 자유 시점으로 돌아간다.
  */
 export function trackLead(viewer: Cesium.Viewer, procession: Procession, on: boolean) {
@@ -612,18 +764,43 @@ export function trackLead(viewer: Cesium.Viewer, procession: Procession, on: boo
     return;
   }
   viewer.trackedEntity = undefined;
+  // 기준점은 왕이 탄 가마(focusGapM). 매 프레임 카메라를 강제로 되돌리는 대신
+  // **가마를 따라 움직이는 기준 프레임**(lookAtTransform)만 갱신한다 — 프레임이 잡혀 있으면
+  // Cesium 컨트롤러가 원점(가마) 궤도 조작을 지원하므로, 따라가는 동안에도 마우스로
+  // 자유롭게 돌리고 줌할 수 있고 그 시점이 유지된 채 함께 이동한다.
+  // 프레임의 +X 를 진행 방향에 맞춰 두면, 행렬이 코너를 돌 때 시점도 함께 돈다.
   const carto = new Cesium.Cartographic();
+  const frame = new Cesium.Matrix4();
+  const rotZ = new Cesium.Matrix3();
+  const localPos = new Cesium.Cartesian3();
+  const localDir = new Cesium.Cartesian3();
+  const localUp = new Cesium.Cartesian3();
+  let initialized = false;
   followListener = () => {
-    const pose = procession.poseAt(viewer.clock.currentTime);
+    const pose = procession.poseAt(viewer.clock.currentTime, procession.focusGapM);
     if (!pose) return;
     // 경로 좌표는 타원체 높이 0 으로 구웠으므로, 지형 높이를 얹어 눈높이를 맞춘다.
     Cesium.Cartographic.fromCartesian(pose.position, Cesium.Ellipsoid.WGS84, carto);
     const ground = viewer.scene.globe.getHeight(carto) ?? 0;
-    const target = Cesium.Cartesian3.fromRadians(carto.longitude, carto.latitude, ground + 1.5);
-    // heading 을 진행 방향 그대로 두면 카메라가 행렬 앞쪽에 서서 뒤(행렬)를 본다 —
-    // lookAt 의 카메라는 시선 반대편에 놓이기 때문이다. 선두 얼굴이 정면으로 들어온다.
-    viewer.camera.lookAt(target, new Cesium.HeadingPitchRange(
-      pose.heading + Math.PI, Cesium.Math.toRadians(-14), 55));
+    const target = Cesium.Cartesian3.fromRadians(carto.longitude, carto.latitude, ground + 2.5);
+    Cesium.Transforms.eastNorthUpToFixedFrame(target, Cesium.Ellipsoid.WGS84, frame);
+    Cesium.Matrix3.fromRotationZ(Cesium.Math.PI_OVER_TWO - pose.heading, rotZ);
+    Cesium.Matrix4.multiplyByMatrix3(frame, rotZ, frame);
+    if (!initialized) {
+      // 최초 1회: 가마 뒤 70m·위 22m 에서 진행 방향을 본다(-X 가 대열 뒤쪽).
+      viewer.camera.lookAtTransform(frame, new Cesium.Cartesian3(-66.6, 0, 21.6));
+      initialized = true;
+      return;
+    }
+    // 사용자가 돌려 놓은 프레임 로컬 시점을 보존한 채 프레임만 전진시킨다.
+    Cesium.Cartesian3.clone(viewer.camera.position, localPos);
+    Cesium.Cartesian3.clone(viewer.camera.direction, localDir);
+    Cesium.Cartesian3.clone(viewer.camera.up, localUp);
+    viewer.camera.lookAtTransform(frame);
+    Cesium.Cartesian3.clone(localPos, viewer.camera.position);
+    Cesium.Cartesian3.clone(localDir, viewer.camera.direction);
+    Cesium.Cartesian3.clone(localUp, viewer.camera.up);
+    Cesium.Cartesian3.cross(viewer.camera.direction, viewer.camera.up, viewer.camera.right);
   };
   viewer.scene.preRender.addEventListener(followListener);
 }

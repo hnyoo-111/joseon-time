@@ -4,7 +4,7 @@ import { journeyById, type JourneyStep } from '@/entities/journey';
 import { heritageById } from '@/entities/heritage';
 import { workById } from '@/entities/work';
 import { useAppStore } from '@/app/model/appStore';
-import { MapView, type MapViewHandle, type DayWindow, type ProcessionTick } from '@/widgets/map-view';
+import { MapView, PROCESSION_CONFIGS, type MapViewHandle, type DayWindow, type ProcessionTick } from '@/widgets/map-view';
 import { ProcessionTimebar } from '@/widgets/procession-timebar';
 import { JourneyTimelineBar } from '@/widgets/journey-timeline-bar';
 import { YearSplash } from '@/shared/ui/YearSplash';
@@ -18,8 +18,8 @@ export function JourneyPage() {
   const mapRef = useRef<MapViewHandle>(null);
   const [showSplash, setShowSplash] = useState(true);
   const [stepIndex, setStepIndex] = useState(0);
-  // 행차 시뮬레이션은 경로를 굳혀 둔 화성행차에만 있다.
-  const hasProcession = journey?.id === 'hwaseonghaenghaeng';
+  // 행렬 시뮬레이션은 경로를 굳혀 둔 여정에만 있다(화성행차·단종 유배길).
+  const hasProcession = !!journey && journey.id in PROCESSION_CONFIGS;
   const [days, setDays] = useState<DayWindow[]>([]);
   const [tick, setTick] = useState<ProcessionTick | null>(null);
   const [tracking, setTracking] = useState(false);
@@ -37,18 +37,21 @@ export function JourneyPage() {
   // 지도가 준비되면 행차 경로와 행렬을 올린다. 화면에 들어오자마자 보이는 게 이 화면의 목적이다.
   const handleMapReady = () => {
     if (!hasProcession) return;
-    mapRef.current?.startHaenghaeng().then((p) => setDays(p?.days ?? []));
+    mapRef.current?.startHaenghaeng(journey!.id).then((p) => setDays(p?.days ?? []));
   };
 
   const step = journey?.steps[stepIndex];
-  // 행차 페이지 첫 진입은 출발 도열 전체를 잡는 카메라(startHaenghaeng)가 담당한다.
-  // 첫 스텝의 flyTo 가 그 비행을 덮어쓰지 않게 최초 1회는 건너뛴다.
-  const skippedInitialFly = useRef(false);
+  // 행차 페이지 첫 진입은 행렬을 잡는 카메라(startHaenghaeng)가 담당한다.
+  // "스텝이 실제로 바뀐 경우"에만 스텝 카메라를 쏜다 — 최초 스텝은 건너뛰고,
+  // StrictMode 의 effect 중복 실행에도 같은 스텝으로는 두 번 날지 않는다(멱등).
+  const lastFlownStepId = useRef<string | null>(null);
 
   useEffect(() => {
     if (!step || showSplash) return;
     logVisit('step', step.id, `${journey!.title} · ${step.title}`);
-    if (hasProcession && !skippedInitialFly.current) { skippedInitialFly.current = true; return; }
+    if (hasProcession && lastFlownStepId.current === null) { lastFlownStepId.current = step.id; return; }
+    if (lastFlownStepId.current === step.id) return;
+    lastFlownStepId.current = step.id;
     mapRef.current?.flyTo(step.lon, step.lat, step.height);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [step, showSplash]);
@@ -93,11 +96,11 @@ export function JourneyPage() {
 
         {hasProcession && (
           <details className="route-notice">
-            <summary>⚠ 근사 재현 — 실제 행차로·행렬이 아닙니다</summary>
+            <summary>⚠ 근사 재현 — 실제 당대의 길·행렬이 아닙니다</summary>
             <p>
-              일정은 『원행을묘정리의궤』 기록을 따르되, 지도의 선은 1914년 도로망 위에서 계산한
-              <strong> 근사 경로</strong>입니다(1795년 행차로 그 자체는 아님). &lsquo;근사&rsquo; 표시 지점은
-              터만 남아 위치를 추정한 곳이며, 행렬 모델은 국가유산청 의장 유물로 대신한 것이라 실제 행렬 구성과 다릅니다.
+              일정은 사료(의궤·실록) 기록을 따르되, 지도의 선은 1914년 도로망(수로는 하천 중심선)
+              위에서 계산한 <strong>근사 경로</strong>입니다. &lsquo;근사&rsquo; 표시 지점은
+              터만 남아 위치를 추정한 곳이며, 행렬 모델은 국가유산청 유물 스캔으로 대신한 것이라 실제 구성과 다릅니다.
             </p>
             <p className="rn-sources">
               출처 — 도로망: <a href="https://www.hisgeo.info/wiki/근대_교통로_DB" target="_blank" rel="noreferrer">근대 교통로 DB</a> (1914년 교통로)

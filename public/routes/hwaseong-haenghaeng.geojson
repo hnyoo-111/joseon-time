@@ -6,7 +6,66 @@
   "sourceUrl": "https://www.hisgeo.info/wiki/근대_교통로_DB",
   "itinerarySource": "원행을묘정리의궤 기반 8일 일정",
   "disclaimer": "이 경로는 1914년 조선총독부 지형도 도로망 위에서 계산한 근사 경로입니다. 1795년 당시의 실제 행차로 그 자체는 아닙니다. 경유지는 『원행을묘정리의궤』의 일정 기록을 따르되, 행궁 터 등 일부 지점의 좌표는 현존하지 않아 근사 위치입니다.",
-  "totalDistanceKm": 111.77
+  "totalDistanceKm": 111.77,
+  "baseDate": "1795-03-29T00:00:00Z",
+  "dayPlan": [
+   {
+    "day": 1,
+    "lunar": "윤2월 9일",
+    "label": "창덕궁 → 배다리 → 시흥행궁",
+    "legId": "day1",
+    "startHour": 7
+   },
+   {
+    "day": 2,
+    "lunar": "윤2월 10일",
+    "label": "시흥행궁 → 사근참 → 화성행궁",
+    "legId": "day2",
+    "startHour": 7
+   },
+   {
+    "day": 3,
+    "lunar": "윤2월 11일",
+    "label": "화성향교 알성 · 문무과 별시",
+    "legId": null,
+    "startHour": 9
+   },
+   {
+    "day": 4,
+    "lunar": "윤2월 12일",
+    "label": "현륭원 참배 · 서장대 야조",
+    "legId": "day4",
+    "startHour": 8
+   },
+   {
+    "day": 5,
+    "lunar": "윤2월 13일",
+    "label": "봉수당 진찬연 (회갑연)",
+    "legId": null,
+    "startHour": 10
+   },
+   {
+    "day": 6,
+    "lunar": "윤2월 14일",
+    "label": "신풍루 사미(진휼) · 낙남헌 양로연",
+    "legId": null,
+    "startHour": 9
+   },
+   {
+    "day": 7,
+    "lunar": "윤2월 15일",
+    "label": "화성행궁 → 시흥행궁",
+    "legId": "day7",
+    "startHour": 7
+   },
+   {
+    "day": 8,
+    "lunar": "윤2월 16일",
+    "label": "시흥행궁 → 창덕궁 환궁",
+    "legId": "day8",
+    "startHour": 7
+   }
+  ]
  },
  "features": [
   {

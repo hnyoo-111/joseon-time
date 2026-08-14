@@ -58,7 +58,7 @@ export function ProcessionTimebar({
                 <span className="ptb-day-n">{d.day}일차</span>
                 <span className="ptb-day-lunar">{d.lunar}</span>
                 <span className="ptb-day-meta">
-                  {d.legId ? `${d.distanceKm.toFixed(1)}km · ${d.hours.toFixed(1)}시간` : '화성 체류'}
+                  {d.legId ? `${d.distanceKm.toFixed(1)}km · ${d.hours.toFixed(1)}시간` : '체류'}
                 </span>
               </button>
               {i === activeIndex && (

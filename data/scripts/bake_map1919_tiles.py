@@ -62,9 +62,12 @@ E0, N0 = -200000.0, 4000000.0
 SRC_LEVEL = 12
 SPAN = 0.00028 * 13634.189375521559 * 256   # 레벨 12 타일 한 변(m) ≈ 977.3
 
-# 행차 회랑 (EPSG:5179) — 경로 bbox + 여유
-COR_E0, COR_E1 = 944000, 961000
-COR_N0, COR_N1 = 1908000, 1959000
+# 회랑들 (EPSG:5179) — 여정 경로 bbox + 여유. 인자로 이름을 주면 그 회랑만 굽는다.
+#   사용: python bake_map1919_tiles.py [seoul|yeongwol]
+CORRIDORS = {
+    "seoul": (944000, 961000, 1908000, 1959000),      # 화성행차: 서울~융릉
+    "yeongwol": (1057000, 1093000, 1902000, 1926000), # 단종 유배길: 솔치재~청령포
+}
 
 # 출력 웹메르카토르 줌 — 원본이 1:50,000 스캔(약 4m/px)이라 z14 이상은 의미가 없다.
 OUT_ZMIN, OUT_ZMAX = 9, 14
@@ -76,16 +79,17 @@ except Exception:
     pass
 
 
-def src_tile_range():
-    c0 = int((COR_E0 - E0) // SPAN)
-    c1 = int((COR_E1 - E0) // SPAN)
-    r0 = int((N0 - COR_N1) // SPAN)
-    r1 = int((N0 - COR_N0) // SPAN)
+def src_tile_range(cor):
+    ce0, ce1, cn0, cn1 = cor
+    c0 = int((ce0 - E0) // SPAN)
+    c1 = int((ce1 - E0) // SPAN)
+    r0 = int((N0 - cn1) // SPAN)
+    r1 = int((N0 - cn0) // SPAN)
     return c0, c1, r0, r1
 
 
-def download_sources():
-    c0, c1, r0, r1 = src_tile_range()
+def download_sources(cor):
+    c0, c1, r0, r1 = src_tile_range(cor)
     total = (c1 - c0 + 1) * (r1 - r0 + 1)
     os.makedirs(SRC_DIR, exist_ok=True)
     n = have = 0
@@ -131,8 +135,8 @@ def load_mosaic(c0, c1, r0, r1):
     return mosaic
 
 
-def main():
-    c0, c1, r0, r1 = download_sources()
+def bake(cor):
+    c0, c1, r0, r1 = download_sources(cor)
     mosaic = load_mosaic(c0, c1, r0, r1)
     mh, mw = mosaic.shape[:2]
     # 모자이크 원점(좌상단)의 5179 좌표
@@ -144,7 +148,8 @@ def main():
     to3857 = Transformer.from_crs("EPSG:5179", "EPSG:3857", always_xy=True)
 
     # 회랑의 3857 범위
-    xs, ys = to3857.transform([COR_E0, COR_E1], [COR_N0, COR_N1])
+    ce0, ce1, cn0, cn1 = cor
+    xs, ys = to3857.transform([ce0, ce1], [cn0, cn1])
     X0, X1 = min(xs), max(xs)
     Y0, Y1 = min(ys), max(ys)
     WORLD = 20037508.342789244
@@ -184,6 +189,13 @@ def main():
     for root, _, files in os.walk(OUT_DIR):
         size += sum(os.path.getsize(os.path.join(root, f)) for f in files)
     print("저장: public/tiles/map1919 — %d타일, %.1f MB" % (made, size / 1048576))
+
+
+def main():
+    names = sys.argv[1:] or list(CORRIDORS)
+    for name in names:
+        print("== 회랑:", name)
+        bake(CORRIDORS[name])
 
 
 if __name__ == "__main__":

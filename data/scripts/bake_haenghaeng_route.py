@@ -106,6 +106,20 @@ LEGS = [
      "via": ["siheung", "baedari", "changdeok"]},
 ]
 
+# 8일 일정 — 앱이 geojson 의 dayPlan/baseDate 를 읽어 시뮬레이션 시간축을 만든다.
+# (예전에는 haenghaengProcession.ts 에 하드코딩돼 있었다. 일정은 경로와 같은 자료이므로 여기로 옮겼다.)
+DAY_PLAN = [
+    {"day": 1, "lunar": "윤2월 9일", "label": "창덕궁 → 배다리 → 시흥행궁", "legId": "day1", "startHour": 7},
+    {"day": 2, "lunar": "윤2월 10일", "label": "시흥행궁 → 사근참 → 화성행궁", "legId": "day2", "startHour": 7},
+    {"day": 3, "lunar": "윤2월 11일", "label": "화성향교 알성 · 문무과 별시", "legId": None, "startHour": 9},
+    {"day": 4, "lunar": "윤2월 12일", "label": "현륭원 참배 · 서장대 야조", "legId": "day4", "startHour": 8},
+    {"day": 5, "lunar": "윤2월 13일", "label": "봉수당 진찬연 (회갑연)", "legId": None, "startHour": 10},
+    {"day": 6, "lunar": "윤2월 14일", "label": "신풍루 사미(진휼) · 낙남헌 양로연", "legId": None, "startHour": 9},
+    {"day": 7, "lunar": "윤2월 15일", "label": "화성행궁 → 시흥행궁", "legId": "day7", "startHour": 7},
+    {"day": 8, "lunar": "윤2월 16일", "label": "시흥행궁 → 창덕궁 환궁", "legId": "day8", "startHour": 7},
+]
+BASE_DATE = "1795-03-29T00:00:00Z"  # 1일차 00:00 기준. 양력 환산 단정 없음 — 표기는 음력만.
+
 DISCLAIMER = (
     "이 경로는 1914년 조선총독부 지형도 도로망 위에서 계산한 근사 경로입니다. "
     "1795년 당시의 실제 행차로 그 자체는 아닙니다. 경유지는 『원행을묘정리의궤』의 일정 기록을 따르되, "
@@ -315,6 +329,8 @@ def main() -> None:
             "itinerarySource": "원행을묘정리의궤 기반 8일 일정",
             "disclaimer": DISCLAIMER,
             "totalDistanceKm": round(total, 2),
+            "baseDate": BASE_DATE,
+            "dayPlan": DAY_PLAN,
         },
         "features": features,
     }

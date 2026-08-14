@@ -42,21 +42,27 @@ export async function addHistoricalMapLayer(viewer: Cesium.Viewer): Promise<Cesi
 // 웹메르카토르 타일로 재투영해 자체 서빙한다(data/scripts/bake_map1919_tiles.py).
 // 측량 기반 지도라 대동여지도와 달리 현대 좌표와 정합된다.
 export const MAP1919_URL = '/tiles/map1919/{z}/{x}/{y}.png';
-export const MAP1919_RECTANGLE = Cesium.Rectangle.fromDegrees(126.86, 37.17, 127.06, 37.64);
+// 여정 회랑별 사각형 — 사이 빈 구간까지 하나로 덮으면 타일이 없는 곳마다 404 가 나므로 나눠 둔다.
+export const MAP1919_RECTANGLES = [
+  Cesium.Rectangle.fromDegrees(126.86, 37.17, 127.06, 37.64), // 화성행차: 서울~융릉
+  Cesium.Rectangle.fromDegrees(128.14, 37.11, 128.56, 37.34), // 단종 유배길: 솔치재~청령포
+];
 
-export function addMap1919Layer(viewer: Cesium.Viewer): Cesium.ImageryLayer {
-  const provider = new Cesium.UrlTemplateImageryProvider({
-    url: MAP1919_URL,
-    rectangle: MAP1919_RECTANGLE,
-    minimumLevel: 9,
-    maximumLevel: 14,
-    credit: new Cesium.Credit('1919 조선지형도 — 국사편찬위원회 한국근대지리정보'),
+export function addMap1919Layer(viewer: Cesium.Viewer): Cesium.ImageryLayer[] {
+  return MAP1919_RECTANGLES.map((rectangle) => {
+    const provider = new Cesium.UrlTemplateImageryProvider({
+      url: MAP1919_URL,
+      rectangle,
+      minimumLevel: 9,
+      maximumLevel: 14,
+      credit: new Cesium.Credit('1919 조선지형도 — 국사편찬위원회 한국근대지리정보'),
+    });
+    const layer = new Cesium.ImageryLayer(provider, { rectangle });
+    layer.alpha = 0.85;
+    layer.show = false;
+    viewer.imageryLayers.add(layer);
+    return layer;
   });
-  const layer = new Cesium.ImageryLayer(provider, { rectangle: MAP1919_RECTANGLE });
-  layer.alpha = 0.85;
-  layer.show = false;
-  viewer.imageryLayers.add(layer);
-  return layer;
 }
 
 export interface ModelItem {
