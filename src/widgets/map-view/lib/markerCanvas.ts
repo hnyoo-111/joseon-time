@@ -39,6 +39,49 @@ function drawTypeGlyph(ctx: CanvasRenderingContext2D, type: HeritageType, cx: nu
   ctx.restore();
 }
 
+/** 관리자 페이지에서 등록한 3D 자산 마커 — 문화유산 마커와 구분되도록 골드색 큐브 아이콘을 씁니다. */
+export function assetMarkerCanvas(selected: boolean): string {
+  const key = 'asset' + (selected ? '-sel' : '-def');
+  if (iconCache[key]) return iconCache[key];
+  const size = selected ? 40 : 30;
+  const r = selected ? 15 : 11;
+  const c = document.createElement('canvas');
+  c.width = size; c.height = size;
+  const ctx = c.getContext('2d')!;
+  ctx.save();
+  ctx.shadowColor = 'rgba(24,20,14,0.35)';
+  ctx.shadowBlur = 5;
+  ctx.shadowOffsetY = 2;
+  ctx.beginPath();
+  ctx.arc(size / 2, size / 2, r, 0, Math.PI * 2);
+  ctx.fillStyle = COLORS.gold;
+  ctx.fill();
+  ctx.restore();
+  ctx.beginPath();
+  ctx.arc(size / 2, size / 2, r, 0, Math.PI * 2);
+  ctx.lineWidth = 2;
+  ctx.strokeStyle = '#fff';
+  ctx.stroke();
+
+  const cx = size / 2, cy = size / 2, s = selected ? 8 : 6;
+  ctx.save();
+  ctx.translate(cx, cy);
+  ctx.strokeStyle = '#fff';
+  ctx.lineWidth = Math.max(1.3, s * 0.16);
+  ctx.lineJoin = 'round';
+  ctx.beginPath();
+  ctx.moveTo(0, -s); ctx.lineTo(s * 0.87, -s * 0.5); ctx.lineTo(s * 0.87, s * 0.5);
+  ctx.lineTo(0, s); ctx.lineTo(-s * 0.87, s * 0.5); ctx.lineTo(-s * 0.87, -s * 0.5); ctx.closePath();
+  ctx.moveTo(0, -s); ctx.lineTo(0, 0); ctx.lineTo(s * 0.87, -s * 0.5);
+  ctx.moveTo(0, 0); ctx.lineTo(-s * 0.87, -s * 0.5);
+  ctx.stroke();
+  ctx.restore();
+
+  const url = c.toDataURL();
+  iconCache[key] = url;
+  return url;
+}
+
 export function markerCanvas(type: HeritageType, selected: boolean): string {
   const key = type + (selected ? '-sel' : '-def');
   if (iconCache[key]) return iconCache[key];

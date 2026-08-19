@@ -55,7 +55,7 @@ export function PaintingPage() {
           </div>
         )}
       </div>
-      <div className="pv-caption">
+      <div className={'pv-caption' + (activeHotspot ? ' pv-caption-hidden' : '')}>
         <b>{painting.title}</b><br />
         <span className="pv-mock">{painting.caption}</span>
       </div>

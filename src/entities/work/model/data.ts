@@ -3,7 +3,7 @@ import type { Work } from './types';
 export const WORKS: Work[] = [
   { id: 'yukryong', title: '육룡이 나르샤', cat: 'drama', year: '2015', kings: ['taejo'], heritages: ['gyeongbok'], figures: ['태조 이성계', '정도전'], tagline: '조선 건국 전야, 여섯 용의 이야기' },
   { id: 'ppuri', title: '뿌리깊은 나무', cat: 'drama', year: '2011', kings: ['sejong'], heritages: ['gyeongbok'], figures: ['세종'], tagline: '한글 창제를 둘러싼 궁중 미스터리' },
-  { id: 'gongjuui-namja', title: '공주의 남자', cat: 'drama', year: '2011', kings: ['danjong'], heritages: ['cheongnyeongpo'], figures: ['수양대군', '김승유', '이세령'], tagline: '계유정난의 소용돌이 속, 원수 집안 두 남녀의 비극적 사랑' },
+  { id: 'wanggwa-saneun-namja', title: '왕과 사는 남자', cat: 'movie', year: '2026', kings: ['danjong'], heritages: ['cheongnyeongpo'], figures: ['단종(이홍위)', '엄흥도'], tagline: '유배된 단종(이홍위)과 그를 몰래 돌본 영월의 촌로 엄흥도의 실화를 그린 사극', desc: '세조의 찬위 이후 노산군으로 강봉되어 청령포로 유배된 단종과, 그를 숨어서 돌본 영월 산골 마을 촌장 엄흥도의 이야기를 그렸습니다. 장항준 감독의 첫 사극 영화로 2026년 2월 개봉해 천만 관객을 넘겼고, 제62회 백상예술대상에서 대상을 수상했습니다.' },
   { id: 'ilwolobongdo', title: '일월오봉도', cat: 'art', year: '조선 후기', kings: ['sejong', 'jeongjo'], heritages: ['gyeongbok', 'changdeok'], figures: [], tagline: '해와 달, 다섯 봉우리로 왕의 권위를 상징하는 어좌 병풍화', desc: '왕의 자리 뒤에 놓여 왕권과 우주 질서를 상징한 궁중 회화입니다.' },
   { id: 'sado', title: '사도', cat: 'movie', year: '2015', kings: ['yeongjo', 'jeongjo'], heritages: ['changdeok'], figures: ['영조', '사도세자', '혜경궁 홍씨'], tagline: '조선 제22대 왕 정조의 아버지, 사도세자의 비극', timeline: [{ y: '1762', e: '사도세자, 뒤주에 갇혀 사망' }, { y: '1776', e: '정조 즉위' }] },
   { id: 'gureumi', title: '구르미 그린 달빛', cat: 'drama', year: '2016', kings: ['jeongjo'], heritages: ['changdeok'], figures: ['정조'], tagline: '세손 시절 정조의 궁중 로맨스' },

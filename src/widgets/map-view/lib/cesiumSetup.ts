@@ -1,7 +1,10 @@
 import * as Cesium from 'cesium';
 
 // -- 지형/타일셋 설정 --------------------------------------------------------
-export const TERRAIN_URL = ''; // 나스 Web Station에 배포한 layer.json 폴더 (예: 5m급 DEM)
+// TODO: 전국 LH DT 5m DEM 변환이 끝나면 그 결과물 URL로 교체.
+// https://dj-geoserver.gaia3d.dev/data/daegu/terrain/ 은 데이터는 있으나 CORS 미허용으로
+// 브라우저에서 직접 호출 불가 (서버 쪽에 Access-Control-Allow-Origin 헤더 추가 필요).
+export const TERRAIN_URL = '';
 export const TILESET_URL = ''; // 나스에 배포한 건물 3D Tiles tileset.json
 export const CESIUM_ION_TOKEN = import.meta.env.VITE_CESIUM_ION_TOKEN ?? '';
 export const CESIUM_ION_ASSET_ID = 5122685;
@@ -108,20 +111,56 @@ export function loadIonTileset(viewer: Cesium.Viewer, extraLayers: unknown[], at
     });
 }
 
+// -- 배경지도(베이스맵) 선택지 -------------------------------------------------
+export interface BasemapOption {
+  id: string;
+  label: string;
+  create: () => Cesium.ImageryProvider;
+  style?: { saturation?: number; brightness?: number; contrast?: number; gamma?: number };
+}
+
+export const BASEMAPS: BasemapOption[] = [
+  {
+    id: 'osm', label: '일반지도',
+    create: () => new Cesium.UrlTemplateImageryProvider({
+      url: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+      credit: 'OpenStreetMap contributors',
+      maximumLevel: 19,
+    }),
+    style: { saturation: 0.18, brightness: 1.28, contrast: 0.88, gamma: 0.92 },
+  },
+  {
+    id: 'satellite', label: '위성지도',
+    create: () => new Cesium.UrlTemplateImageryProvider({
+      url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+      credit: 'Esri, Maxar, Earthstar Geographics',
+      maximumLevel: 19,
+    }),
+  },
+];
+
+/** 배경지도(0번 레이어)만 교체합니다 — 대동여지도 등 다른 오버레이 레이어는 그대로 둡니다. */
+export function applyBasemap(viewer: Cesium.Viewer, id: string): Cesium.ImageryLayer {
+  const opt = BASEMAPS.find((b) => b.id === id) ?? BASEMAPS[0];
+  const layers = viewer.imageryLayers;
+  if (layers.length > 0) layers.remove(layers.get(0), true);
+  const layer = new Cesium.ImageryLayer(opt.create());
+  layers.add(layer, 0);
+  layer.saturation = opt.style?.saturation ?? 1;
+  layer.brightness = opt.style?.brightness ?? 1;
+  layer.contrast = opt.style?.contrast ?? 1;
+  layer.gamma = opt.style?.gamma ?? 1;
+  return layer;
+}
+
 export async function setupCesiumViewer(container: HTMLDivElement): Promise<{ viewer: Cesium.Viewer; extraLayers: unknown[] }> {
-  const imageryProvider = new Cesium.UrlTemplateImageryProvider({
-    url: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-    credit: 'OpenStreetMap contributors',
-    maximumLevel: 19,
-  });
-  const baseLayer = new Cesium.ImageryLayer(imageryProvider);
   const viewer = new Cesium.Viewer(container, {
-    baseLayer,
+    baseLayer: false,
     baseLayerPicker: false, geocoder: false, homeButton: false, sceneModePicker: false,
     navigationHelpButton: false, animation: false, timeline: false, fullscreenButton: false,
     infoBox: false, selectionIndicator: false, creditContainer: document.createElement('div'),
   });
-  baseLayer.saturation = 0.18; baseLayer.brightness = 1.28; baseLayer.contrast = 0.88; baseLayer.gamma = 0.92;
+  applyBasemap(viewer, BASEMAPS[0].id);
   viewer.scene.globe.baseColor = Cesium.Color.fromCssColorString('#F0EEE7');
   if (viewer.scene.skyBox) viewer.scene.skyBox.show = false;
   viewer.scene.backgroundColor = Cesium.Color.fromCssColorString('#F0EEE7');
@@ -132,11 +171,10 @@ export async function setupCesiumViewer(container: HTMLDivElement): Promise<{ vi
   if (CESIUM_ION_TOKEN) Cesium.Ion.defaultAccessToken = CESIUM_ION_TOKEN;
 
   if (TERRAIN_URL) {
-    try { viewer.terrainProvider = await Cesium.CesiumTerrainProvider.fromUrl(TERRAIN_URL); }
-    catch (err) { console.warn('지형 로딩 실패: ', err); }
-  } else if (CESIUM_ION_TOKEN) {
-    try { viewer.scene.setTerrain(new Cesium.Terrain(Cesium.CesiumTerrainProvider.fromIonAssetId(1))); }
-    catch (err) { console.warn('World Terrain 로딩 실패: ', err); }
+    try {
+      viewer.terrainProvider = await Cesium.CesiumTerrainProvider.fromUrl(TERRAIN_URL, { requestVertexNormals: true });
+      viewer.scene.globe.depthTestAgainstTerrain = true;
+    } catch (err) { console.warn('지형 로딩 실패: ', err); }
   }
 
   if (TILESET_URL) {

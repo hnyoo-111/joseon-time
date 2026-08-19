@@ -2,18 +2,22 @@ import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 're
 import * as Cesium from 'cesium';
 import { HERITAGES, heritageById, type Heritage } from '@/entities/heritage';
 import { kingById } from '@/entities/king';
-import { markerCanvas } from '../lib/markerCanvas';
-import { setupCesiumViewer, placeCalibratedModel, addHistoricalMapLayer, MODELS, MODEL_BASE_LOCAL, MODEL_BASE_NAS, DEFAULT_MODEL_FILE } from '../lib/cesiumSetup';
+import { markerCanvas, assetMarkerCanvas } from '../lib/markerCanvas';
+import { setupCesiumViewer, placeCalibratedModel, addHistoricalMapLayer, applyBasemap, MODELS, MODEL_BASE_LOCAL, MODEL_BASE_NAS, DEFAULT_MODEL_FILE } from '../lib/cesiumSetup';
+
+export interface MapAssetMarker { id: string; lon: number; lat: number; title: string; }
 
 export interface MapViewHandle {
   flyToAll: () => void;
   flyToHeritage: (h: Heritage) => void;
-  flyTo: (lon: number, lat: number, height: number) => void;
+  flyTo: (lon: number, lat: number, height: number, duration?: number) => void;
   zoomIn: () => void;
   zoomOut: () => void;
   toggleLayers: () => void;
   toggle2D3D: () => boolean;
   toggleHistoricalMap: () => boolean;
+  setBasemap: (id: string) => void;
+  syncAssetMarkers: (markers: MapAssetMarker[]) => void;
 }
 
 interface MapViewProps {
@@ -21,26 +25,57 @@ interface MapViewProps {
   dimKingFilter?: string | null;
   showPopup?: boolean;
   onMarkerClick?: (heritageId: string) => void;
+  onAssetMarkerClick?: (assetId: string) => void;
   onReady?: () => void;
 }
 
 export const MapView = forwardRef<MapViewHandle, MapViewProps>(function MapView(
-  { focusedHeritageId = null, dimKingFilter = null, showPopup = true, onMarkerClick, onReady },
+  { focusedHeritageId = null, dimKingFilter = null, showPopup = true, onMarkerClick, onAssetMarkerClick, onReady },
   ref,
 ) {
   const containerRef = useRef<HTMLDivElement>(null);
   const viewerRef = useRef<Cesium.Viewer | null>(null);
   const entitiesRef = useRef<Record<string, Cesium.Entity>>({});
+  const assetEntitiesRef = useRef<Record<string, Cesium.Entity>>({});
+  const pendingAssetMarkersRef = useRef<MapAssetMarker[] | null>(null);
+  const pendingFlyToRef = useRef<{ lon: number; lat: number; height: number } | null>(null);
   const extraLayersRef = useRef<unknown[]>([]);
   const historicalLayerRef = useRef<Cesium.ImageryLayer | null>(null);
   const onMarkerClickRef = useRef(onMarkerClick);
   onMarkerClickRef.current = onMarkerClick;
+  const onAssetMarkerClickRef = useRef(onAssetMarkerClick);
+  onAssetMarkerClickRef.current = onAssetMarkerClick;
   const popupRef = useRef<HTMLDivElement>(null);
   const [loading, setLoading] = useState(true);
   const is2DRef = useRef(false);
   const layersVisibleRef = useRef(true);
   const focusedHeritageIdRef = useRef(focusedHeritageId);
   focusedHeritageIdRef.current = focusedHeritageId;
+
+  const applyFlyTo = (v: Cesium.Viewer, lon: number, lat: number, height: number, duration: number) => {
+    v.camera.flyTo({
+      destination: Cesium.Cartesian3.fromDegrees(lon, lat - 0.008, height + 650),
+      orientation: { heading: 0, pitch: Cesium.Math.toRadians(-40), roll: 0 },
+      duration,
+    });
+  };
+
+  const applyAssetMarkers = (v: Cesium.Viewer, markers: MapAssetMarker[]) => {
+    Object.values(assetEntitiesRef.current).forEach((e) => v.entities.remove(e));
+    assetEntitiesRef.current = {};
+    markers.forEach((m) => {
+      const entity = v.entities.add({
+        position: Cesium.Cartesian3.fromDegrees(m.lon, m.lat, 8),
+        billboard: {
+          image: assetMarkerCanvas(false),
+          verticalOrigin: Cesium.VerticalOrigin.CENTER,
+          disableDepthTestDistance: Number.POSITIVE_INFINITY,
+          heightReference: Cesium.HeightReference.RELATIVE_TO_GROUND,
+        },
+      });
+      assetEntitiesRef.current[m.id] = entity;
+    });
+  };
 
   const refreshMarkers = () => {
     Object.keys(entitiesRef.current).forEach((id) => {
@@ -71,11 +106,12 @@ export const MapView = forwardRef<MapViewHandle, MapViewProps>(function MapView(
 
       HERITAGES.forEach((h) => {
         const entity = viewer.entities.add({
-          position: Cesium.Cartesian3.fromDegrees(h.lon, h.lat, h.height + 6),
+          position: Cesium.Cartesian3.fromDegrees(h.lon, h.lat, 8),
           billboard: {
             image: markerCanvas(h.type, false),
             verticalOrigin: Cesium.VerticalOrigin.CENTER,
             disableDepthTestDistance: Number.POSITIVE_INFINITY,
+            heightReference: Cesium.HeightReference.RELATIVE_TO_GROUND,
           },
         });
         entitiesRef.current[h.id] = entity;
@@ -95,8 +131,10 @@ export const MapView = forwardRef<MapViewHandle, MapViewProps>(function MapView(
       handler.setInputAction((click: { position: Cesium.Cartesian2 }) => {
         const picked = viewer.scene.pick(click.position);
         if (picked && picked.id) {
-          const found = Object.keys(entitiesRef.current).find((id) => entitiesRef.current[id] === picked.id);
-          if (found) onMarkerClickRef.current?.(found);
+          const foundHeritage = Object.keys(entitiesRef.current).find((id) => entitiesRef.current[id] === picked.id);
+          if (foundHeritage) { onMarkerClickRef.current?.(foundHeritage); return; }
+          const foundAsset = Object.keys(assetEntitiesRef.current).find((id) => assetEntitiesRef.current[id] === picked.id);
+          if (foundAsset) onAssetMarkerClickRef.current?.(foundAsset);
         }
       }, Cesium.ScreenSpaceEventType.LEFT_CLICK);
 
@@ -105,7 +143,8 @@ export const MapView = forwardRef<MapViewHandle, MapViewProps>(function MapView(
         if (!popup) return;
         if (!showPopup || !focusedHeritageIdRef.current) { popup.style.display = 'none'; return; }
         const entity = entitiesRef.current[focusedHeritageIdRef.current];
-        const pos = entity?.position?.getValue(viewer.clock.currentTime);
+        const rawPos = entity?.position?.getValue(viewer.clock.currentTime);
+        const pos = rawPos ? (viewer.scene.clampToHeight(rawPos) ?? rawPos) : undefined;
         const win = pos ? Cesium.SceneTransforms.worldToWindowCoordinates(viewer.scene, pos) : undefined;
         if (!win) { popup.style.display = 'none'; return; }
         popup.style.display = 'block';
@@ -113,13 +152,20 @@ export const MapView = forwardRef<MapViewHandle, MapViewProps>(function MapView(
         popup.style.top = `${win.y}px`;
       });
 
+      if (pendingAssetMarkersRef.current) applyAssetMarkers(viewer, pendingAssetMarkersRef.current);
+
       setLoading(false);
       onReady?.();
-      viewer.camera.flyTo({
-        destination: Cesium.Cartesian3.fromDegrees(127.0, 36.6, 650000),
-        orientation: { heading: 0, pitch: Cesium.Math.toRadians(-75), roll: 0 },
-        duration: 0,
-      });
+      const pendingFly = pendingFlyToRef.current;
+      if (pendingFly) {
+        applyFlyTo(viewer, pendingFly.lon, pendingFly.lat, pendingFly.height, 0);
+      } else {
+        viewer.camera.flyTo({
+          destination: Cesium.Cartesian3.fromDegrees(127.0, 36.6, 650000),
+          orientation: { heading: 0, pitch: Cesium.Math.toRadians(-75), roll: 0 },
+          duration: 0,
+        });
+      }
       refreshMarkers();
     })();
 
@@ -166,12 +212,10 @@ export const MapView = forwardRef<MapViewHandle, MapViewProps>(function MapView(
         duration: 1.6,
       });
     },
-    flyTo(lon: number, lat: number, height: number) {
-      viewerRef.current?.camera.flyTo({
-        destination: Cesium.Cartesian3.fromDegrees(lon, lat - 0.008, height + 650),
-        orientation: { heading: 0, pitch: Cesium.Math.toRadians(-40), roll: 0 },
-        duration: 1.5,
-      });
+    flyTo(lon: number, lat: number, height: number, duration = 1.5) {
+      pendingFlyToRef.current = { lon, lat, height };
+      const v = viewerRef.current; if (!v) return;
+      applyFlyTo(v, lon, lat, height, duration);
     },
     zoomIn() {
       const v = viewerRef.current; if (!v) return;
@@ -196,6 +240,15 @@ export const MapView = forwardRef<MapViewHandle, MapViewProps>(function MapView(
       if (!layer) return false;
       layer.show = !layer.show;
       return layer.show;
+    },
+    setBasemap(id: string) {
+      const v = viewerRef.current; if (!v) return;
+      applyBasemap(v, id);
+    },
+    syncAssetMarkers(markers: MapAssetMarker[]) {
+      pendingAssetMarkersRef.current = markers;
+      const v = viewerRef.current; if (!v) return;
+      applyAssetMarkers(v, markers);
     },
   }), []);
 
