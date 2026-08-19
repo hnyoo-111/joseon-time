@@ -7,7 +7,7 @@ export const EVENTS: HistoricalEvent[] = [
   { id: 'hangeul', title: '훈민정음 반포', year: '1446', kings: ['sejong'], heritages: ['gyeongbok'], works: ['ppuri'], desc: '세종이 백성을 위해 창제한 새로운 문자, 훈민정음을 세상에 반포한 사건입니다.' },
   { id: 'injobanjeong', title: '인조반정', year: '1623', kings: ['gwanghae', 'injo'], heritages: ['jongmyo'], works: ['gwanghae'], desc: '서인 세력이 광해군을 몰아내고 인조를 왕위에 올린 정변입니다.' },
   { id: 'gisahwanguk', title: '기사환국', year: '1689', kings: ['sukjong'], heritages: ['changgyeong'], works: ['inhyeon', 'dongyi', 'daebak'], desc: '장희빈 소생 왕자의 원자 책봉을 둘러싸고 서인이 축출되고 남인이 집권한 정치적 사건입니다.' },
-  { id: 'danjong-pyewi', title: '단종의 폐위와 유배', year: '1455–1457', kings: ['danjong'], heritages: ['cheongnyeongpo', 'gwanpungheon'], works: ['gongjuui-namja'], desc: '숙부 수양대군이 계유정난(1453)으로 실권을 장악한 뒤, 1455년 12살 단종을 강제로 퇴위시켰습니다. 1457년 사육신의 복위 운동이 발각되자 노산군으로 강봉되어 청령포로 유배되었고, 그해 관풍헌에서 짧은 생을 마쳤습니다.' },
+  { id: 'danjong-pyewi', title: '단종의 폐위와 유배', year: '1455–1457', kings: ['danjong'], heritages: ['cheongnyeongpo', 'gwanpungheon'], works: ['wanggwa-saneun-namja'], desc: '숙부 수양대군이 계유정난(1453)으로 실권을 장악한 뒤, 1455년 12살 단종을 강제로 퇴위시켰습니다. 1457년 사육신의 복위 운동이 발각되자 노산군으로 강봉되어 청령포로 유배되었고, 그해 관풍헌에서 짧은 생을 마쳤습니다.' },
 ];
 
 export function eventById(id: string): HistoricalEvent | undefined {

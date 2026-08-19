@@ -2,18 +2,23 @@ import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 're
 import * as Cesium from 'cesium';
 import { HERITAGES, heritageById, type Heritage } from '@/entities/heritage';
 import { kingById } from '@/entities/king';
-import { markerCanvas } from '../lib/markerCanvas';
-import { setupCesiumViewer, placeCalibratedModel, addHistoricalMapLayer, addMap1919Layer, MODELS, MODEL_BASE_LOCAL, MODEL_BASE_SERVER, DEFAULT_MODEL_FILE } from '../lib/cesiumSetup';
+import { markerCanvas, assetMarkerCanvas } from '../lib/markerCanvas';
+import {
+  setupCesiumViewer, placeCalibratedModel, addHistoricalMapLayer, addMap1919Layer, applyBasemap,
+  MODELS, MODEL_BASE_LOCAL, MODEL_BASE_SERVER, DEFAULT_MODEL_FILE,
+} from '../lib/cesiumSetup';
 import { addHaenghaengRoute, flyToRoute, removeRoute, type HaenghaengRoute } from '../lib/haenghaengRoute';
 import {
   buildProcession, describeTime, flyToProcession, removeProcession, seekToDay, trackLead, PROCESSION_CONFIGS,
   type Procession, type ProcessionTick,
 } from '../lib/haenghaengProcession';
 
+export interface MapAssetMarker { id: string; lon: number; lat: number; title: string; }
+
 export interface MapViewHandle {
   flyToAll: () => void;
   flyToHeritage: (h: Heritage) => void;
-  flyTo: (lon: number, lat: number, height: number) => void;
+  flyTo: (lon: number, lat: number, height: number, duration?: number) => void;
   zoomIn: () => void;
   zoomOut: () => void;
   toggleLayers: () => void;
@@ -21,14 +26,14 @@ export interface MapViewHandle {
   toggleHistoricalMap: () => boolean;
   /** 1919년 조선지형도(행차 회랑) 오버레이 토글. */
   toggleMap1919: () => boolean;
-  /** 행차 경로와 행렬 시뮬레이션을 한 번에 올린다(여정 화면용). */
+  setBasemap: (id: string) => void;
+  syncAssetMarkers: (markers: MapAssetMarker[]) => void;
   /** 여정 id 로 행렬 시뮬레이션을 시작한다(PROCESSION_CONFIGS 에 있는 여정만). */
   startHaenghaeng: (journeyId?: string) => Promise<Procession | null>;
   /** 선두 추적 카메라 on/off */
   trackProcession: (on: boolean) => void;
   /** 재생/일시정지 토글. 변경된 재생 여부를 돌려준다. */
   togglePlay: () => boolean;
-  /** 재생 배속(시뮬레이션 초/실제 초) */
   /** n일차 시작(이동일이면 출발 시각)으로 시계를 옮긴다. */
   seekDay: (dayIndex: number) => void;
 }
@@ -40,18 +45,22 @@ interface MapViewProps {
   dimKingFilter?: string | null;
   showPopup?: boolean;
   onMarkerClick?: (heritageId: string) => void;
+  onAssetMarkerClick?: (assetId: string) => void;
   onReady?: () => void;
   /** 행차 시계가 흐를 때마다(초 단위로 눌러서) 현재 일자·시각을 알린다. */
   onProcessionTick?: (tick: ProcessionTick) => void;
 }
 
 export const MapView = forwardRef<MapViewHandle, MapViewProps>(function MapView(
-  { timeline = false, focusedHeritageId = null, dimKingFilter = null, showPopup = true, onMarkerClick, onReady, onProcessionTick },
+  { timeline = false, focusedHeritageId = null, dimKingFilter = null, showPopup = true, onMarkerClick, onAssetMarkerClick, onReady, onProcessionTick },
   ref,
 ) {
   const containerRef = useRef<HTMLDivElement>(null);
   const viewerRef = useRef<Cesium.Viewer | null>(null);
   const entitiesRef = useRef<Record<string, Cesium.Entity>>({});
+  const assetEntitiesRef = useRef<Record<string, Cesium.Entity>>({});
+  const pendingAssetMarkersRef = useRef<MapAssetMarker[] | null>(null);
+  const pendingFlyToRef = useRef<{ lon: number; lat: number; height: number } | null>(null);
   const extraLayersRef = useRef<unknown[]>([]);
   const historicalLayerRef = useRef<Cesium.ImageryLayer | null>(null);
   const map1919LayersRef = useRef<Cesium.ImageryLayer[]>([]);
@@ -61,12 +70,39 @@ export const MapView = forwardRef<MapViewHandle, MapViewProps>(function MapView(
   onTickRef.current = onProcessionTick;
   const onMarkerClickRef = useRef(onMarkerClick);
   onMarkerClickRef.current = onMarkerClick;
+  const onAssetMarkerClickRef = useRef(onAssetMarkerClick);
+  onAssetMarkerClickRef.current = onAssetMarkerClick;
   const popupRef = useRef<HTMLDivElement>(null);
   const [loading, setLoading] = useState(true);
   const is2DRef = useRef(false);
   const layersVisibleRef = useRef(true);
   const focusedHeritageIdRef = useRef(focusedHeritageId);
   focusedHeritageIdRef.current = focusedHeritageId;
+
+  const applyFlyTo = (v: Cesium.Viewer, lon: number, lat: number, height: number, duration: number) => {
+    v.camera.flyTo({
+      destination: Cesium.Cartesian3.fromDegrees(lon, lat - 0.008, height + 650),
+      orientation: { heading: 0, pitch: Cesium.Math.toRadians(-40), roll: 0 },
+      duration,
+    });
+  };
+
+  const applyAssetMarkers = (v: Cesium.Viewer, markers: MapAssetMarker[]) => {
+    Object.values(assetEntitiesRef.current).forEach((e) => v.entities.remove(e));
+    assetEntitiesRef.current = {};
+    markers.forEach((m) => {
+      const entity = v.entities.add({
+        position: Cesium.Cartesian3.fromDegrees(m.lon, m.lat, 8),
+        billboard: {
+          image: assetMarkerCanvas(false),
+          verticalOrigin: Cesium.VerticalOrigin.CENTER,
+          disableDepthTestDistance: Number.POSITIVE_INFINITY,
+          heightReference: Cesium.HeightReference.RELATIVE_TO_GROUND,
+        },
+      });
+      assetEntitiesRef.current[m.id] = entity;
+    });
+  };
 
   const refreshMarkers = () => {
     Object.keys(entitiesRef.current).forEach((id) => {
@@ -126,8 +162,10 @@ export const MapView = forwardRef<MapViewHandle, MapViewProps>(function MapView(
       handler.setInputAction((click: { position: Cesium.Cartesian2 }) => {
         const picked = viewer.scene.pick(click.position);
         if (picked && picked.id) {
-          const found = Object.keys(entitiesRef.current).find((id) => entitiesRef.current[id] === picked.id);
-          if (found) onMarkerClickRef.current?.(found);
+          const foundHeritage = Object.keys(entitiesRef.current).find((id) => entitiesRef.current[id] === picked.id);
+          if (foundHeritage) { onMarkerClickRef.current?.(foundHeritage); return; }
+          const foundAsset = Object.keys(assetEntitiesRef.current).find((id) => assetEntitiesRef.current[id] === picked.id);
+          if (foundAsset) onAssetMarkerClickRef.current?.(foundAsset);
         }
       }, Cesium.ScreenSpaceEventType.LEFT_CLICK);
 
@@ -152,14 +190,21 @@ export const MapView = forwardRef<MapViewHandle, MapViewProps>(function MapView(
         popup.style.top = `${win.y}px`;
       });
 
+      if (pendingAssetMarkersRef.current) applyAssetMarkers(viewer, pendingAssetMarkersRef.current);
+
       setLoading(false);
-      // 기본 카메라(한반도 전경)를 먼저 놓고 나서 onReady 를 부른다 — 순서가 반대면
-      // onReady 안에서 잡은 카메라(행차 홈 뷰 등)를 이 전경 점프가 즉시 덮어써 버린다.
-      viewer.camera.flyTo({
-        destination: Cesium.Cartesian3.fromDegrees(127.0, 36.6, 650000),
-        orientation: { heading: 0, pitch: Cesium.Math.toRadians(-75), roll: 0 },
-        duration: 0,
-      });
+      // 기본 카메라(한반도 전경, 또는 미리 요청된 flyTo 위치)를 먼저 놓고 나서 onReady 를 부른다 —
+      // 순서가 반대면 onReady 안에서 잡은 카메라(행차 홈 뷰 등)를 이 전경 점프가 즉시 덮어써 버린다.
+      const pendingFly = pendingFlyToRef.current;
+      if (pendingFly) {
+        applyFlyTo(viewer, pendingFly.lon, pendingFly.lat, pendingFly.height, 0);
+      } else {
+        viewer.camera.flyTo({
+          destination: Cesium.Cartesian3.fromDegrees(127.0, 36.6, 650000),
+          orientation: { heading: 0, pitch: Cesium.Math.toRadians(-75), roll: 0 },
+          duration: 0,
+        });
+      }
       onReady?.();
       refreshMarkers();
     })();
@@ -211,12 +256,10 @@ export const MapView = forwardRef<MapViewHandle, MapViewProps>(function MapView(
         duration: 1.6,
       });
     },
-    flyTo(lon: number, lat: number, height: number) {
-      viewerRef.current?.camera.flyTo({
-        destination: Cesium.Cartesian3.fromDegrees(lon, lat - 0.008, height + 650),
-        orientation: { heading: 0, pitch: Cesium.Math.toRadians(-40), roll: 0 },
-        duration: 1.5,
-      });
+    flyTo(lon: number, lat: number, height: number, duration = 1.5) {
+      pendingFlyToRef.current = { lon, lat, height };
+      const v = viewerRef.current; if (!v) return;
+      applyFlyTo(v, lon, lat, height, duration);
     },
     zoomIn() {
       const v = viewerRef.current; if (!v) return;
@@ -248,6 +291,15 @@ export const MapView = forwardRef<MapViewHandle, MapViewProps>(function MapView(
       const show = !layers[0].show;
       layers.forEach((l) => { l.show = show; });
       return show;
+    },
+    setBasemap(id: string) {
+      const v = viewerRef.current; if (!v) return;
+      applyBasemap(v, id);
+    },
+    syncAssetMarkers(markers: MapAssetMarker[]) {
+      pendingAssetMarkersRef.current = markers;
+      const v = viewerRef.current; if (!v) return;
+      applyAssetMarkers(v, markers);
     },
     async startHaenghaeng(journeyId: string = 'hwaseonghaenghaeng') {
       const v = viewerRef.current;

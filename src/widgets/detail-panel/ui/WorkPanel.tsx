@@ -30,6 +30,9 @@ export function WorkPanel({ work }: { work: Work }) {
   return (
     <>
       <button className="back-btn" onClick={goBack}>← 뒤로</button>
+      {work.posterUrl && (
+        <img className="p-poster" src={work.posterUrl} alt={`${work.title} 포스터`} />
+      )}
       <div className="p-title">{work.title}</div>
       <div className="p-tagline">{work.tagline}</div>
       <div className="p-meta">{CAT_LABEL[work.cat]}</div>

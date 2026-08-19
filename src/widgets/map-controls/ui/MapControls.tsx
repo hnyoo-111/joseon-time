@@ -1,5 +1,5 @@
 import { useState, type RefObject } from 'react';
-import type { MapViewHandle } from '@/widgets/map-view';
+import { BASEMAPS, type MapViewHandle } from '@/widgets/map-view';
 import { CompassIcon, FitIcon, LayersIcon } from '@/shared/ui/icons';
 
 interface MapControlsProps {
@@ -10,8 +10,11 @@ interface MapControlsProps {
   onToggleHistoricalMap: (on: boolean) => void;
 }
 
+const BASEMAP_SHORT_LABEL: Record<string, string> = { osm: '지도', satellite: '위성' };
+
 export function MapControls({ mapRef, onFocusRequested, onFitRequested, historicalMapOn, onToggleHistoricalMap }: MapControlsProps) {
   const [mode2D, setMode2D] = useState(false);
+  const [basemapId, setBasemapId] = useState(BASEMAPS[0].id);
 
   return (
     <div className="map-controls">
@@ -32,6 +35,21 @@ export function MapControls({ mapRef, onFocusRequested, onFitRequested, historic
           onClick={() => { const on = mapRef.current?.toggleHistoricalMap(); onToggleHistoricalMap(!!on); }}
         >
           <LayersIcon />
+        </button>
+      </div>
+      <div className="mc-divider" />
+      <div className="mc-group">
+        <button
+          className="btn-mode"
+          data-tip={`배경지도: ${BASEMAPS.find((b) => b.id === basemapId)?.label} (전환)`}
+          onClick={() => {
+            const ids = BASEMAPS.map((b) => b.id);
+            const next = ids[(ids.indexOf(basemapId) + 1) % ids.length];
+            mapRef.current?.setBasemap(next);
+            setBasemapId(next);
+          }}
+        >
+          {BASEMAP_SHORT_LABEL[basemapId] ?? basemapId}
         </button>
       </div>
       <div className="mc-divider" />

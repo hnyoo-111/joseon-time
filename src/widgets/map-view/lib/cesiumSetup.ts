@@ -1,8 +1,11 @@
 import * as Cesium from 'cesium';
 
 // -- 지형/타일셋 설정 --------------------------------------------------------
-export const TERRAIN_URL = ''; // 나스 Web Station에 배포한 layer.json 폴더 (예: 5m급 DEM)
-export const TILESET_URL = ''; // 나스에 배포한 건물 3D Tiles tileset.json
+// TODO: 전국 LH DT 5m DEM 변환이 끝나면 그 결과물 URL로 교체.
+// https://dj-geoserver.gaia3d.dev/data/daegu/terrain/ 은 데이터는 있으나 CORS 미허용으로
+// 브라우저에서 직접 호출 불가 (서버 쪽에 Access-Control-Allow-Origin 헤더 추가 필요).
+export const TERRAIN_URL = '';
+export const TILESET_URL = ''; // 나스/서버에 배포한 건물 3D Tiles tileset.json
 export const CESIUM_ION_TOKEN = import.meta.env.VITE_CESIUM_ION_TOKEN ?? '';
 export const CESIUM_ION_ASSET_ID = 5122685;
 
@@ -142,6 +145,8 @@ export function placeCalibratedModel(viewer: Cesium.Viewer, basePosition: { lon:
 export function loadIonTileset(viewer: Cesium.Viewer, extraLayers: unknown[], attempt = 1) {
   const RETRY_LIMIT = 20;
   const RETRY_DELAY_MS = 30000;
+  // 계정 ion 토큰은 여기서만 accessToken 옵션으로 스코프를 좁혀 쓴다 — Ion.defaultAccessToken
+  // 을 전역으로 덮어쓰면 World Terrain(내장 토큰) 요청까지 이 계정 토큰의 도메인 제한에 걸린다.
   Cesium.IonResource.fromAssetId(CESIUM_ION_ASSET_ID, { accessToken: CESIUM_ION_TOKEN })
     .then((resource) => Cesium.Cesium3DTileset.fromUrl(resource))
     .then((t) => {
@@ -162,6 +167,49 @@ export function loadIonTileset(viewer: Cesium.Viewer, extraLayers: unknown[], at
     });
 }
 
+// -- 배경지도(베이스맵) 선택지 -------------------------------------------------
+export interface BasemapOption {
+  id: string;
+  label: string;
+  create: () => Cesium.ImageryProvider;
+  style?: { saturation?: number; brightness?: number; contrast?: number; gamma?: number };
+}
+
+export const BASEMAPS: BasemapOption[] = [
+  {
+    id: 'osm', label: '일반지도',
+    create: () => new Cesium.UrlTemplateImageryProvider({
+      // 189 서버가 타일을 서빙하게 되면 VITE_TILE_URL 로 그 경로를 가리키면 된다.
+      url: import.meta.env.VITE_TILE_URL ?? 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+      credit: 'OpenStreetMap contributors',
+      maximumLevel: 19,
+    }),
+    style: { saturation: 0.18, brightness: 1.28, contrast: 0.88, gamma: 0.92 },
+  },
+  {
+    id: 'satellite', label: '위성지도',
+    create: () => new Cesium.UrlTemplateImageryProvider({
+      url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+      credit: 'Esri, Maxar, Earthstar Geographics',
+      maximumLevel: 19,
+    }),
+  },
+];
+
+/** 배경지도(0번 레이어)만 교체합니다 — 대동여지도 등 다른 오버레이 레이어는 그대로 둡니다. */
+export function applyBasemap(viewer: Cesium.Viewer, id: string): Cesium.ImageryLayer {
+  const opt = BASEMAPS.find((b) => b.id === id) ?? BASEMAPS[0];
+  const layers = viewer.imageryLayers;
+  if (layers.length > 0) layers.remove(layers.get(0), true);
+  const layer = new Cesium.ImageryLayer(opt.create());
+  layers.add(layer, 0);
+  layer.saturation = opt.style?.saturation ?? 1;
+  layer.brightness = opt.style?.brightness ?? 1;
+  layer.contrast = opt.style?.contrast ?? 1;
+  layer.gamma = opt.style?.gamma ?? 1;
+  return layer;
+}
+
 export interface ViewerOptions {
   /** 행차 시뮬레이션처럼 시간축이 필요한 화면에서만 Cesium 타임바·재생 컨트롤을 켠다. */
   timeline?: boolean;
@@ -171,21 +219,14 @@ export async function setupCesiumViewer(
   container: HTMLDivElement,
   options: ViewerOptions = {},
 ): Promise<{ viewer: Cesium.Viewer; extraLayers: unknown[] }> {
-  const imageryProvider = new Cesium.UrlTemplateImageryProvider({
-    // 189 서버가 타일을 서빙하게 되면 VITE_TILE_URL 로 그 경로를 가리키면 된다.
-    url: import.meta.env.VITE_TILE_URL ?? 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-    credit: 'OpenStreetMap contributors',
-    maximumLevel: 19,
-  });
-  const baseLayer = new Cesium.ImageryLayer(imageryProvider);
   const viewer = new Cesium.Viewer(container, {
-    baseLayer,
+    baseLayer: false,
     baseLayerPicker: false, geocoder: false, homeButton: false, sceneModePicker: false,
     navigationHelpButton: false, fullscreenButton: false,
     animation: options.timeline ?? false, timeline: options.timeline ?? false,
     infoBox: false, selectionIndicator: false, creditContainer: document.createElement('div'),
   });
-  baseLayer.saturation = 0.18; baseLayer.brightness = 1.28; baseLayer.contrast = 0.88; baseLayer.gamma = 0.92;
+  applyBasemap(viewer, BASEMAPS[0].id);
   viewer.scene.globe.baseColor = Cesium.Color.fromCssColorString('#F0EEE7');
   if (viewer.scene.skyBox) viewer.scene.skyBox.show = false;
   viewer.scene.backgroundColor = Cesium.Color.fromCssColorString('#F0EEE7');
@@ -193,21 +234,17 @@ export async function setupCesiumViewer(
 
   const extraLayers: unknown[] = [];
 
-  // 계정 ion 토큰은 근정전 3D 타일셋(개인 자산) 로드에만 사용한다.
-  // defaultAccessToken을 여기서 덮어쓰면 World Terrain 요청까지 도메인 제한에 걸리므로 건드리지 않는다.
+  // 계정 ion 토큰은 근정전 3D 타일셋(개인 자산) 로드에만 사용한다(loadIonTileset 참고).
+  // defaultAccessToken을 여기서 전역으로 설정하지 않는다 — World Terrain 요청까지
+  // 이 계정 토큰의 도메인 제한에 걸려버린다.
   if (TERRAIN_URL) {
-    try { viewer.terrainProvider = await Cesium.CesiumTerrainProvider.fromUrl(TERRAIN_URL); }
-    catch (err) { console.warn('지형 로딩 실패: ', err); }
-  } else {
-    // 계정 ion 토큰 없이 CesiumJS 기본(내장) 토큰으로 World Terrain을 로드한다.
-    // 실패 시 지형이 미확정 상태로 남아 배경 타일까지 멈추므로 타원체로 명시 폴백한다.
-    const worldTerrain = Cesium.Terrain.fromWorldTerrain();
-    worldTerrain.errorEvent.addEventListener((err) => {
-      console.warn('World Terrain 로딩 실패 — 기본 타원체로 대체: ', err);
-      viewer.scene.terrainProvider = new Cesium.EllipsoidTerrainProvider();
-    });
-    viewer.scene.setTerrain(worldTerrain);
+    try {
+      viewer.terrainProvider = await Cesium.CesiumTerrainProvider.fromUrl(TERRAIN_URL, { requestVertexNormals: true });
+      viewer.scene.globe.depthTestAgainstTerrain = true;
+    } catch (err) { console.warn('지형 로딩 실패: ', err); }
   }
+  // TERRAIN_URL이 비어있을 때 Cesium World Terrain으로 자동 대체하지 않는다 — 평평한
+  // 타원체 그대로 두고, 전국 LH DT 지형이 준비되면 TERRAIN_URL만 채워 넣는 방식으로 간다.
 
   if (TILESET_URL) {
     try {

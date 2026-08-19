@@ -6,12 +6,14 @@ import { TimelineSidebar } from '@/widgets/timeline-sidebar';
 import { DetailPanel } from '@/widgets/detail-panel';
 import { MapControls } from '@/widgets/map-controls';
 import { JourneyLog } from '@/widgets/journey-log';
+import { AssetLayerPanel, type AssetLayerPanelHandle } from '@/widgets/asset-layers';
 import { TypeIcon } from '@/shared/ui/icons';
 
 const LEGEND_TYPES: HeritageType[] = ['palace', 'fortress', 'shrine', 'site'];
 
 export function MapPage() {
   const mapRef = useRef<MapViewHandle>(null);
+  const assetLayerRef = useRef<AssetLayerPanelHandle>(null);
   const { mapFocusHeritageId, currentKingFilter, openSite } = useAppStore();
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [panelCollapsed, setPanelCollapsed] = useState(false);
@@ -37,9 +39,11 @@ export function MapPage() {
           focusedHeritageId={mapFocusHeritageId}
           dimKingFilter={currentKingFilter}
           onMarkerClick={(id) => openSite(id)}
+          onAssetMarkerClick={(id) => assetLayerRef.current?.openPreview(id)}
         />
 
         <JourneyLog />
+        <AssetLayerPanel ref={assetLayerRef} mapRef={mapRef} />
 
         <div className="map-legend">
           {LEGEND_TYPES.map((t) => (

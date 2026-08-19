@@ -13,6 +13,8 @@ export interface Work {
   tagline: string;
   desc?: string;
   timeline?: WorkTimelineEntry[];
+  /** public/works/{id}.jpg 같은 경로. 없으면 카테고리 아이콘으로 대체 표시됩니다. */
+  posterUrl?: string;
 }
 
 export const CAT_LABEL: Record<WorkCategory, string> = {
