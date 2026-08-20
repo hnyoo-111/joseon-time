@@ -5,7 +5,6 @@ import { heritageById } from '@/entities/heritage';
 import { workById } from '@/entities/work';
 import { useAppStore } from '@/app/model/appStore';
 import { MapView, PROCESSION_CONFIGS, type MapViewHandle, type DayWindow, type ProcessionTick } from '@/widgets/map-view';
-import { ProcessionTimebar } from '@/widgets/procession-timebar';
 import { JourneyTimelineBar } from '@/widgets/journey-timeline-bar';
 import { YearSplash } from '@/shared/ui/YearSplash';
 
@@ -109,20 +108,6 @@ export function JourneyPage() {
           </details>
         )}
 
-        {days.length > 0 && (
-          <ProcessionTimebar
-            days={days}
-            tick={tick}
-            playing={playing}
-            tracking={tracking}
-            historicalOn={historicalOn}
-            onTogglePlay={() => setPlaying(!!mapRef.current?.togglePlay())}
-            onSeekDay={(i) => mapRef.current?.seekDay(i)}
-            onToggleTracking={() => { const next = !tracking; setTracking(next); mapRef.current?.trackProcession(next); }}
-            onToggleHistorical={() => setHistoricalOn(!!mapRef.current?.toggleMap1919())}
-          />
-        )}
-
         <div className="journey-ui">
           <div className="journey-header">
             <div className="jt-year">{journey.year}</div>
@@ -138,6 +123,17 @@ export function JourneyPage() {
             onSelect={setStepIndex}
             onPrev={() => setStepIndex((i) => Math.max(0, i - 1))}
             onNext={() => setStepIndex((i) => Math.min(journey.steps.length - 1, i + 1))}
+            procession={days.length > 0 ? {
+              days,
+              tick,
+              playing,
+              tracking,
+              historicalOn,
+              onTogglePlay: () => setPlaying(!!mapRef.current?.togglePlay()),
+              onSeekDay: (i) => mapRef.current?.seekDay(i),
+              onToggleTracking: () => { const next = !tracking; setTracking(next); mapRef.current?.trackProcession(next); },
+              onToggleHistorical: () => setHistoricalOn(!!mapRef.current?.toggleMap1919()),
+            } : undefined}
           />
         </div>
       </div>

@@ -313,6 +313,8 @@ body {
   position: absolute; bottom: 118px; left: 16px; width: 310px; pointer-events: auto; background: var(--surface);
   border: 1px solid var(--border); border-radius: 0; box-shadow: var(--shadow-lg); padding: 18px; z-index: 27;
 }
+/* 여정 플레이어(2단 구성)가 아래에 있으면 겹치지 않게 더 띄운다 */
+.has-procession .story-card-panel { bottom: 154px; }
 .sc-year { font-size: 11px; font-weight: 700; color: var(--ink-3); }
 .sc-phase { font-size: 10px; font-weight: 700; color: var(--accent); letter-spacing: 0.4px; text-transform: uppercase; margin-top: 2px; margin-bottom: 6px; }
 .sc-title { font-size: 19px; font-weight: 800; color: var(--ink); letter-spacing: -0.3px; margin-bottom: 8px; }
@@ -570,64 +572,77 @@ body {
 .route-notice .rn-sources a { color: inherit; text-decoration: underline; }
 .route-notice .rn-sources a:hover { color: var(--accent); }
 
-/* -------- 행차 타임바 (자체 제작) --------
-   Cesium 기본 타임바·시계 다이얼은 이 아카이브의 톤과 맞지 않고 초 단위 눈금이라
-   8일 일정을 읽기 어렵다. 눈금을 1일 단위로 둔 전용 타임바를 직접 그린다.
-   화면 오른쪽에 세로로 붙인다 — 하단은 여정 스텝 타임라인이 쓰고, 왼쪽은 스토리 카드가 쓴다. */
-.ptb {
-  position: absolute; right: 16px; top: 50%; transform: translateY(-50%); z-index: 41;
-  width: 210px; max-height: calc(100vh - 140px); overflow-y: auto;
+/* -------- 여정 플레이어 (행렬 시뮬레이션이 있는 여정: 화성행차·단종 유배길) --------
+   조건희 님이 만든 우측 세로 「1일차·2일차」 타임바와 하단 스텝 이동 바가 따로 떠 있던 걸
+   하나로 합친다. 우측 타임바의 데이터·동작(재생/일시정지, 일 단위 탐색, 따라가기, 1919년
+   지형도)을 그대로 가져오되, 위치는 하단으로, 모양은 영상 편집 툴의 타임라인 패널처럼 그린다:
+   위 칩 줄 = 장(챕터, 기존 스텝) 선택, 아래 트랜스포트 바 = 재생 헤드가 있는 스크러버. */
+.journey-player {
+  position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); pointer-events: auto;
+  width: min(720px, calc(100vw - 360px));
   background: var(--surface); border: 1px solid var(--border); box-shadow: var(--shadow-lg);
 }
-.ptb-head {
-  display: flex; align-items: center; gap: 10px;
-  padding: 9px 12px; border-bottom: 1px solid var(--border);
+.jp-chapters { display: flex; align-items: center; gap: 8px; padding: 10px 12px 8px; border-bottom: 1px solid var(--border); }
+.jp-nav {
+  width: 26px; height: 26px; flex: none; border-radius: 0; border: 1px solid var(--border-strong); background: var(--surface);
+  cursor: pointer; color: var(--ink); font-size: 12px;
 }
-.ptb-play {
-  width: 34px; height: 32px; flex: none; cursor: pointer; font-size: 12px;
+.jp-nav:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
+.jp-nav:disabled { opacity: 0.3; cursor: default; }
+.jp-chapter-track { display: flex; gap: 6px; overflow-x: auto; flex: 1; scrollbar-width: none; }
+.jp-chapter-track::-webkit-scrollbar { display: none; }
+.jp-chip {
+  flex: none; font-size: 11px; font-weight: 600; color: var(--ink-3); background: var(--surface-2);
+  border: 1px solid transparent; padding: 6px 11px; cursor: pointer; white-space: nowrap; font-family: inherit;
+}
+.jp-chip:hover { color: var(--ink); }
+.jp-chip.visited { color: var(--ink-2); }
+.jp-chip.active { color: var(--surface); background: var(--accent); font-weight: 700; }
+
+.jp-transport { display: flex; align-items: center; gap: 10px; padding: 10px 12px; }
+.jp-play {
+  width: 32px; height: 32px; flex: none; cursor: pointer; font-size: 12px;
   color: var(--surface); background: var(--accent); border: 1px solid var(--accent);
 }
-.ptb-play:hover { background: var(--accent-hover); border-color: var(--accent-hover); }
-.ptb-now { padding: 8px 12px; border-bottom: 1px solid var(--border); }
-.ptb-now-day { font-size: 12.5px; font-weight: 700; color: var(--ink); }
-.ptb-moving {
-  font-size: 9.5px; font-weight: 700; letter-spacing: .04em; padding: 1px 6px; margin-left: auto;
-  color: var(--accent); background: var(--accent-soft); border: 1px solid var(--accent-soft-2);
-}
-.ptb-now-label { font-size: 11px; color: var(--ink-3); margin-top: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.ptb-clock {
-  font-size: 17px; font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums;
+.jp-play:hover { background: var(--accent-hover); border-color: var(--accent-hover); }
+.jp-clock {
+  font-size: 14px; font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums;
   font-family: ui-monospace, Consolas, monospace; flex: none;
 }
-.ptb-follow {
-  display: block; width: calc(100% - 24px); margin: 8px 12px; padding: 7px 11px;
-  font-size: 11px; font-weight: 700; cursor: pointer;
+.jp-scrubber { display: flex; align-items: stretch; gap: 2px; flex: 1; height: 26px; min-width: 0; }
+.jp-day {
+  position: relative; flex: 1; min-width: 10px; cursor: pointer; background: var(--surface-2);
+  border: none; border-bottom: 2px solid var(--border-strong); padding: 0;
+}
+.jp-day-n {
+  position: absolute; top: 2px; left: 3px; font-size: 8.5px; font-weight: 700; color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+}
+.jp-day.is-stay { background: var(--highlight); }
+.jp-day.is-past { opacity: .5; }
+.jp-day.is-now { border-bottom-color: var(--accent); background: var(--surface); }
+.jp-day.is-now .jp-day-n { color: var(--accent); }
+.jp-day:hover { border-bottom-color: var(--accent); }
+.jp-day:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+.jp-day-progress { position: absolute; left: 0; bottom: -2px; height: 2px; background: var(--accent); pointer-events: none; }
+.jp-now { display: flex; flex-direction: column; min-width: 0; flex: none; max-width: 150px; }
+.jp-now-day { font-size: 11px; font-weight: 700; color: var(--ink); white-space: nowrap; }
+.jp-now-label { font-size: 10px; color: var(--ink-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.jp-moving {
+  font-size: 8.5px; font-weight: 700; letter-spacing: .04em; padding: 1px 5px; margin-top: 2px; width: fit-content;
+  color: var(--accent); background: var(--accent-soft); border: 1px solid var(--accent-soft-2);
+}
+.jp-toggle {
+  width: 30px; height: 30px; flex: none; cursor: pointer; font-size: 13px;
   color: var(--ink); background: var(--surface); border: 1px solid var(--border-strong);
 }
-.ptb-follow:hover { color: var(--accent); border-color: var(--accent); }
-.ptb-follow.active { color: var(--surface); background: var(--accent); border-color: var(--accent); }
-.ptb-historical { margin-top: 0; font-weight: 600; color: var(--ink-2); }
+.jp-toggle:hover { border-color: var(--accent); color: var(--accent); }
+.jp-toggle.active { color: var(--surface); background: var(--accent); border-color: var(--accent); }
 
-/* 1일 단위 눈금 — 세로로 쌓는다 */
-.ptb-days { display: flex; flex-direction: column; margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--border); }
-.ptb-day { position: relative; border-bottom: 1px solid var(--border); }
-.ptb-day:last-child { border-bottom: none; }
-.ptb-day > button {
-  width: 100%; display: flex; flex-direction: column; gap: 1px; align-items: flex-start;
-  padding: 7px 9px 8px; cursor: pointer; text-align: left;
-  background: none; border: none; border-left: 3px solid transparent;
+@media (max-width: 860px) {
+  .journey-player { width: calc(100vw - 32px); }
+  .jp-now { display: none; }
 }
-.ptb-day-n { font-size: 11px; font-weight: 700; color: var(--ink-2); }
-.ptb-day-lunar { font-size: 10px; color: var(--ink-3); }
-.ptb-day-meta { font-size: 9.5px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
-.ptb-day.is-stay > button { background: var(--highlight); }
-.ptb-day.is-past > button { opacity: .55; }
-.ptb-day.is-now > button { border-left-color: var(--accent); background: var(--surface-2); }
-.ptb-day.is-now .ptb-day-n { color: var(--accent); }
-.ptb-day > button:hover { background: var(--surface-2); }
-.ptb-day > button:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
-/* 현재 날짜 안에서의 진행도 */
-.ptb-day-progress { position: absolute; left: 0; bottom: 0; height: 2px; background: var(--accent); pointer-events: none; }
 
 /* 타임바가 오른쪽 세로로 붙으므로 하단 여정 UI 는 원래 자리 그대로 둔다. */
 /* ================= Admin ================= */
