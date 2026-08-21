@@ -16,7 +16,6 @@ export function TimelineSidebar({ collapsed = false }: { collapsed?: boolean }) 
   return (
     <aside className={'sidebar panel-surface' + (collapsed ? ' collapsed' : '')}>
       <div className="panel-head">
-        <div className="panel-eyebrow">TIME — 조선의 시간을 따라가기</div>
         <div className="tabs-row">
           <button className={'tab-btn' + (currentTab === 'king' ? ' active' : '')} onClick={() => setTab('king')}>역대 왕</button>
           <button className={'tab-btn' + (currentTab === 'heritage' ? ' active' : '')} onClick={() => setTab('heritage')}>문화유산</button>
@@ -45,10 +44,9 @@ export function TimelineSidebar({ collapsed = false }: { collapsed?: boolean }) 
         ) : (
           <div className="h-card-grid">
             {HERITAGES.map((h) => {
-              const dim = !!currentKingFilter && !h.kings.includes(currentKingFilter);
               const active = mapFocusHeritageId === h.id;
               return (
-                <button key={h.id} className={'h-card' + (dim ? ' dim' : '') + (active ? ' active' : '')} onClick={() => openSite(h.id)}>
+                <button key={h.id} className={'h-card' + (active ? ' active' : '')} onClick={() => openSite(h.id)}>
                   <div className="h-card-thumb">
                     {h.imageUrl ? <img src={h.imageUrl} alt="" loading="lazy" /> : <TypeIcon type={h.type} size={30} color="var(--ink-3)" />}
                   </div>

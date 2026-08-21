@@ -23,7 +23,6 @@ export function Header() {
       {journey ? (
         <div className="travel-badge">
           <span className="tb-dot" />
-          <span>시간여행 모드 · {journey.year} · {journey.title}</span>
           <button className="tb-exit" onClick={() => navigate('/map')}>탐색 모드로 돌아가기</button>
         </div>
       ) : (
