@@ -47,56 +47,46 @@ export function JourneyTimelineBar({ steps, activeIndex, onSelect, onPrev, onNex
 
   const { days, tick, playing, tracking, historicalOn, onTogglePlay, onSeekDay, onToggleTracking, onToggleHistorical } = procession;
   const activeDay = tick?.dayIndex ?? 0;
+  const totalProgress = tick?.totalProgress ?? (days.length ? activeDay / days.length : 0);
 
   return (
     <div className="journey-player">
-      <div className="jp-chapters">
-        <button className="jp-nav" disabled={activeIndex === 0} onClick={onPrev}>‹</button>
-        <div className="jp-chapter-track">
-          {steps.map((s, i) => (
-            <button
-              key={s.id}
-              className={'jp-chip' + (i === activeIndex ? ' active' : '') + (i < activeIndex ? ' visited' : '')}
-              onClick={() => onSelect(i)}
-            >
-              {s.title}
-            </button>
-          ))}
+      <div className="jp-row1">
+        <div className="jp-transport-btns">
+          <button className="jp-step-btn" onClick={() => onSeekDay(Math.max(0, activeDay - 1))} disabled={activeDay === 0} title="이전 날짜">⏮</button>
+          <button className="jp-play" onClick={onTogglePlay} title={playing ? '일시정지' : '재생'}>
+            {playing ? '❚❚' : '▶'}
+          </button>
+          <button className="jp-step-btn" onClick={() => onSeekDay(Math.min(days.length - 1, activeDay + 1))} disabled={activeDay === days.length - 1} title="다음 날짜">⏭</button>
         </div>
-        <button className="jp-nav" disabled={activeIndex === steps.length - 1} onClick={onNext}>›</button>
+
+        <div className="jp-datetime">
+          <div className="jp-date-main">{tick ? `${activeDay + 1}일차 · ${tick.lunar}` : '준비 중'} <span className="jp-clock">{tick?.clock ?? '--:--'}</span></div>
+          <div className="jp-date-sub">
+            {tick?.label ?? ''}
+            {tick?.moving && <span className="jp-moving">이동 중</span>}
+          </div>
+        </div>
+
+        <div className="jp-spacer" />
+        <button className={`jp-toggle${tracking ? ' active' : ''}`} onClick={onToggleTracking} title="행렬 따라가기">🎯 따라가기</button>
+        <button className={`jp-toggle${historicalOn ? ' active' : ''}`} onClick={onToggleHistorical} title="1919년 지형도 겹쳐 보기">🗺 1919 지형도</button>
       </div>
 
-      <div className="jp-transport">
-        <button className="jp-play" onClick={onTogglePlay} title={playing ? '일시정지' : '재생'}>
-          {playing ? '❚❚' : '▶'}
-        </button>
-        <div className="jp-clock">{tick?.clock ?? '--:--'}</div>
-
-        <div className="jp-scrubber">
-          {days.map((d, i) => {
-            const state = i < activeDay ? 'past' : i === activeDay ? 'now' : 'future';
-            return (
-              <button
-                key={d.day}
-                className={`jp-day is-${state}${d.legId ? ' is-move' : ' is-stay'}`}
-                onClick={() => onSeekDay(i)}
-                title={`${d.day}일차 · ${d.lunar} · ${d.legId ? `${d.distanceKm.toFixed(1)}km 이동` : '체류'}`}
-              >
-                <span className="jp-day-n">{d.day}</span>
-                {i === activeDay && <span className="jp-day-progress" style={{ width: `${(tick?.dayProgress ?? 0) * 100}%` }} />}
-              </button>
-            );
-          })}
+      <div className="jp-row2">
+        <span className="jp-edge-label">{days[0] ? `${days[0].day}일차 · ${days[0].lunar}` : ''}</span>
+        <div className="jp-slider" onClick={(e) => {
+          const track = e.currentTarget.getBoundingClientRect();
+          const ratio = Math.min(1, Math.max(0, (e.clientX - track.left) / track.width));
+          onSeekDay(Math.min(days.length - 1, Math.floor(ratio * days.length)));
+        }}>
+          {days.map((d, i) => (
+            <div key={d.day} className={`jp-slider-seg${d.legId ? ' is-move' : ' is-stay'}${i < activeDay ? ' is-past' : ''}`} title={`${d.day}일차 · ${d.lunar} · ${d.legId ? `${d.distanceKm.toFixed(1)}km 이동` : '체류'}`} />
+          ))}
+          <div className="jp-slider-fill" style={{ width: `${totalProgress * 100}%` }} />
+          <div className="jp-slider-handle" style={{ left: `${totalProgress * 100}%` }} />
         </div>
-
-        <div className="jp-now">
-          <span className="jp-now-day">{tick ? `${activeDay + 1}일차 · ${tick.lunar}` : '준비 중'}</span>
-          <span className="jp-now-label">{tick?.label ?? ''}</span>
-          {tick?.moving && <span className="jp-moving">이동 중</span>}
-        </div>
-
-        <button className={`jp-toggle${tracking ? ' active' : ''}`} onClick={onToggleTracking} title="행렬 따라가기">🎯</button>
-        <button className={`jp-toggle${historicalOn ? ' active' : ''}`} onClick={onToggleHistorical} title="1919년 지형도 겹쳐 보기">🗺</button>
+        <span className="jp-edge-label">{days[days.length - 1] ? `${days[days.length - 1].day}일차 · ${days[days.length - 1].lunar}` : ''}</span>
       </div>
     </div>
   );

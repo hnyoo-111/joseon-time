@@ -43,20 +43,22 @@ export function TimelineSidebar({ collapsed = false }: { collapsed?: boolean }) 
             })}
           </div>
         ) : (
-          HERITAGES.map((h) => {
-            const dim = !!currentKingFilter && !h.kings.includes(currentKingFilter);
-            const active = mapFocusHeritageId === h.id;
-            return (
-              <div key={h.id} className={'h-row' + (dim ? ' dim' : '') + (active ? ' active' : '')} onClick={() => openSite(h.id)}>
-                <div className="h-badge"><TypeIcon type={h.type} /></div>
-                <div>
-                  <div className="h-row-title">{h.name}</div>
-                  <div className="h-row-meta">{TYPE_LABEL[h.type]} · {h.address}</div>
-                  <div className="h-row-sub">{h.tagline}</div>
-                </div>
-              </div>
-            );
-          })
+          <div className="h-card-grid">
+            {HERITAGES.map((h) => {
+              const dim = !!currentKingFilter && !h.kings.includes(currentKingFilter);
+              const active = mapFocusHeritageId === h.id;
+              return (
+                <button key={h.id} className={'h-card' + (dim ? ' dim' : '') + (active ? ' active' : '')} onClick={() => openSite(h.id)}>
+                  <div className="h-card-thumb"><TypeIcon type={h.type} size={30} color="var(--ink-3)" /></div>
+                  <div className="h-card-body">
+                    <div className="h-card-title">{h.name}{h.unesco && <span className="h-card-unesco">유네스코</span>}</div>
+                    <div className="h-card-meta">{TYPE_LABEL[h.type]} · {h.address}</div>
+                    <div className="h-card-desc">{h.tagline}</div>
+                  </div>
+                </button>
+              );
+            })}
+          </div>
         )}
       </div>
     </aside>
