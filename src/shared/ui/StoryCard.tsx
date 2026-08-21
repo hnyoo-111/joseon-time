@@ -7,9 +7,15 @@ export function StoryCard({ work, onClick }: { work: Work; onClick: () => void }
   const color = CAT_COLOR[work.cat];
   return (
     <button className="story-card" onClick={onClick}>
-      <div className="story-thumb" style={{ background: heroGradient(color) }}>
-        <CatIcon cat={work.cat} color={color} />
-      </div>
+      {work.posterUrl ? (
+        <div className="story-thumb story-thumb-photo">
+          <img src={work.posterUrl} alt="" loading="lazy" />
+        </div>
+      ) : (
+        <div className="story-thumb" style={{ background: heroGradient(color) }}>
+          <CatIcon cat={work.cat} color={color} />
+        </div>
+      )}
       <div className="story-body">
         <div className="story-cat" style={{ color }}>{CAT_LABEL[work.cat]}</div>
         <div className="story-title">{work.title}</div>

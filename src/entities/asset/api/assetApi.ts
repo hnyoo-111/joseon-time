@@ -3,7 +3,7 @@ import { supabase } from '@/shared/lib/supabaseClient';
 import type { Asset, AssetStatus } from '../model/types';
 
 const STORAGE_BUCKET = 'assets';
-const SELECT_COLUMNS = 'id, region_id, title, description, category, lon, lat, status, model_url, created_at';
+const SELECT_COLUMNS = 'id, region_id, title, description, category, lon, lat, status, model_url, thumbnail_url, created_at';
 
 interface AssetRow {
   id: string;
@@ -15,6 +15,7 @@ interface AssetRow {
   lat: number | null;
   status: AssetStatus;
   model_url: string | null;
+  thumbnail_url: string | null;
   created_at: string;
 }
 
@@ -29,6 +30,7 @@ function toAsset(row: AssetRow): Asset {
     lat: row.lat,
     status: row.status,
     modelUrl: row.model_url ?? undefined,
+    thumbnailUrl: row.thumbnail_url ?? undefined,
     createdAt: row.created_at,
   };
 }
@@ -210,23 +212,45 @@ export async function updateAssetLocation(id: string, lon: number, lat: number):
   return toAsset(data);
 }
 
-/** model_url(public URL)에서 스토리지 객체 경로만 추출합니다. */
-function storagePathFromPublicUrl(modelUrl: string): string | null {
-  const marker = `/object/public/${STORAGE_BUCKET}/`;
-  const idx = modelUrl.indexOf(marker);
-  if (idx === -1) return null;
-  return decodeURIComponent(modelUrl.slice(idx + marker.length));
+/**
+ * 지도 마커에 쓸 대표 사진을 올립니다 — {regionSlug}/{assetId}/thumbnail.{ext} 경로에
+ * 저장하고 thumbnail_url을 채웁니다. 같은 자산에 다시 올리면 덮어씁니다(upsert).
+ */
+export async function uploadThumbnail(id: string, regionSlug: string, file: File): Promise<Asset | null> {
+  const ext = file.name.split('.').pop() || 'jpg';
+  const path = `${regionSlug}/${id}/thumbnail.${ext}`;
+  const { error: uploadError } = await supabase.storage.from(STORAGE_BUCKET).upload(path, file, { upsert: true });
+  if (uploadError) return null;
+
+  const { data: pub } = supabase.storage.from(STORAGE_BUCKET).getPublicUrl(path);
+  // 덮어쓴 경우 CDN/브라우저 캐시가 예전 이미지를 계속 보여줄 수 있어 캐시 무력화 쿼리를 붙인다.
+  const thumbnailUrl = `${pub.publicUrl}?v=${Date.now()}`;
+  const { data, error } = await supabase
+    .from('assets')
+    .update({ thumbnail_url: thumbnailUrl })
+    .eq('id', id)
+    .select(SELECT_COLUMNS)
+    .single<AssetRow>();
+
+  if (error || !data) return null;
+  return toAsset(data);
 }
 
-/** 자산 행을 삭제하고, 연결된 파일이 있으면 스토리지에서도 함께 지웁니다(파일 삭제 실패는 무시). */
-export async function deleteAsset(id: string, modelUrl?: string): Promise<boolean> {
+/** model_url/thumbnail_url(public URL)에서 스토리지 객체 경로만 추출합니다. */
+function storagePathFromPublicUrl(url: string): string | null {
+  const marker = `/object/public/${STORAGE_BUCKET}/`;
+  const idx = url.indexOf(marker);
+  if (idx === -1) return null;
+  return decodeURIComponent(url.slice(idx + marker.length).split('?')[0]);
+}
+
+/** 자산 행을 삭제하고, 연결된 파일(모델·썸네일)이 있으면 스토리지에서도 함께 지웁니다(파일 삭제 실패는 무시). */
+export async function deleteAsset(id: string, modelUrl?: string, thumbnailUrl?: string): Promise<boolean> {
   const { error } = await supabase.from('assets').delete().eq('id', id);
   if (error) return false;
 
-  if (modelUrl) {
-    const path = storagePathFromPublicUrl(modelUrl);
-    if (path) await supabase.storage.from(STORAGE_BUCKET).remove([path]);
-  }
+  const paths = [modelUrl, thumbnailUrl].map((u) => u && storagePathFromPublicUrl(u)).filter((p): p is string => !!p);
+  if (paths.length) await supabase.storage.from(STORAGE_BUCKET).remove(paths);
   return true;
 }
 

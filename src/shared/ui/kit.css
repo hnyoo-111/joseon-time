@@ -92,7 +92,8 @@ body {
 .h-card:hover { background: var(--surface-2); }
 .h-card.active { background: var(--highlight); box-shadow: inset 3px 0 0 var(--accent); }
 .h-card.dim { opacity: 0.32; }
-.h-card-thumb { width: 58px; flex: none; background: var(--surface-2); display: flex; align-items: center; justify-content: center; }
+.h-card-thumb { width: 58px; flex: none; background: var(--surface-2); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.h-card-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .h-card.active .h-card-thumb { background: var(--highlight); }
 .h-card-body { padding: 10px 12px 10px 11px; min-width: 0; }
 .h-card-title { font-size: 13.5px; font-weight: 700; color: var(--ink); display: flex; align-items: center; gap: 6px; }
@@ -136,6 +137,16 @@ body {
 }
 .map-controls button[data-tip]:hover::before { opacity: 1; }
 .btn-mode { font-size: 10px !important; font-weight: 700 !important; letter-spacing: 0.3px; }
+.mc-badge {
+  position: absolute; top: 2px; right: 2px; min-width: 14px; height: 14px; padding: 0 3px; border-radius: 0;
+  background: var(--accent); color: #fff; font-size: 9px; font-weight: 700; line-height: 14px; text-align: center;
+}
+.mc-legend-wrap { position: relative; }
+.mc-legend-popover {
+  position: absolute; right: 46px; top: 50%; transform: translateY(-50%); z-index: 31;
+  background: var(--surface); border: 1px solid var(--border); box-shadow: var(--shadow-md);
+  padding: 10px 13px; display: flex; flex-direction: column; gap: 8px; white-space: nowrap;
+}
 
 /* Map heritage popup card */
 .map-popup { position: absolute; z-index: 32; transform: translate(-50%, -100%); margin-top: -14px; pointer-events: none; }
@@ -148,11 +159,7 @@ body {
 .map-popup .mp-stem { width: 9px; height: 9px; background: var(--surface); border-right: 1px solid var(--border); border-bottom: 1px solid var(--border);
   transform: translateX(-50%) rotate(45deg); margin-top: -5px; margin-left: 50%; }
 
-/* Map legend */
-.map-legend {
-  position: absolute; left: 16px; bottom: 16px; z-index: 28; background: var(--surface); border: 1px solid var(--border);
-  border-radius: 0; box-shadow: var(--shadow-sm); padding: 9px 12px; display: flex; gap: 14px; align-items: center;
-}
+/* Map legend — 우측 지도 컨트롤의 범례 버튼을 누르면 뜨는 팝오버(.mc-legend-popover)에서 쓴다 */
 .legend-item { display: flex; align-items: center; gap: 5px; font-size: 10.5px; color: var(--ink-2); font-weight: 500; }
 .legend-dot { width: 14px; height: 14px; border-radius: 50%; background: var(--navy); display: flex; align-items: center; justify-content: center; }
 .legend-dot svg { width: 8px; height: 8px; }
@@ -205,8 +212,10 @@ body {
 .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 4px; }
 .story-card { border: 1px solid var(--border); border-radius: 0; overflow: hidden; cursor: pointer; background: var(--surface); text-align: left; font-family: inherit; padding: 0; width: 100%; }
 .story-card:hover { border-color: var(--accent); box-shadow: var(--shadow-md); transform: translateY(-1px); }
-.story-thumb { height: 74px; display: flex; align-items: center; justify-content: center; }
+.story-thumb { height: 74px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
 .story-thumb svg { width: 24px; height: 24px; opacity: 0.92; }
+.story-thumb-photo { padding: 0; }
+.story-thumb-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .story-body { padding: 10px 11px 12px; }
 .story-cat { font-size: 9.5px; font-weight: 700; letter-spacing: 0.4px; margin-bottom: 4px; text-transform: uppercase; }
 .story-title { font-size: 13px; font-weight: 700; color: var(--ink); line-height: 1.3; margin-bottom: 2px; }
@@ -322,8 +331,12 @@ body {
   position: absolute; bottom: 118px; left: 16px; width: 310px; pointer-events: auto; background: var(--surface);
   border: 1px solid var(--border); border-radius: 0; box-shadow: var(--shadow-lg); padding: 18px; z-index: 27;
 }
-/* 여정 플레이어(2단 구성)가 아래에 있으면 겹치지 않게 더 띄운다 */
-.has-procession .story-card-panel { bottom: 120px; }
+/* 여정 플레이어가 있는 화면(화성행차·단종 유배길)은 상단좌측 헤더 카드를 이 카드 안으로 합쳐서
+   왼쪽 상단에 뜨는 위치로 옮긴다 — 헤더 카드 + 스토리 카드 두 개가 따로 떠서 화면이 산만하던 것을 하나로. */
+.story-card-panel.with-header { top: 16px; bottom: auto; width: 300px; }
+.sc-kicker { font-size: 10.5px; font-weight: 700; color: var(--accent); letter-spacing: 0.3px; }
+.sc-journey-title { font-size: 14px; font-weight: 700; color: var(--ink); margin-top: 4px; }
+.sc-divider { height: 1px; background: var(--border-strong); margin: 12px 0 10px; }
 .sc-year { font-size: 11px; font-weight: 700; color: var(--ink-3); }
 .sc-phase { font-size: 10px; font-weight: 700; color: var(--accent); letter-spacing: 0.4px; text-transform: uppercase; margin-top: 2px; margin-bottom: 6px; }
 .sc-title { font-size: 19px; font-weight: 800; color: var(--ink); letter-spacing: -0.3px; margin-bottom: 8px; }
@@ -399,13 +412,6 @@ body {
 .pvc-btn:hover { background: var(--accent-hover); }
 
 /* ================= 나의 조선 여행 ================= */
-.journey-log-btn {
-  position: absolute; left: 16px; top: 16px; z-index: 28; background: var(--surface); border: 1px solid var(--border);
-  border-radius: 0; box-shadow: var(--shadow-sm); padding: 8px 13px; font-family: inherit; font-size: 11.5px;
-  font-weight: 600; color: var(--ink-2); cursor: pointer; display: flex; align-items: center; gap: 7px;
-}
-.journey-log-btn:hover { border-color: var(--accent); color: var(--accent); }
-.journey-log-btn .jlb-count { background: var(--navy); color: #fff; border-radius: 0; padding: 1px 7px; font-size: 10px; font-weight: 700; }
 .journey-log-modal {
   position: fixed; inset: 0; z-index: 150; background: rgba(15, 13, 10, 0.5); display: flex; align-items: center; justify-content: center;
 }
@@ -591,19 +597,20 @@ body {
   position: absolute; left: 0; right: 0; bottom: 0; pointer-events: auto;
   background: rgba(17, 21, 29, 0.94); backdrop-filter: blur(6px);
   border-top: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 12px 22px 14px; display: flex; flex-direction: column; gap: 10px; z-index: 42;
+  padding: 8px 22px 10px; display: flex; flex-direction: column; gap: 8px; z-index: 42;
 }
 .jp-row1 { display: flex; align-items: center; gap: 16px; }
 .jp-transport-btns { display: flex; align-items: center; gap: 8px; flex: none; }
 .jp-step-btn {
   width: 32px; height: 32px; flex: none; border-radius: 50%; border: none; background: transparent;
-  color: rgba(255, 255, 255, 0.75); font-size: 13px; cursor: pointer;
+  color: rgba(255, 255, 255, 0.75); cursor: pointer; display: flex; align-items: center; justify-content: center;
 }
 .jp-step-btn:hover:not(:disabled) { background: rgba(255, 255, 255, 0.1); color: #fff; }
 .jp-step-btn:disabled { opacity: 0.3; cursor: default; }
 .jp-play {
-  width: 44px; height: 44px; flex: none; border-radius: 50%; cursor: pointer; font-size: 15px;
+  width: 44px; height: 44px; flex: none; border-radius: 50%; cursor: pointer;
   color: #0F1B33; background: var(--accent); border: none; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+  display: flex; align-items: center; justify-content: center;
 }
 .jp-play:hover { filter: brightness(1.08); }
 .jp-datetime { display: flex; flex-direction: column; min-width: 0; flex: none; }
@@ -618,18 +625,20 @@ body {
 .jp-toggle {
   height: 30px; flex: none; cursor: pointer; font-size: 11px; font-weight: 600; padding: 0 12px;
   color: rgba(255, 255, 255, 0.75); background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex; align-items: center; gap: 8px;
 }
 .jp-toggle:hover { border-color: var(--accent); color: #fff; }
 .jp-toggle.active { color: #0F1B33; background: var(--accent); border-color: var(--accent); }
 
 .jp-row2 { display: flex; align-items: center; gap: 12px; }
 .jp-edge-label { flex: none; font-size: 10px; color: rgba(255, 255, 255, 0.45); font-variant-numeric: tabular-nums; white-space: nowrap; }
-.jp-slider { position: relative; flex: 1; height: 8px; display: flex; gap: 2px; cursor: pointer; }
+.jp-slider-col { display: flex; flex-direction: column; gap: 4px; flex: 1; min-width: 0; }
+.jp-slider { position: relative; height: 6px; display: flex; gap: 2px; cursor: pointer; }
 .jp-slider-seg { flex: 1; min-width: 4px; background: rgba(255, 255, 255, 0.14); border-radius: 1px; }
 .jp-slider-seg.is-move { background: rgba(255, 255, 255, 0.22); }
 .jp-slider-seg.is-past { background: rgba(255, 255, 255, 0.08); }
 .jp-slider-fill {
-  position: absolute; left: 0; top: 3px; height: 2px; background: var(--accent); pointer-events: none;
+  position: absolute; left: 0; top: 2px; height: 2px; background: var(--accent); pointer-events: none;
   transition: width .15s linear;
 }
 .jp-slider-handle {
@@ -637,10 +646,17 @@ body {
   border: 2px solid #11151D; transform: translate(-50%, -50%); pointer-events: none; box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
   transition: left .15s linear;
 }
+.jp-slider-nums { display: flex; gap: 2px; }
+.jp-num {
+  flex: 1; min-width: 4px; text-align: center; font-size: 8.5px; font-variant-numeric: tabular-nums;
+  color: rgba(255, 255, 255, 0.42);
+}
+.jp-num.is-move { color: rgba(255, 255, 255, 0.6); }
 
 @media (max-width: 860px) {
   .jp-datetime { max-width: 140px; }
   .jp-toggle span { display: none; }
+  .jp-toggle { padding: 0 9px; }
   .jp-edge-label { display: none; }
 }
 
@@ -748,7 +764,6 @@ body {
 .admin-preview-close:hover { color: var(--accent); }
 .admin-preview-hint { font-size: 10.5px; color: var(--ink-3); text-align: center; padding: 10px; }
 
-.asset-layer-btn { top: 60px; }
 .asset-layer-row { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); }
 .asset-layer-row:last-child { border-bottom: none; }
 .asset-layer-info { flex: 1; min-width: 0; }
@@ -766,3 +781,11 @@ body {
   transition: left .15s ease;
 }
 .admin-switch.on .admin-switch-knob { left: 18px; }
+
+.admin-thumb-cell {
+  display: flex; align-items: center; justify-content: center; width: 44px; height: 44px;
+  background: var(--surface-2); border: 1px dashed var(--border-strong); cursor: pointer; overflow: hidden;
+}
+.admin-thumb-cell:hover { border-color: var(--accent); }
+.admin-thumb-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.admin-thumb-placeholder { font-size: 16px; color: var(--ink-3); font-weight: 600; }

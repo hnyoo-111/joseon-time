@@ -4,7 +4,7 @@ import { HERITAGES, heritageById, type Heritage } from '@/entities/heritage';
 import { kingById } from '@/entities/king';
 import { markerCanvas, assetMarkerCanvas } from '../lib/markerCanvas';
 import {
-  setupCesiumViewer, placeCalibratedModel, addHistoricalMapLayer, addMap1919Layer, applyBasemap,
+  setupCesiumViewer, placeCalibratedModel, placeAssetModel, addHistoricalMapLayer, addMap1919Layer, applyBasemap,
   MODELS, MODEL_BASE_LOCAL, MODEL_BASE_SERVER, DEFAULT_MODEL_FILE,
 } from '../lib/cesiumSetup';
 import { addHaenghaengRoute, flyToRoute, removeRoute, type HaenghaengRoute } from '../lib/haenghaengRoute';
@@ -13,12 +13,14 @@ import {
   type Procession, type ProcessionTick,
 } from '../lib/haenghaengProcession';
 
-export interface MapAssetMarker { id: string; lon: number; lat: number; title: string; }
+export interface MapAssetMarker { id: string; lon: number; lat: number; title: string; thumbnailUrl?: string; modelUrl?: string; }
 
 export interface MapViewHandle {
   flyToAll: () => void;
   flyToHeritage: (h: Heritage) => void;
   flyTo: (lon: number, lat: number, height: number, duration?: number) => void;
+  /** flyTo와 달리 유적 단위가 아니라 가구 크기의 개별 3D 자산을 가까이서 보기 위한 근접 카메라. */
+  flyToAsset: (lon: number, lat: number, duration?: number) => void;
   zoomIn: () => void;
   zoomOut: () => void;
   toggleLayers: () => void;
@@ -59,6 +61,7 @@ export const MapView = forwardRef<MapViewHandle, MapViewProps>(function MapView(
   const viewerRef = useRef<Cesium.Viewer | null>(null);
   const entitiesRef = useRef<Record<string, Cesium.Entity>>({});
   const assetEntitiesRef = useRef<Record<string, Cesium.Entity>>({});
+  const assetModelsRef = useRef<Record<string, Cesium.Model>>({});
   const pendingAssetMarkersRef = useRef<MapAssetMarker[] | null>(null);
   const pendingFlyToRef = useRef<{ lon: number; lat: number; height: number } | null>(null);
   const extraLayersRef = useRef<unknown[]>([]);
@@ -90,15 +93,41 @@ export const MapView = forwardRef<MapViewHandle, MapViewProps>(function MapView(
   const applyAssetMarkers = (v: Cesium.Viewer, markers: MapAssetMarker[]) => {
     Object.values(assetEntitiesRef.current).forEach((e) => v.entities.remove(e));
     assetEntitiesRef.current = {};
+    Object.values(assetModelsRef.current).forEach((m) => v.scene.primitives.remove(m));
+    assetModelsRef.current = {};
+    // 이 호출 이후 새 syncAssetMarkers가 또 오면(레이어를 빠르게 켰다 껐다 하는 경우)
+    // 아래 비동기 모델 로딩이 끝났을 때 이 세대(generation)가 이미 낡았는지 이 참조로 판별한다.
+    const generation = assetModelsRef.current;
+
     markers.forEach((m) => {
+      // 3D 모델 파일이 있는 자산은 사진 마커 대신 실제 모델을 지형 위에 그대로 놓는다 —
+      // "지도 위에 뜬 점"이 아니라 실제로 그 자리에 놓인 것처럼 보여야 한다는 요구사항.
+      if (m.modelUrl) {
+        placeAssetModel(v, m.lon, m.lat, m.modelUrl).then((model) => {
+          if (!model || assetModelsRef.current !== generation) return;
+          v.scene.primitives.add(model);
+          assetModelsRef.current[m.id] = model;
+        });
+        return;
+      }
+      // 모델이 없고 사진(썸네일)만 있는 자산은 그 사진을 마커로 쓴다. 둘 다 없으면 금색 점.
       const entity = v.entities.add({
         position: Cesium.Cartesian3.fromDegrees(m.lon, m.lat, 8),
-        billboard: {
-          image: assetMarkerCanvas(false),
-          verticalOrigin: Cesium.VerticalOrigin.CENTER,
-          disableDepthTestDistance: Number.POSITIVE_INFINITY,
-          heightReference: Cesium.HeightReference.RELATIVE_TO_GROUND,
-        },
+        billboard: m.thumbnailUrl
+          ? {
+              image: m.thumbnailUrl,
+              width: 48,
+              height: 48,
+              verticalOrigin: Cesium.VerticalOrigin.BOTTOM,
+              disableDepthTestDistance: Number.POSITIVE_INFINITY,
+              heightReference: Cesium.HeightReference.RELATIVE_TO_GROUND,
+            }
+          : {
+              image: assetMarkerCanvas(false),
+              verticalOrigin: Cesium.VerticalOrigin.CENTER,
+              disableDepthTestDistance: Number.POSITIVE_INFINITY,
+              heightReference: Cesium.HeightReference.RELATIVE_TO_GROUND,
+            },
       });
       assetEntitiesRef.current[m.id] = entity;
     });
@@ -260,6 +289,16 @@ export const MapView = forwardRef<MapViewHandle, MapViewProps>(function MapView(
       pendingFlyToRef.current = { lon, lat, height };
       const v = viewerRef.current; if (!v) return;
       applyFlyTo(v, lon, lat, height, duration);
+    },
+    flyToAsset(lon: number, lat: number, duration = 1.5) {
+      const v = viewerRef.current; if (!v) return;
+      // 문화유산용 flyTo(항상 +650m, ~890m 남쪽 오프셋)는 유적 전체를 담는 프레이밍이라
+      // 가구 크기 3D 자산은 이 거리에서 점만 하게 보인다. 훨씬 가까운 전용 프레이밍을 쓴다.
+      v.camera.flyTo({
+        destination: Cesium.Cartesian3.fromDegrees(lon, lat - 0.0003, 45),
+        orientation: { heading: 0, pitch: Cesium.Math.toRadians(-35), roll: 0 },
+        duration,
+      });
     },
     zoomIn() {
       const v = viewerRef.current; if (!v) return;

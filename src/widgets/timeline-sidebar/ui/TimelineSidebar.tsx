@@ -49,7 +49,9 @@ export function TimelineSidebar({ collapsed = false }: { collapsed?: boolean }) 
               const active = mapFocusHeritageId === h.id;
               return (
                 <button key={h.id} className={'h-card' + (dim ? ' dim' : '') + (active ? ' active' : '')} onClick={() => openSite(h.id)}>
-                  <div className="h-card-thumb"><TypeIcon type={h.type} size={30} color="var(--ink-3)" /></div>
+                  <div className="h-card-thumb">
+                    {h.imageUrl ? <img src={h.imageUrl} alt="" loading="lazy" /> : <TypeIcon type={h.type} size={30} color="var(--ink-3)" />}
+                  </div>
                   <div className="h-card-body">
                     <div className="h-card-title">{h.name}{h.unesco && <span className="h-card-unesco">유네스코</span>}</div>
                     <div className="h-card-meta">{TYPE_LABEL[h.type]} · {h.address}</div>

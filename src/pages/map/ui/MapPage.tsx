@@ -1,23 +1,22 @@
 import { useEffect, useRef, useState } from 'react';
 import { useAppStore } from '@/app/model/appStore';
-import { heritageById, TYPE_LABEL, type HeritageType } from '@/entities/heritage';
+import { heritageById } from '@/entities/heritage';
 import { MapView, type MapViewHandle } from '@/widgets/map-view';
 import { TimelineSidebar } from '@/widgets/timeline-sidebar';
 import { DetailPanel } from '@/widgets/detail-panel';
 import { MapControls } from '@/widgets/map-controls';
-import { JourneyLog } from '@/widgets/journey-log';
+import { JourneyLog, type JourneyLogHandle } from '@/widgets/journey-log';
 import { AssetLayerPanel, type AssetLayerPanelHandle } from '@/widgets/asset-layers';
-import { TypeIcon } from '@/shared/ui/icons';
-
-const LEGEND_TYPES: HeritageType[] = ['palace', 'fortress', 'shrine', 'site'];
 
 export function MapPage() {
   const mapRef = useRef<MapViewHandle>(null);
+  const journeyLogRef = useRef<JourneyLogHandle>(null);
   const assetLayerRef = useRef<AssetLayerPanelHandle>(null);
-  const { mapFocusHeritageId, currentKingFilter, openSite } = useAppStore();
+  const { mapFocusHeritageId, currentKingFilter, openSite, visitedLog } = useAppStore();
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [panelCollapsed, setPanelCollapsed] = useState(false);
   const [historicalMapOn, setHistoricalMapOn] = useState(false);
+  const [assetLayerCount, setAssetLayerCount] = useState(0);
 
   // single source of truth: whenever the focused heritage changes, fly the camera there.
   useEffect(() => {
@@ -42,17 +41,8 @@ export function MapPage() {
           onAssetMarkerClick={(id) => assetLayerRef.current?.openPreview(id)}
         />
 
-        <JourneyLog />
-        <AssetLayerPanel ref={assetLayerRef} mapRef={mapRef} />
-
-        <div className="map-legend">
-          {LEGEND_TYPES.map((t) => (
-            <div className="legend-item" key={t}>
-              <span className="legend-dot"><TypeIcon type={t} size={8} /></span>
-              {TYPE_LABEL[t]}
-            </div>
-          ))}
-        </div>
+        <JourneyLog ref={journeyLogRef} />
+        <AssetLayerPanel ref={assetLayerRef} mapRef={mapRef} onVisibleCountChange={setAssetLayerCount} />
 
         {historicalMapOn && (
           <div className="historical-map-badge">
@@ -73,6 +63,10 @@ export function MapPage() {
             }
           }}
           onFitRequested={() => mapRef.current?.flyToAll()}
+          journeyLogRef={journeyLogRef}
+          journeyLogCount={visitedLog.length}
+          assetLayerRef={assetLayerRef}
+          assetLayerCount={assetLayerCount}
         />
       </div>
 

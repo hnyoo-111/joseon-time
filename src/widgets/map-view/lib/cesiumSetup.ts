@@ -142,6 +142,27 @@ export function placeCalibratedModel(viewer: Cesium.Viewer, basePosition: { lon:
     .catch((err) => console.error('[모델 로딩 실패]', url, err));
 }
 
+/**
+ * 관리자가 올린 3D 자산을 좌표에 그대로 놓는다 — placeCalibratedModel과 달리 큐레이션된
+ * realSize/offset이 없으므로 보정 없이 파이프라인 관례(1 Blender 단위 = 1m)를 그대로 믿는다.
+ * CLAMP_TO_GROUND로 지형 위에 붙여서 "지도 위에 떠 있는 점"이 아니라 실제로 땅 위에 놓인 것처럼 보이게 한다.
+ */
+export function placeAssetModel(viewer: Cesium.Viewer, lon: number, lat: number, url: string): Promise<Cesium.Model | null> {
+  const modelMatrix = Cesium.Transforms.eastNorthUpToFixedFrame(Cesium.Cartesian3.fromDegrees(lon, lat, 0));
+  return Cesium.Model.fromGltfAsync({
+    url,
+    modelMatrix,
+    minimumPixelSize: 32,
+    scene: viewer.scene,
+    heightReference: Cesium.HeightReference.CLAMP_TO_GROUND,
+  })
+    .then((model) => {
+      model.errorEvent.addEventListener((err) => console.error('[자산 모델 내부 에러]', url, err));
+      return model;
+    })
+    .catch((err) => { console.error('[자산 모델 로딩 실패]', url, err); return null; });
+}
+
 export function loadIonTileset(viewer: Cesium.Viewer, extraLayers: unknown[], attempt = 1) {
   const RETRY_LIMIT = 20;
   const RETRY_DELAY_MS = 30000;

@@ -10,6 +10,7 @@ export interface Asset {
   lat: number | null;
   status: AssetStatus;
   modelUrl?: string;
+  thumbnailUrl?: string;
   createdAt: string;
 }
 

@@ -4,11 +4,18 @@ import { ModelPreviewModal } from '@/shared/ui/ModelPreviewModal';
 import type { MapViewHandle } from '@/widgets/map-view';
 
 export interface AssetLayerPanelHandle {
+  open: () => void;
   openPreview: (assetId: string) => void;
 }
 
-export const AssetLayerPanel = forwardRef<AssetLayerPanelHandle, { mapRef: RefObject<MapViewHandle | null> }>(
-  function AssetLayerPanel({ mapRef }, ref) {
+interface AssetLayerPanelProps {
+  mapRef: RefObject<MapViewHandle | null>;
+  /** 켜져 있는 레이어 개수가 바뀔 때마다 알려준다 — 지도 컨트롤 쪽 배지 표시용. */
+  onVisibleCountChange?: (count: number) => void;
+}
+
+export const AssetLayerPanel = forwardRef<AssetLayerPanelHandle, AssetLayerPanelProps>(
+  function AssetLayerPanel({ mapRef, onVisibleCountChange }, ref) {
   const [open, setOpen] = useState(false);
   const [assets, setAssets] = useState<Asset[]>([]);
   const [refreshing, setRefreshing] = useState(false);
@@ -16,6 +23,7 @@ export const AssetLayerPanel = forwardRef<AssetLayerPanelHandle, { mapRef: RefOb
   const [previewAsset, setPreviewAsset] = useState<Asset | null>(null);
 
   useImperativeHandle(ref, () => ({
+    open: () => setOpen(true),
     openPreview(assetId: string) {
       const a = assets.find((x) => x.id === assetId);
       if (a?.modelUrl) setPreviewAsset(a);
@@ -33,8 +41,9 @@ export const AssetLayerPanel = forwardRef<AssetLayerPanelHandle, { mapRef: RefOb
   useEffect(() => {
     const markers = assets
       .filter((a) => visibleIds.has(a.id) && a.lon !== null && a.lat !== null)
-      .map((a) => ({ id: a.id, lon: a.lon as number, lat: a.lat as number, title: a.title }));
+      .map((a) => ({ id: a.id, lon: a.lon as number, lat: a.lat as number, title: a.title, thumbnailUrl: a.thumbnailUrl, modelUrl: a.modelUrl }));
     mapRef.current?.syncAssetMarkers(markers);
+    onVisibleCountChange?.(markers.length);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [visibleIds, assets]);
 
@@ -46,18 +55,13 @@ export const AssetLayerPanel = forwardRef<AssetLayerPanelHandle, { mapRef: RefOb
       return next;
     });
     if (turningOn && a.lon !== null && a.lat !== null) {
-      mapRef.current?.flyTo(a.lon, a.lat, 0, 0);
+      mapRef.current?.flyToAsset(a.lon, a.lat);
       setOpen(false);
     }
   }
 
   return (
     <>
-      <button className="journey-log-btn asset-layer-btn" onClick={() => setOpen(true)}>
-        레이어 관리
-        {visibleIds.size > 0 && <span className="jlb-count">{visibleIds.size}</span>}
-      </button>
-
       {open && (
         <div className="journey-log-modal" onClick={() => setOpen(false)}>
           <div className="jl-card" onClick={(e) => e.stopPropagation()}>

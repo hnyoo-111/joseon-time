@@ -2,7 +2,7 @@ import { Fragment, useEffect, useMemo, useState, type FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '@/shared/lib/supabaseClient';
 import { fetchAdminProfile, type AdminProfile } from '@/entities/admin';
-import { fetchAssetsByRegion, createAsset, updateAssetStatus, updateAssetLocation, deleteAsset, STATUS_LABEL, type Asset } from '@/entities/asset';
+import { fetchAssetsByRegion, createAsset, updateAssetStatus, updateAssetLocation, deleteAsset, uploadThumbnail, STATUS_LABEL, type Asset } from '@/entities/asset';
 import { AssetDropzone } from './AssetDropzone';
 import { ModelPreviewModal } from '@/shared/ui/ModelPreviewModal';
 
@@ -28,6 +28,8 @@ export function AdminPage() {
   const [coordSaving, setCoordSaving] = useState(false);
   const [coordError, setCoordError] = useState<string | null>(null);
   const [deletingId, setDeletingId] = useState<string | null>(null);
+  const [uploadingThumbId, setUploadingThumbId] = useState<string | null>(null);
+  const [thumbError, setThumbError] = useState<string | null>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -106,11 +108,22 @@ export function AdminPage() {
   async function handleDelete(a: Asset) {
     if (!window.confirm(`"${a.title}"을(를) 삭제할까요? 되돌릴 수 없습니다.`)) return;
     setDeletingId(a.id);
-    const ok = await deleteAsset(a.id, a.modelUrl);
+    const ok = await deleteAsset(a.id, a.modelUrl, a.thumbnailUrl);
     setDeletingId(null);
     if (!ok) return;
     setAssets((prev) => prev.filter((x) => x.id !== a.id));
     if (previewAsset?.id === a.id) setPreviewAsset(null);
+  }
+
+  async function handleThumbnailUpload(a: Asset, file: File | undefined) {
+    if (!file || !profile) return;
+    if (!file.type.startsWith('image/')) { setThumbError('이미지 파일만 업로드할 수 있습니다.'); return; }
+    setThumbError(null);
+    setUploadingThumbId(a.id);
+    const updated = await uploadThumbnail(a.id, profile.regionSlug, file);
+    setUploadingThumbId(null);
+    if (!updated) { setThumbError(`"${a.title}" 썸네일 업로드에 실패했습니다.`); return; }
+    setAssets((prev) => prev.map((x) => (x.id === updated.id ? updated : x)));
   }
 
   async function handleTogglePublish(a: Asset) {
@@ -175,21 +188,35 @@ export function AdminPage() {
 
         <div className="admin-panel admin-panel-wide">
           <div className="admin-panel-title">{profile.regionName} 등록 자산 ({assets.length})</div>
+          {thumbError && <div className="admin-error">{thumbError}</div>}
           {assets.length === 0 ? (
             <div className="admin-empty">아직 등록된 자산이 없습니다.</div>
           ) : (
             <table className="admin-table admin-layer-table">
               <thead>
-                <tr><th>이름</th><th>좌표</th><th>상태</th><th>공개</th><th>등록일</th><th></th><th></th></tr>
+                <tr><th>썸네일</th><th>이름</th><th>좌표</th><th>상태</th><th>공개</th><th>등록일</th><th></th><th></th></tr>
               </thead>
               <tbody>
                 {groups.map(([category, items]) => (
                   <Fragment key={category}>
                     <tr className="admin-group-row">
-                      <td colSpan={7}>{category} <span className="admin-group-count">{items.length}</span></td>
+                      <td colSpan={8}>{category} <span className="admin-group-count">{items.length}</span></td>
                     </tr>
                     {items.map((a) => (
                       <tr key={a.id}>
+                        <td>
+                          <label className="admin-thumb-cell" title="지도 마커에 쓸 사진 업로드">
+                            {a.thumbnailUrl ? (
+                              <img className="admin-thumb-img" src={a.thumbnailUrl} alt="" />
+                            ) : (
+                              <span className="admin-thumb-placeholder">{uploadingThumbId === a.id ? '…' : '+'}</span>
+                            )}
+                            <input
+                              type="file" accept="image/*" hidden disabled={uploadingThumbId === a.id}
+                              onChange={(e) => handleThumbnailUpload(a, e.target.files?.[0])}
+                            />
+                          </label>
+                        </td>
                         <td>{a.title}</td>
                         <td>
                           {editingCoordId === a.id ? (

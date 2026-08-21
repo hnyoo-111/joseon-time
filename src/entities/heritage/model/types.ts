@@ -14,6 +14,7 @@ export interface Heritage {
   kings: string[];
   unesco: boolean;
   desc: string;
+  imageUrl?: string;
 }
 
 export const TYPE_LABEL: Record<HeritageType, string> = {

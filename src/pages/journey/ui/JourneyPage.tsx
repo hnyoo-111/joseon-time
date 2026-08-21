@@ -1,12 +1,14 @@
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { journeyById, type JourneyStep } from '@/entities/journey';
+import { journeyById, type Journey, type JourneyStep } from '@/entities/journey';
 import { heritageById } from '@/entities/heritage';
 import { workById } from '@/entities/work';
 import { useAppStore } from '@/app/model/appStore';
 import { MapView, PROCESSION_CONFIGS, type MapViewHandle, type DayWindow, type ProcessionTick } from '@/widgets/map-view';
 import { JourneyTimelineBar } from '@/widgets/journey-timeline-bar';
 import { YearSplash } from '@/shared/ui/YearSplash';
+
+const pad = (n: number) => String(n).padStart(2, '0');
 
 export function JourneyPage() {
   const { journeyId } = useParams();
@@ -77,8 +79,6 @@ export function JourneyPage() {
     openWork(workId);
   }
 
-  const pad = (n: number) => String(n).padStart(2, '0');
-
   return (
     <>
       <YearSplash show={showSplash} year={journey.year} subtitle={journey.heroLine} />
@@ -109,13 +109,23 @@ export function JourneyPage() {
         )}
 
         <div className="journey-ui">
-          <div className="journey-header">
-            <div className="jt-year">{journey.year}</div>
-            <div className="jt-title">{journey.title}</div>
-            <div className="jt-step-count">STEP {pad(stepIndex + 1)} / {pad(journey.steps.length)}</div>
-          </div>
+          {!hasProcession && (
+            <div className="journey-header">
+              <div className="jt-year">{journey.year}</div>
+              <div className="jt-title">{journey.title}</div>
+              <div className="jt-step-count">STEP {pad(stepIndex + 1)} / {pad(journey.steps.length)}</div>
+            </div>
+          )}
 
-          {step && <StoryCardPanel step={step} onOpenPainting={() => navigate(`/painting/${step.workId}`)} onOpenWork={goToWorkAndExit} />}
+          {step && (
+            <StoryCardPanel
+              journey={hasProcession ? journey : undefined}
+              stepIndex={stepIndex}
+              step={step}
+              onOpenPainting={() => navigate(`/painting/${step.workId}`)}
+              onOpenWork={goToWorkAndExit}
+            />
+          )}
 
           <JourneyTimelineBar
             steps={journey.steps}
@@ -141,11 +151,24 @@ export function JourneyPage() {
   );
 }
 
-function StoryCardPanel({ step, onOpenPainting, onOpenWork }: { step: JourneyStep; onOpenPainting: () => void; onOpenWork: (workId: string) => void }) {
+function StoryCardPanel({ journey, stepIndex, step, onOpenPainting, onOpenWork }: {
+  journey?: Journey; stepIndex: number; step: JourneyStep; onOpenPainting: () => void; onOpenWork: (workId: string) => void;
+}) {
   return (
-    <div className="story-card-panel">
-      <div className="sc-year">{step.year}</div>
-      <div className="sc-phase">STEP · {step.phase}</div>
+    <div className={`story-card-panel${journey ? ' with-header' : ''}`}>
+      {journey ? (
+        <>
+          <div className="sc-kicker">{journey.year}</div>
+          <div className="sc-journey-title">{journey.title}</div>
+          <div className="sc-divider" />
+          <div className="sc-phase">STEP {pad(stepIndex + 1)} / {pad(journey.steps.length)} · {step.phase}</div>
+        </>
+      ) : (
+        <>
+          <div className="sc-year">{step.year}</div>
+          <div className="sc-phase">STEP · {step.phase}</div>
+        </>
+      )}
       <div className="sc-title">{step.title}</div>
       <div className="sc-desc">{step.desc}</div>
       {step.mock && <div className="sc-mock">⚠ {step.mockNote}</div>}
