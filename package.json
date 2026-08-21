@@ -12,13 +12,13 @@
   "dependencies": {
     "@google/model-viewer": "^4.3.1",
     "@supabase/supabase-js": "^2.112.3",
-    "@types/three": "^0.185.4",
+    "@types/three": "^0.183.1",
     "cesium": "^1.144.0",
     "jszip": "^3.10.1",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "react-router-dom": "^7.18.2",
-    "three": "^0.185.1",
+    "three": "^0.183.2",
     "vite-plugin-cesium": "^1.2.23",
     "zustand": "^5.0.14"
   },
